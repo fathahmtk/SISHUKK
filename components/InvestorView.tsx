@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Shield, TrendingUp, Building2, MapPin, DollarSign, PieChart as PieIcon, CheckCircle2, Key, Star, Mail, LayoutTemplate, Utensils, HeartHandshake, Briefcase, ShoppingBag, BarChart as BarChartIcon, AlertTriangle, Wallet, Calculator, ArrowRight, Calendar, Activity } from 'lucide-react';
+import { Download, Shield, TrendingUp, Building2, MapPin, DollarSign, PieChart as PieIcon, CheckCircle2, Key, Star, Mail, LayoutTemplate, Utensils, HeartHandshake, Briefcase, ShoppingBag, BarChart as BarChartIcon, AlertTriangle, Wallet, Calculator, ArrowRight, Calendar, Activity, Lock } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, AreaChart, Area } from 'recharts';
 
 // --- DATA & CONSTANTS ---
@@ -21,11 +21,20 @@ const MARKET_DATA = [
 ];
 
 const TIMELINE_DATA = [
-    { phase: "Phase 1", title: "Development", date: "Y1 - Y2", desc: "Civil Structure & Façade Completion" },
+    { phase: "Phase 1", title: "Development", date: "Y1 - Y2", desc: "Civil Structure & Façade" },
     { phase: "Phase 2", title: "Fit-out", date: "Y2 - Y2.5", desc: "Interiors, MEP, & Pre-opening" },
     { phase: "Phase 3", title: "Launch", date: "Y3 Q1", desc: "Soft Launch & Wedding Bookings" },
-    { phase: "Phase 4", title: "Stabilization", date: "Y3 - Y4", desc: "Operational Breakeven & Yield Gen" },
-    { phase: "Phase 5", title: "Exit / REIT", date: "Y5+", desc: "Asset Valuation Peak & Liquidity Event" },
+    { phase: "Phase 4", title: "Stabilization", date: "Y3 - Y4", desc: "Operational Breakeven" },
+    { phase: "Phase 5", title: "Exit / REIT", date: "Y5+", desc: "Valuation Peak & Liquidity" },
+];
+
+const FACILITY_SPECS = [
+    { label: "Configuration", value: "Twin Towers + Sky Bridge", icon: Building2 },
+    { label: "Inventory", value: "200 Luxury Keys", icon: Key },
+    { label: "Event Capacity", value: "2,500+ Pax (Combined)", icon: HeartHandshake },
+    { label: "Dining", value: "2x Revolving Rooftops", icon: Utensils },
+    { label: "Wellness", value: "Spa, Yoga & Infinity Pool", icon: Activity },
+    { label: "Parking", value: "Multi-level Podium", icon: LayoutTemplate },
 ];
 
 // --- COMPONENTS ---
@@ -40,7 +49,7 @@ const GlassCard: React.FC<{ children: React.ReactNode; className?: string; hover
 );
 
 const Section: React.FC<{ children: React.ReactNode; className?: string; id?: string }> = ({ children, className = '', id }) => (
-  <div id={id} className={`relative w-full px-6 py-20 ${className}`}>
+  <div id={id} className={`relative w-full px-6 py-24 border-t border-white/5 ${className}`}>
     <div className="container mx-auto relative z-20">
       {children}
     </div>
@@ -83,7 +92,7 @@ const InvestorView: React.FC = () => {
   return (
     <div className="bg-luxury-black text-slate-200 font-sans selection:bg-gold-500 selection:text-white overflow-x-hidden">
       
-      {/* GLOBAL BACKGROUND - Fixed for parallax effect */}
+      {/* GLOBAL BACKGROUND */}
       <div className="fixed inset-0 w-full h-full z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center"
@@ -94,91 +103,93 @@ const InvestorView: React.FC = () => {
       </div>
 
       {/* 1. HERO SECTION */}
-      <Section className="min-h-screen flex items-center pt-32 pb-20" id="overview">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <div className="lg:col-span-7 space-y-8">
-             <div className="space-y-2 animate-fade-in-up">
-                <div className="inline-flex items-center gap-2 px-3 py-1 border border-gold-500/30 rounded-full bg-gold-500/10 backdrop-blur-md mb-4">
-                   <Shield size={12} className="text-gold-500" />
-                   <span className="text-gold-400 uppercase text-[10px] font-bold tracking-[0.2em]">Institutional Grade Asset</span>
-                </div>
-                <h1 className="font-serif text-5xl md:text-7xl text-white font-bold leading-tight">
-                  SHIRSHUKK<br/>GRAND TOWERS
-                </h1>
-                <p className="text-3xl text-slate-300 font-light font-serif">
-                  ₹350 Crore <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Project Valuation</span>
-                </p>
-             </div>
+      <div id="overview" className="relative w-full px-6 min-h-screen flex items-center pt-32 pb-20">
+        <div className="container mx-auto relative z-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              
+              <div className="lg:col-span-7 space-y-8">
+                 <div className="space-y-2 animate-fade-in-up">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 border border-gold-500/30 rounded-full bg-gold-500/10 backdrop-blur-md mb-4">
+                       <Shield size={12} className="text-gold-500" />
+                       <span className="text-gold-400 uppercase text-[10px] font-bold tracking-[0.2em]">Institutional Grade Asset</span>
+                    </div>
+                    <h1 className="font-serif text-5xl md:text-7xl text-white font-bold leading-tight">
+                      SHIRSHUKK<br/>GRAND TOWERS
+                    </h1>
+                    <p className="text-3xl text-slate-300 font-light font-serif">
+                      ₹350 Crore <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-600">Project Valuation</span>
+                    </p>
+                 </div>
 
-             <div className="bg-gradient-to-r from-white/10 to-transparent p-px h-px w-full max-w-xl my-6"></div>
+                 <div className="bg-gradient-to-r from-white/10 to-transparent p-px h-px w-full max-w-xl my-6"></div>
 
-             <p className="text-slate-400 text-lg max-w-2xl leading-relaxed animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-               A landmark twin-tower hospitality asset monetizing the structural wedding and pilgrimage demand of Guruvayur. 
-               <br/><span className="text-white font-medium">Clean Title. High Yield. Clear Exit.</span>
-             </p>
+                 <p className="text-slate-400 text-lg max-w-2xl leading-relaxed animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+                   A landmark twin-tower hospitality asset monetizing the structural wedding and pilgrimage demand of Guruvayur. 
+                   <br/><span className="text-white font-medium">Clean Title. High Yield. Clear Exit.</span>
+                 </p>
 
-             {/* Metrics Grid */}
-             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-                {[
-                    { label: "Project Cost", val: "₹350 Cr", sub: "Locked Estimates", color: "border-l-gold-500", icon: DollarSign },
-                    { label: "Land Area", val: "1.29 Ac", sub: "Freehold Title", color: "border-l-blue-500", icon: MapPin },
-                    { label: "Inventory", val: "200 Keys", sub: "Event-Led Mix", color: "border-l-purple-500", icon: Key },
-                    { label: "Construction", val: "40%", sub: "Civil Allocation", color: "border-l-green-500", icon: Building2 },
-                ].map((m, i) => (
-                    <GlassCard key={i} className={`p-4 flex flex-col justify-center border-l-2 ${m.color}`}>
-                       <div className="text-slate-400 mb-2"><m.icon size={16} /></div>
-                       <div className="text-xl font-serif text-white font-bold">{m.val}</div>
-                       <div className="text-[10px] uppercase tracking-wider text-slate-500 mt-1">{m.sub}</div>
-                    </GlassCard>
-                ))}
-             </div>
+                 {/* Metrics Grid */}
+                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+                    {[
+                        { label: "Project Cost", val: "₹350 Cr", sub: "Locked Estimates", color: "border-l-gold-500", icon: DollarSign },
+                        { label: "Land Area", val: "1.29 Ac", sub: "Freehold Title", color: "border-l-blue-500", icon: MapPin },
+                        { label: "Inventory", val: "200 Keys", sub: "Event-Led Mix", color: "border-l-purple-500", icon: Key },
+                        { label: "Construction", val: "40%", sub: "Civil Allocation", color: "border-l-green-500", icon: Building2 },
+                    ].map((m, i) => (
+                        <GlassCard key={i} className={`p-4 flex flex-col justify-center border-l-2 ${m.color}`}>
+                           <div className="text-slate-400 mb-2"><m.icon size={16} /></div>
+                           <div className="text-xl font-serif text-white font-bold">{m.val}</div>
+                           <div className="text-[10px] uppercase tracking-wider text-slate-500 mt-1">{m.sub}</div>
+                        </GlassCard>
+                    ))}
+                 </div>
 
-             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-                <button className="bg-gold-500 text-black hover:bg-white hover:text-black px-8 py-4 rounded-lg uppercase tracking-widest text-sm font-bold transition-all shadow-[0_0_20px_rgba(197,160,40,0.3)] flex items-center gap-3">
-                  <Mail size={18} /> Request IM
-                </button>
-                <button className="bg-transparent border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-lg uppercase tracking-widest text-sm font-bold transition-all flex items-center gap-3">
-                  <Download size={18} /> Financial Model
-                </button>
-             </div>
-          </div>
+                 <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+                    <button className="bg-gold-500 text-black hover:bg-white hover:text-black px-8 py-4 rounded-lg uppercase tracking-widest text-sm font-bold transition-all shadow-[0_0_20px_rgba(197,160,40,0.3)] flex items-center gap-3">
+                      <Mail size={18} /> Request IM
+                    </button>
+                    <button className="bg-transparent border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-lg uppercase tracking-widest text-sm font-bold transition-all flex items-center gap-3">
+                      <Download size={18} /> Financial Model
+                    </button>
+                 </div>
+              </div>
 
-          {/* Interactive Chart Preview (Right Side) */}
-          <div className="lg:col-span-5 relative hidden lg:block animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold-500/20 rounded-full blur-[100px]"></div>
-             <GlassCard className="p-6 border-gold-500/30">
-                <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-white font-serif">Projected Growth</h3>
-                    <TrendingUp className="text-green-400" size={20} />
-                </div>
-                <div className="h-[300px] w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={[
-                            { month: 'Y1', val: 30 }, { month: 'Y2', val: 45 }, { month: 'Y3', val: 75 },
-                            { month: 'Y4', val: 110 }, { month: 'Y5', val: 160 }, { month: 'Y6', val: 220 }
-                        ]}>
-                            <defs>
-                                <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#C5A028" stopOpacity={0.3}/>
-                                    <stop offset="95%" stopColor="#C5A028" stopOpacity={0}/>
-                                </linearGradient>
-                            </defs>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
-                            <XAxis dataKey="month" stroke="#666" tick={{fontSize: 10}} />
-                            <YAxis stroke="#666" tick={{fontSize: 10}} />
-                            <Tooltip contentStyle={{backgroundColor: '#000', borderColor: '#333'}} />
-                            <Area type="monotone" dataKey="val" stroke="#C5A028" fillOpacity={1} fill="url(#colorVal)" />
-                        </AreaChart>
-                    </ResponsiveContainer>
-                </div>
-                <p className="text-center text-xs text-slate-500 mt-4 uppercase tracking-widest">Cumulative Cash Flow Projection (Illustrative)</p>
-             </GlassCard>
-          </div>
+              {/* Interactive Chart Preview (Right Side) */}
+              <div className="lg:col-span-5 relative hidden lg:block animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold-500/20 rounded-full blur-[100px]"></div>
+                 <GlassCard className="p-6 border-gold-500/30">
+                    <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-white font-serif">Projected Growth</h3>
+                        <TrendingUp className="text-green-400" size={20} />
+                    </div>
+                    <div className="h-[300px] w-full">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <AreaChart data={[
+                                { month: 'Y1', val: 30 }, { month: 'Y2', val: 45 }, { month: 'Y3', val: 75 },
+                                { month: 'Y4', val: 110 }, { month: 'Y5', val: 160 }, { month: 'Y6', val: 220 }
+                            ]}>
+                                <defs>
+                                    <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="5%" stopColor="#C5A028" stopOpacity={0.3}/>
+                                        <stop offset="95%" stopColor="#C5A028" stopOpacity={0}/>
+                                    </linearGradient>
+                                </defs>
+                                <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
+                                <XAxis dataKey="month" stroke="#666" tick={{fontSize: 10}} />
+                                <YAxis stroke="#666" tick={{fontSize: 10}} />
+                                <Tooltip contentStyle={{backgroundColor: '#000', borderColor: '#333'}} />
+                                <Area type="monotone" dataKey="val" stroke="#C5A028" fillOpacity={1} fill="url(#colorVal)" />
+                            </AreaChart>
+                        </ResponsiveContainer>
+                    </div>
+                    <p className="text-center text-xs text-slate-500 mt-4 uppercase tracking-widest">Cumulative Cash Flow Projection (Illustrative)</p>
+                 </GlassCard>
+              </div>
+            </div>
         </div>
-      </Section>
+      </div>
 
-      {/* 2. MARKET INTELLIGENCE (Data Visualization) */}
+      {/* 2. LOCATION / MARKET INTELLIGENCE */}
       <Section id="location">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
@@ -219,67 +230,29 @@ const InvestorView: React.FC = () => {
         </div>
       </Section>
 
-      {/* 3. CAPEX VISUALIZER (Interactive Donut) */}
-      <Section id="capex" className="bg-gradient-to-b from-black to-slate-950">
+      {/* 3. FACILITIES / ASSET CONFIGURATION */}
+      <Section id="facilities">
          <div className="text-center mb-16">
-             <h2 className="font-serif text-4xl text-white">Capital Structure</h2>
-             <p className="text-slate-400 mt-2">Breakdown of the ₹350 Cr Project Valuation</p>
+            <h3 className="text-purple-400 font-bold uppercase tracking-widest text-sm mb-4">Asset Quality</h3>
+            <h2 className="font-serif text-4xl text-white">Project Configuration</h2>
          </div>
-
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Chart */}
-            <div className="h-[400px] relative">
-                <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                        <Pie
-                            data={CAPEX_DATA}
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={100}
-                            outerRadius={140}
-                            paddingAngle={5}
-                            dataKey="value"
-                            stroke="none"
-                        >
-                            {CAPEX_DATA.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.color} />
-                            ))}
-                        </Pie>
-                        <Tooltip contentStyle={{backgroundColor: '#000', borderColor: '#333', borderRadius: '8px'}} itemStyle={{color: '#fff'}} />
-                    </PieChart>
-                </ResponsiveContainer>
-                {/* Center Text */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-                    <div className="text-xs text-slate-500 uppercase tracking-widest">Total Valuation</div>
-                    <div className="text-4xl font-serif text-white font-bold">₹350</div>
-                    <div className="text-sm text-gold-500">Crores</div>
-                </div>
-            </div>
-
-            {/* Legend / List */}
-            <div className="space-y-4">
-                {CAPEX_DATA.map((item, idx) => (
-                    <GlassCard key={idx} className="p-4 flex items-center justify-between hover:bg-white/5 transition-colors">
-                        <div className="flex items-center gap-4">
-                            <div className="w-3 h-12 rounded-full" style={{ backgroundColor: item.color }}></div>
-                            <div>
-                                <h4 className="text-white font-medium text-lg">{item.name}</h4>
-                                <div className="h-1 w-full bg-slate-800 rounded-full mt-2 overflow-hidden w-24">
-                                    <div className="h-full bg-white/20" style={{ width: `${(item.value / 350) * 100}%` }}></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="text-right">
-                            <div className="text-2xl font-serif text-white">₹{item.value} Cr</div>
-                            <div className="text-xs text-slate-500">{Math.round((item.value / 350) * 100)}% Allocation</div>
-                        </div>
-                    </GlassCard>
-                ))}
-            </div>
+         
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {FACILITY_SPECS.map((spec, i) => (
+                <GlassCard key={i} className="p-6 flex items-center gap-6 group hover:border-gold-500/30 transition-colors">
+                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-gold-500 group-hover:text-black transition-all">
+                        <spec.icon size={20} />
+                    </div>
+                    <div>
+                        <div className="text-xs text-slate-500 uppercase tracking-widest mb-1">{spec.label}</div>
+                        <div className="text-white font-serif text-xl">{spec.value}</div>
+                    </div>
+                </GlassCard>
+            ))}
          </div>
       </Section>
 
-      {/* 4. INTERACTIVE YIELD CALCULATOR (The Killer Feature) */}
+      {/* 4. REVENUE / YIELD CALCULATOR */}
       <Section id="revenue" className="bg-luxury-black border-y border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
@@ -361,21 +334,80 @@ const InvestorView: React.FC = () => {
         </div>
       </Section>
 
-      {/* 5. VALUE CREATION TIMELINE */}
-      <Section id="exit">
-          <div className="mb-16 text-center">
+      {/* 5. CAPEX STRUCTURE */}
+      <Section id="capex" className="bg-gradient-to-b from-black to-slate-950">
+         <div className="text-center mb-16">
+             <h2 className="font-serif text-4xl text-white">Capital Structure</h2>
+             <p className="text-slate-400 mt-2">Breakdown of the ₹350 Cr Project Valuation</p>
+         </div>
+
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Chart */}
+            <div className="h-[400px] relative">
+                <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                        <Pie
+                            data={CAPEX_DATA}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={100}
+                            outerRadius={140}
+                            paddingAngle={5}
+                            dataKey="value"
+                            stroke="none"
+                        >
+                            {CAPEX_DATA.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={entry.color} />
+                            ))}
+                        </Pie>
+                        <Tooltip contentStyle={{backgroundColor: '#000', borderColor: '#333', borderRadius: '8px'}} itemStyle={{color: '#fff'}} />
+                    </PieChart>
+                </ResponsiveContainer>
+                {/* Center Text */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                    <div className="text-xs text-slate-500 uppercase tracking-widest">Total Valuation</div>
+                    <div className="text-4xl font-serif text-white font-bold">₹350</div>
+                    <div className="text-sm text-gold-500">Crores</div>
+                </div>
+            </div>
+
+            {/* Legend / List */}
+            <div className="space-y-4">
+                {CAPEX_DATA.map((item, idx) => (
+                    <GlassCard key={idx} className="p-4 flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <div className="flex items-center gap-4">
+                            <div className="w-3 h-12 rounded-full" style={{ backgroundColor: item.color }}></div>
+                            <div>
+                                <h4 className="text-white font-medium text-lg">{item.name}</h4>
+                                <div className="h-1 w-full bg-slate-800 rounded-full mt-2 overflow-hidden w-24">
+                                    <div className="h-full bg-white/20" style={{ width: `${(item.value / 350) * 100}%` }}></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="text-right">
+                            <div className="text-2xl font-serif text-white">₹{item.value} Cr</div>
+                            <div className="text-xs text-slate-500">{Math.round((item.value / 350) * 100)}% Allocation</div>
+                        </div>
+                    </GlassCard>
+                ))}
+            </div>
+         </div>
+      </Section>
+
+      {/* 6. EXIT STRATEGY & TIMELINE */}
+      <Section id="exit" className="pb-32">
+         <div className="mb-16 text-center">
             <h2 className="font-serif text-4xl text-white">Value Creation Roadmap</h2>
             <p className="text-slate-400 mt-2">Clear path to stabilization and exit</p>
-          </div>
+         </div>
           
-          <div className="relative">
-              {/* Connector Line */}
+         {/* Timeline */}
+         <div className="relative mb-24">
               <div className="absolute top-8 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-30 hidden md:block"></div>
               
               <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                   {TIMELINE_DATA.map((item, i) => (
                       <div key={i} className="relative group">
-                          {/* Dot */}
                           <div className="w-4 h-4 bg-black border-2 border-gold-500 rounded-full mx-auto mb-6 relative z-10 group-hover:bg-gold-500 transition-colors hidden md:block">
                               <div className="absolute inset-0 bg-gold-500 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>
                           </div>
@@ -389,11 +421,9 @@ const InvestorView: React.FC = () => {
                       </div>
                   ))}
               </div>
-          </div>
-      </Section>
+         </div>
 
-      {/* 6. EXIT STRATEGY */}
-      <Section id="strategy" className="pb-32">
+         {/* Exit Options */}
          <div className="max-w-4xl mx-auto text-center">
             <GlassCard className="p-12 md:p-20 relative overflow-hidden group">
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold-500/5 blur-[100px] rounded-full pointer-events-none"></div>
