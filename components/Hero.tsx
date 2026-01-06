@@ -14,21 +14,21 @@ const Hero: React.FC = () => {
           const scrollY = window.scrollY;
           
           if (bgRef.current) {
-            // Enhanced parallax: slower scroll (0.5) for heavier, luxurious feel
-            // Increased scale (0.0008) for a cinematic camera push-in effect
-            const yPos = scrollY * 0.5;
-            const scale = 1 + (scrollY * 0.0008);
+            // Enhanced parallax: slower scroll (0.35) creates a sense of massive scale and weight
+            // Increased scale (0.001) adds a cinematic "push-in" effect as the user explores
+            const yPos = scrollY * 0.35;
+            const scale = 1 + (scrollY * 0.001);
             bgRef.current.style.transform = `translate3d(0, ${yPos}px, 0) scale(${scale})`;
           }
 
           if (textRef.current) {
-            // Text fades slightly faster to clear focus for next section
-            const opacity = Math.max(0, 1 - scrollY / 400);
+            // Text floats upwards slightly faster (0.2) than background to create layer separation
+            // Fade out is slower (600) to keep branding visible longer
+            const opacity = Math.max(0, 1 - scrollY / 600);
             textRef.current.style.opacity = opacity.toString();
-            // Increased translation separation (0.3) for better 3D layering
-            textRef.current.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
-            // Stronger blur (0.02) to mimic depth of field focus shift
-            textRef.current.style.filter = `blur(${scrollY * 0.02}px)`;
+            textRef.current.style.transform = `translate3d(0, ${scrollY * 0.2}px, 0)`;
+            // Blur increases with scroll to simulate depth of field rack focus
+            textRef.current.style.filter = `blur(${scrollY * 0.015}px)`;
           }
           
           ticking = false;
@@ -52,7 +52,8 @@ const Hero: React.FC = () => {
             backgroundImage: 'url("https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg")',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/90" />
+          {/* Layered gradients for "Dark Luxury" atmosphere */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black" />
           <div className="absolute inset-0 bg-black/20 mix-blend-multiply" />
         </div>
       </div>
