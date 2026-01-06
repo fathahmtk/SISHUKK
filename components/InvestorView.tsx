@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, ArrowRight, Shield, TrendingUp, Building2, MapPin, DollarSign, PieChart, CheckCircle2, Key, Star, Mail, LayoutTemplate, Utensils, HeartHandshake, Briefcase, ShoppingBag, BarChart3, AlertTriangle, Wallet } from 'lucide-react';
+import { Download, ArrowRight, Shield, TrendingUp, Building2, MapPin, DollarSign, PieChart, CheckCircle2, Key, Star, Mail, LayoutTemplate, Utensils, HeartHandshake, Briefcase, ShoppingBag, BarChart, AlertTriangle, Wallet } from 'lucide-react';
 
 const GlassCard: React.FC<{ children: React.ReactNode; className?: string; hoverEffect?: boolean }> = ({ children, className = '', hoverEffect = false }) => (
   <div className={`bg-slate-950/40 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative overflow-hidden ${className} ${hoverEffect ? 'hover:bg-slate-900/50 hover:border-gold-500/30 hover:-translate-y-1 transition-all duration-300' : ''}`}>
@@ -285,7 +285,7 @@ const InvestorView: React.FC = () => {
                <div className="grid gap-4">
                   {[
                     { title: "Construction Risk", desc: "Fixed EPC Contracts", icon: Building2 },
-                    { title: "Demand Risk", desc: "Non-seasonal Wedding Market", icon: BarChart3 },
+                    { title: "Demand Risk", desc: "Non-seasonal Wedding Market", icon: BarChart },
                     { title: "Operational Risk", desc: "Professional Hotel Operator", icon: Briefcase },
                     { title: "Competition", desc: "First-Mover Landmark Advantage", icon: Shield }
                   ].map((risk, i) => (

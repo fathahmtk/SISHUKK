@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { IndianRupee, BarChart3, TrendingUp, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { IndianRupee, BarChart, TrendingUp, AlertTriangle, ShieldCheck } from 'lucide-react';
 
 const data = [
   { name: 'Weddings & Events', value: 45 },
@@ -84,7 +84,7 @@ const Financials: React.FC = () => {
                   <p className="text-xs text-slate-500 mt-2">High-margin event revenue drives superior operating leverage.</p>
                 </div>
                 <div className="p-6 bg-luxury-dark border border-gold-900/30 hover:border-gold-500/50 transition-colors">
-                  <BarChart3 className="text-gold-500 mb-4" size={32} />
+                  <BarChart className="text-gold-500 mb-4" size={32} />
                   <h4 className="text-slate-400 text-sm uppercase tracking-wider mb-2">Exit Strategy</h4>
                   <p className="text-2xl text-white font-serif">REIT / Asset Sale</p>
                   <p className="text-xs text-slate-500 mt-2">Designed for long-term valuation and annuity yields.</p>
