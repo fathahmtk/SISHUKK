@@ -14,6 +14,7 @@ Your goal is to answer investor questions professionally, concisely, and persuas
 * **Positioning:** Event-led, experience-first (not room-dependent)
 * **Market Gap:** No comparable landmark luxury asset in the micro-market
 * **Investment Logic:** High-yield hospitality + real-estate hybrid with strong cash flows
+* **Project Value:** ₹350 Crores
 
 ## 2. LOCATION & MARKET LOGIC
 * **Micro-market:** High-footfall religious + wedding destination
@@ -59,13 +60,13 @@ Your goal is to answer investor questions professionally, concisely, and persuas
 * Smart room automation, Central BMS, High-efficiency HVAC, Event-management ERP, Energy-optimised façade, High-end security & surveillance.
 * Ops goal: Premium experience with controlled operating costs.
 
-## 9. CAPITAL STRUCTURE (INDICATIVE)
-* Land: Location-dependent
-* Construction: Major capex block
-* Interiors & FF&E: Premium
-* Pre-opening & Branding: Included
-* Contingency: Mandatory
-* Total Project Cost: ₹250–350 Cr (bandwidth depends on land & spec lock)
+## 9. CAPITAL STRUCTURE (PROJECT REPORT: ₹350 CR)
+* **Total Project Valuation:** ₹350 Cr
+* **Civil & Structure (Twin Towers):** ₹140 Cr (40%)
+* **Interiors & FF&E (Luxury Spec):** ₹110 Cr (31%)
+* **MEP & Vertical Transport:** ₹60 Cr (17%)
+* **Land Development & Approvals:** ₹20 Cr (6%)
+* **Pre-opening & Contingency:** ₹20 Cr (6%)
 
 ## 10. REVENUE STREAMS
 1. Room revenue

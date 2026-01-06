@@ -97,7 +97,7 @@ const InvestorView: React.FC = () => {
              {/* Buttons */}
              <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
                 <button className="bg-transparent border border-white/30 text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-lg uppercase tracking-widest text-sm font-bold transition-all flex items-center gap-3">
-                  <Download size={18} /> Download Investor Deck
+                  <Download size={18} /> Download Project Report
                 </button>
                 <button className="bg-gold-500 text-white hover:bg-gold-600 px-8 py-4 rounded-lg uppercase tracking-widest text-sm font-bold transition-all shadow-lg shadow-gold-500/20 flex items-center gap-3">
                   <Mail size={18} /> Investor Enquiry
@@ -244,37 +244,43 @@ const InvestorView: React.FC = () => {
          </div>
       </Section>
 
-      {/* 5. CAPEX & RISK (New) */}
+      {/* 5. CAPEX & RISK (Refined for 350 Cr) */}
       <Section id="capex">
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
             
             {/* Capex Side */}
             <div>
-               <h2 className="font-serif text-3xl text-white mb-8">Capex Structure (₹350 Cr)</h2>
+               <h2 className="font-serif text-3xl text-white mb-8">Capital Structure Report</h2>
                <GlassCard className="p-8">
                   <div className="flex justify-between items-center mb-6 pb-6 border-b border-white/10">
                     <div>
-                      <h3 className="text-2xl text-white font-serif">Estimated Budget</h3>
-                      <p className="text-slate-500 text-sm">Hotel-Only Development</p>
+                      <h3 className="text-2xl text-white font-serif">Project Cost</h3>
+                      <p className="text-slate-500 text-sm">Hotel Development</p>
                     </div>
-                    <div className="text-gold-400 font-bold text-xl">₹250-350 Cr</div>
+                    <div className="text-right">
+                       <div className="text-gold-400 font-bold text-3xl">₹350 Cr</div>
+                       <div className="text-[10px] text-green-400 uppercase tracking-widest mt-1">Estimates Locked</div>
+                    </div>
                   </div>
                   <ul className="space-y-4">
                      {[
-                       { item: "Civil & Structure", status: "Major Block" },
-                       { item: "Interiors & FF&E", status: "Luxury Spec" },
-                       { item: "MEP & Systems", status: "High Efficiency" },
-                       { item: "Pre-opening", status: "Included" },
-                       { item: "Contingency", status: "Buffered" }
+                       { item: "Civil & Structure (Twin Towers)", val: "₹140 Cr", status: "40%" },
+                       { item: "Interiors & FF&E (Luxury Spec)", val: "₹110 Cr", status: "31%" },
+                       { item: "MEP & Vertical Transport", val: "₹60 Cr", status: "17%" },
+                       { item: "Land Development & Approvals", val: "₹20 Cr", status: "6%" },
+                       { item: "Pre-opening & Contingency", val: "₹20 Cr", status: "6%" }
                      ].map((row, i) => (
                        <li key={i} className="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                          <span className="text-slate-200">{row.item}</span>
-                          <span className="text-xs text-blue-300 bg-blue-900/20 px-2 py-1 rounded border border-blue-500/20">{row.status}</span>
+                          <span className="text-slate-200 text-sm">{row.item}</span>
+                          <div className="flex items-center gap-3">
+                             <span className="text-white font-mono text-sm">{row.val}</span>
+                             <span className="text-xs text-blue-300 bg-blue-900/20 px-2 py-0.5 rounded border border-blue-500/20 w-12 text-center">{row.status}</span>
+                          </div>
                        </li>
                      ))}
                   </ul>
                   <div className="mt-6 pt-4 text-center">
-                     <p className="text-slate-400 text-xs uppercase tracking-widest">Land Cost Excluded • Bankable Structure</p>
+                     <p className="text-slate-400 text-xs uppercase tracking-widest">Excludes Land Cost • Includes Finance Costs</p>
                   </div>
                </GlassCard>
             </div>
