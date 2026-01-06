@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, ArrowRight, Shield, TrendingUp, Building2, MapPin, DollarSign, PieChart, CheckCircle2, Key, Star, Mail, LayoutTemplate, Utensils, HeartHandshake, Briefcase, ShoppingBag } from 'lucide-react';
+import { Download, ArrowRight, Shield, TrendingUp, Building2, MapPin, DollarSign, PieChart, CheckCircle2, Key, Star, Mail, LayoutTemplate, Utensils, HeartHandshake, Briefcase, ShoppingBag, BarChart3, AlertTriangle, Wallet } from 'lucide-react';
 
 const GlassCard: React.FC<{ children: React.ReactNode; className?: string; hoverEffect?: boolean }> = ({ children, className = '', hoverEffect = false }) => (
   <div className={`bg-slate-950/40 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl relative overflow-hidden ${className} ${hoverEffect ? 'hover:bg-slate-900/50 hover:border-gold-500/30 hover:-translate-y-1 transition-all duration-300' : ''}`}>
@@ -29,12 +29,12 @@ const InvestorView: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url("https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg")' }}
         />
-        <div className="absolute inset-0 bg-slate-950/70" /> 
+        <div className="absolute inset-0 bg-slate-950/80" /> 
         {/* Gradient mesh for that 'futuristic' glow seen in the reference */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/20 via-transparent to-black/60 mix-blend-overlay" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/10 via-transparent to-black/80 mix-blend-overlay" />
       </div>
 
-      {/* 1. HERO SECTION (Model: Top Panel) */}
+      {/* 1. HERO SECTION (Overview) */}
       <Section className="min-h-screen flex items-center pt-32 pb-20" id="overview">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
@@ -107,7 +107,7 @@ const InvestorView: React.FC = () => {
         </div>
       </Section>
 
-      {/* 2. ICONIC REALITIES / CHECKLIST (Model: Middle Panels) */}
+      {/* 2. ICONIC REALITIES (Location) */}
       <Section id="location">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
@@ -176,8 +176,8 @@ const InvestorView: React.FC = () => {
         </div>
       </Section>
 
-      {/* 3. FULL FACILITIES (Model: Bottom Panel) */}
-      <Section id="facilities" className="pb-32">
+      {/* 3. FACILITIES */}
+      <Section id="facilities">
          <div className="flex items-end justify-between mb-12">
             <div>
                <h2 className="text-white font-serif text-4xl">Full Facilities</h2>
@@ -208,13 +208,135 @@ const InvestorView: React.FC = () => {
                </GlassCard>
             ))}
          </div>
+      </Section>
 
-         {/* Floating Revenue Pill */}
-         <div className="mt-12 flex justify-center">
-            <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-full px-8 py-4 flex items-center gap-3 shadow-2xl animate-bounce" style={{ animationDuration: '3s' }}>
-               <TrendingUp className="text-green-400" size={20} />
-               <span className="text-slate-200 text-sm font-medium">Event-led revenues outperform rooms in margin and cash flow.</span>
+      {/* 4. REVENUE (New) */}
+      <Section id="revenue" className="bg-gradient-to-t from-black/50 to-transparent">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="lg:w-1/2">
+               <h3 className="text-green-400 font-bold uppercase tracking-widest text-sm mb-4">Financial Engine</h3>
+               <h2 className="font-serif text-5xl text-white mb-6">Diversified Revenue</h2>
+               <p className="text-xl text-slate-300 mb-8 font-light">
+                 Diversified income streams reduce reliance on room occupancy. The model is anchored by high-margin event revenues.
+               </p>
+               <GlassCard className="p-6 inline-block border-l-4 border-l-green-500">
+                  <p className="text-slate-200 italic text-lg">"Event-led revenues outperform rooms in margin and cash flow."</p>
+               </GlassCard>
             </div>
+            <div className="lg:w-1/2 w-full grid gap-4">
+               {[
+                 { label: "Weddings & Events", width: "90%", val: "Primary Driver", color: "bg-gold-500" },
+                 { label: "Rooms & Suites", width: "60%", val: "Steady Flow", color: "bg-blue-500" },
+                 { label: "F&B Destinations", width: "40%", val: "High Footfall", color: "bg-purple-500" },
+                 { label: "Wellness & Retail", width: "25%", val: "Ancillary", color: "bg-slate-500" }
+               ].map((bar, i) => (
+                 <div key={i} className="bg-slate-900/60 p-5 border border-white/5 rounded-xl backdrop-blur-md">
+                    <div className="flex justify-between text-white mb-3 text-sm font-bold uppercase tracking-wider">
+                       <span>{bar.label}</span>
+                       <span className="text-slate-400">{bar.val}</span>
+                    </div>
+                    <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                       <div className={`h-full ${bar.color} shadow-[0_0_10px_rgba(255,255,255,0.3)]`} style={{ width: bar.width }}></div>
+                    </div>
+                 </div>
+               ))}
+            </div>
+         </div>
+      </Section>
+
+      {/* 5. CAPEX & RISK (New) */}
+      <Section id="capex">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
+            
+            {/* Capex Side */}
+            <div>
+               <h2 className="font-serif text-3xl text-white mb-8">Capex Structure (₹350 Cr)</h2>
+               <GlassCard className="p-8">
+                  <div className="flex justify-between items-center mb-6 pb-6 border-b border-white/10">
+                    <div>
+                      <h3 className="text-2xl text-white font-serif">Estimated Budget</h3>
+                      <p className="text-slate-500 text-sm">Hotel-Only Development</p>
+                    </div>
+                    <div className="text-gold-400 font-bold text-xl">₹250-350 Cr</div>
+                  </div>
+                  <ul className="space-y-4">
+                     {[
+                       { item: "Civil & Structure", status: "Major Block" },
+                       { item: "Interiors & FF&E", status: "Luxury Spec" },
+                       { item: "MEP & Systems", status: "High Efficiency" },
+                       { item: "Pre-opening", status: "Included" },
+                       { item: "Contingency", status: "Buffered" }
+                     ].map((row, i) => (
+                       <li key={i} className="flex justify-between items-center border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                          <span className="text-slate-200">{row.item}</span>
+                          <span className="text-xs text-blue-300 bg-blue-900/20 px-2 py-1 rounded border border-blue-500/20">{row.status}</span>
+                       </li>
+                     ))}
+                  </ul>
+                  <div className="mt-6 pt-4 text-center">
+                     <p className="text-slate-400 text-xs uppercase tracking-widest">Land Cost Excluded • Bankable Structure</p>
+                  </div>
+               </GlassCard>
+            </div>
+
+            {/* Risk Side */}
+            <div>
+               <h2 className="font-serif text-3xl text-white mb-8">Risk Mitigation</h2>
+               <div className="grid gap-4">
+                  {[
+                    { title: "Construction Risk", desc: "Fixed EPC Contracts", icon: Building2 },
+                    { title: "Demand Risk", desc: "Non-seasonal Wedding Market", icon: BarChart3 },
+                    { title: "Operational Risk", desc: "Professional Hotel Operator", icon: Briefcase },
+                    { title: "Competition", desc: "First-Mover Landmark Advantage", icon: Shield }
+                  ].map((risk, i) => (
+                    <div key={i} className="bg-slate-900/40 border border-white/10 p-5 flex items-start gap-4 rounded-xl hover:bg-slate-800/40 transition-colors">
+                       <div className="bg-gold-500/10 p-3 rounded-lg text-gold-500">
+                          <risk.icon size={20} />
+                       </div>
+                       <div>
+                          <span className="text-white font-bold block text-lg">{risk.title}</span>
+                          <span className="text-slate-400 text-sm">{risk.desc}</span>
+                       </div>
+                    </div>
+                  ))}
+               </div>
+            </div>
+         </div>
+      </Section>
+
+      {/* 6. EXIT STRATEGY (New) */}
+      <Section id="exit" className="pb-32">
+         <div className="max-w-4xl mx-auto text-center">
+            <GlassCard className="p-12 md:p-20 relative overflow-hidden group">
+               {/* Decorative background glow */}
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+               
+               <h2 className="font-serif text-4xl md:text-6xl text-white mb-8 relative z-10">Exit Strategy</h2>
+               
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 relative z-10">
+                  <div className="bg-slate-900/60 p-8 rounded-xl border border-white/10 hover:border-gold-500/40 transition-colors">
+                     <TrendingUp className="text-gold-500 w-10 h-10 mx-auto mb-4" />
+                     <h3 className="text-white font-bold text-xl font-serif">Asset Sale</h3>
+                     <p className="text-slate-400 text-sm mt-3">Sale to REIT / PE Fund post stabilisation.</p>
+                  </div>
+                  <div className="bg-slate-900/60 p-8 rounded-xl border border-white/10 hover:border-gold-500/40 transition-colors">
+                     <Wallet className="text-gold-500 w-10 h-10 mx-auto mb-4" />
+                     <h3 className="text-white font-bold text-xl font-serif">Annuity Hold</h3>
+                     <p className="text-slate-400 text-sm mt-3">Long-term dividend yield generation.</p>
+                  </div>
+               </div>
+               
+               <p className="text-xl text-slate-300 font-serif italic mb-10 relative z-10">"Clear exits. No trapped capital."</p>
+               
+               <div className="flex flex-col md:flex-row gap-6 justify-center pt-8 border-t border-white/10 relative z-10">
+                  <button className="flex items-center justify-center gap-3 text-slate-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-6 py-3 rounded-lg border border-white/5">
+                     <Download size={20} /> Investor Pitch Deck (PDF)
+                  </button>
+                  <button className="flex items-center justify-center gap-3 text-slate-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-6 py-3 rounded-lg border border-white/5">
+                     <PieChart size={20} /> Financial Model Teaser
+                  </button>
+               </div>
+            </GlassCard>
          </div>
       </Section>
 
