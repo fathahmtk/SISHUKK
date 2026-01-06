@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, CalendarCheck, Heart, Star, Music, Camera } from 'lucide-react';
+import { Download, CalendarCheck, Heart, Star, Music, Camera, Crown } from 'lucide-react';
 
 const WeddingFocus: React.FC = () => {
   return (
@@ -33,7 +33,7 @@ const WeddingFocus: React.FC = () => {
                 <div className="grid grid-cols-2 gap-6 mb-12">
                    {[
                      { label: "Grand Ballroom", sub: "Capacity: 1500 Guests", icon: Star },
-                     { label: "Bridal Suites", sub: "Royal Preparation Areas", icon: CrownIcon },
+                     { label: "Bridal Suites", sub: "Royal Preparation Areas", icon: Crown },
                      { label: "Acoustics", sub: "Concert-Grade Audio", icon: Music },
                      { label: "Photography", sub: "Scenic Photo-Ops", icon: Camera },
                    ].map((item, i) => (
@@ -90,10 +90,5 @@ const WeddingFocus: React.FC = () => {
     </section>
   );
 };
-
-// Helper icon
-const CrownIcon = ({size, className}: {size: number, className?: string}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
-)
 
 export default WeddingFocus;
