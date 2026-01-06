@@ -23,10 +23,7 @@ const App: React.FC = () => {
       />
       
       {isInvestorView ? (
-        <>
-          <InvestorView />
-          <InvestorChat />
-        </>
+        <InvestorView />
       ) : (
         <>
           <Hero />
@@ -38,13 +35,11 @@ const App: React.FC = () => {
           <Offers />
           <Location />
           <Footer />
-          {/* Investor Chat also available in Guest view? Maybe hidden to avoid confusion, 
-              but usually investors might browse guest site too. 
-              Let's keep it available but maybe strictly for investor mode in a real app.
-              For this demo, hiding it in guest mode makes the distinction clearer. 
-          */}
         </>
       )}
+      
+      {/* AI Assistant available in both views */}
+      <InvestorChat />
     </div>
   );
 };
