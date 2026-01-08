@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { MapPin, Phone, Mail, Instagram, Facebook, Twitter } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Navigation } from 'lucide-react';
 
 const Location: React.FC = () => {
   return (
@@ -22,6 +23,15 @@ const Location: React.FC = () => {
             {/* Overlay Gradient on Map */}
             <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent pointer-events-none lg:block hidden"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none lg:hidden block"></div>
+
+            {/* Distance Badge */}
+            <div className="absolute bottom-12 left-12 bg-gold-500 p-6 rounded-2xl text-onyx-950 flex items-center gap-6 shadow-2xl animate-float">
+               <Navigation size={32} />
+               <div>
+                  <div className="text-4xl font-serif font-black">1.5 KM</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest opacity-60">From Guruvayur Temple</div>
+               </div>
+            </div>
         </div>
 
         {/* Contact Info */}

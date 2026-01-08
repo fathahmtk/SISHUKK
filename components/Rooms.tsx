@@ -1,31 +1,36 @@
-import React, { useEffect, useRef } from 'react';
-import { Wifi, Coffee, Monitor, Wind, Droplets, Eye, Utensils, Crown, Armchair, UserCheck, ArrowRight, Maximize2 } from 'lucide-react';
+
+import React from 'react';
+import { Wifi, Coffee, Eye, Crown, UserCheck, ArrowRight, Maximize2, Wind, Droplets, FileText } from 'lucide-react';
 import { Room } from '../types';
+
+interface RoomsProps {
+  onInquiryClick?: () => void;
+}
 
 const rooms: Room[] = [
   {
     id: 'deluxe',
-    name: 'Deluxe Room',
-    description: 'Contemporary elegance with floor-to-ceiling windows offering panoramic city views.',
-    price: '₹12,000',
+    name: 'Metropolitan Deluxe',
+    description: 'A masterclass in restraint. Neutral palettes meet high-performance glass, offering a silent sanctuary above the bustling temple city.',
+    price: '',
     size: '450 Sq. Ft.',
-    image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80',
     amenities: ['High-Speed Wi-Fi', 'Smart Climate Control', 'Rain Shower']
   },
   {
     id: 'premium',
-    name: 'Premium View',
-    description: 'Elevated floors guaranteeing unobstructed views of the temple skyline and coconut groves.',
-    price: '₹15,500',
+    name: 'Sanctuary Premium',
+    description: 'Positioned on the highest floors of the North Tower, these rooms feature direct unobstructed vistas of the eternal Guruvayur skyline.',
+    price: '',
     size: '500 Sq. Ft.',
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&q=80',
     amenities: ['Temple View', 'Nespresso Machine', 'Butler Service']
   },
   {
     id: 'suite',
-    name: 'Royal Suite',
-    description: 'Expansive living area, private dining, and a master bath with a freestanding soaking tub.',
-    price: '₹28,000',
+    name: 'The Sirshukk Suite',
+    description: 'Our flagship residence. A dual-aspect configuration with a private library, a grand soaking tub, and priority access to the Sky Bridge.',
+    price: '',
     size: '950 Sq. Ft.',
     image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80',
     amenities: ['Separate Living', 'Private Dining', 'Jacuzzi', 'Club Access']
@@ -40,125 +45,88 @@ const getAmenityIcon = (amenity: string) => {
   if (text.includes('coffee') || text.includes('nespresso')) return <Coffee size={14} />;
   if (text.includes('view')) return <Eye size={14} />;
   if (text.includes('butler')) return <UserCheck size={14} />;
-  if (text.includes('dining')) return <Utensils size={14} />;
-  if (text.includes('living')) return <Armchair size={14} />;
   if (text.includes('club')) return <Crown size={14} />;
-  return <Monitor size={14} />;
+  return <ArrowRight size={14} />;
 };
 
-const Rooms: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-            entry.target.classList.remove('opacity-0', 'translate-y-20');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const cards = document.querySelectorAll('.room-card');
-    cards.forEach((card) => observer.observe(card));
-
-    return () => observer.disconnect();
-  }, []);
-
+const Rooms: React.FC<RoomsProps> = ({ onInquiryClick }) => {
   return (
-    <section id="rooms" ref={sectionRef} className="py-32 bg-luxury-black text-white relative overflow-hidden">
-       {/* Background accent */}
-       <div className="absolute right-0 top-0 w-2/3 h-full bg-gradient-to-l from-luxury-charcoal/50 to-transparent pointer-events-none"></div>
-       <div className="absolute -left-20 top-40 w-96 h-96 bg-gold-500/5 rounded-full blur-[100px] pointer-events-none"></div>
-
+    <section id="rooms" className="py-32 bg-onyx-950 text-white relative overflow-hidden border-b border-white/5">
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gold-900/5 to-transparent pointer-events-none"></div>
+      
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 opacity-0 translate-y-10 transition-all duration-1000 ease-out room-card">
-            <div>
-                <span className="text-gold-400 tracking-[0.2em] uppercase text-xs font-bold flex items-center gap-2 mb-4">
-                    <span className="w-8 h-px bg-gold-500"></span> Accommodation
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24">
+            <div className="max-w-2xl">
+                <span className="text-gold-500 tracking-[0.6em] uppercase text-[10px] font-black flex items-center gap-4 mb-6">
+                    <span className="w-12 h-px bg-gold-500/50"></span> Facility Inventory
                 </span>
-                <h2 className="font-serif text-5xl md:text-6xl text-white leading-tight">
-                    Stay in <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">Splendour</span>
+                <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[0.85] tracking-tighter">
+                    Residential <br/><span className="text-gold-400 italic">Specifications.</span>
                 </h2>
             </div>
-            <div className="max-w-md mt-6 md:mt-0 text-slate-400 font-light leading-relaxed text-right md:text-left">
-                Sanctuaries of calm designed with regional restraint and modern luxury. Every room is a viewpoint to the divine.
-            </div>
+            <p className="text-slate-500 text-lg font-light leading-relaxed max-w-sm mt-8 md:mt-0">
+                A technical breakdown of our 200 luxury keys, optimized for thermal comfort and structural silence in a high-demand pilgrimage hub.
+            </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {rooms.map((room, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
+          {rooms.map((room) => (
             <div 
                 key={room.id} 
-                className="room-card group cursor-pointer relative flex flex-col h-[600px] w-full bg-transparent transition-all duration-1000 ease-out opacity-0 translate-y-20"
-                style={{ transitionDelay: `${index * 150}ms` }}
+                className="group relative flex flex-col h-[650px] w-full bg-onyx-900 overflow-hidden rounded-[2rem] border border-white/5 hover:border-gold-500/30 transition-all duration-700 shadow-2xl"
             >
-              {/* Image Container */}
-              <div className="absolute inset-0 rounded-sm overflow-hidden z-0">
-                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500 z-10"></div>
+              <div className="absolute inset-0 z-0">
                  <img 
                   src={room.image} 
                   alt={room.name} 
-                  className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 brightness-[0.6] group-hover:brightness-75"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
               </div>
 
-              {/* Content Layer */}
-              <div className="relative z-20 flex flex-col justify-between h-full p-8 border border-white/10 group-hover:border-gold-500/30 transition-colors rounded-sm bg-gradient-to-b from-transparent to-black/80">
-                  
-                  {/* Top Bar */}
-                  <div className="flex justify-between items-start opacity-70 group-hover:opacity-100 transition-opacity">
-                      <div className="bg-black/50 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-widest text-white border border-white/10 rounded">
-                         {room.size}
+              <div className="relative z-10 flex flex-col justify-between h-full p-10">
+                  <div className="flex justify-between items-start">
+                      <div className="bg-white/5 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full">
+                         <span className="text-white text-[9px] font-black uppercase tracking-widest">{room.size}</span>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-gold-500 group-hover:text-black transition-all">
-                         <Maximize2 size={14} />
-                      </div>
+                      <button className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-gold-500 hover:text-onyx-950 transition-all active:scale-90">
+                         <Maximize2 size={18} />
+                      </button>
                   </div>
 
-                  {/* Bottom Content */}
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      <h3 className="font-serif text-3xl text-white mb-2 group-hover:text-gold-300 transition-colors">{room.name}</h3>
+                  <div className="space-y-6 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
+                      <div>
+                        <h3 className="font-serif text-4xl text-white mb-3 group-hover:text-gold-400 transition-colors">{room.name}</h3>
+                        <p className="text-slate-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                          {room.description}
+                        </p>
+                      </div>
                       
-                      <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-500 opacity-0 group-hover:opacity-100">
-                          <p className="text-slate-300 text-sm mb-6 leading-relaxed font-light border-l border-gold-500 pl-4 my-4">
-                            {room.description}
-                          </p>
-                          
-                          <div className="space-y-3 mb-6">
-                            {room.amenities.map((amenity, idx) => (
-                                <div key={idx} className="flex items-center gap-3 text-xs text-slate-300 uppercase tracking-wider">
-                                    <span className="text-gold-400">{getAmenityIcon(amenity)}</span>
-                                    {amenity}
-                                </div>
-                            ))}
-                          </div>
+                      <div className="flex flex-wrap gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                        {room.amenities.map((amenity, idx) => (
+                            <div key={idx} className="flex items-center gap-2 text-[9px] text-gold-500 uppercase tracking-widest font-black">
+                                {getAmenityIcon(amenity)}
+                                <span>{amenity}</span>
+                            </div>
+                        ))}
                       </div>
 
-                      <div className="flex items-end justify-between border-t border-white/20 pt-6 mt-2">
-                          <div>
-                              <span className="block text-[10px] uppercase text-slate-500 tracking-widest mb-1">Starting From</span>
-                              <span className="font-serif text-2xl text-white">{room.price}</span>
+                      <div className="flex items-center justify-between border-t border-white/10 pt-8 mt-4">
+                          <div className="flex flex-col">
+                              <span className="text-[8px] uppercase text-slate-500 tracking-[0.4em] font-black mb-1">Configuration</span>
+                              <span className="font-serif text-xl text-white tracking-tight">Investment Grade</span>
                           </div>
-                          <button className="text-xs font-bold uppercase tracking-[0.2em] text-white flex items-center gap-2 group/btn">
-                              Book Now <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform text-gold-500" />
+                          <button 
+                            onClick={onInquiryClick}
+                            className="bg-white/10 hover:bg-gold-500 text-white hover:text-onyx-950 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all flex items-center gap-2 active:scale-95 border border-white/10"
+                          >
+                              Inquiry <FileText size={14} />
                           </button>
                       </div>
                   </div>
               </div>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-24 flex justify-center opacity-0 translate-y-10 transition-all duration-1000 ease-out delay-500 room-card">
-            <button className="group px-8 py-4 bg-transparent border border-white/20 text-slate-300 hover:border-gold-500 hover:text-white transition-all duration-300 uppercase text-xs font-bold tracking-[0.2em] flex items-center gap-3">
-                View Presidential Suites
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </button>
         </div>
       </div>
     </section>

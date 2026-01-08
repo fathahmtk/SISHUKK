@@ -1,82 +1,82 @@
+
 import React from 'react';
 import { ArrowRight, Gift, Percent, Heart, Sparkles } from 'lucide-react';
 
-const Offers: React.FC = () => {
+interface OffersProps {
+  onActionClick?: (type: 'room' | 'wedding') => void;
+}
+
+const Offers: React.FC<OffersProps> = ({ onActionClick }) => {
   return (
-    <section id="offers" className="py-24 bg-black border-y border-white/5 relative overflow-hidden">
+    <section id="offers" className="py-24 bg-onyx-950 border-y border-white/5 relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-black to-black opacity-80"></div>
-      {/* Gold sheen animation */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-gold-900/10 via-transparent to-transparent opacity-30 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-900/5 via-onyx-950 to-onyx-950 opacity-80"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-           <span className="text-gold-400 tracking-[0.3em] uppercase text-xs font-bold flex items-center justify-center gap-3">
+           <span className="text-gold-400 tracking-[0.6em] uppercase text-[10px] font-black flex items-center justify-center gap-3">
               <span className="w-8 h-px bg-gold-500/50"></span>
               Privileges
               <span className="w-8 h-px bg-gold-500/50"></span>
            </span>
-           <h2 className="font-serif text-4xl md:text-5xl text-white mt-4">Exclusive Offers</h2>
+           <h2 className="font-serif text-5xl md:text-7xl text-white mt-6 leading-tight tracking-tighter">Exclusive <br/><span className="gold-gradient-text italic">Incentives.</span></h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
             
             {/* Offer 1 - Gold Theme */}
-            <div className="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(197,160,40,0.15)]">
-                {/* Decorative Icon Background */}
-                <div className="absolute -top-6 -right-6 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:rotate-12 duration-700">
-                   <Percent size={180} className="text-gold-100" />
-                </div>
-                
-                <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
+            <div className="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-12 rounded-[2.5rem] overflow-hidden hover:bg-white/[0.07] transition-all duration-700 hover:-translate-y-2 shadow-2xl">
+                <div className="flex flex-col lg:flex-row gap-10 items-center relative z-10">
                     <div className="relative">
-                        <div className="absolute inset-0 bg-gold-500 blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center shadow-2xl relative z-10 border border-white/20">
-                            <span className="font-serif text-2xl text-black font-bold">20%</span>
+                        <div className="absolute inset-0 bg-gold-500 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center shadow-3xl relative z-10 border border-white/20">
+                            <span className="font-serif text-3xl text-onyx-950 font-black">20%</span>
                         </div>
                     </div>
                     
-                    <div className="text-center md:text-left flex-1">
-                        <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-                             <Sparkles size={12} className="text-gold-400" />
-                             <span className="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Limited Time</span>
+                    <div className="text-center lg:text-left flex-1">
+                        <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+                             <Sparkles size={14} className="text-gold-400 animate-pulse" />
+                             <span className="text-[10px] uppercase tracking-widest text-gold-400 font-black">Limited Allocation</span>
                         </div>
-                        <h3 className="text-white font-serif text-3xl mb-3 group-hover:text-gold-300 transition-colors">Early Bird Special</h3>
-                        <p className="text-slate-400 text-sm mb-8 leading-relaxed font-light">
-                            Secure your sanctuary 30 days in advance. Includes complimentary breakfast and high-tea at the Sky Lounge.
+                        <h3 className="text-white font-serif text-4xl mb-4 group-hover:text-gold-300 transition-colors">Early Bird Equity</h3>
+                        <p className="text-slate-400 text-base mb-10 leading-relaxed font-light">
+                            Secure your sanctuary 30 days in advance. Includes complimentary artisan breakfast and high-altitude tea service.
                         </p>
-                        <button className="group/btn text-white text-xs uppercase tracking-widest font-bold border-b border-gold-500 pb-2 hover:text-gold-400 transition-colors flex items-center gap-2 mx-auto md:mx-0">
-                            Check Rates <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                        <button 
+                          onClick={() => onActionClick?.('room')}
+                          className="group/btn inline-flex items-center gap-4 text-white text-[10px] uppercase tracking-[0.4em] font-black border-b-2 border-gold-500 pb-3 hover:text-gold-400 transition-all"
+                        >
+                            Claim Privilege <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
                         </button>
                     </div>
                 </div>
             </div>
 
             {/* Offer 2 - Rose Theme */}
-            <div className="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(225,29,72,0.15)]">
-                 <div className="absolute -top-6 -right-6 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:rotate-12 duration-700">
-                   <Heart size={180} className="text-rose-100" />
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
+            <div className="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-12 rounded-[2.5rem] overflow-hidden hover:bg-white/[0.07] transition-all duration-700 hover:-translate-y-2 shadow-2xl">
+                <div className="flex flex-col lg:flex-row gap-10 items-center relative z-10">
                     <div className="relative">
-                         <div className="absolute inset-0 bg-rose-500 blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-rose-300 to-rose-600 flex items-center justify-center shadow-2xl relative z-10 border border-white/20">
-                            <Gift size={32} className="text-white" />
+                         <div className="absolute inset-0 bg-rose-500 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-rose-300 to-rose-600 flex items-center justify-center shadow-3xl relative z-10 border border-white/20">
+                            <Gift size={36} className="text-white" />
                         </div>
                     </div>
 
-                     <div className="text-center md:text-left flex-1">
-                        <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-                             <Heart size={12} className="text-rose-400" />
-                             <span className="text-[10px] uppercase tracking-widest text-rose-400 font-bold">Couples Exclusive</span>
+                     <div className="text-center lg:text-left flex-1">
+                        <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+                             <Heart size={14} className="text-rose-400" />
+                             <span className="text-[10px] uppercase tracking-widest text-rose-400 font-black">Legacy Celebrations</span>
                         </div>
-                        <h3 className="text-white font-serif text-3xl mb-3 group-hover:text-rose-300 transition-colors">Honeymoon Bliss</h3>
-                        <p className="text-slate-400 text-sm mb-8 leading-relaxed font-light">
-                            Romantic candlelight dinner on the rooftop, couples spa therapy, and luxury airport transfers.
+                        <h3 className="text-white font-serif text-4xl mb-4 group-hover:text-rose-300 transition-colors">Honeymoon Bliss</h3>
+                        <p className="text-slate-400 text-base mb-10 leading-relaxed font-light">
+                            Signature candlelight dinner on the Meridian Peak, dual spa therapy, and private airport transfers.
                         </p>
-                        <button className="group/btn text-white text-xs uppercase tracking-widest font-bold border-b border-rose-500 pb-2 hover:text-rose-300 transition-colors flex items-center gap-2 mx-auto md:mx-0">
-                            View Package <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                        <button 
+                          onClick={() => onActionClick?.('wedding')}
+                          className="group/btn inline-flex items-center gap-4 text-white text-[10px] uppercase tracking-[0.4em] font-black border-b-2 border-rose-500 pb-3 hover:text-rose-300 transition-all"
+                        >
+                            View Dossier <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
                         </button>
                     </div>
                 </div>
