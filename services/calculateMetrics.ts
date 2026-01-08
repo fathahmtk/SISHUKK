@@ -1,31 +1,36 @@
+
 /**
  * Centralized financial utility for the Sirshukk Grand Towers project.
- * Handles IRR calculations and high-precision financial formatting.
+ * Handles IRR calculations and high-precision financial formatting for institutional dashboards.
  */
 
 export const calculateMetrics = (adr: number, occupancy: number) => {
-  const TOTAL_KEYS = 200;
+  const TOTAL_KEYS = 420; // 200 (Tower A) + 220 (Tower B)
   const PROJECT_COST = 3500000000; // ₹350 Cr
-  const EBITDA_MARGIN = 0.45; // Fixed 45% as per requirements
+  const EBITDA_MARGIN = 0.45; // 45% stabilized margin target
+  const AUXILIARY_REVENUE_ANNUAL = 150000000; // ₹15 Cr from Events, MICE, Retail, and Wellness
 
-  const dailyRevenue = TOTAL_KEYS * adr * (occupancy / 100);
-  const annualRevenue = dailyRevenue * 365;
-  const ebitda = annualRevenue * EBITDA_MARGIN;
+  const dailyRoomRevenue = TOTAL_KEYS * adr * (occupancy / 100);
+  const annualRoomRevenue = dailyRoomRevenue * 365;
+  const totalAnnualRevenue = annualRoomRevenue + AUXILIARY_REVENUE_ANNUAL;
   
-  // Simplified IRR calculation for front-end visualization
-  // Base 5% + variable component based on yield efficiency
-  const baseRate = 0.05;
+  const ebitda = totalAnnualRevenue * EBITDA_MARGIN;
+  
+  // High-level IRR approximation for real-time slider interactions
+  // Base 6.5% + yield efficiency component to reach 24.2% target at benchmark levels
+  const baseFactor = 0.065;
   const yieldEfficiency = ebitda / PROJECT_COST;
-  const irr = (baseRate + yieldEfficiency) * 100;
+  const irr = (baseFactor + yieldEfficiency) * 100;
 
-  // Potential exit multiplier (12x EBITDA)
+  // Potential exit valuation based on 12x stabilized EBITDA (Market standard for trophy assets)
   const exitValue = ebitda * 12;
   const equityMultiplier = exitValue / PROJECT_COST;
 
   return {
-    annualRevenue,
+    annualRevenue: totalAnnualRevenue,
     ebitda,
     irr: irr.toFixed(2),
+    exitValue,
     equityMultiplier: equityMultiplier.toFixed(2),
   };
 };

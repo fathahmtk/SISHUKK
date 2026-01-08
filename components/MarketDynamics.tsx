@@ -1,103 +1,119 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import { TrendingUp, Users, ArrowUpRight, Zap, Landmark, Heart, FileText, BarChart3 } from 'lucide-react';
+import { TrendingUp, Users, ArrowUpRight, Zap, Landmark, Heart, FileText, BarChart3, MapPin } from 'lucide-react';
 
 const MarketDynamics: React.FC = () => {
   const [count, setCount] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimatedRef = useRef(false);
+  const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry.isIntersecting && !hasAnimatedRef.current) {
+          hasAnimatedRef.current = true;
           let start = 0;
-          const end = 30;
+          const end = 12;
           const duration = 2000;
           const step = (end / duration) * 10;
-          const timer = setInterval(() => {
+          
+          if (timerRef.current) clearInterval(timerRef.current);
+          
+          timerRef.current = window.setInterval(() => {
             start += step;
             if (start >= end) {
               setCount(end);
-              clearInterval(timer);
+              if (timerRef.current) clearInterval(timerRef.current);
             } else {
-              setCount(Math.floor(start));
+              setCount(parseFloat(start.toFixed(1)));
             }
           }, 10);
-          setHasAnimated(true);
         }
       },
       { threshold: 0.5 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, [hasAnimated]);
+    
+    const currentSection = sectionRef.current;
+    if (currentSection) observer.observe(currentSection);
+    
+    return () => {
+      if (currentSection) observer.unobserve(currentSection);
+      observer.disconnect();
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 bg-onyx-950 relative overflow-hidden border-b border-white/5">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <div className="space-y-12">
-            <div>
-              <div className="flex items-center gap-4 mb-8">
-                 <div className="px-6 py-2 bg-gold-500/10 border border-gold-500/20 rounded-full text-gold-500 text-[9px] font-black uppercase tracking-widest flex items-center gap-2">
-                    <FileText size={14} /> Case Study 04A
-                 </div>
-                 <span className="text-slate-600 text-[10px] font-black uppercase tracking-widest">Market Intelligence Report</span>
-              </div>
-              <h2 className="text-white font-serif text-5xl md:text-7xl mb-12 leading-[0.9] tracking-tighter italic">
-                The <span className="gold-gradient-text">{count} Million</span> <br/>Pilgrim Delta.
-              </h2>
-              <p className="text-slate-400 text-xl font-light leading-relaxed mb-12 max-w-xl">
-                Guruvayur attracts 30M+ visitors annually—surpassing most European capitals. Yet, 90% of inventory consists of budget lodges. SGT captures the absolute top 1% of this non-seasonal flow.
-              </p>
+    <section ref={sectionRef} className="py-40 bg-onyx-950 relative overflow-hidden border-b border-white/5">
+      {/* Visual Depth Elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,_rgba(212,175,55,0.03)_0%,_transparent_50%)]"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-24 items-center mb-32">
+          <div className="lg:w-3/5">
+            <div className="inline-flex items-center gap-3 px-4 py-2 border border-gold-500/30 rounded-full bg-gold-500/5 mb-10">
+              <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+              <span className="text-gold-400 uppercase text-[10px] font-black tracking-[0.4em]">Audit: Market Intelligence 2025</span>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-8 bg-white/5 border border-white/10 rounded-[2.5rem] group hover:border-gold-500/50 transition-all shadow-2xl">
-                <div className="w-14 h-14 bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 mb-6 group-hover:scale-110 transition-transform">
-                  <Heart size={24} />
-                </div>
-                <h4 className="text-white font-bold text-lg mb-2">200+ Daily Weddings</h4>
-                <p className="text-slate-500 text-sm leading-relaxed">During peak seasons, the temple hosts over 200 ceremonies daily. SGT provides the missing 7-star banquet infrastructure.</p>
-              </div>
-
-              <div className="p-8 bg-white/5 border border-white/10 rounded-[2.5rem] group hover:border-gold-500/50 transition-all shadow-2xl">
-                <div className="w-14 h-14 bg-gold-500/10 rounded-2xl flex items-center justify-center text-gold-500 mb-6 group-hover:scale-110 transition-transform">
-                  <Landmark size={24} />
-                </div>
-                <h4 className="text-white font-bold text-lg mb-2">₹1,700 Cr Deposits</h4>
-                <p className="text-slate-500 text-sm leading-relaxed">The Devaswom's liquidity reflects the UHNWI profile of devotees currently underserved by local budget supply.</p>
-              </div>
-            </div>
-
-            <div className="p-10 bg-gold-500/5 border border-gold-500/20 rounded-[3rem] relative overflow-hidden group">
-               <div className="absolute top-0 right-0 p-12 opacity-5">
-                  <TrendingUp size={120} className="text-gold-500" />
+            <h2 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-12 italic">
+              The <span className="gold-gradient-text italic font-black">{count}M</span> <br/>Pilgrim Engine.
+            </h2>
+            <p className="text-slate-400 text-2xl font-light leading-relaxed max-w-2xl border-l border-gold-500/30 pl-10">
+              Guruvayur is the structural heart of South India's "Ritual Economy." With 12M+ annual visitors and 250+ daily weddings, the demand is inelastic, non-seasonal, and completely underserved by luxury inventory.
+            </p>
+          </div>
+          
+          <div className="lg:w-2/5 grid grid-cols-2 gap-4">
+             {[
+               { l: "Annual Footfall", v: "12 Million", s: "Inelastic Demand" },
+               { l: "Supply Void", v: "0 Hotels", s: "Within 1.5km Radius" }
+             ].map((stat, i) => (
+               <div key={i} className="p-8 bg-onyx-900 border border-white/10 rounded-[2rem] shadow-2xl flex flex-col items-center justify-center text-center">
+                  <div className="text-gold-500 font-serif text-3xl mb-1">{stat.v}</div>
+                  <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest">{stat.l}</div>
                </div>
-               <h3 className="text-gold-400 font-serif text-3xl mb-4 italic">The Supply Void</h3>
-               <p className="text-slate-300 text-lg font-light leading-relaxed">
-                 By integrating a massive 3,000+ capacity convention center with 7-star hospitality, we capture the entire luxury value chain—from sacred ceremony to grand reception.
-               </p>
-            </div>
+             ))}
           </div>
+        </div>
 
-          <div className="relative">
-            <div className="aspect-square glass-card rounded-full flex flex-col items-center justify-center text-center p-12 border border-gold-500/20 shadow-[0_0_150px_rgba(212,175,55,0.15)] relative z-10 animate-float">
-              <div className="text-gold-500 font-serif text-9xl md:text-[13rem] font-black leading-none mb-4">{count}M</div>
-              <div className="text-white text-xs font-black uppercase tracking-[1em] opacity-40">Annual Pilgrims</div>
-              <div className="mt-12 flex items-center gap-4 text-emerald-400 bg-emerald-500/10 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] border border-emerald-500/20 shadow-lg">
-                <ArrowUpRight size={16} /> Market Monopolization
-              </div>
-            </div>
-            {/* Background elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-gold-500/5 blur-[150px] rounded-full -z-10 animate-pulse"></div>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-onyx-900 border border-white/5 p-8 rounded-3xl shadow-3xl flex flex-col justify-center">
-               <BarChart3 size={32} className="text-gold-500 mb-4" />
-               <div className="text-white font-serif text-3xl">88%</div>
-               <div className="text-[8px] uppercase tracking-widest text-slate-500 font-black">Supply Gap (Luxury)</div>
-            </div>
-          </div>
+        {/* Cinematic Data Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+           {[
+             { 
+               title: "The Wedding Moat", 
+               val: "250 Daily", 
+               img: "https://images.unsplash.com/photo-1519225421980-715cb0202128?auto=format&fit=crop&q=80",
+               desc: "Massive captive market for large-scale banqueting and NRI multi-day ceremonies."
+             },
+             { 
+               title: "Asset Proximity", 
+               val: "1.5 KM", 
+               img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80",
+               desc: "Strategically located at the core 'South Nada' corridor for maximum ADR capture."
+             },
+             { 
+               title: "NRI Capital Inflow", 
+               val: "High", 
+               img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80",
+               desc: "Fulfilling the demand for global hospitality standards among returning residents."
+             }
+           ].map((card, i) => (
+             <div key={i} className="group relative h-[500px] rounded-[3rem] overflow-hidden border border-white/5 shadow-3xl flex flex-col justify-end p-10">
+                <img src={card.img} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110 brightness-[0.35] group-hover:brightness-[0.5]" alt={card.title} />
+                <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/40 to-transparent"></div>
+                
+                <div className="relative z-10 space-y-4">
+                   <div className="flex items-center justify-between">
+                      <h4 className="text-white font-serif text-2xl">{card.title}</h4>
+                      <span className="text-gold-500 font-mono text-xl font-black">{card.val}</span>
+                   </div>
+                   <p className="text-slate-400 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      {card.desc}
+                   </p>
+                </div>
+             </div>
+           ))}
         </div>
       </div>
     </section>

@@ -1,8 +1,7 @@
 
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-// Added Landmark to the imports from lucide-react
-import { IndianRupee, BarChart, TrendingUp, AlertTriangle, ShieldCheck, FileDown, Eye, FileText, Download, Landmark } from 'lucide-react';
+import { IndianRupee, BarChart, TrendingUp, AlertTriangle, ShieldCheck, FileText, Download, Eye, Landmark, ArrowUpRight } from 'lucide-react';
 
 const data = [
   { name: 'MICE & Weddings', value: 55 },
@@ -11,36 +10,38 @@ const data = [
   { name: 'Wellness & Retail', value: 5 },
 ];
 
-const COLORS = ['#D4AF37', '#64748B', '#475569', '#1e293b'];
+const COLORS = ['#D4AF37', '#1e40af', '#0f172a', '#1e293b'];
 
 const Financials: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'revenue' | 'capital' | 'risk' | 'reports'>('revenue');
 
   return (
-    <section id="financials" className="py-32 bg-onyx-950 border-t border-white/5 scroll-mt-20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-24">
-          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-6">Financial Intelligence</span>
-          <h2 className="font-serif text-5xl md:text-8xl text-white mb-10 tracking-tighter italic">Capital <br/><span className="gold-gradient-text italic">Architecture.</span></h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            Institutional-grade analysis of revenue centers, capital deployment, and auditable 10-year growth trajectories.
+    <section id="financials" className="py-48 bg-onyx-950 border-t border-white/5 scroll-mt-20 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom,_rgba(212,175,55,0.03)_0%,_transparent_70%)]"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-32">
+          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-8">Financial Intelligence Unit</span>
+          <h2 className="font-serif text-6xl md:text-9xl text-white mb-10 tracking-tighter italic leading-[0.8]">Capital <br/><span className="gold-gradient-text italic font-black">Architecture.</span></h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-xl font-light leading-relaxed">
+            Auditable 10-year growth trajectories modeled on the South Indian ritual economy.
           </p>
         </div>
 
-        {/* Cinematic Tabs */}
-        <div className="flex justify-center mb-20 border-b border-white/5 flex-wrap gap-2 xl:gap-8">
+        {/* Institutional Tabs */}
+        <div className="flex justify-center mb-24 border-b border-white/5 flex-wrap gap-2 xl:gap-8">
           {[
             { id: 'revenue', label: 'Revenue Logic', icon: TrendingUp },
             { id: 'capital', label: 'Capital Stack', icon: IndianRupee },
-            { id: 'risk', label: 'Risk Mitigation', icon: ShieldCheck },
-            { id: 'reports', label: 'Audit Reports', icon: FileText }
+            { id: 'risk', label: 'Risk Safeguards', icon: ShieldCheck },
+            { id: 'reports', label: 'Audit Logs', icon: FileText }
           ].map((tab) => (
             <button 
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center gap-3 px-8 py-5 text-[10px] font-black uppercase tracking-widest transition-all rounded-t-2xl border-x border-t ${
+              className={`flex items-center gap-4 px-10 py-6 text-[10px] font-black uppercase tracking-widest transition-all rounded-t-3xl border-x border-t ${
                 activeTab === tab.id 
-                ? 'text-gold-400 bg-white/5 border-white/10' 
+                ? 'text-gold-400 bg-onyx-900 border-white/10 shadow-[0_-15px_40px_rgba(0,0,0,0.5)]' 
                 : 'text-slate-600 border-transparent hover:text-slate-400'
               }`}
             >
@@ -49,54 +50,57 @@ const Financials: React.FC = () => {
           ))}
         </div>
 
-        {/* Tab Content Stage */}
-        <div className="min-h-[600px] animate-fade-in">
+        {/* Content Stages */}
+        <div className="min-h-[650px] animate-fade-in">
           
           {activeTab === 'revenue' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <div className="bg-onyx-900 border border-white/10 p-12 rounded-[4rem] h-[500px] shadow-3xl relative overflow-hidden group">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+              <div className="bg-onyx-900 border border-white/10 p-12 rounded-[4rem] h-[600px] shadow-3xl relative overflow-hidden group institutional-border">
                 <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none group-hover:scale-110 transition-transform">
-                   <BarChart size={200} className="text-gold-500" />
+                   <BarChart size={250} className="text-gold-500" />
                 </div>
-                <h3 className="text-white text-2xl font-serif mb-10">Revenue Yield Mix</h3>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={data}
-                      cx="50%"
-                      cy="40%"
-                      innerRadius={80}
-                      outerRadius={130}
-                      paddingAngle={8}
-                      dataKey="value"
-                    >
-                      {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="none" />
-                      ))}
-                    </Pie>
-                    <Tooltip 
-                      contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', color: '#fff' }}
-                      itemStyle={{ color: '#D4AF37', fontSize: '10px', textTransform: 'uppercase' }}
-                    />
-                    <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{fontSize: '10px', paddingTop: '40px'}} />
-                  </PieChart>
-                </ResponsiveContainer>
+                <h3 className="text-white text-3xl font-serif mb-12 italic">Revenue Capture Mix</h3>
+                <div className="h-[400px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={data}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={110}
+                        outerRadius={160}
+                        paddingAngle={8}
+                        dataKey="value"
+                        animationDuration={1500}
+                      >
+                        {data.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="none" />
+                        ))}
+                      </Pie>
+                      <Tooltip 
+                        contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', color: '#fff' }}
+                        itemStyle={{ color: '#D4AF37', fontSize: '10px', textTransform: 'uppercase', fontWeight: 'black' }}
+                      />
+                      <Legend verticalAlign="bottom" align="center" iconType="circle" wrapperStyle={{fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', paddingTop: '50px'}} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-10">
                 {[
-                  { title: "MICE Dominance", icon: BarChart, desc: "Banqueting volume provides a non-seasonal demand floor independent of room occupancy spikes." },
-                  { title: "ADR Optimization", icon: TrendingUp, desc: "Premium positioning allows for a structural arbitrage over local budget inventory." },
-                  { title: "REIT Capability", icon: ShieldCheck, desc: "Asset engineered for 100% flow-through transparency and institutional divestment." }
+                  { title: "MICE Alpha", icon: BarChart, desc: "Banqueting volume provides a structural demand floor independent of pilgrimage cycles." },
+                  { title: "ADR Arbitrage", icon: TrendingUp, desc: "Targeting a 30% premium over local inventory by fulfilling the luxury supply void." },
+                  { title: "Divestment Moat", icon: ShieldCheck, desc: "Asset engineered for REIT divestment with 100% flow-through transparency." }
                 ].map((item, i) => (
-                  <div key={i} className="p-8 bg-white/5 border border-white/5 rounded-3xl hover:border-gold-500/30 transition-all group">
-                     <div className="flex gap-6 items-start">
-                        <div className="p-4 bg-onyx-950 rounded-2xl text-gold-500 border border-white/5 group-hover:border-gold-500/50 transition-all">
-                           <item.icon size={24} />
+                  <div key={i} className="p-12 bg-white/[0.02] border border-white/5 rounded-[3.5rem] hover:bg-white/[0.04] hover:border-gold-500/30 transition-all duration-500 group">
+                     <div className="flex gap-8 items-start">
+                        <div className="p-6 bg-onyx-950 rounded-2xl text-gold-500 border border-white/5 group-hover:border-gold-500 group-hover:text-onyx-950 transition-all shadow-xl">
+                           <item.icon size={28} />
                         </div>
                         <div>
-                           <h4 className="text-white font-bold text-lg mb-2">{item.title}</h4>
-                           <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                           <h4 className="text-white font-serif text-3xl mb-4 italic group-hover:text-gold-400 transition-colors">{item.title}</h4>
+                           <p className="text-slate-500 text-lg font-light leading-relaxed">{item.desc}</p>
                         </div>
                      </div>
                   </div>
@@ -109,37 +113,37 @@ const Financials: React.FC = () => {
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                  {[
-                   { title: "2025 Feasibility Report", type: "Market Analysis", date: "Jan 2025", pages: "48 Pages", icon: FileText },
-                   { title: "Detailed Project Report (DPR)", type: "Full Submission", date: "Dec 2024", pages: "142 Pages", icon: Landmark },
-                   { title: "Revenue Waterfall Audit", type: "Financial Model", date: "Jan 2025", pages: "12 Pages", icon: BarChart },
-                   { title: "Title Search & Legal Safe", type: "Governance", date: "Nov 2024", pages: "25 Pages", icon: ShieldCheck },
-                   { title: "Structural Engineering Audit", type: "Technical", date: "Dec 2024", pages: "32 Pages", icon: AlertTriangle },
-                   { title: "ESG & Sustainability Report", type: "Compliance", date: "Jan 2025", pages: "18 Pages", icon: TrendingUp }
+                   { title: "2025 Feasibility Log", type: "Market Audit", date: "Jan 2025", pages: "48 Pgs", icon: FileText },
+                   { title: "Project Cost Report", type: "Financial Audit", date: "Dec 2024", pages: "142 Pgs", icon: Landmark },
+                   { title: "Legal Title Search", type: "Compliance", date: "Nov 2024", pages: "25 Pgs", icon: ShieldCheck },
+                   { title: "Revenue Waterfall", type: "Forecast", date: "Jan 2025", pages: "12 Pgs", icon: BarChart },
+                   { title: "Structural Integrity", type: "Engineering", date: "Dec 2024", pages: "32 Pgs", icon: AlertTriangle },
+                   { title: "Sustainability Log", type: "ESG Compliance", date: "Jan 2025", pages: "18 Pgs", icon: TrendingUp }
                  ].map((report, i) => (
-                    <div key={i} className="bg-onyx-900 border border-white/10 rounded-[2.5rem] p-10 group hover:border-gold-500/50 transition-all flex flex-col justify-between h-[320px] shadow-2xl relative overflow-hidden">
-                       <div className="absolute top-0 right-0 p-8 opacity-5">
-                          <Download size={80} className="text-gold-500" />
+                    <div key={i} className="bg-onyx-900 border border-white/10 rounded-[3.5rem] p-12 group hover:border-gold-500/50 transition-all flex flex-col justify-between h-[420px] shadow-3xl relative overflow-hidden institutional-border">
+                       <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none group-hover:scale-110 transition-transform">
+                          <Download size={150} className="text-white" />
                        </div>
                        <div>
-                          <div className="flex justify-between items-start mb-8">
-                             <div className="bg-gold-500/10 p-4 rounded-2xl border border-gold-500/20">
-                                <report.icon className="text-gold-500" size={24} />
+                          <div className="flex justify-between items-start mb-12">
+                             <div className="bg-gold-500/10 p-5 rounded-2xl border border-gold-500/20 shadow-2xl">
+                                <report.icon className="text-gold-500" size={28} />
                              </div>
-                             <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 bg-white/5 px-3 py-1 rounded-full">{report.date}</span>
+                             <span className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 bg-white/5 px-4 py-2 rounded-full border border-white/5">{report.date}</span>
                           </div>
-                          <h4 className="text-white font-serif text-2xl leading-tight group-hover:text-gold-400 transition-colors mb-3">{report.title}</h4>
-                          <div className="flex items-center gap-3">
-                             <span className="text-[8px] font-black uppercase tracking-widest text-slate-600">{report.type}</span>
-                             <div className="w-1 h-1 bg-slate-700 rounded-full"></div>
-                             <span className="text-[8px] font-black uppercase tracking-widest text-slate-600">{report.pages}</span>
+                          <h4 className="text-white font-serif text-2xl leading-tight group-hover:text-gold-400 transition-colors mb-4 italic">{report.title}</h4>
+                          <div className="flex items-center gap-4">
+                             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-600">{report.type}</span>
+                             <div className="w-1 h-1 bg-gold-500/30 rounded-full"></div>
+                             <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-600">{report.pages}</span>
                           </div>
                        </div>
                        <div className="flex gap-4">
-                          <button className="flex-1 bg-white/5 hover:bg-gold-500 hover:text-onyx-950 py-4 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 border border-white/5">
-                             <Eye size={14} /> Preview
+                          <button className="flex-1 bg-white/5 hover:bg-gold-500 hover:text-onyx-950 py-5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 border border-white/5 shadow-xl active:scale-95">
+                             <Eye size={16} /> Preview
                           </button>
-                          <button className="flex-1 bg-white/5 hover:bg-white hover:text-onyx-950 py-4 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 border border-white/5">
-                             <Download size={14} /> Download
+                          <button className="flex-1 bg-white/5 hover:bg-white hover:text-onyx-950 py-5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-3 border border-white/5 shadow-xl active:scale-95">
+                             <Download size={16} /> Get PDF
                           </button>
                        </div>
                     </div>
@@ -150,28 +154,36 @@ const Financials: React.FC = () => {
 
           {activeTab === 'capital' && (
              <div className="max-w-4xl mx-auto">
-                <div className="p-12 md:p-16 bg-onyx-900 border border-white/10 rounded-[4rem] shadow-3xl">
-                   <div className="flex items-center justify-between mb-12 border-b border-white/5 pb-8">
-                      <h3 className="text-white font-serif text-3xl">Capital Stack Overview</h3>
-                      <div className="text-gold-500 font-serif text-4xl">₹350 Cr</div>
+                <div className="p-12 md:p-24 bg-onyx-900 border border-white/10 rounded-[5rem] shadow-3xl relative overflow-hidden institutional-border">
+                   <div className="absolute top-0 right-0 p-24 opacity-[0.03] pointer-events-none">
+                      <Landmark size={450} className="text-white" />
                    </div>
-                   <div className="space-y-8">
+                   <div className="flex flex-col sm:flex-row items-center justify-between mb-20 border-b border-white/5 pb-12 gap-6 relative z-10">
+                      <h3 className="text-white font-serif text-4xl italic">Capital Stack v2.5</h3>
+                      <div className="text-gold-500 font-serif text-6xl font-black tracking-tighter">₹350 Cr</div>
+                   </div>
+                   <div className="space-y-12 relative z-10">
                       {[
-                        { item: "Senior Project Debt", val: "₹210 Cr", status: "Term Sheet Signed" },
-                        { item: "Founder Equity", val: "₹70 Cr", status: "Fully Committed" },
-                        { item: "Strategic Investor Round", val: "₹70 Cr", status: "Active Fundraising" }
+                        { item: "Senior Project Debt", val: "₹210 Cr", status: "Term Sheet Executed", p: "60%" },
+                        { item: "Founder Equity", val: "₹70 Cr", status: "Debt-Free Base", p: "20%" },
+                        { item: "Strategic Tranche", val: "₹70 Cr", status: "Active Deployment", p: "20%" }
                       ].map((row, i) => (
                         <div key={i} className="flex justify-between items-center group">
-                           <div>
-                              <div className="text-white font-serif text-2xl mb-1 group-hover:text-gold-400 transition-colors">{row.item}</div>
-                              <div className="text-[9px] uppercase tracking-widest font-black text-slate-600">{row.status}</div>
+                           <div className="flex items-center gap-10">
+                              <div className="w-14 h-14 rounded-full border-2 border-white/5 flex items-center justify-center text-slate-500 group-hover:border-gold-500 group-hover:text-gold-500 transition-all font-mono text-xs font-black">
+                                 {row.p}
+                              </div>
+                              <div>
+                                <div className="text-white font-serif text-3xl mb-1 group-hover:text-gold-400 transition-colors italic">{row.item}</div>
+                                <div className="text-[10px] uppercase tracking-[0.3em] font-black text-slate-600">{row.status}</div>
+                              </div>
                            </div>
-                           <div className="text-white font-mono text-2xl">{row.val}</div>
+                           <div className="text-white font-mono text-4xl font-black">₹{row.val}</div>
                         </div>
                       ))}
-                      <div className="pt-12 border-t border-white/5">
-                         <button className="w-full bg-gold-500 text-onyx-950 py-6 rounded-2xl text-[10px] font-black uppercase tracking-[0.4em] shadow-2xl hover:bg-white transition-all">
-                            View Deployment Roadmap
+                      <div className="pt-20 border-t border-white/5">
+                         <button className="w-full bg-gold-500 text-onyx-950 py-8 rounded-[2.5rem] text-[12px] font-black uppercase tracking-[0.6em] shadow-[0_25px_70px_rgba(212,175,55,0.4)] hover:bg-white transition-all flex items-center justify-center gap-6 active:scale-95">
+                            Audit Roadmap Deployment <ArrowUpRight size={24} />
                          </button>
                       </div>
                    </div>
@@ -180,22 +192,25 @@ const Financials: React.FC = () => {
           )}
 
           {activeTab === 'risk' && (
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
                 {[
-                  { risk: "Structural Overrun", mit: "Lump-sum EPC contracts with penalty clauses for delays.", status: "Managed" },
-                  { risk: "Regulatory Variance", mit: "100% NOCs secured prior to Level 1 construction.", status: "Mitigated" },
-                  { risk: "Yield Volatility", mit: "Banquet deposits cover 40% of OpEx debt service.", status: "Resilient" },
-                  { risk: "Liquidity Event", mit: "REIT-ready documentation prepared by Big-4 auditors.", status: "Hedged" }
+                  { risk: "Structural Overrun", mit: "Lump-sum EPC contracts with built-in penalty clauses for timeline variations.", status: "Audited" },
+                  { risk: "Regulatory Variance", mit: "100% of major NOCs secured before Level 1 slab casting phase.", status: "Mitigated" },
+                  { risk: "Yield Volatility", mit: "Convention pre-deposits cover approx 40% of first-year debt servicing.", status: "Resilient" },
+                  { risk: "Liquidity Exit", mit: "Exit modeled on global REIT benchmarks with Big-4 transparency standards.", status: "Strategic" }
                 ].map((item, i) => (
-                  <div key={i} className="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:bg-white/10 transition-all group">
-                     <div className="flex justify-between items-start mb-6">
-                        <div className="w-12 h-12 rounded-2xl bg-onyx-950 flex items-center justify-center text-gold-500 border border-white/5 group-hover:border-gold-500/50 transition-all">
-                           <AlertTriangle size={20} />
+                  <div key={i} className="p-16 bg-onyx-900 border border-white/10 rounded-[4rem] hover:bg-white/[0.04] transition-all group relative overflow-hidden institutional-border">
+                     <div className="flex justify-between items-start mb-10">
+                        <div className="w-16 h-16 rounded-2xl bg-onyx-950 flex items-center justify-center text-gold-500 border border-white/5 group-hover:border-gold-500 group-hover:scale-110 transition-all shadow-3xl">
+                           <AlertTriangle size={28} />
                         </div>
-                        <span className="text-[8px] font-black uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full">{item.status}</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500 bg-emerald-500/10 px-6 py-3 rounded-full border border-emerald-500/20">{item.status}</span>
                      </div>
-                     <h4 className="text-white font-serif text-2xl mb-4">{item.risk}</h4>
-                     <p className="text-slate-500 text-sm leading-relaxed">{item.mit}</p>
+                     <h4 className="text-white font-serif text-4xl mb-8 italic">{item.risk}</h4>
+                     <p className="text-slate-400 text-lg font-light leading-relaxed">{item.mit}</p>
+                     <div className="absolute bottom-[-15%] right-[-10%] opacity-[0.02] pointer-events-none group-hover:scale-125 transition-transform duration-[2s]">
+                        <ShieldCheck size={300} className="text-white" />
+                     </div>
                   </div>
                 ))}
              </div>

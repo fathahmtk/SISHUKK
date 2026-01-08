@@ -3,6 +3,7 @@ import Hero from './Hero.tsx';
 import Snapshot from './Snapshot.tsx';
 import TheAsset from './TheAsset.tsx';
 import Configuration from './Configuration.tsx';
+import MasterplanViewer from './MasterplanViewer.tsx';
 import TheMarket from './TheMarket.tsx';
 import InclusiveShowcase from './InclusiveShowcase.tsx';
 import TheHotel from './TheHotel.tsx';
@@ -25,13 +26,15 @@ import Location from './Location.tsx';
 import InvestorAccess from './InvestorAccess.tsx';
 import BookingModal from './BookingModal.tsx';
 import Footer from './Footer.tsx';
-import { InvestorView } from './InvestorView.tsx';
-import { X } from 'lucide-react';
 
-const Home: React.FC = () => {
+interface HomeProps {
+  onInvestorClick?: () => void;
+  onProfileClick?: () => void;
+}
+
+const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [bookingType, setBookingType] = useState<'room' | 'wedding'>('room');
-  const [showInvestorDeck, setShowInvestorDeck] = useState(false);
 
   const handleOpenBooking = (type: 'room' | 'wedding') => {
     setBookingType(type);
@@ -39,13 +42,15 @@ const Home: React.FC = () => {
   };
 
   return (
-    <main className="flex flex-col animate-fade-in relative">
-      <Hero />
-      <Snapshot />
+    <main className="flex flex-col relative w-full overflow-x-hidden">
+      <Hero onInvestorClick={onInvestorClick} onProfileClick={onProfileClick} />
+      <Snapshot onProfileClick={onProfileClick} />
       <TheAsset />
       <Configuration />
+      <MasterplanViewer />
       <TheMarket />
       <InclusiveShowcase />
+      <ProjectSpecs />
       <TheHotel />
       <Rooms onInquiryClick={() => handleOpenBooking('room')} />
       <EventsWeddings />
@@ -54,7 +59,6 @@ const Home: React.FC = () => {
       <WellnessExperience />
       <Amenities />
       <OperationalControl />
-      <ProjectSpecs />
       <Economics />
       <Financials />
       <RiskControl />
@@ -63,7 +67,7 @@ const Home: React.FC = () => {
       <Experiences />
       <Offers onActionClick={handleOpenBooking} />
       <Location />
-      <InvestorAccess onOpenDeck={() => setShowInvestorDeck(true)} />
+      <InvestorAccess onOpenDeck={onInvestorClick} />
       <Footer />
 
       <BookingModal 
@@ -71,18 +75,6 @@ const Home: React.FC = () => {
         onClose={() => setIsBookingOpen(false)} 
         initialType={bookingType}
       />
-
-      {showInvestorDeck && (
-        <div className="fixed inset-0 z-[110] bg-onyx-950 animate-fade-in overflow-hidden">
-          <button 
-            onClick={() => setShowInvestorDeck(false)}
-            className="fixed top-6 md:top-8 right-6 md:right-8 z-[120] w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all active:scale-90"
-          >
-            <X size={24} />
-          </button>
-          <InvestorView />
-        </div>
-      )}
     </main>
   );
 };

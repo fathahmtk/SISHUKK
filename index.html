@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -21,34 +21,33 @@
             },
             colors: {
               gold: {
-                50: '#f9f6ef',
-                100: '#f0e8d3',
-                200: '#e3d2a7',
-                300: '#d5bb7b',
-                400: '#c8a44f',
-                500: '#C5A059',
-                600: '#a3834a',
-                700: '#81663b',
-                800: '#5f492c',
-                900: '#3d2c1d'
-              },
-              charcoal: {
-                800: '#2A2A2A',
-                900: '#1A1A1A',
-                950: '#121212'
+                50: '#fffbf0',
+                100: '#fdf3d1',
+                200: '#fae6a3',
+                300: '#f6d16a',
+                400: '#f1b837',
+                500: '#D4AF37', // Brand Gold
+                600: '#b88a2a',
+                700: '#8c651f',
+                800: '#634719',
+                900: '#3d2b14'
               },
               onyx: {
-                900: '#1A1A1A',
-                950: '#121212'
+                800: '#0c153d',
+                900: '#070e2b',
+                950: '#020617' // Midnight Onyx
               }
             },
+            boxShadow: {
+              '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.6)',
+              'gold-glow': '0 0 40px rgba(212, 175, 55, 0.2)',
+            },
             animation: {
-              'fade-in-up': 'fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              'fade-in': 'fade-in 1.5s ease-out forwards',
-              'spin-slow': 'spin 12s linear infinite',
-              'reveal': 'reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
-              'progress': 'progress 2.4s ease-in-out infinite',
+              'fade-in-up': 'fade-in-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'fade-in': 'fade-in 1.8s ease-out forwards',
+              'pulse-slow': 'pulse 8s ease-in-out infinite',
               'float': 'float 6s ease-in-out infinite',
+              'spin-slow': 'spin 30s linear infinite',
             },
             keyframes: {
               'fade-in-up': {
@@ -56,9 +55,7 @@
                 '100%': { opacity: '1', transform: 'translateY(0)' }
               },
               'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-              'reveal': { '0%': { transform: 'translateY(100%)' }, '100%': { transform: 'translateY(0)' } },
-              'progress': { '0%': { left: '-100%' }, '100%': { left: '100%' } },
-              'float': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-15px)' } }
+              'float': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
             }
           }
         }
@@ -66,103 +63,56 @@
     </script>
     <style>
       body {
-        background-color: #1A1A1A;
+        background-color: #020617;
         color: #f8fafc;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
-        cursor: none;
       }
-      body::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.15;
-      }
-      .cursor-dot {
-        position: fixed;
-        width: 6px;
-        height: 6px;
-        background: #C5A059;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10001;
-        transform: translate(-50%, -50%);
-        transition: width 0.3s, height 0.3s;
-      }
-      .cursor-follower {
-        position: fixed;
-        width: 40px;
-        height: 40px;
-        background: rgba(197, 160, 89, 0.05);
-        border: 1px solid rgba(197, 160, 89, 0.2);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10000;
-        transform: translate(-50%, -50%);
-        transition: transform 0.1s ease-out;
-      }
-      ::selection { background: #C5A059; color: #1A1A1A; }
-      ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: #1A1A1A; }
-      ::-webkit-scrollbar-thumb { background: #2A2A2A; border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #C5A059; }
       .gold-gradient-text {
-        background: linear-gradient(135deg, #e3d2a7 0%, #C5A059 50%, #a3834a 100%);
+        background: linear-gradient(135deg, #fceeb5 0%, #D4AF37 50%, #b88a2a 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .glass-panel {
-        background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+      .glass-panel { 
+        background: rgba(255, 255, 255, 0.02); 
+        backdrop-filter: blur(40px); 
+        border: 1px solid rgba(255, 255, 255, 0.05); 
+      }
+      .institutional-border {
+        border: 1px solid rgba(212, 175, 55, 0.15);
+      }
+      ::selection { background: #D4AF37; color: #020617; }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #020617; }
+      ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+      
+      .noise-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.02;
+        pointer-events: none;
+        z-index: 9999;
       }
     </style>
-    <script type="importmap">
+  <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom",
-    "lucide-react": "https://esm.sh/lucide-react@0.468.0?external=react",
-    "recharts": "https://esm.sh/recharts@2.13.0?external=react,react-dom",
-    "@google/genai": "https://esm.sh/@google/genai@1.34.0",
-    "framer-motion": "https://esm.sh/framer-motion@11.11.11?external=react,react-dom",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0"
   }
 }
 </script>
-  </head>
+</head>
   <body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-follower"></div>
+    <div class="noise-overlay"></div>
     <div id="root"></div>
     <script type="module" src="index.tsx"></script>
-    <script>
-      const dot = document.querySelector('.cursor-dot');
-      const follower = document.querySelector('.cursor-follower');
-      document.addEventListener('mousemove', (e) => {
-        dot.style.left = e.clientX + 'px';
-        dot.style.top = e.clientY + 'px';
-        follower.style.left = e.clientX + 'px';
-        follower.style.top = e.clientY + 'px';
-      });
-      document.addEventListener('mousedown', () => {
-        dot.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        dot.style.background = '#FFFFFF';
-      });
-      document.addEventListener('mouseup', () => {
-        dot.style.transform = 'translate(-50%, -50%) scale(1)';
-        dot.style.background = '#C5A059';
-      });
-    </script>
   </body>
 </html>

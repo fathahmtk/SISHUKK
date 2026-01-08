@@ -1,94 +1,95 @@
+
 import React from 'react';
-import { ArrowLeft, Flower2, HeartPulse, Droplets, Waves } from 'lucide-react';
+import { ArrowLeft, Flower2, HeartPulse, Droplets, Waves, ArrowRight, ShieldCheck, Activity, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const WellnessPage: React.FC = () => {
-  const images = [
-      { src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80", label: "Vedic Spa Reception" },
-      { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80", label: "Treatment Suite" },
-      { src: "https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80", label: "Infinity Pool Deck" },
-      { src: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&q=80", label: "Yoga Pavilion" }
+  const sections = [
+    { title: "Vedic Spa Sanctuary", sub: "12,000 Sq. Ft. Core", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80" },
+    { title: "The Meridian Pool", sub: "Rooftop Infinity Edge", img: "https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80" }
   ];
 
   return (
-    <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in">
-      <div className="container mx-auto px-6 mb-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-8 hover:text-white transition-colors">
-            <ArrowLeft size={12} /> Return to Summary
+    <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in pb-20">
+      <div className="container mx-auto px-6 mb-16">
+        <Link to="/" className="inline-flex items-center gap-2 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-10 hover:text-white transition-colors group">
+            <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Return to Summary
         </Link>
-        <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Deep Dive: Section 06</span>
-        <h1 className="text-white font-serif text-5xl md:text-7xl mb-6">Science of <span className="text-gold-500 italic">Rejuvenation.</span></h1>
-        <p className="text-slate-400 text-xl max-w-3xl leading-relaxed">
-            Positioning wellness not as an amenity, but as a primary driver for extended stays and medical tourism.
-        </p>
+        <div className="max-w-4xl">
+            <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Dossier Chapter 06: Wellness Portfolio</span>
+            <h1 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-8 italic">Wellness <br/><span className="gold-gradient-text italic font-black">Alchemy.</span></h1>
+            <p className="text-slate-400 text-xl font-light leading-relaxed max-w-2xl border-l border-gold-500/30 pl-8">
+                Positioning traditional Kerala Ayurveda as a clinical-grade luxury experience. The 12,000 sq ft sanctuary leverages high-net-worth medical tourism and multi-day 'Panchakarma' residencies.
+            </p>
+        </div>
       </div>
 
-      <div className="w-full h-[60vh] grid grid-cols-2 md:grid-cols-4 gap-1 px-1 mb-24">
-         {images.map((img, i) => (
-             <div key={i} className="relative group overflow-hidden">
-                 <img src={img.src} alt={img.label} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 brightness-75 group-hover:brightness-100" />
-                 <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-4 py-2 text-white text-[9px] font-black uppercase tracking-widest border border-white/10">
-                    {img.label}
-                 </div>
+      {/* Visual Showcase */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 px-1 mb-32">
+         {sections.map((item, i) => (
+             <div key={i} className="relative group h-[70vh] overflow-hidden">
+                <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110 brightness-[0.4] group-hover:brightness-75" />
+                <div className="absolute inset-0 bg-onyx-950/30 group-hover:bg-transparent transition-colors"></div>
+                <div className="absolute bottom-12 left-12">
+                   <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest mb-2 block">{item.sub}</span>
+                   <h3 className="text-white font-serif text-4xl">{item.title}</h3>
+                </div>
              </div>
          ))}
       </div>
 
-      <div className="container mx-auto px-6 pb-24">
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-             <div>
-                 <h3 className="text-white font-serif text-3xl mb-8">The Ayurveda Advantage</h3>
-                 <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                     Kerala is the global capital of Ayurveda. Our wellness centre goes beyond cosmetic spa treatments to offer authentic, physician-led curative packages (Panchakarma).
-                 </p>
-                 <div className="space-y-6">
-                     <div className="flex gap-6 items-start">
-                         <div className="w-12 h-12 rounded-full bg-onyx-900 border border-white/10 flex items-center justify-center text-gold-500">
-                             <Flower2 size={24} />
-                         </div>
-                         <div>
-                             <h4 className="text-white font-bold text-lg mb-2">High Yield Duration</h4>
-                             <p className="text-slate-400 text-sm">Wellness guests stay an average of 7-14 days, significantly higher than the typical 2-day pilgrim stay, stabilizing occupancy.</p>
-                         </div>
-                     </div>
-                     <div className="flex gap-6 items-start">
-                         <div className="w-12 h-12 rounded-full bg-onyx-900 border border-white/10 flex items-center justify-center text-gold-500">
-                             <HeartPulse size={24} />
-                         </div>
-                         <div>
-                             <h4 className="text-white font-bold text-lg mb-2">Membership Model</h4>
-                             <p className="text-slate-400 text-sm">Annual wellness memberships targeted at the local HNW community create a recurring revenue baseline.</p>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-
-             <div className="space-y-6">
-                 <div className="bg-white/5 border border-white/10 p-8 rounded-[2.5rem] relative overflow-hidden group">
-                     <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
-                         <Waves size={120} className="text-blue-500" />
-                     </div>
-                     <h3 className="text-white font-serif text-2xl mb-4">Sky Infinity Pool</h3>
-                     <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                         Located on the podium level, the infinity pool offers views of the temple gopuram. It features temperature control and a dedicated kids' zone, essential for family-oriented leisure travelers.
-                     </p>
-                     <div className="flex gap-4">
-                        <span className="px-4 py-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-[10px] font-black uppercase tracking-widest">Ozone Treated</span>
-                        <span className="px-4 py-2 bg-white/5 text-slate-300 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest">Temperature Controlled</span>
-                     </div>
-                 </div>
-
-                 <div className="bg-white/5 border border-white/10 p-8 rounded-[2.5rem]">
-                     <div className="flex items-center gap-4 mb-4">
-                         <Droplets className="text-gold-500" size={24} />
-                         <h3 className="text-white font-serif text-2xl">Wet Areas</h3>
-                     </div>
-                     <p className="text-slate-400 text-sm leading-relaxed">
-                         Comprehensive hydrotherapy circuits including steam, sauna, and jacuzzi, integrated into both male and female changing zones for pre-event grooming.
-                     </p>
-                 </div>
-             </div>
+      <div className="container mx-auto px-6">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-40">
+            <div className="space-y-12">
+               <h3 className="text-white font-serif text-4xl italic">Longevity Engineering</h3>
+               <p className="text-slate-400 text-lg leading-relaxed font-light">
+                  Our wellness strategy focuses on high-yield curative stays. By offering structured 7, 14, and 21-day Vedic protocols, we significantly increase the 'Average Length of Stay' (ALOS) beyond typical pilgrimage visits.
+               </p>
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {[
+                    { label: "Revenue Multipier", val: "2.4x", desc: "Per room yield vs. standard residents." },
+                    { label: "Retention Rate", val: "40%", desc: "Annual repeat therapy bookings." }
+                  ].map((stat, i) => (
+                    <div key={i} className="p-8 bg-onyx-900 border border-white/10 rounded-3xl">
+                       <Activity className="text-gold-500 mb-4" size={20} />
+                       <div className="text-white font-serif text-3xl mb-1">{stat.val}</div>
+                       <p className="text-slate-500 text-[10px] uppercase font-black tracking-widest">{stat.label}</p>
+                    </div>
+                  ))}
+               </div>
+            </div>
+            <div className="bg-white/5 border border-white/10 p-12 rounded-[4rem] shadow-3xl">
+               <h3 className="text-white font-serif text-2xl mb-10 flex items-center gap-4">
+                  <Flower2 className="text-gold-500" size={24} /> Service Matrix
+               </h3>
+               <div className="space-y-8">
+                  {[
+                    { l: "Physician-Led Detox", d: "Authentic Panchakarma with on-site medical consultants." },
+                    { l: "High-Altitude Yoga", d: "Level 15 glass observatory for sunrise ritual practice." },
+                    { l: "Molecular Recovery", d: "Modern bio-hacking suites for rapid post-ritual recovery." }
+                  ].map((item, i) => (
+                    <div key={i} className="group">
+                       <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-2 group-hover:text-gold-400 transition-colors">{item.l}</h4>
+                       <p className="text-slate-500 text-xs leading-relaxed">{item.d}</p>
+                       <div className="h-px bg-white/5 w-full mt-6"></div>
+                    </div>
+                  ))}
+               </div>
+            </div>
          </div>
+
+         {/* Next Chapter Anchor */}
+         <Link to="/operations" className="group relative block w-full h-[500px] rounded-[4rem] overflow-hidden border border-white/10 shadow-3xl">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80" className="w-full h-full object-cover brightness-[0.25] transition-transform duration-[4s] group-hover:scale-105" alt="Next Section" />
+            <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
+               <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] mb-8 animate-pulse">Proceed to Next Intelligence</span>
+               <h3 className="text-white font-serif text-6xl md:text-8xl italic mb-12">Invisible <br/><span className="gold-gradient-text font-black tracking-tighter">Operations.</span></h3>
+               <div className="w-20 h-20 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-onyx-950 transition-all duration-700 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
+                  <ArrowRight size={40} />
+               </div>
+            </div>
+         </Link>
       </div>
     </div>
   );

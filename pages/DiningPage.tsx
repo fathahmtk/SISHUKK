@@ -1,100 +1,118 @@
+
 import React from 'react';
-import { ArrowLeft, Compass, UtensilsCrossed, Wine, Coffee, RotateCw } from 'lucide-react';
+import { ArrowLeft, Compass, UtensilsCrossed, Wine, Coffee, RotateCw, ArrowRight, Star, Hexagon, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const DiningPage: React.FC = () => {
-  const images = [
-      { src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80", label: "Revolving Restaurant" },
-      { src: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80", label: "Sky Bar Concept" },
-      { src: "https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?auto=format&fit=crop&q=80", label: "Fine Dining" },
-      { src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80", label: "Artisan Patisserie" }
+  const concepts = [
+    {
+      title: "The Orbit",
+      sub: "Dual Revolving Crowns",
+      desc: "Two independent 60-minute rotation platforms offering 360-degree spiritual and coastal vistas. German-engineered vibration-free dynamics.",
+      yield: "High Non-Resident Capture",
+      img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Vedic Hearth",
+      sub: "Fine Dining Ritual",
+      desc: "Pure vegetarian destination dining. Curated temple-inspired menus using organic-certified regional produce.",
+      yield: "Premium Ticket Size",
+      img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80"
+    }
   ];
 
   return (
-    <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in">
-      <div className="container mx-auto px-6 mb-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-8 hover:text-white transition-colors">
-            <ArrowLeft size={12} /> Return to Summary
+    <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in pb-20">
+      <div className="container mx-auto px-6 mb-16">
+        <Link to="/" className="inline-flex items-center gap-2 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-10 hover:text-white transition-colors group">
+            <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Return to Summary
         </Link>
-        <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Deep Dive: Section 05</span>
-        <h1 className="text-white font-serif text-5xl md:text-7xl mb-6">Gastronomy <span className="text-gold-500 italic">Above Clouds.</span></h1>
-        <p className="text-slate-400 text-xl max-w-3xl leading-relaxed">
-            Guruvayur's first and only dual revolving restaurants. 75 meters above ground, offering a 360-degree panorama of the temple town and the Arabian Sea.
-        </p>
+        <div className="max-w-4xl">
+            <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Dossier Chapter 05: Gastronomy Portfolio</span>
+            <h1 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-8 italic">Destination <br/><span className="gold-gradient-text italic font-black">Gastronomy.</span></h1>
+            <p className="text-slate-400 text-xl font-light leading-relaxed max-w-2xl border-l border-gold-500/30 pl-8">
+                Positioned as independent revenue centers, our F&B assets are designed to attract non-resident demand from the wider region, ensuring yield stability independent of room occupancy.
+            </p>
+        </div>
       </div>
 
-      <div className="w-full h-[60vh] grid grid-cols-2 gap-1 px-1 mb-24">
-         {images.slice(0, 2).map((img, i) => (
-             <div key={i} className="relative group overflow-hidden">
-                 <img src={img.src} alt={img.label} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 brightness-75 group-hover:brightness-100" />
-                 <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-md px-4 py-2 text-white text-[9px] font-black uppercase tracking-widest border border-white/10">
-                    {img.label}
-                 </div>
+      {/* Cinematic Showcase */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-1 px-1 mb-32">
+         {concepts.map((item, i) => (
+             <div key={i} className="relative group h-[65vh] overflow-hidden">
+                <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110 brightness-[0.4] group-hover:brightness-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-transparent to-transparent opacity-80"></div>
+                <div className="absolute bottom-12 left-12 right-12 space-y-4">
+                   <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gold-500 flex items-center justify-center text-onyx-950">
+                         <Star size={18} />
+                      </div>
+                      <div>
+                         <span className="text-gold-500 text-[9px] font-black uppercase tracking-widest">{item.sub}</span>
+                         <h3 className="text-white font-serif text-4xl">{item.title}</h3>
+                      </div>
+                   </div>
+                   <p className="text-slate-300 text-base font-light leading-relaxed max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      {item.desc}
+                   </p>
+                   <div className="pt-4 border-t border-white/10 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                      <span className="text-[9px] text-slate-500 font-black uppercase tracking-widest italic">{item.yield}</span>
+                      <Zap className="text-gold-500" size={14} />
+                   </div>
+                </div>
              </div>
          ))}
       </div>
 
-      <div className="container mx-auto px-6 pb-24">
-         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-             <div className="lg:col-span-4 space-y-8">
-                 <div className="bg-white/5 border border-white/10 p-8 rounded-3xl">
-                     <h3 className="text-gold-500 font-black uppercase tracking-widest text-xs mb-6 flex items-center gap-2">
-                        <Compass size={16} /> Venue Portfolio
-                     </h3>
-                     <ul className="space-y-6">
-                         <li className="group">
-                             <div className="flex justify-between items-center mb-1">
-                                 <span className="text-white font-serif text-xl">The Orbit (Tower A)</span>
-                                 <UtensilsCrossed size={14} className="text-slate-500 group-hover:text-gold-500 transition-colors" />
-                             </div>
-                             <p className="text-slate-500 text-xs">Multi-cuisine Revolving Buffet</p>
-                         </li>
-                         <li className="group">
-                             <div className="flex justify-between items-center mb-1">
-                                 <span className="text-white font-serif text-xl">Zenith (Tower B)</span>
-                                 <Coffee size={14} className="text-slate-500 group-hover:text-gold-500 transition-colors" />
-                             </div>
-                             <p className="text-slate-500 text-xs">Specialty Seafood & Grill (Revolving)</p>
-                         </li>
-                         <li className="group">
-                             <div className="flex justify-between items-center mb-1">
-                                 <span className="text-white font-serif text-xl">The Sky Deck</span>
-                                 <Wine size={14} className="text-slate-500 group-hover:text-gold-500 transition-colors" />
-                             </div>
-                             <p className="text-slate-500 text-xs">Open-air Lounge at 15th Floor Arch</p>
-                         </li>
-                     </ul>
-                 </div>
-             </div>
-
-             <div className="lg:col-span-8">
-                 <div className="mb-12">
-                     <h3 className="text-white font-serif text-3xl mb-6">Structural Innovation</h3>
-                     <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                         The revolving mechanism is engineered by a leading German firm, ensuring vibration-free rotation. A full rotation takes 60 minutes, giving diners a complete view of the landscape during a standard meal service.
-                     </p>
-                     <div className="flex items-center gap-4 text-gold-500 text-sm font-bold uppercase tracking-wide bg-gold-500/10 w-fit px-6 py-3 rounded-full border border-gold-500/20">
-                         <RotateCw className="animate-spin-slow" size={20} />
-                         <span>Engineered for Zero Vibration</span>
+      <div className="container mx-auto px-6">
+         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-40">
+            <div className="lg:col-span-8">
+               <h3 className="text-white font-serif text-4xl mb-12 italic">Monetization Logic</h3>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  {[
+                    { title: "Day-Part Optimization", icon: Hexagon, desc: "Breakfast for pilgrims, premium revolving lunches for business, and destination dinner rituals for weddings." },
+                    { title: "Non-Resident Capture", icon: Wine, desc: "Direct elevator access from the Portal Lobby ensures F&B guests do not interfere with room-guest privacy." }
+                  ].map((item, i) => (
+                    <div key={i} className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] group hover:bg-white/[0.08] transition-all">
+                       <item.icon className="text-gold-500 mb-8" size={32} />
+                       <h4 className="text-white font-serif text-2xl mb-4 italic">{item.title}</h4>
+                       <p className="text-slate-400 text-sm font-light leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
+               </div>
+            </div>
+            <div className="lg:col-span-4">
+               <div className="bg-onyx-900 border border-white/10 p-12 rounded-[3rem] shadow-3xl">
+                  <h3 className="text-white font-serif text-2xl mb-10 flex items-center gap-4">
+                     <RotateCw className="text-gold-500" size={24} /> Innovation
+                  </h3>
+                  <div className="space-y-8">
+                     <div>
+                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-1">Rotation Speed</div>
+                        <div className="text-white font-serif text-3xl">60 Min / Cycle</div>
                      </div>
-                 </div>
-
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="bg-onyx-900 border border-white/10 p-8 rounded-2xl">
-                         <h4 className="text-white font-bold text-lg mb-4">Non-Resident Revenue</h4>
-                         <p className="text-slate-400 text-sm leading-relaxed">
-                             In Guruvayur, high-quality dining options are scarce. We project 60% of F&B revenue will come from non-resident guests (walk-ins), creating a robust cash flow independent of room occupancy.
-                         </p>
+                     <div className="h-px bg-white/5"></div>
+                     <div>
+                        <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-1">Capacity</div>
+                        <div className="text-white font-serif text-3xl">120 Seats / Tower</div>
                      </div>
-                     <div className="bg-onyx-900 border border-white/10 p-8 rounded-2xl">
-                         <h4 className="text-white font-bold text-lg mb-4">Bar Strategy</h4>
-                         <p className="text-slate-400 text-sm leading-relaxed">
-                             As a 5-Star classified asset, SIRSHUKK will hold a FL-3 license, making it one of the few luxury venues in the district permitted to serve alcohol, commanding a significant premium.
-                         </p>
-                     </div>
-                 </div>
-             </div>
+                  </div>
+               </div>
+            </div>
          </div>
+
+         {/* Next Chapter Anchor */}
+         <Link to="/wellness" className="group relative block w-full h-[500px] rounded-[4rem] overflow-hidden border border-white/10 shadow-3xl">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80" className="w-full h-full object-cover brightness-[0.25] transition-transform duration-[4s] group-hover:scale-105" alt="Next Section" />
+            <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
+               <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] mb-8 animate-pulse">Proceed to Next Intelligence</span>
+               <h3 className="text-white font-serif text-6xl md:text-8xl italic mb-12">Vedic <br/><span className="gold-gradient-text font-black tracking-tighter">Wellness.</span></h3>
+               <div className="w-20 h-20 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-onyx-950 transition-all duration-700 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
+                  <ArrowRight size={40} />
+               </div>
+            </div>
+         </Link>
       </div>
     </div>
   );

@@ -1,8 +1,14 @@
+
 import React, { useState } from 'react';
 import { ShieldCheck, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from './Logo.tsx';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onInvestorClick?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
@@ -23,11 +29,11 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-onyx-950/80 backdrop-blur-md border-b border-white/5">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3" onClick={handleLinkClick}>
-          <div className="w-8 h-8 bg-gold-500 flex items-center justify-center font-serif font-bold text-black text-xl">S</div>
+        <Link to="/" className="flex items-center gap-4" onClick={handleLinkClick}>
+          <Logo className="w-8 h-8" />
           <div className="block">
-            <div className="text-white text-xs font-bold tracking-[0.2em] uppercase">Sirshukk</div>
-            <div className="text-gold-500 text-[8px] font-black tracking-[0.3em] uppercase">Grand Towers</div>
+            <div className="text-white text-[10px] font-black tracking-[0.3em] uppercase leading-none mb-1">Sirshukk</div>
+            <div className="text-gold-500 text-[7px] font-black tracking-[0.4em] uppercase leading-none">Grand Towers</div>
           </div>
         </Link>
 
@@ -38,7 +44,7 @@ const Navbar: React.FC = () => {
               key={link.label}
               to={link.path}
               className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-colors hover:scale-105 transform duration-300 ${
-                location.pathname === link.path ? 'text-gold-500' : 'text-slate-500 hover:text-white'
+                location.pathname === link.path ? 'text-gold-500 underline underline-offset-8 decoration-gold-500/30' : 'text-slate-500 hover:text-white'
               }`}
             >
               {link.label}
@@ -49,20 +55,11 @@ const Navbar: React.FC = () => {
         {/* Action Buttons & Mobile Toggle */}
         <div className="flex items-center gap-4">
           <button 
-            onClick={() => {
-              const el = document.getElementById('investor-access');
-              if(el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                // If on a different page, this might need navigation or a global modal trigger
-                // For now, we assume user navigates to home first if needed, or we keep it simple
-                window.location.href = "/#investor-access";
-              }
-            }}
-            className="hidden sm:flex items-center gap-2 bg-white/5 hover:bg-gold-500 hover:text-black border border-white/10 px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all group"
+            onClick={onInvestorClick}
+            className="hidden sm:flex items-center gap-2 bg-white/5 hover:bg-gold-500 hover:text-black border border-white/10 px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all group shadow-xl"
           >
             <ShieldCheck size={12} className="group-hover:scale-110 transition-transform" />
-            <span>Investor Access</span>
+            <span>Vault Access</span>
           </button>
 
           <button 
@@ -91,10 +88,10 @@ const Navbar: React.FC = () => {
           ))}
           <button 
             onClick={() => {
-               window.location.href = "/#investor-access";
+               if (onInvestorClick) onInvestorClick();
                setIsMobileMenuOpen(false);
             }}
-            className="mt-4 flex items-center justify-center gap-2 bg-gold-500 text-onyx-950 px-6 py-4 rounded-lg text-xs font-black uppercase tracking-widest"
+            className="mt-4 flex items-center justify-center gap-2 bg-gold-500 text-onyx-950 px-6 py-4 rounded-lg text-xs font-black uppercase tracking-widest shadow-2xl"
           >
             <ShieldCheck size={14} /> Investor Access
           </button>

@@ -1,3 +1,4 @@
+
 import { GoogleGenAI } from "@google/genai";
 
 const PROJECT_CONTEXT = `
@@ -7,13 +8,15 @@ The project is a ₹350 Crore luxury hospitality asset in Guruvayur, Kerala, Ind
 INSTITUTIONAL DATA POINTS:
 - Structural Identity: Twin Glass Towers (20 floors each) connected by a monumental illuminated "Gateway Arch".
 - Financial Target: ₹350 Crore capex.
-- Land Equity: 1.29 Acres (Freehold, Debt-Free).
+- Land Equity: 1.29 Acres (Freehold, Debt-Free, Unencumbered).
 - Proximity: 1.5 km from Guruvayur Temple (South Nada).
-- Revenue Pillars: 15,000 sq ft Ballroom (MICE), 200 Luxury Keys, Dual Revolving Rooftop Gastronomy.
-- Economic Moat: 30 Million annual pilgrim footfall vs. 90% budget-only local supply.
+- Revenue Pillars: 15,000 sq ft Ballroom (MICE), 420 Luxury Keys (Tower A: 200, Tower B: 220), Dual Revolving Rooftop Gastronomy.
+- Economic Moat: 12 Million annual pilgrim footfall and ~250 regional weddings per day vs. zero existing local 5-star supply.
+- Pure Vegetarian Service: Aligned with temple values and sacred heritage.
 - Targeted Exit: 24.2% IRR with 3.5x Multiple over 7 years.
+- Current Status: 42.5% Construction Complete. Level 8 slab casting active.
 
-Your persona: Professional, institutionally-driven, serious, and precise. You do not use emojis. You focus on capital security, structural demand, and ROI velocity.
+Your persona: Professional, institutionally-driven, serious, and precise. You focus on capital security, structural demand, and ROI velocity. Use high-finance terminology (CAPM, EBITDA, DSCR, LRD). Do not use emojis. Always provide data-driven responses.
 `;
 
 export const queryInvestorAssistant = async (prompt: string, context: string = '') => {
@@ -25,17 +28,17 @@ export const queryInvestorAssistant = async (prompt: string, context: string = '
 
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3-pro-preview',
       contents: finalPrompt,
       config: {
         systemInstruction: PROJECT_CONTEXT,
-        temperature: 0.1,
+        temperature: 0.1, // Lower temperature for more consistent data-driven responses
         topP: 0.95,
       },
     });
     return response.text;
   } catch (error) {
     console.error("AI Assistant Error:", error);
-    return "Due to high institutional load, the Data Safe is currently re-indexing. Please query specifically regarding capex, IRR, or structural USPs.";
+    return "The Institutional Data Safe is currently re-indexing. Please verify your connection or contact the investment desk regarding asset USPs or exit IRR metrics.";
   }
 };

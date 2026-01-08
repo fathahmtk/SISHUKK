@@ -1,110 +1,99 @@
+
 import React from 'react';
-import { ArrowLeft, Users, Calendar, TrendingUp, MapPin, BarChart3 } from 'lucide-react';
+import { ArrowLeft, Users, Landmark, TrendingUp, BarChart3, ArrowRight, Activity, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const MarketPage: React.FC = () => {
+  const stats = [
+    { label: "Annual Footfall", val: "12M+", sub: "Spiritual Pilgrims", img: "https://images.unsplash.com/photo-1600675281904-13e90046b961?auto=format&fit=crop&q=80" },
+    { label: "Wedding Market", val: "250+", sub: "Daily Ceremonies", img: "https://images.unsplash.com/photo-1519225421980-715cb0202128?auto=format&fit=crop&q=80" },
+    { label: "Luxury Supply", val: "0%", sub: "Within 10KM Radius", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80" },
+    { label: "ADR Potential", val: "₹12k", sub: "Blended Premium Unit", img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80" }
+  ];
+
   return (
-    <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in">
-      <div className="container mx-auto px-6 mb-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-8 hover:text-white transition-colors">
-            <ArrowLeft size={12} /> Return to Summary
+    <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in pb-20">
+      <div className="container mx-auto px-6 mb-16">
+        <Link to="/" className="inline-flex items-center gap-2 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-10 hover:text-white transition-colors group">
+            <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Return to Summary
         </Link>
-        <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Deep Dive: Section 02</span>
-        <h1 className="text-white font-serif text-5xl md:text-7xl mb-6">Market <span className="text-gold-500 italic">Intelligence.</span></h1>
-        <p className="text-slate-400 text-xl max-w-3xl leading-relaxed">
-            Analyzing the "Ritual Economy" of Guruvayur: A recession-proof micro-market driven by 30 million annual pilgrims and high-net-worth wedding demand.
-        </p>
+        <div className="max-w-4xl">
+            <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Dossier Chapter 02: Market Intelligence</span>
+            <h1 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-8 italic">The Ritual <br/><span className="gold-gradient-text italic font-black">Economy.</span></h1>
+            <p className="text-slate-400 text-xl font-light leading-relaxed max-w-2xl border-l border-gold-500/30 pl-8">
+                Guruvayur is not a leisure tourism destination; it is an inelastic spiritual hub. Demand is driven by faith, tradition, and rituals that remain resilient across economic cycles.
+            </p>
+        </div>
       </div>
 
-      <div className="w-full bg-onyx-900 py-16 border-y border-white/5 mb-24">
-         <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-                { label: "Annual Footfall", val: "30M+", sub: "Recession Proof" },
-                { label: "Daily Weddings", val: "200+", sub: "Peak Season" },
-                { label: "Avg Stay", val: "2.5 Days", sub: "Ritual Driven" },
-                { label: "Luxury Supply", val: "0%", sub: "Within 5km" }
-            ].map((stat, i) => (
-                <div key={i} className="text-center border-r border-white/5 last:border-0">
-                    <div className="text-slate-500 text-[9px] uppercase tracking-widest font-black mb-2">{stat.label}</div>
-                    <div className="text-gold-500 font-serif text-4xl md:text-5xl mb-2">{stat.val}</div>
-                    <div className="text-white text-[9px] uppercase tracking-widest">{stat.sub}</div>
+      {/* Visual Stat Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 mb-32 px-1">
+         {stats.map((stat, i) => (
+             <div key={i} className="relative group h-[500px] overflow-hidden">
+                <img src={stat.img} alt={stat.label} className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110 brightness-[0.35] group-hover:brightness-[0.5]" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-10">
+                   <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">{stat.label}</span>
+                   <div className="text-white font-serif text-6xl mb-2">{stat.val}</div>
+                   <div className="text-slate-400 text-[9px] uppercase tracking-widest font-black">{stat.sub}</div>
                 </div>
-            ))}
-         </div>
+                <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gold-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+             </div>
+         ))}
       </div>
 
-      <div className="container mx-auto px-6 pb-24">
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <div>
-                <h3 className="text-white font-serif text-3xl mb-8">The Demand Driver: Rituals</h3>
-                <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                    Unlike leisure tourism which fluctuates with the economy, religious tourism in India is inelastic. Families do not cancel weddings or pilgrimage vows during downturns.
-                </p>
-                <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                    Guruvayur Sri Krishna Temple is the "Dwarka of the South." It is the preferred wedding destination for Kerala's elite and the South Indian diaspora globally.
-                </p>
-
-                <div className="space-y-6">
-                    <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                        <div className="flex items-center gap-4 mb-3">
-                            <Calendar className="text-gold-500" size={24} />
-                            <h4 className="text-white font-bold text-lg">The Calendar Advantage</h4>
-                        </div>
-                        <p className="text-slate-400 text-sm">
-                            With over 150+ auspicious "Muhoortham" days per year, the wedding utilization rate for banquets remains consistently high (65%+) compared to city hotels (35-40%).
-                        </p>
+      <div className="container mx-auto px-6">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-40">
+            <div className="space-y-10">
+               <h3 className="text-white font-serif text-4xl italic">Supply vs Demand Arbitrage</h3>
+               <p className="text-slate-400 text-lg leading-relaxed font-light">
+                  Despite the massive footfall, Guruvayur lacks institutional-grade hospitality. Current inventory is fragmented across budget lodges and unrated hotels, leaving the high-net-worth pilgrim and NRI market completely underserved.
+               </p>
+               <div className="p-10 bg-onyx-900 border border-white/10 rounded-[3rem] relative group">
+                  <div className="flex items-center gap-6 mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-gold-500/10 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-onyx-950 transition-all">
+                      <MapPin size={24} />
                     </div>
-                    
-                    <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                        <div className="flex items-center gap-4 mb-3">
-                            <Users className="text-gold-500" size={24} />
-                            <h4 className="text-white font-bold text-lg">The HNW Pilgrim</h4>
-                        </div>
-                        <p className="text-slate-400 text-sm">
-                            Our target demographic isn't the backpacker. It is the multi-generational family group arriving in SUVs/Luxury Buses, seeking hygienic, air-conditioned, 5-star comfort close to the temple.
-                        </p>
-                    </div>
-                </div>
+                    <h4 className="text-white font-serif text-2xl">The 1.5KM Advantage</h4>
+                  </div>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                     Proximity to the South Nada (entrance) is the primary price driver. SGT is strategically located to command high-demand premiums while offering luxury seclusion.
+                  </p>
+               </div>
             </div>
-
-            <div className="space-y-8">
-                <div className="aspect-video bg-onyx-900 border border-white/10 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-end group">
-                   <div className="absolute inset-0 z-0">
-                       <img src="https://images.unsplash.com/photo-1519225421980-715cb0202128?auto=format&fit=crop&q=80" className="w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-[2s]" alt="Wedding Demand" />
-                   </div>
-                   <div className="relative z-10">
-                       <h4 className="text-white font-serif text-2xl mb-2">Wedding Economics</h4>
-                       <p className="text-slate-300 text-sm">
-                           A single Guruvayur wedding generates room bookings for 50-100 guests, 3 banquet meals, and high-margin ancillary spend on photography, decor, and transport.
-                       </p>
-                   </div>
-                </div>
-
-                <div className="bg-gold-500/5 border border-gold-500/20 p-8 rounded-3xl">
-                    <h4 className="text-gold-500 text-sm font-black uppercase tracking-widest mb-4 flex items-center gap-2">
-                        <BarChart3 size={16} /> Supply Void Analysis
-                    </h4>
-                    <ul className="space-y-4">
-                        <li className="flex justify-between items-center text-sm border-b border-white/5 pb-2">
-                            <span className="text-slate-400">Total Rooms in Guruvayur</span>
-                            <span className="text-white font-mono">~4,500</span>
-                        </li>
-                        <li className="flex justify-between items-center text-sm border-b border-white/5 pb-2">
-                            <span className="text-slate-400">Budget / Lodge Segment</span>
-                            <span className="text-white font-mono">92%</span>
-                        </li>
-                        <li className="flex justify-between items-center text-sm border-b border-white/5 pb-2">
-                            <span className="text-slate-400">3-Star / 4-Star Segment</span>
-                            <span className="text-white font-mono">7%</span>
-                        </li>
-                        <li className="flex justify-between items-center text-lg font-bold pt-2">
-                            <span className="text-gold-500">True Luxury (5-Star+)</span>
-                            <span className="text-white font-mono">1% (SGT)</span>
-                        </li>
-                    </ul>
-                </div>
+            <div className="bg-white/5 border border-white/10 p-12 rounded-[4rem] shadow-3xl">
+               <h3 className="text-white font-serif text-3xl mb-10 flex items-center gap-4">
+                  <Activity className="text-gold-500" size={24} /> Market Resilience
+               </h3>
+               <div className="space-y-12">
+                  {[
+                    { label: "Non-Seasonal", desc: "Unlike hill stations or beaches, pilgrimage footfall is consistent throughout 365 days.", val: "100%" },
+                    { label: "Recession-Proof", desc: "Spiritual travel is often the last expense families cut during downturns.", val: "High" },
+                    { label: "Wedding Inelasticity", desc: "Cultural rituals drive demand independent of market volatility.", val: "Stable" }
+                  ].map((item, i) => (
+                    <div key={i}>
+                       <div className="flex justify-between items-end mb-3">
+                          <span className="text-white font-bold text-lg">{item.label}</span>
+                          <span className="text-gold-500 font-mono text-sm">{item.val}</span>
+                       </div>
+                       <p className="text-slate-500 text-sm">{item.desc}</p>
+                    </div>
+                  ))}
+               </div>
             </div>
          </div>
+
+         {/* Next Chapter Anchor */}
+         <Link to="/hotel" className="group relative block w-full h-[500px] rounded-[4rem] overflow-hidden border border-white/10 shadow-3xl">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80" className="w-full h-full object-cover brightness-[0.25] transition-transform duration-[4s] group-hover:scale-105" alt="Next Section" />
+            <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
+               <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] mb-8 animate-pulse">Proceed to Next Intelligence</span>
+               <h3 className="text-white font-serif text-6xl md:text-8xl italic mb-12">Inventory <br/><span className="gold-gradient-text font-black tracking-tighter">Specifications.</span></h3>
+               <div className="w-20 h-20 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-onyx-950 transition-all duration-700 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
+                  <ArrowRight size={40} />
+               </div>
+            </div>
+         </Link>
       </div>
     </div>
   );
