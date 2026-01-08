@@ -1,41 +1,62 @@
-
 import React from 'react';
-import { ArrowLeft, TrendingUp, Landmark, LogOut, ArrowUpRight, Check, Rocket, Briefcase, Activity, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Landmark, LogOut, ArrowUpRight, Check, Rocket, Briefcase, Activity, ShieldCheck, Globe, Target, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ExitPage: React.FC = () => {
   const exitPaths = [
-    { title: "Institutional REIT Divestment", desc: "Architecture and transparent accounting designed for acquisition by major Indian/Global REIT platforms.", icon: Landmark },
-    { title: "Strategic PE Acquisition", desc: "Hospitality focused Private Equity funds seeking yield-stable assets in the ritual corridor.", icon: Briefcase },
-    { title: "Stabilized Yield Annuity", desc: "Retention of asset for long-term dividends post-debt retirement (Year 8+).", icon: Activity }
+    { title: "Institutional REIT Divestment", desc: "Technical architecture and transparent accounting pre-calibrated for acquisition by Tier-1 Indian or Global REIT platforms.", icon: Landmark, visibility: "High" },
+    { title: "Strategic PE Acquisition", desc: "Hospitality-focused Sovereign funds and Private Equity platforms seeking non-cyclical, yield-stable spiritual assets.", icon: Briefcase, visibility: "Stable" },
+    { title: "Stabilized Yield Annuity", desc: "Option for long-term retention providing consistent dividend yield post-debt retirement in Year 8.", icon: Activity, visibility: "Medium" }
   ];
 
   return (
     <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in pb-20">
-      <div className="container mx-auto px-6 mb-16">
-        <Link to="/" className="inline-flex items-center gap-2 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-10 hover:text-white transition-colors group">
-            <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Return to Summary
+      <div className="container mx-auto px-6 mb-20">
+        <Link to="/" className="inline-flex items-center gap-3 text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-12 hover:text-white transition-all group">
+            <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform" /> Return to Summary
         </Link>
-        <div className="max-w-4xl">
-            <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Dossier Chapter 10: Value Realization</span>
-            <h1 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-8 italic">The Liquidity <br/><span className="gold-gradient-text italic font-black">Event.</span></h1>
-            <p className="text-slate-400 text-xl font-light leading-relaxed max-w-2xl border-l border-gold-500/30 pl-8">
-                SGT is an institutional product engineered for re-tradeability. We provide clear visibility for capital realization within a 7-year stabilization cycle.
+        <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
+          <div className="max-w-4xl">
+            <div className="flex items-center gap-3 text-slate-500 text-[10px] font-black uppercase tracking-[0.6em] mb-6">
+              <Rocket size={14} /> Dossier Chapter 10: Value Realization
+            </div>
+            <h1 className="text-white font-serif text-6xl md:text-9xl leading-[0.8] tracking-tighter mb-10 italic">The Liquidity <br/><span className="gold-gradient-text italic font-black">Event.</span></h1>
+            <p className="text-slate-400 text-2xl font-light leading-relaxed max-w-2xl border-l-2 border-gold-500/30 pl-10">
+                SIRSHUKK is an institutional product engineered for high-velocity realization. We provide capitalized visibility for exit within a 7-year stabilization cycle, targeting a market-leading equity multiplier.
             </p>
+          </div>
+          <div className="bg-onyx-900 border border-white/10 p-8 rounded-[2.5rem] hidden lg:block shadow-3xl">
+            <div className="flex items-center gap-4 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-3">
+              <Target size={18} /> Liquidity Rating
+            </div>
+            <p className="text-slate-400 text-xs font-mono">Asset Status: <br/><span className="text-white">REIT-READY BLUEPRINT</span></p>
+          </div>
         </div>
       </div>
 
-      {/* Strategic Cards */}
+      {/* Strategic Realization Cards */}
       <div className="container mx-auto px-6 mb-40">
-         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {exitPaths.map((item, i) => (
-                <div key={i} className="p-12 bg-white/[0.02] border border-white/10 rounded-[3rem] hover:bg-gold-500 hover:text-onyx-950 transition-all duration-700 group cursor-default shadow-3xl">
-                   <item.icon className="text-gold-500 group-hover:text-onyx-950 transition-colors mb-12" size={40} />
-                   <h3 className="text-white group-hover:text-onyx-950 font-serif text-3xl italic mb-6">{item.title}</h3>
-                   <p className="text-slate-500 group-hover:text-onyx-950/70 text-base font-light leading-relaxed mb-10">{item.desc}</p>
-                   <div className="pt-8 border-t border-white/10 group-hover:border-onyx-950/10 flex items-center justify-between">
-                      <span className="text-[10px] font-black uppercase tracking-widest">Visibility: High</span>
-                      <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <div key={i} className="p-12 bg-white/[0.02] border border-white/10 rounded-[3.5rem] hover:bg-gold-500 hover:text-onyx-950 transition-all duration-700 group cursor-default shadow-3xl flex flex-col justify-between h-[520px] relative overflow-hidden">
+                   <div className="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:opacity-10 transition-opacity">
+                      <item.icon size={150} className="text-white" />
+                   </div>
+                   
+                   <div>
+                      <item.icon className="text-gold-500 group-hover:text-onyx-950 transition-colors mb-12" size={48} />
+                      <h3 className="text-white group-hover:text-onyx-950 font-serif text-4xl italic mb-8 leading-tight">{item.title}</h3>
+                      <p className="text-slate-500 group-hover:text-onyx-950/70 text-lg font-light leading-relaxed">{item.desc}</p>
+                   </div>
+                   
+                   <div className="pt-10 border-t border-white/10 group-hover:border-onyx-950/10 flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-black uppercase tracking-widest opacity-60">Visibility Index</span>
+                        <span className="text-white group-hover:text-onyx-950 font-bold text-lg uppercase tracking-widest">{item.visibility}</span>
+                      </div>
+                      <div className="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center group-hover:bg-onyx-950 group-hover:text-white transition-all">
+                        <ArrowUpRight size={20} />
+                      </div>
                    </div>
                 </div>
             ))}
@@ -43,52 +64,68 @@ const ExitPage: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6">
-         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-40">
-            <div className="bg-onyx-900 border border-white/10 p-12 md:p-20 rounded-[4rem] flex flex-col justify-between">
-               <div>
-                  <h3 className="text-white font-serif text-4xl mb-6 italic">REIT-Ready Framework</h3>
-                  <p className="text-slate-400 text-lg font-light leading-relaxed mb-10">
-                     The project maintains Big-4 audited financials and zero-encumbrance asset logs, ensuring it meets the stringent compliance requirements of sovereign wealth funds and public REIT platforms.
-                  </p>
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-40">
+            <div className="bg-onyx-900 border border-white/10 p-12 md:p-24 rounded-[5rem] flex flex-col justify-between shadow-3xl relative overflow-hidden group">
+               <div className="absolute top-0 right-0 p-24 opacity-[0.02] pointer-events-none group-hover:scale-110 transition-transform">
+                  <Globe size={400} className="text-white" />
                </div>
-               <div className="p-8 bg-gold-500/10 border border-gold-500/30 rounded-3xl flex items-center gap-6">
-                  <ShieldCheck size={40} className="text-gold-500" />
-                  <div>
-                     <div className="text-white font-bold text-lg">Institutional Grade SGT</div>
-                     <p className="text-slate-500 text-xs uppercase font-black tracking-widest">Compliance Level: High</p>
+               <div className="relative z-10">
+                  <div className="inline-flex items-center gap-4 px-6 py-2 border border-gold-500/20 bg-gold-500/5 rounded-full text-gold-500 text-[10px] font-black uppercase tracking-widest mb-10">
+                    <ShieldCheck size={14} /> Institutional Compliance
+                  </div>
+                  <h3 className="text-white font-serif text-5xl md:text-6xl mb-10 italic leading-none">REIT-Ready <br/>Framework.</h3>
+                  <p className="text-slate-400 text-xl font-light leading-relaxed mb-16 italic">
+                     "Asset governance maintains Big-4 audited transparency and 100% debt-free land equity logs, meeting the mandatory due-diligence thresholds of global sovereign wealth platforms."
+                  </p>
+                  
+                  <div className="grid grid-cols-2 gap-8 pt-12 border-t border-white/10">
+                     <div>
+                        <div className="text-slate-600 text-[10px] font-black uppercase tracking-widest mb-2">Audit Cycle</div>
+                        <div className="text-white font-serif text-2xl">Quarterly</div>
+                     </div>
+                     <div>
+                        <div className="text-slate-600 text-[10px] font-black uppercase tracking-widest mb-2">Title Status</div>
+                        <div className="text-emerald-500 font-serif text-2xl">Unencumbered</div>
+                     </div>
                   </div>
                </div>
             </div>
 
-            <div className="bg-gold-500 p-12 md:p-20 rounded-[4rem] text-onyx-950 flex flex-col justify-between shadow-[0_40px_80px_rgba(212,175,55,0.3)]">
+            <div className="bg-gold-500 p-12 md:p-24 rounded-[5rem] text-onyx-950 flex flex-col justify-between shadow-[0_50px_100px_rgba(212,175,55,0.3)] group transition-all hover:scale-[1.01]">
                <div>
-                  <Rocket size={48} className="mb-10 opacity-30" />
-                  <h3 className="font-serif text-5xl font-black tracking-tighter leading-none mb-8">Targeting 3.5x <br/>Equity Multiplier.</h3>
-                  <p className="font-bold text-lg opacity-80 leading-relaxed max-w-sm uppercase tracking-tight">
-                     Projected realization based on 2027 stabilized EBITDA benchmarks.
+                  <div className="flex justify-between items-start mb-12">
+                     <Rocket size={64} className="opacity-30 group-hover:scale-110 transition-transform duration-700" />
+                     <div className="text-[10px] font-black uppercase tracking-widest border-2 border-onyx-950 px-6 py-2 rounded-full">PROJECTED 2027-28</div>
+                  </div>
+                  <h3 className="font-serif text-6xl md:text-8xl font-black tracking-tighter leading-[0.8] mb-12 italic">Targeting <br/>3.5x Multiplier.</h3>
+                  <p className="font-bold text-xl opacity-80 leading-relaxed max-w-sm uppercase tracking-tight italic">
+                     Projected realization based on stabilized Year 7 Operating EBITDA benchmarks.
                   </p>
                </div>
-               <div className="pt-12 border-t border-onyx-950/10 flex items-end justify-between">
-                  <div>
-                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-2">Cycle Horizon</div>
-                     <div className="font-serif text-4xl font-black">7 Years</div>
+               <div className="pt-16 border-t border-onyx-950/20 flex flex-col sm:flex-row items-end justify-between gap-10">
+                  <div className="w-full sm:w-auto">
+                     <div className="text-[11px] font-black uppercase tracking-widest opacity-60 mb-2">Cycle Horizon</div>
+                     <div className="font-serif text-5xl font-black leading-none">7 Years</div>
                   </div>
-                  <div className="text-right">
-                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-2">Internal Rate (IRR)</div>
-                     <div className="font-serif text-4xl font-black">24.2%</div>
+                  <div className="text-right w-full sm:w-auto">
+                     <div className="text-[11px] font-black uppercase tracking-widest opacity-60 mb-2">Targeted IRR</div>
+                     <div className="font-serif text-5xl font-black leading-none">24.2%</div>
                   </div>
                </div>
             </div>
          </div>
 
          {/* Final Conclusion Anchor */}
-         <Link to="/" className="group relative block w-full h-[400px] rounded-[4rem] overflow-hidden border border-gold-500/30 shadow-3xl">
-            <div className="absolute inset-0 bg-onyx-900 flex flex-col items-center justify-center p-12">
-               <div className="w-24 h-24 bg-gold-500 rounded-full flex items-center justify-center text-onyx-950 mb-10 animate-pulse shadow-[0_0_60px_#D4AF37]">
+         <Link to="/" className="group relative block w-full h-[450px] rounded-[5rem] overflow-hidden border border-gold-500/30 shadow-[0_0_60px_rgba(212,175,55,0.1)]">
+            <div className="absolute inset-0 bg-onyx-900 flex flex-col items-center justify-center p-12 overflow-hidden">
+               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.05)_0%,_transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+               <div className="w-24 h-24 bg-gold-500 rounded-full flex items-center justify-center text-onyx-950 mb-12 animate-float shadow-[0_0_60px_#D4AF37] group-hover:scale-110 transition-transform">
                   <Check size={48} />
                </div>
-               <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] mb-6">Investment Intelligence Logged</span>
-               <h3 className="text-white font-serif text-5xl italic leading-none text-center">Return to <br/><span className="gold-gradient-text italic font-black">Executive Summary.</span></h3>
+               <div className="relative z-10 text-center space-y-4">
+                  <span className="text-gold-500 text-[11px] font-black uppercase tracking-[1em] mb-4 block">End of Dossier Intelligence</span>
+                  <h3 className="text-white font-serif text-6xl italic leading-none">Return to <br/><span className="gold-gradient-text italic font-black">Executive Summary.</span></h3>
+               </div>
             </div>
          </Link>
       </div>
