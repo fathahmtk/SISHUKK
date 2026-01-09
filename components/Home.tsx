@@ -5,6 +5,7 @@ import { Loader2 } from 'lucide-react';
 
 // Lazy Load Sections to split chunks
 const TheAsset = lazy(() => import('./TheAsset.tsx'));
+const VisualMonopoly = lazy(() => import('./VisualMonopoly.tsx'));
 const Configuration = lazy(() => import('./Configuration.tsx'));
 const MasterplanViewer = lazy(() => import('./MasterplanViewer.tsx'));
 const TheMarket = lazy(() => import('./TheMarket.tsx'));
@@ -62,6 +63,7 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
       {/* Deferred Components (Lazy Import) */}
       <Suspense fallback={<SectionLoader />}>
         <TheAsset />
+        <VisualMonopoly />
         <Configuration />
         <MasterplanViewer />
         <TheMarket />
