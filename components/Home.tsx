@@ -17,13 +17,13 @@ const MasterplanViewer = lazy(() => import('./MasterplanViewer.tsx'));
 const Footer = lazy(() => import('./Footer.tsx'));
 
 const SectionLoader = () => (
-  <div className="flex flex-col items-center justify-center h-screen w-full bg-slate-950 z-50">
-    <div className="relative w-40 h-40 mb-16">
+  <div className="flex flex-col items-center justify-center h-dv w-full bg-slate-950 z-50">
+    <div className="relative w-32 h-32 md:w-40 md:h-40 mb-12 md:mb-16">
       <div className="absolute inset-0 border-2 border-gold-500/10 rounded-full"></div>
       <div className="absolute inset-0 border-t-2 border-gold-500 rounded-full animate-spin"></div>
       <div className="absolute inset-4 border border-white/5 rounded-full animate-pulse"></div>
     </div>
-    <div className="text-gold-500 text-[11px] font-black uppercase tracking-[1.2em] animate-pulse">Synchronizing Sector...</div>
+    <div className="text-gold-500 text-[9px] md:text-[11px] font-black uppercase tracking-[1em] md:tracking-[1.2em] animate-pulse">Synchronizing Sector...</div>
   </div>
 );
 
@@ -43,7 +43,7 @@ const CinematicChapter = ({ children, id }: { children?: React.ReactNode; id?: s
   }, []);
 
   return (
-    <section id={id} ref={sectionRef} className="snap-start w-full h-screen relative overflow-hidden bg-slate-950 border-b border-white/5">
+    <section id={id} ref={sectionRef} className="snap-start w-full h-dv relative overflow-hidden bg-slate-950 border-b border-white/5">
       <div className={`h-full w-full transition-all duration-[2.5s] ease-[cubic-bezier(0.16,1,0.3,1)] transform ${isVisible ? 'opacity-100 translate-y-0 scale-100 blur-0' : 'opacity-0 translate-y-32 scale-105 blur-xl'}`}>
         {children}
       </div>
@@ -97,26 +97,26 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
   };
 
   return (
-    <main className="flex flex-col relative w-full h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar bg-slate-950">
+    <main className="flex flex-col relative w-full h-dv overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar bg-slate-950">
       
       {/* Global Navigation HUD (Rail) */}
-      <div className="fixed right-12 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-12 items-end hidden 2xl:flex pointer-events-none">
-        <div className="flex flex-col gap-8">
+      <div className="fixed right-6 md:right-12 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-8 md:gap-12 items-end hidden 2xl:flex pointer-events-none">
+        <div className="flex flex-col gap-6 md:gap-8">
            {chapters.map((chapter, i) => (
              <button 
                key={chapter.id}
                onClick={() => jumpTo(chapter.id)}
-               className="flex items-center gap-8 group pointer-events-auto transition-all duration-1000"
+               className="flex items-center gap-6 md:gap-8 group pointer-events-auto transition-all duration-1000"
              >
                <div className="flex flex-col items-end">
-                  <span className={`text-[7px] font-black uppercase tracking-[0.4em] transition-all duration-500 mb-1 ${activeChapter === i ? 'text-gold-500 opacity-100' : 'text-white/20 opacity-0 group-hover:opacity-100'}`}>
+                  <span className={`text-[6px] md:text-[7px] font-black uppercase tracking-[0.4em] transition-all duration-500 mb-1 ${activeChapter === i ? 'text-gold-500 opacity-100' : 'text-white/20 opacity-0 group-hover:opacity-100'}`}>
                     Node {chapter.icon}
                   </span>
-                  <span className={`text-[10px] font-black uppercase tracking-[0.5em] transition-all duration-700 ${activeChapter === i ? 'text-white' : 'text-white/10 translate-x-6 group-hover:translate-x-0 group-hover:text-white/40'}`}>
+                  <span className={`text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] transition-all duration-700 ${activeChapter === i ? 'text-white' : 'text-white/10 translate-x-6 group-hover:translate-x-0 group-hover:text-white/40'}`}>
                     {chapter.label}
                   </span>
                </div>
-               <div className={`relative w-3 h-3 rounded-full border-2 transition-all duration-700 ${activeChapter === i ? 'bg-gold-500 border-white scale-[1.8] shadow-gold-glow' : 'bg-transparent border-white/10 group-hover:border-gold-500/50 group-hover:scale-125'}`}>
+               <div className={`relative w-2.5 h-2.5 md:w-3 md:h-3 rounded-full border-2 transition-all duration-700 ${activeChapter === i ? 'bg-gold-500 border-white scale-[1.6] md:scale-[1.8] shadow-gold-glow' : 'bg-transparent border-white/10 group-hover:border-gold-500/50 group-hover:scale-125'}`}>
                  {activeChapter === i && <div className="absolute inset-[-4px] bg-gold-500/20 rounded-full animate-ping"></div>}
                </div>
              </button>
@@ -125,7 +125,7 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
       </div>
 
       {/* Narrative Sequence */}
-      <section id="hero" className="snap-start h-screen w-full">
+      <section id="hero" className="snap-start h-dv w-full">
          <Hero onInvestorClick={onInvestorClick} onProfileClick={onProfileClick} />
       </section>
       
@@ -151,6 +151,7 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
       <style>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .h-dv { height: 100vh; height: 100dvh; }
       `}</style>
     </main>
   );
