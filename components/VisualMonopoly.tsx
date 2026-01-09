@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Scan, Eye, Crown, Target, MousePointer2 } from 'lucide-react';
+import { Scan, Eye, Crown, Target, MousePointer2, Maximize } from 'lucide-react';
 
 const VisualMonopoly: React.FC = () => {
   const [activePoint, setActivePoint] = useState<number | null>(null);
@@ -8,28 +8,28 @@ const VisualMonopoly: React.FC = () => {
     {
       id: 1,
       x: '50%',
-      y: '30%',
+      y: '40%',
       label: 'The Central Arch',
       title: 'Structural Scarcity',
-      desc: 'The defining silhouette. Impossible to replicate in dense urban grids, creating an immediate geographic monopoly.',
+      desc: 'The defining silhouette. Impossible to replicate in dense urban grids, creating an immediate geographic monopoly and brand recall.',
       icon: Crown
     },
     {
       id: 2,
-      x: '25%',
-      y: '55%',
+      x: '28%',
+      y: '60%',
       label: 'Tower A: Symmetry',
       title: 'Visual Balance',
-      desc: 'Psychological appeal of vertical symmetry drives higher perceived luxury value and brand recall.',
+      desc: 'Psychological appeal of vertical symmetry drives higher perceived luxury value and dominance in the skyline.',
       icon: Eye
     },
     {
       id: 3,
-      x: '75%',
-      y: '55%',
+      x: '72%',
+      y: '60%',
       label: 'Tower B: Dominance',
       title: 'Skyline Command',
-      desc: 'Unobstructed height dominance ensures the asset is the primary visual anchor for the entire district.',
+      desc: 'Unobstructed height dominance ensures the asset is the primary visual anchor for the entire Guruvayur district.',
       icon: Target
     }
   ];
@@ -50,17 +50,18 @@ const VisualMonopoly: React.FC = () => {
           </p>
         </div>
 
-        <div className="relative w-full h-[700px] md:h-[800px] rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.8)] group select-none">
+        <div className="relative w-full h-[700px] md:h-[800px] rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.8)] group select-none bg-onyx-900">
           {/* Main Image */}
           <img 
-            src="https://clickpetroleoegas.com.br/wp-content/uploads/2025/12/Torres-gemeas-Katara-custam-600-milhoes-de-dolares-erguem-211-metros-em-Doha-e-abrigam-o-Raffles-Doha-hotel-6-estrelas-so-de-suites-.jpg" 
-            className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105 brightness-[0.4] group-hover:brightness-[0.5]"
+            src="https://lh3.googleusercontent.com/pw/AP1GczPXEdEgvGM6pr_-8W5dA2gc2LxocofZCQLAKsY0K47aKSWXDHrvok954L5OCt6vV4IBUjUraysnSFTbajD9R9d3QB5LWWiLIQoiTiEZuMrYgLpbnl6b4IAqNx3-PLMXum_O7VvVt2e0Fvg_wJg07ttSUw=w1319-h879-s-no-gm?authuser=0" 
+            className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105 brightness-[0.5] group-hover:brightness-[0.6]"
             alt="Visual Monopoly Architecture" 
           />
           
           {/* Scanning Effect */}
           <div className="absolute inset-0 bg-gradient-to-t from-onyx-950/80 via-transparent to-transparent"></div>
           <div className="absolute top-0 left-0 w-full h-1 bg-gold-500/50 shadow-[0_0_40px_#D4AF37] animate-[scan_6s_linear_infinite]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none opacity-20"></div>
 
           {/* Interactive Points */}
           {points.map((p) => (
@@ -81,8 +82,8 @@ const VisualMonopoly: React.FC = () => {
 
               {/* Label Tag (Always Visible) */}
               <div className={`absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-300 ${activePoint === p.id ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
-                <span className="bg-onyx-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[9px] font-black uppercase tracking-widest text-white shadow-xl">
-                  {p.label}
+                <span className="bg-onyx-950/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-[9px] font-black uppercase tracking-widest text-white shadow-xl flex items-center gap-2">
+                  <Maximize size={10} className="text-gold-500" /> {p.label}
                 </span>
               </div>
             </div>

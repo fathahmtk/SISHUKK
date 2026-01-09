@@ -64,7 +64,7 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
           className={`absolute inset-0 w-full h-[150%] -top-[25%] will-change-transform transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
             transform: 'translate3d(0, 0, 0) scale(1.1)',
-            backgroundImage: 'url("https://clickpetroleoegas.com.br/wp-content/uploads/2025/12/Torres-gemeas-Katara-custam-600-milhoes-de-dolares-erguem-211-metros-em-Doha-e-abrigam-o-Raffles-Doha-hotel-6-estrelas-so-de-suites-.jpg")',
+            backgroundImage: 'url("https://lh3.googleusercontent.com/pw/AP1GczPXEdEgvGM6pr_-8W5dA2gc2LxocofZCQLAKsY0K47aKSWXDHrvok954L5OCt6vV4IBUjUraysnSFTbajD9R9d3QB5LWWiLIQoiTiEZuMrYgLpbnl6b4IAqNx3-PLMXum_O7VvVt2e0Fvg_wJg07ttSUw=w1319-h879-s-no-gm?authuser=0")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             filter: 'brightness(0.65) saturate(0.9)'
