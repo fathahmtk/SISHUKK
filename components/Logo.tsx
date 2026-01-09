@@ -27,33 +27,33 @@ const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10", variant = 'gold' }
           <stop offset="100%" stopColor="#634719" />
         </linearGradient>
         <filter id="logo-depth" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="1" result="blur" />
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
       
       <g filter="url(#logo-depth)">
-        {/* Symmetrical Twin Tower Icon - Precise recreation of user provided silhouette */}
+        {/* Foundation Base */}
+        <path d="M10 90H130V95H10V90Z" fill={colors[variant]} opacity="0.3" />
         
-        {/* Base Foundation Arc */}
-        <path d="M70 95L30 95C15 95 5 85 5 65V35L20 20V65C20 75 25 80 30 80H70" fill={colors[variant]} opacity="0.4" />
-        <path d="M70 95L110 95C125 95 135 85 135 65V35L120 20V65C120 75 115 80 110 80H70" fill={colors[variant]} opacity="0.4" />
+        {/* Main Tower A Shell */}
+        <path d="M30 85V30L45 20V85H30Z" fill={colors[variant]} />
+        <path d="M45 85V20L60 30V85H45Z" fill={colors[variant]} opacity="0.8" />
         
-        {/* Central Spires */}
-        <path d="M62 15V80L70 92L78 80V15H62Z" fill={colors[variant]} />
+        {/* Main Tower B Shell (Symmetrical) */}
+        <path d="M110 85V30L95 20V85H110Z" fill={colors[variant]} />
+        <path d="M95 85V20L80 30V85H95Z" fill={colors[variant]} opacity="0.8" />
         
-        {/* Tower A Columns */}
-        <path d="M48 28V80L56 86V28H48Z" fill={colors[variant]} opacity="0.9" />
-        <path d="M38 42V80L44 84V42H38Z" fill={colors[variant]} opacity="0.7" />
-        <path d="M28 55V80L32 82V55H28Z" fill={colors[variant]} opacity="0.5" />
+        {/* The Meridian Arch Link */}
+        <path d="M60 35H80V40H60V35Z" fill={colors[variant]} />
+        <path d="M60 40L70 45L80 40V42L70 47L60 42V40Z" fill={colors[variant]} opacity="0.6" />
 
-        {/* Tower B Columns (Symmetrical) */}
-        <path d="M92 28V80L84 86V28H92Z" fill={colors[variant]} opacity="0.9" />
-        <path d="M102 42V80L96 84V42H102Z" fill={colors[variant]} opacity="0.7" />
-        <path d="M112 55V80L108 82V55H112Z" fill={colors[variant]} opacity="0.5" />
-
-        {/* Apex Detail */}
-        <path d="M70 98L64 90H76L70 98Z" fill={colors[variant]} />
+        {/* Central Spire Node */}
+        <path d="M68 15L70 10L72 15V85H68V15Z" fill={colors[variant]} opacity="0.9" />
+        
+        {/* Vertical Accents */}
+        <path d="M35 35H40V80H35V35Z" fill="#FFFFFF" opacity="0.2" />
+        <path d="M100 35H105V80H100V35Z" fill="#FFFFFF" opacity="0.2" />
       </g>
     </svg>
   );
