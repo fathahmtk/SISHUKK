@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Activity, Scan } from 'lucide-react';
+import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Activity, Scan, BookOpen } from 'lucide-react';
 
 interface SnapshotProps {
   onProfileClick?: () => void;
@@ -7,10 +7,10 @@ interface SnapshotProps {
 
 const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
   const cards = [
-    { icon: <Building2 size={24} />, title: "Asset Class", val: "Trophy Hub", desc: "Hospitality core serving non-seasonal ritual demand." },
-    { icon: <Crown size={24} />, title: "Design Moat", val: "Visual Icon", desc: "Twin-tower skyline command creating immediate recall." },
-    { icon: <TrendingUp size={24} />, title: "Yield Curve", val: "High Alpha", desc: "Diversified revenue verticals decoupled from market cycles." },
-    { icon: <MapPin size={24} />, title: "Strategic Pin", val: "Nexus Site", desc: "South Nada corridor with 12M+ annual verified footfall." }
+    { icon: <Building2 size={24} />, title: "Project Class", val: "Luxury Landmark", desc: "A definitive sky-rise hub serving high-frequency ritual demand." },
+    { icon: <Crown size={24} />, title: "Design Moat", val: "Visual Icon", desc: "Twin-tower symmetry creating a geographic landmark monopoly." },
+    { icon: <TrendingUp size={24} />, title: "Project Value", val: "High Alpha", desc: "Strategic vertical mix providing long-term asset stability." },
+    { icon: <MapPin size={24} />, title: "Strategic Nexus", val: "Corridor Pin", desc: "Located at the absolute heart of South Nada's temple zone." }
   ];
 
   return (
@@ -21,7 +21,7 @@ const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
          <img 
             src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
             className="w-full h-full object-cover opacity-20 saturate-0 grayscale transition-transform duration-[20s] group-hover:scale-110" 
-            alt="Physical Evidence" 
+            alt="Project Visuals" 
          />
          <div className="absolute inset-0 bg-gradient-to-b from-onyx-950 via-transparent to-onyx-950"></div>
          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#05070A_110%)]"></div>
@@ -30,24 +30,24 @@ const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
       {/* Standardized Telemetry HUD */}
       <div className="absolute top-8 left-6 md:top-12 md:left-12 z-30 space-y-3 opacity-40 hidden md:block">
          <div className="flex items-center gap-4 text-brass-200 font-black text-[9px] uppercase tracking-[0.5em]">
-            <Scan size={14} /> Evidence_Audit_v2.5
+            <Scan size={14} /> Design_Audit_v2.5
          </div>
          <div className="text-white text-[7px] font-mono opacity-50 uppercase tracking-widest">
-            Identity: SGT_PHYS_2025_VERIFIED
+            ID: SGT_MASTER_PLAN_2025
          </div>
       </div>
 
       <div className="absolute bottom-8 right-6 md:bottom-12 md:right-12 z-30 text-right opacity-40 hidden md:block">
-         <div className="text-brass-200 font-black text-[9px] uppercase tracking-[0.5em] mb-3">Ledger Synchronization</div>
+         <div className="text-brass-200 font-black text-[9px] uppercase tracking-[0.5em] mb-3">Project Record Sync</div>
          <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
-            <Activity size={16} className="text-emerald-500 animate-pulse" /> Status: Linked
+            <Activity size={16} className="text-emerald-500 animate-pulse" /> Status: Operational
          </div>
       </div>
 
       {/* Main Content Container */}
       <div className="relative z-10 text-center w-full max-w-7xl px-6 md:px-12 flex flex-col items-center py-12 md:py-0">
          <span className="text-brass-400 text-[11px] md:text-[14px] font-black uppercase tracking-[1.2em] block mb-8 md:mb-16">
-           Chapter 01 // Portfolio Intelligence
+           Chapter 01 // Project Essence
          </span>
          
          <h2 className="text-white font-serif text-5xl md:text-8xl lg:text-[10rem] leading-[0.9] md:leading-[0.8] tracking-tighter italic font-black mb-12 md:mb-20">
@@ -70,7 +70,7 @@ const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
            onClick={onProfileClick}
            className="group px-12 md:px-20 py-7 md:py-9 bg-white text-onyx-950 rounded-full text-[11px] md:text-[12px] font-black uppercase tracking-[0.5em] hover:bg-brass-400 transition-all active:scale-95 flex items-center justify-center gap-6 shadow-premium"
          >
-           Inspect Asset Ledger <ShieldCheck size={20} className="group-hover:rotate-12 transition-transform" />
+           Explore Design Archives <BookOpen size={20} className="group-hover:translate-x-2 transition-transform" />
          </button>
       </div>
 

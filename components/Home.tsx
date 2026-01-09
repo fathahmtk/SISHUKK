@@ -60,20 +60,20 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
   const [activeChapter, setActiveChapter] = useState(0);
   
   const chapters = [
-    { id: 'hero', label: 'Overview', icon: '00' },
-    { id: 'snapshot', label: 'Evidence', icon: '01' },
-    { id: 'monopoly', label: 'Monopoly', icon: '02' },
-    { id: 'thesis', label: 'Thesis', icon: '03' },
-    { id: 'market', label: 'Market', icon: '04' },
+    { id: 'hero', label: 'Monograph', icon: '00' },
+    { id: 'snapshot', label: 'Essence', icon: '01' },
+    { id: 'monopoly', label: 'Geometry', icon: '02' },
+    { id: 'thesis', label: 'Architecture', icon: '03' },
+    { id: 'market', label: 'Context', icon: '04' },
     { id: 'connectivity', label: 'Nexus', icon: '05' },
-    { id: 'masterplan', label: 'Stack', icon: '06' },
+    { id: 'masterplan', label: 'Stacking', icon: '06' },
     { id: 'hotel', label: 'Inventory', icon: '07' },
-    { id: 'events', label: 'Revenue', icon: '08' },
-    { id: 'dining', label: 'Orbit', icon: '09' },
+    { id: 'events', label: 'Volumes', icon: '08' },
+    { id: 'dining', label: 'Gastronomy', icon: '09' },
     { id: 'wellness', label: 'Alchemy', icon: '10' },
-    { id: 'economics', label: 'Yield', icon: '11' },
-    { id: 'risk', label: 'Hedge', icon: '12' },
-    { id: 'exit', label: 'Liquidity', icon: '13' }
+    { id: 'economics', label: 'Stability', icon: '11' },
+    { id: 'risk', label: 'Security', icon: '12' },
+    { id: 'exit', label: 'Horizon', icon: '13' }
   ];
 
   useEffect(() => {
@@ -104,7 +104,7 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
       <div className="fixed left-6 md:left-12 top-1/2 -translate-y-1/2 z-[100] hidden 2xl:flex flex-col gap-6 items-center pointer-events-none">
          <div className="w-px h-32 bg-gradient-to-t from-gold-500/40 to-transparent"></div>
          <div className="flex flex-col items-center">
-            <span className="text-gold-500/40 text-[7px] font-black uppercase tracking-[0.5em] mb-4">Node_Origin</span>
+            <span className="text-gold-500/40 text-[7px] font-black uppercase tracking-[0.5em] mb-4">Project_Node</span>
             <div className="text-gold-500 font-serif italic font-black text-3xl rotate-[-90deg] translate-y-10 select-none whitespace-nowrap">
                SGT_{chapters[activeChapter].icon}
             </div>

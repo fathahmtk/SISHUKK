@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Menu, X, ArrowRight, Activity, Database } from 'lucide-react';
+import { ShieldCheck, Menu, X, ArrowRight, Activity, Database, BookOpen } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo.tsx';
 
@@ -13,11 +13,11 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   
   const links = [
-    { path: '/asset', id: 'the-asset', label: 'Asset' },
-    { path: '/market', id: 'market', label: 'Market' },
-    { path: '/hotel', id: 'hotel-summary', label: 'Hotel' },
-    { path: '/economics', id: 'economics', label: 'Economics' },
-    { path: '/risk', id: 'risk', label: 'Risk' },
+    { path: '/asset', id: 'the-asset', label: 'Architecture' },
+    { path: '/market', id: 'market', label: 'Context' },
+    { path: '/hotel', id: 'hotel-summary', label: 'Inventory' },
+    { path: '/economics', id: 'economics', label: 'Value' },
+    { path: '/risk', id: 'risk', label: 'Integrity' },
   ];
 
   useEffect(() => {
@@ -81,9 +81,9 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
         <div className="flex items-center gap-8">
           <div className="hidden xl:flex items-center gap-6 pr-8 border-r border-white/10">
              <div className="text-right">
-                <span className={`text-[7px] font-black uppercase tracking-widest block mb-1 text-white/30`}>System Status</span>
+                <span className={`text-[7px] font-black uppercase tracking-widest block mb-1 text-white/30`}>Project Status</span>
                 <span className={`text-[9px] font-bold uppercase tracking-wider flex items-center gap-2 text-emerald-400`}>
-                   <Activity size={10} className="animate-pulse" /> Live_BIM_Sync
+                   <Activity size={10} className="animate-pulse" /> Active_Phase_2
                 </span>
              </div>
           </div>
@@ -96,8 +96,8 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
                 : 'bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-brass-400 hover:text-onyx-950 hover:border-brass-400'
             }`}
           >
-            <ShieldCheck size={14} className="group-hover:rotate-12 transition-transform" />
-            <span>Asset Core</span>
+            <BookOpen size={14} className="group-hover:rotate-12 transition-transform" />
+            <span>Project Pack</span>
           </button>
 
           <button 
@@ -136,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
             onClick={() => { if (onInvestorClick) onInvestorClick(); setIsMobileMenuOpen(false); }}
             className="mt-auto w-full py-8 bg-brass-400 text-onyx-950 rounded-3xl text-xs font-black uppercase tracking-[0.5em] shadow-premium flex items-center justify-center gap-4"
           >
-            <Database size={18} /> Inspect Financial Core
+            <Database size={18} /> Access Project Pack
           </button>
         </div>
       )}

@@ -24,12 +24,12 @@ const Footer: React.FC = () => {
                 </div>
                 
                 <p className="text-slate-500 text-2xl font-light leading-relaxed max-w-xl border-l-2 border-gold-400 pl-12 italic">
-                    "A landmark twin-tower institutional asset by Live Shukran International. Engineered for the high-yield ritual economy of Guruvayur."
+                    "A landmark twin-tower architectural achievement by Live Shukran International. Defining the ultimate luxury standard in the heart of Guruvayur."
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                    <div className="space-y-8">
-                      <h4 className="text-gold-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8">Asset Location</h4>
+                      <h4 className="text-gold-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8">Project Site</h4>
                       <div className="flex items-start gap-5 group">
                          <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 group-hover:bg-gold-500 group-hover:text-white transition-all">
                             <MapPin size={18} />
@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
                       </div>
                    </div>
                    <div className="space-y-8">
-                      <h4 className="text-gold-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8">Investor Relations</h4>
+                      <h4 className="text-gold-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8">Project Enquiries</h4>
                       <div className="flex flex-col gap-6">
                          <div className="flex items-center gap-5 group">
                             <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 group-hover:bg-gold-500 group-hover:text-white transition-all">
@@ -61,15 +61,15 @@ const Footer: React.FC = () => {
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-20 lg:pl-32">
                 <div className="space-y-16">
                     <h4 className="text-slate-950 text-[11px] font-black uppercase tracking-[0.6em] border-b border-slate-100 pb-6 flex items-center justify-between">
-                       Intelligence <Activity size={14} className="text-gold-500 opacity-40" />
+                       Architecture <Activity size={14} className="text-gold-500 opacity-40" />
                     </h4>
                     <ul className="space-y-8">
                         <li>
                             <Link to="/report" className="text-slate-950 hover:text-gold-600 text-[11px] font-black uppercase tracking-[0.3em] transition-all flex items-center justify-between group">
-                                Master Technical Report <FileText size={14} className="text-gold-500" />
+                                Master Project Monograph <FileText size={14} className="text-gold-500" />
                             </Link>
                         </li>
-                        {['Asset Architecture', 'Market Analysis', 'Inventory Specs', 'Revenue Logic', 'Risk Safeguards'].map(item => (
+                        {['Structural Thesis', 'Material Palette', 'Inventory Details', 'Operational Tech', 'Completion Log'].map(item => (
                             <li key={item}>
                                 <a href="#" className="text-slate-400 hover:text-gold-600 text-[11px] font-black uppercase tracking-[0.3em] transition-all flex items-center justify-between group">
                                     {item} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
@@ -80,10 +80,10 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="space-y-16">
                     <h4 className="text-slate-950 text-[11px] font-black uppercase tracking-[0.6em] border-b border-slate-100 pb-6 flex items-center justify-between">
-                       Governance <Globe size={14} className="text-gold-500 opacity-40" />
+                       Discovery <Globe size={14} className="text-gold-500 opacity-40" />
                     </h4>
                     <ul className="space-y-8">
-                        {['Investor Portal', 'NDA Execution', 'Audit Logs', 'Data Room', 'Legal Compliance'].map(item => (
+                        {['Project Archives', 'Virtual Tour', 'Site Timeline', 'Compliance Hub', 'Quality Control'].map(item => (
                             <li key={item}>
                                 <a href="#" className="text-slate-400 hover:text-slate-950 text-[11px] font-black uppercase tracking-[0.3em] transition-all flex items-center justify-between group">
                                    {item} <Landmark size={14} className="opacity-0 group-hover:opacity-100 transition-all" />
@@ -108,10 +108,10 @@ const Footer: React.FC = () => {
              <div className="flex items-center gap-10">
                  <div className="flex items-center gap-4 bg-[#FDFBF7] px-8 py-4 rounded-full border border-slate-200 shadow-sm group hover:border-gold-400 transition-all">
                     <ShieldCheck size={18} className="text-gold-500 group-hover:scale-125 transition-transform" />
-                    <span className="text-slate-500 text-[10px] uppercase tracking-widest font-black">Institutional Grade Portfolio</span>
+                    <span className="text-slate-500 text-[10px] uppercase tracking-widest font-black">Official Project Documentation</span>
                  </div>
                  <div className="w-1 h-1 bg-slate-200 rounded-full"></div>
-                 <span className="text-slate-300 text-[10px] uppercase tracking-[1em] font-black animate-pulse">V.2.5 SYNC</span>
+                 <span className="text-slate-300 text-[10px] uppercase tracking-[1em] font-black animate-pulse">V.2.5 LIVE</span>
              </div>
         </div>
       </div>

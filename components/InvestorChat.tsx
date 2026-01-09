@@ -16,9 +16,9 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
   const location = useLocation();
 
   const quickQueries = [
-    { label: "IRR Projection", icon: <TrendingUp size={10} />, query: "Explain the 24.2% IRR projection." },
-    { label: "Equity Stack", icon: <Landmark size={10} />, query: "What is the capital allocation?" },
-    { label: "BIM Status", icon: <Scan size={10} />, query: "What is the BIM synchronization level?" }
+    { label: "Architecture Specs", icon: <Scan size={10} />, query: "Tell me about the twin-tower architecture." },
+    { label: "Material Palette", icon: <Landmark size={10} />, query: "What materials are used in the towers?" },
+    { label: "Location Context", icon: <Scan size={10} />, query: "Why is the South Nada location significant?" }
   ];
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
     
     try {
       const pageName = location.pathname === '/' ? 'Home' : location.pathname.replace('/', '').toUpperCase();
-      const context = `User is viewing ${pageName}. Response must be precise.`;
+      const context = `User is viewing ${pageName}. Response must be descriptive and lifestyle-oriented.`;
       const response = await queryInvestorAssistant(textToSend, context);
       setMessages(prev => [...prev, { role: 'bot', text: response || "Data sync error. Verify query." }]);
     } catch (e) {
@@ -57,7 +57,7 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
           <Bot size={32} className="group-hover:rotate-12 transition-transform" />
           <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-onyx-950 rounded-full animate-pulse"></span>
           <div className="absolute -left-64 top-1/2 -translate-y-1/2 bg-onyx-950 border border-white/10 px-8 py-4 rounded-full opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-premium translate-x-4 group-hover:translate-x-0">
-            <p className="text-brass-200 text-[10px] font-black uppercase tracking-[0.3em] whitespace-nowrap">Authorized Intelligence</p>
+            <p className="text-brass-200 text-[10px] font-black uppercase tracking-[0.3em] whitespace-nowrap">Project Concierge</p>
           </div>
         </button>
       )}
@@ -70,9 +70,9 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
                  <Bot size={28} />
               </div>
               <div>
-                <span className="text-white text-[12px] font-black uppercase tracking-widest leading-none block mb-1">Portfolio Core AI</span>
+                <span className="text-white text-[12px] font-black uppercase tracking-widest leading-none block mb-1">Project Concierge AI</span>
                 <span className="text-brass-400 text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-2">
-                  <ShieldCheck size={12} className="text-emerald-500" /> Encrypted Session v4.2
+                  <ShieldCheck size={12} className="text-emerald-500" /> Authorized Session v4.2
                 </span>
               </div>
             </div>
@@ -85,7 +85,7 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
             <div className="flex justify-start">
               <div className="bg-white/5 p-8 rounded-[2.5rem] text-slate-300 border border-white/10 text-[13px] font-light leading-relaxed max-w-[90%] shadow-premium font-editorial italic">
                  <Sparkles className="text-brass-400 mb-6" size={20} />
-                 "Greetings. I am the lead technical assistant for the SIRSHUKK asset. My ledger is synchronized with current capex deployment and ritual market demand data. How may I assist your audit?"
+                 "Welcome to the SIRSHUKK Monograph. I am your lead project concierge. I can provide detailed insights into our architectural DNA, material specifications, and lifestyle facilities. How may I assist your exploration?"
                  <div className="mt-8 grid grid-cols-1 gap-3">
                     {quickQueries.map((q, i) => (
                       <button 
@@ -114,7 +114,7 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
                    <div className="w-2 h-2 bg-brass-400 rounded-full animate-bounce [animation-delay:0.2s]"></div>
                    <div className="w-2 h-2 bg-brass-400 rounded-full animate-bounce [animation-delay:0.4s]"></div>
                 </div>
-                Accessing Ledger...
+                Accessing Monograph Archives...
               </div>
             )}
           </div>
@@ -126,7 +126,7 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Audit Capex, ADR, or BIM Sync..."
+                placeholder="Enquire about specs, materials, or lifestyle..."
                 className="w-full bg-white/5 border border-white/10 rounded-3xl pl-10 pr-20 py-7 text-white text-base focus:outline-none focus:border-brass-400 transition-all placeholder:text-slate-500 shadow-inner"
               />
               <button 
@@ -139,7 +139,7 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
             </div>
             <div className="flex justify-between mt-6 px-4">
                <span className="text-[9px] text-white/20 uppercase tracking-widest font-black flex items-center gap-3">
-                 <AlertCircle size={12} /> Institutional Data Source
+                 <AlertCircle size={12} /> Official Project Data
                </span>
                <div className="flex items-center gap-4 text-[9px] text-emerald-500 font-black uppercase tracking-widest italic">
                  <Activity size={12} className="animate-pulse" /> SGT_SYNC: 100%
