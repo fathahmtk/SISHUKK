@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, FileText, ChevronDown, Info } from 'lucide-react';
+import { ArrowRight, ChevronDown, Info } from 'lucide-react';
 import Logo from './Logo.tsx';
 
 interface HeroProps {
@@ -64,20 +64,18 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
           className={`absolute inset-0 w-full h-[150%] -top-[25%] will-change-transform transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
             transform: 'translate3d(0, 0, 0) scale(1.1)',
-            backgroundImage: 'url("https://lh3.googleusercontent.com/pw/AP1GczPXEdEgvGM6pr_-8W5dA2gc2LxocofZCQLAKsY0K47aKSWXDHrvok954L5OCt6vV4IBUjUraysnSFTbajD9R9d3QB5LWWiLIQoiTiEZuMrYgLpbnl6b4IAqNx3-PLMXum_O7VvVt2e0Fvg_wJg07ttSUw=w1319-h879-s-no-gm?authuser=0")',
+            backgroundImage: 'url("https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'brightness(0.65) saturate(0.9)'
+            filter: 'brightness(0.55) saturate(1.05) contrast(1.15)'
           }}
         >
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-onyx-950/70 via-transparent to-transparent"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_49.5%,rgba(212,175,55,0.03)_50%,transparent_50.5%)] bg-[length:100%_80px] animate-[scanline_20s_linear_infinite] opacity-30"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/30 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-onyx-950/90 via-onyx-950/20 to-transparent"></div>
+        {/* Removed scanline noise for cleaner aesthetic */}
       </div>
       
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-gold-500/20 to-transparent pointer-events-none z-10 hidden lg:block"></div>
-
       <div ref={contentRef} className="container mx-auto relative z-20 text-center lg:text-left will-change-transform">
         <div className="max-w-6xl mx-auto">
           
@@ -111,7 +109,7 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
                 key={i} 
                 onClick={onProfileClick}
                 style={{ animationDelay: `${1.2 + (i * 0.15)}s` }}
-                className="opacity-0 animate-[fade-in-up_1s_cubic-bezier(0.16,1,0.3,1)_forwards] relative group text-center lg:text-left border-l border-white/5 pl-8 hover:border-gold-500/60 transition-all duration-700 cursor-pointer hover:bg-white/[0.03] py-5 rounded-r-2xl active:scale-95"
+                className="opacity-0 animate-[fade-in-up_1s_cubic-bezier(0.16,1,0.3,1)_forwards] relative group text-center lg:text-left border-l border-white/10 pl-8 hover:border-gold-500/60 transition-all duration-700 cursor-pointer hover:bg-white/[0.03] py-5 rounded-r-2xl active:scale-95"
               >
                 <div className="flex items-center gap-2 mb-3 justify-center lg:justify-start">
                    <div className="text-gold-500 text-[9px] uppercase font-black tracking-[0.5em] opacity-70 group-hover:opacity-100 transition-opacity">{fact.label}</div>
@@ -132,9 +130,6 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
             >
               <span>Request Investor Access</span>
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-            </button>
-            <button className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors uppercase text-[10px] font-black tracking-[0.4em] border-b border-white/10 pb-2 hover:border-gold-500">
-              <FileText size={16} /> Download Dossier (NDA)
             </button>
           </div>
         </div>

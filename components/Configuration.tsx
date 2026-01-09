@@ -62,7 +62,7 @@ const Configuration: React.FC = () => {
            </div>
 
            <img 
-            src="https://clickpetroleoegas.com.br/wp-content/uploads/2025/12/Torres-gemeas-Katara-custam-600-milhoes-de-dolares-erguem-211-metros-em-Doha-e-abrigam-o-Raffles-Doha-hotel-6-estrelas-so-de-suites-.jpg" 
+            src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
             alt="Sirshukk Twin Towers Configuration" 
             className="w-full h-full object-cover transition-all duration-[4s] ease-in-out group-hover:scale-105 brightness-[0.55] group-hover:brightness-[0.7]"
           />

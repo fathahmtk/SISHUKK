@@ -51,10 +51,10 @@ const VisualMonopoly: React.FC = () => {
         </div>
 
         <div className="relative w-full h-[700px] md:h-[800px] rounded-[3rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.8)] group select-none bg-onyx-900">
-          {/* Main Image */}
+          {/* Main Image - Updated to high-fidelity render */}
           <img 
-            src="https://lh3.googleusercontent.com/pw/AP1GczPXEdEgvGM6pr_-8W5dA2gc2LxocofZCQLAKsY0K47aKSWXDHrvok954L5OCt6vV4IBUjUraysnSFTbajD9R9d3QB5LWWiLIQoiTiEZuMrYgLpbnl6b4IAqNx3-PLMXum_O7VvVt2e0Fvg_wJg07ttSUw=w1319-h879-s-no-gm?authuser=0" 
-            className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105 brightness-[0.5] group-hover:brightness-[0.6]"
+            src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
+            className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105 brightness-[0.6] group-hover:brightness-[0.7]"
             alt="Visual Monopoly Architecture" 
           />
           
