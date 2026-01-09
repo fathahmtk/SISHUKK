@@ -7,8 +7,8 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10", variant = 'gold' }) => {
   const colors = {
-    gold: "url(#gold-grad-platinum)",
-    slate: "#1e293b",
+    gold: "url(#gold-grad-premium)",
+    slate: "#0f172a",
     white: "#FFFFFF"
   };
 
@@ -20,39 +20,28 @@ const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10", variant = 'gold' }
       className={className}
     >
       <defs>
-        <linearGradient id="gold-grad-platinum" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#f7e8c3" />
-          <stop offset="45%" stopColor="#D4AF37" />
-          <stop offset="100%" stopColor="#8c6d1f" />
+        <linearGradient id="gold-grad-premium" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fdf3d1" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#8c651f" />
         </linearGradient>
-        <filter id="logoShadow" x="-20%" y="-20%" width="140%" height="140%">
-           <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
-           <feOffset dx="0" dy="2" result="offsetblur" />
-           <feComponentTransfer>
-             <feFuncA type="linear" slope="0.15" />
-           </feComponentTransfer>
-           <feMerge>
-             <feMergeNode />
-             <feMergeNode in="SourceGraphic" />
-           </feMerge>
-        </filter>
       </defs>
       
-      <g filter="url(#logoShadow)">
-        {/* Platinum Symmetrical Concept: Two Vertical Monoliths connected by an Invisible Arch */}
-        {/* Left Tower Elements */}
-        <path d="M35 30V80L44 86V34L35 30Z" fill={colors[variant]} />
-        <path d="M24 38V76L31 81V42L24 38Z" fill={colors[variant]} opacity="0.6" />
+      <g opacity="0.95">
+        {/* Left Monolith */}
+        <rect x="28" y="20" width="8" height="60" fill={colors[variant]} />
+        <rect x="20" y="35" width="4" height="40" fill={colors[variant]} opacity="0.3" />
         
-        {/* Right Tower Elements */}
-        <path d="M65 30V80L56 86V34L65 30Z" fill={colors[variant]} />
-        <path d="M76 38V76L69 81V42L76 38Z" fill={colors[variant]} opacity="0.6" />
+        {/* Right Monolith */}
+        <rect x="64" y="20" width="8" height="60" fill={colors[variant]} />
+        <rect x="76" y="35" width="4" height="40" fill={colors[variant]} opacity="0.3" />
         
-        {/* The Meridian Point (Symbolic Arch Core) */}
-        <path d="M48 55L50 58L52 55V75L50 78L48 75V55Z" fill={colors[variant]} />
+        {/* The Arch Bridge - High Precision Line */}
+        <rect x="36" y="48" width="28" height="1.5" fill={colors[variant]} opacity="0.8" />
         
-        {/* The Foundation Anchor */}
-        <path d="M24 85L50 92L76 85V82L50 89L24 82V85Z" fill={colors[variant]} opacity="0.4" />
+        {/* Foundation Anchor - Symmetrical Shadow */}
+        <path d="M28 85H72" stroke={colors[variant]} strokeWidth="1" strokeOpacity="0.2" />
+        <path d="M40 92H60" stroke={colors[variant]} strokeWidth="0.5" strokeOpacity="0.1" />
       </g>
     </svg>
   );

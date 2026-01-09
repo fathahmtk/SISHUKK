@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Layers, Maximize2, Map, ShieldCheck, Zap, UserCheck, Coffee, Wind, Eye, Ruler, Users, Grid, ArrowRight, Gauge, Activity, Database, Target, Info, IndianRupee, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Layers, Maximize2, Map, ShieldCheck, Zap, UserCheck, Coffee, Wind, Eye, Ruler, Users, Grid, ArrowRight, Gauge, Activity, Database, Target, Info, IndianRupee, TrendingUp, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const FLOORS = [
   {
@@ -20,9 +20,9 @@ const FLOORS = [
     },
     image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80',
     hotspots: [
-        { x: 50, y: 50, label: 'Kinetic Axis', detail: 'Silent Drive Train Core' },
-        { x: 80, y: 30, label: 'Vista Glazing', detail: 'Triple-Glazed Acoustic Barrier' },
-        { x: 20, y: 70, label: 'Service Path', detail: 'Segregated Staff Logistics' }
+        { x: 50, y: 50, label: 'Kinetic Axis', detail: 'Primary 10-Ton silent drive train core ensuring jitter-free 360° rotation cycles.' },
+        { x: 80, y: 30, label: 'Vista Glazing', detail: 'Triple-Glazed argon-filled DGU barriers offering -45dB acoustic isolation.' },
+        { x: 20, y: 70, label: 'Service Path', detail: 'Vertically segregated logistics core for BOH staff, bypassing guest zones.' }
     ]
   },
   {
@@ -43,8 +43,8 @@ const FLOORS = [
     },
     image: 'https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80',
     hotspots: [
-        { x: 50, y: 40, label: 'Steel Truss', detail: 'Primary Load Bearing Arch' },
-        { x: 30, y: 65, label: 'Glass Deck', detail: 'Vertical Viewport (55m)' }
+        { x: 50, y: 40, label: 'Steel Truss', detail: 'High-tensile Grade 500 steel truss system spanning 24 meters between towers.' },
+        { x: 30, y: 65, label: 'Glass Deck', detail: 'Structural glass flooring node offering a 55m direct vertical datum view.' }
     ]
   },
   {
@@ -65,9 +65,9 @@ const FLOORS = [
     },
     image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80',
     hotspots: [
-        { x: 40, y: 30, label: 'Vertical Core', detail: 'High-Velocity Lift Bank' },
-        { x: 75, y: 50, label: 'Suite Bay', detail: 'Temple Orientation' },
-        { x: 50, y: 85, label: 'Service Hub', detail: 'Back-of-House Access' }
+        { x: 40, y: 30, label: 'Vertical Core', detail: 'Group of 6 high-velocity Mitsubishi lifts with smart-dispatch AI logic.' },
+        { x: 75, y: 50, label: 'Suite Bay', detail: 'Dual-aspect room configuration optimized for Guruvayur temple line-of-sight.' },
+        { x: 50, y: 85, label: 'Service Hub', detail: 'Zoned BOH pantry and laundry chutes for floor-specific vertical logistics.' }
     ]
   },
   {
@@ -88,15 +88,21 @@ const FLOORS = [
     },
     image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80',
     hotspots: [
-        { x: 50, y: 60, label: 'Performance Zone', detail: 'Proscenium Stage' },
-        { x: 15, y: 80, label: 'Grand Foyer', detail: 'Ceremonial Arrival' },
-        { x: 85, y: 20, label: 'Banquet Kitchen', detail: 'Direct Service Link' }
+        { x: 50, y: 60, label: 'Performance Zone', detail: 'Hydraulic proscenium stage with integrated 4K LED broadcast infrastructure.' },
+        { x: 15, y: 80, label: 'Grand Foyer', detail: 'Double-height volume with segregated arrival logic for VVIP guests.' },
+        { x: 85, y: 20, label: 'Banquet Kitchen', detail: '10,000 meals/day capacity with dedicated service corridors and cold-chain.' }
     ]
   },
 ];
 
 const FloorPlanExplorer: React.FC = () => {
   const [activeFloor, setActiveFloor] = useState(0);
+  const [selectedHotspot, setSelectedHotspot] = useState<number | null>(null);
+
+  // Reset hotspot selection when switching floors
+  useEffect(() => {
+    setSelectedHotspot(null);
+  }, [activeFloor]);
 
   const nextFloor = () => setActiveFloor((prev) => (prev + 1) % FLOORS.length);
   const prevFloor = () => setActiveFloor((prev) => (prev - 1 + FLOORS.length) % FLOORS.length);
@@ -173,7 +179,7 @@ const FloorPlanExplorer: React.FC = () => {
           <div className="lg:col-span-9 grid grid-cols-1 md:grid-cols-12 bg-white border border-slate-200 rounded-[4rem] overflow-hidden shadow-3xl min-h-[850px]">
             
             {/* Visual Display Core */}
-            <div className="md:col-span-7 relative h-[500px] md:h-full group overflow-hidden border-b md:border-b-0 md:border-r border-slate-100">
+            <div className="md:col-span-7 relative h-[500px] md:h-full group overflow-hidden border-b md:border-b-0 md:border-r border-slate-100" onClick={() => setSelectedHotspot(null)}>
               <img 
                 src={FLOORS[activeFloor].image} 
                 className="w-full h-full object-cover transition-transform duration-[8s] group-hover:scale-110 brightness-[1.05] contrast-[1.02]"
@@ -199,15 +205,37 @@ const FloorPlanExplorer: React.FC = () => {
                     {FLOORS[activeFloor].hotspots?.map((hs, i) => (
                       <div 
                         key={i} 
-                        className="absolute group/hs" 
+                        className="absolute" 
                         style={{ top: `${hs.y}%`, left: `${hs.x}%`, transform: 'translate(-50%, -50%)' }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedHotspot(selectedHotspot === i ? null : i);
+                        }}
                       >
-                         <div className="w-6 h-6 rounded-full bg-white border-2 border-gold-500 shadow-xl animate-pulse cursor-pointer flex items-center justify-center hover:scale-125 transition-transform">
-                            <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                         <div className={`w-8 h-8 rounded-full border-2 transition-all duration-300 cursor-pointer flex items-center justify-center hover:scale-125 ${selectedHotspot === i ? 'bg-gold-500 border-white shadow-[0_0_25px_#D4AF37] scale-125' : 'bg-white/80 backdrop-blur-md border-gold-500 shadow-xl animate-pulse'}`}>
+                            {selectedHotspot === i ? <X size={14} className="text-white" /> : <div className="w-2.5 h-2.5 bg-gold-500 rounded-full"></div>}
                          </div>
-                         <div className="absolute top-8 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-gold-200 px-6 py-4 rounded-2xl opacity-0 group-hover/hs:opacity-100 transition-all translate-y-4 group-hover/hs:translate-y-0 whitespace-nowrap z-20 shadow-2xl pointer-events-none">
-                            <span className="text-gold-600 text-[10px] font-black uppercase tracking-widest block mb-1">{hs.label}</span>
-                            <span className="text-slate-500 text-[9px] font-bold uppercase tracking-tight">{hs.detail}</span>
+
+                         {/* Click-to-Reveal Tooltip */}
+                         <div className={`absolute bottom-full mb-6 left-1/2 -translate-x-1/2 w-64 transition-all duration-500 pointer-events-none z-50 ${selectedHotspot === i ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'}`}>
+                            <div className="bg-slate-950/95 backdrop-blur-2xl border border-white/20 p-6 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.5)] relative overflow-hidden">
+                               <div className="absolute top-0 right-0 p-4 opacity-10">
+                                  <Info size={40} className="text-gold-500" />
+                               </div>
+                               <div className="relative z-10">
+                                  <div className="flex items-center gap-3 mb-4">
+                                     <div className="w-8 h-8 rounded-lg bg-gold-500/20 flex items-center justify-center text-gold-500">
+                                        <Info size={16} />
+                                     </div>
+                                     <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest">{hs.label}</span>
+                                  </div>
+                                  <p className="text-slate-300 text-xs leading-relaxed italic border-l-2 border-gold-500/50 pl-4">
+                                     "{hs.detail}"
+                                  </p>
+                               </div>
+                               {/* Tooltip Tail */}
+                               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-950/95 border-r border-b border-white/20 rotate-45"></div>
+                            </div>
                          </div>
                       </div>
                     ))}
@@ -218,11 +246,11 @@ const FloorPlanExplorer: React.FC = () => {
                        </div>
                        <div className="flex flex-col">
                           <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-900">Blueprint Archive</span>
-                          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">4K Technical Cross-Section</span>
+                          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Click nodes for structural detail</span>
                        </div>
                     </div>
 
-                    {/* New Navigation Controls */}
+                    {/* Navigation Controls */}
                     <div className="absolute bottom-12 right-12 flex gap-4 z-20">
                        <button 
                          onClick={(e) => { e.stopPropagation(); prevFloor(); }} 

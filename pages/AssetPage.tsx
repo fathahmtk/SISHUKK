@@ -1,51 +1,87 @@
-import React from 'react';
-import { ArrowLeft, ArrowRight, ShieldCheck, Layers, Building2, Target, Info, Ruler, Compass, Database } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowLeft, ArrowRight, ShieldCheck, Layers, Target, Info, Ruler, Compass, Database, Scan, Activity, Cpu, Zap, Maximize2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FloorPlanExplorer from '../components/FloorPlanExplorer.tsx';
 
 const AssetPage: React.FC = () => {
-  const images = [
-    { 
-      src: "https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg", 
-      label: "Twin Cylindrical Monoliths", 
-      sub: "Structural Aerodynamics",
-      detail: "Dual 20-floor cylindrical cores designed to reduce wind-load vortex shedding while maximizing 360° spiritual vistas of the temple zone."
-    },
-    { 
-      src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80", 
-      label: "The Meridian Arch", 
-      sub: "Level 15 Structural Link",
-      detail: "A 45-meter steel truss sky-bridge connecting Tower A and Tower B, acting as the structural stabilizer and housing the Executive Club."
-    }
+  const [isScanActive, setIsScanActive] = useState(true);
+
+  const structuralNodes = [
+    { x: '35%', y: '30%', label: 'Tower A: High-Rise Core', value: 'G+20 Cylindrical' },
+    { x: '50%', y: '48%', label: 'Meridian Arch', value: 'Steel Truss Sky-Link' },
+    { x: '65%', y: '30%', label: 'Tower B: Residency Core', value: 'Seismic Grade IV' },
+    { x: '50%', y: '85%', label: 'Monolithic Podium', value: 'GSF 120,000' }
   ];
 
   return (
     <div className="bg-white min-h-screen animate-fade-in overflow-hidden">
-      {/* Cinematic Asset Hero */}
-      <div className="relative h-[85vh] w-full bg-slate-900 flex items-end pb-24">
+      {/* Cinematic Asset Hero with BIM Overlay */}
+      <div className="relative h-[90vh] w-full bg-slate-900 flex items-end pb-24 overflow-hidden">
          <img 
             src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
-            className="absolute inset-0 w-full h-full object-cover opacity-70"
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-[3s] ${isScanActive ? 'brightness-[0.4] saturate-[0.2] scale-105' : 'brightness-70'}`}
             alt="Asset Exterior"
          />
-         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
          
-         <div className="container mx-auto px-6 relative z-10">
-            <Link to="/" className="inline-flex items-center gap-4 text-gold-400 text-[10px] font-black uppercase tracking-[0.5em] mb-12 hover:text-white transition-all group">
-                <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform" /> Back to Dashboard
-            </Link>
-            
-            <div className="max-w-4xl">
-               <div className="flex items-center gap-5 mb-8">
-                  <div className="w-12 h-[1px] bg-gold-500"></div>
-                  <span className="text-white text-[10px] font-black uppercase tracking-[0.6em]">Chapter 01: Asset Configuration</span>
-               </div>
-               <h1 className="text-white font-serif text-6xl md:text-[8rem] leading-[0.8] tracking-tighter italic mb-8">
-                  Structural <br/><span className="gold-gradient-text italic font-black">Monopoly.</span>
-               </h1>
-               <p className="text-slate-300 text-2xl font-light leading-relaxed border-l-2 border-gold-500 pl-12 max-w-2xl italic">
-                  Two cylindrical towers rising from a monolithic podium. Connected by a Grand Lobby and the signature Meridian Arch. This is engineering as a commercial moat.
-               </p>
+         {/* BIM HUD Layer */}
+         {isScanActive && (
+            <div className="absolute inset-0 z-10 pointer-events-none">
+                {/* Horizontal Scan Line */}
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gold-500/50 shadow-[0_0_15px_#D4AF37] animate-[scan_6s_linear_infinite]"></div>
+                
+                {/* Vector Grid Overlay */}
+                <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#D4AF37 1px, transparent 1px), linear-gradient(90deg, #D4AF37 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+                
+                {/* Technical Callouts */}
+                <div className="absolute inset-0 p-20">
+                    <svg className="w-full h-full opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M35 30 L50 48 L65 30" stroke="#D4AF37" strokeWidth="0.1" fill="none" className="animate-[draw_3s_ease-out_forwards]" style={{ strokeDasharray: '1000', strokeDashoffset: '1000' }} />
+                    </svg>
+                </div>
+
+                {structuralNodes.map((node, i) => (
+                    <div key={i} className="absolute pointer-events-auto" style={{ left: node.x, top: node.y }}>
+                        <div className="relative group">
+                            <div className="w-3 h-3 bg-gold-500 rounded-full animate-pulse shadow-[0_0_10px_#D4AF37]"></div>
+                            <div className="absolute left-6 top-0 -translate-y-1/2 bg-black/80 backdrop-blur-md border border-white/10 p-4 rounded-xl whitespace-nowrap opacity-100 transition-all">
+                                <div className="text-[7px] font-black text-gold-500 uppercase tracking-widest mb-1">{node.label}</div>
+                                <div className="text-[10px] font-mono text-white uppercase tracking-tight">{node.value}</div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+         )}
+
+         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+
+         <div className="container mx-auto px-6 relative z-20">
+            <div className="flex justify-between items-end">
+                <div className="max-w-4xl">
+                   <Link to="/" className="inline-flex items-center gap-4 text-gold-400 text-[10px] font-black uppercase tracking-[0.5em] mb-12 hover:text-white transition-all group">
+                       <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform" /> Back to Dashboard
+                   </Link>
+                   
+                   <div className="flex items-center gap-5 mb-8">
+                      <div className="w-12 h-[1px] bg-gold-500 shadow-gold-glow"></div>
+                      <span className="text-white text-[10px] font-black uppercase tracking-[0.6em] flex items-center gap-3">
+                         <Scan size={14} className="text-gold-500" /> Phase 01: Structural Integrity
+                      </span>
+                   </div>
+                   <h1 className="text-white font-serif text-6xl md:text-[8rem] leading-[0.8] tracking-tighter italic mb-8 drop-shadow-2xl">
+                      Structural <br/><span className="gold-gradient-text italic font-black">Monopoly.</span>
+                   </h1>
+                </div>
+
+                <div className="pb-10">
+                    <button 
+                        onClick={() => setIsScanActive(!isScanActive)}
+                        className={`px-10 py-5 rounded-full border text-[10px] font-black uppercase tracking-[0.4em] transition-all flex items-center gap-4 ${isScanActive ? 'bg-gold-500 text-onyx-950 border-gold-500' : 'bg-white/5 text-white border-white/20 hover:bg-white/10'}`}
+                    >
+                        {isScanActive ? <Cpu size={16} className="animate-spin-slow" /> : <Maximize2 size={16} />}
+                        {isScanActive ? 'Deactivate BIM Inspect' : 'Initialize BIM Inspect'}
+                    </button>
+                </div>
             </div>
          </div>
       </div>
@@ -59,7 +95,7 @@ const AssetPage: React.FC = () => {
               { l: "Podium Base", v: "G+3", s: "Event Logistics" },
               { l: "Sky Link", v: "Lvl 15", s: "Meridian Arch" }
             ].map((stat, i) => (
-              <div key={i} className="group border-r last:border-0 border-slate-100 pr-8">
+              <div key={i} className="group border-b md:border-b-0 md:border-r last:border-0 border-slate-100 pr-8 pb-8 md:pb-0">
                 <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-3 group-hover:text-gold-600 transition-colors">{stat.l}</div>
                 <div className="text-slate-950 font-serif text-5xl mb-2 italic leading-none font-bold">{stat.v}</div>
                 <div className="text-gold-600 text-[9px] uppercase tracking-widest font-black italic">{stat.s}</div>
@@ -71,75 +107,45 @@ const AssetPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 mb-40 items-center">
             <div className="lg:col-span-6 space-y-12">
                <h2 className="text-slate-950 font-serif text-5xl md:text-7xl leading-[0.9] tracking-tighter italic">Asset <br/><span className="gold-gradient-text not-italic font-black">DNA.</span></h2>
-               <p className="text-slate-600 text-xl font-light leading-relaxed border-l-2 border-gold-200 pl-8 bg-[#FDFBF7] py-10 rounded-r-3xl">
-                  "Architecture is our primary yield multiplier. The twin-tower symmetry creates an instant geographic waypoint, ensuring the asset commands a premium ADR and banqueting floor from day zero."
-               </p>
-               <div className="flex gap-12">
-                  <div className="flex items-center gap-4">
-                     <div className="w-10 h-10 rounded-full bg-gold-50 flex items-center justify-center text-gold-600">
-                        <Building2 size={20} />
-                     </div>
-                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Institutional Class</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                     <div className="w-10 h-10 rounded-full bg-gold-50 flex items-center justify-center text-gold-600">
-                        <ShieldCheck size={20} />
-                     </div>
-                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Title Secured</span>
+               <div className="space-y-8">
+                  <p className="text-slate-600 text-xl font-light leading-relaxed border-l-2 border-gold-200 pl-8 bg-[#FDFBF7] py-10 rounded-r-3xl italic">
+                     "Architecture is our primary yield multiplier. The twin-tower symmetry creates an instant geographic waypoint, ensuring the asset commands a premium ADR and banqueting floor from day zero."
+                  </p>
+                  <div className="grid grid-cols-2 gap-8">
+                    <div className="p-8 border border-slate-100 rounded-3xl bg-white shadow-sm hover:border-gold-300 transition-all group">
+                       <Activity size={24} className="text-gold-500 mb-4 group-hover:scale-110 transition-transform" />
+                       <h4 className="text-slate-950 font-serif text-xl italic mb-1">Efficiency Ratio</h4>
+                       <p className="text-slate-400 text-xs uppercase font-black tracking-widest">92% Floor Plate Utilization</p>
+                    </div>
+                    <div className="p-8 border border-slate-100 rounded-3xl bg-white shadow-sm hover:border-gold-300 transition-all group">
+                       <Compass size={24} className="text-gold-500 mb-4 group-hover:scale-110 transition-transform" />
+                       <h4 className="text-slate-950 font-serif text-xl italic mb-1">Aviation Height</h4>
+                       <p className="text-slate-400 text-xs uppercase font-black tracking-widest">75.0M Datum Point AAI Verified</p>
+                    </div>
                   </div>
                </div>
             </div>
             
             <div className="lg:col-span-6">
-               <div className="relative rounded-[4rem] overflow-hidden border border-slate-200 shadow-2xl group h-[600px]">
-                  <img src={images[0].src} className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110" alt="Detail" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+               <div className="relative rounded-[4rem] overflow-hidden border border-slate-200 shadow-2xl group h-[600px] bg-slate-950">
+                  <img src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110 opacity-80" alt="Detail" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                  
+                  {/* Technical Overlay */}
+                  <div className="absolute top-10 right-10 text-right space-y-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                     <div className="text-gold-500 font-mono text-[9px] font-black uppercase tracking-widest">MESH_ACTIVE // BIM_SYNC: 100%</div>
+                     <div className="text-white/40 font-mono text-[8px] uppercase tracking-tighter">RENDER_ENGINE: L300_PHYSICAL</div>
+                  </div>
+
                   <div className="absolute bottom-12 left-12">
-                     <span className="text-gold-400 text-[10px] font-black uppercase tracking-widest mb-2 block">{images[0].sub}</span>
-                     <h3 className="text-white font-serif text-4xl italic">{images[0].label}</h3>
+                     <span className="text-gold-400 text-[10px] font-black uppercase tracking-widest mb-2 block">Level 20 Architecture</span>
+                     <h3 className="text-white font-serif text-4xl italic">Twin Monolith Symmetry</h3>
                   </div>
                </div>
             </div>
         </div>
 
-        {/* Engineering Audit Section */}
-        <div className="mb-40 pt-32 border-t border-slate-200">
-            <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-10">
-                <div className="max-w-2xl">
-                    <span className="text-gold-600 text-[10px] font-black uppercase tracking-[0.8em] block mb-8">Technical Parameters</span>
-                    <h2 className="text-slate-950 font-serif text-5xl md:text-7xl leading-[0.9] tracking-tighter italic">Engineering <br/><span className="gold-gradient-text not-italic font-black">Audit.</span></h2>
-                </div>
-                <div className="p-8 bg-slate-950 rounded-3xl text-white flex items-center gap-6 shadow-2xl">
-                   <Database size={24} className="text-gold-500" />
-                   <div>
-                      <div className="text-[9px] font-black uppercase tracking-widest text-slate-400">BIM Grade</div>
-                      <div className="text-white font-bold text-sm">Level 300 Certified</div>
-                   </div>
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {[
-                  { icon: Target, title: "Circular Efficiency", desc: "92% floor-plate efficiency through central circular service core optimization.", val: "92%" },
-                  { icon: Compass, title: "Vedic Alignment", desc: "Vastu-calibrated orientations ensuring spiritual compliance for local high-velocity demand.", val: "100%" },
-                  { icon: Ruler, title: "Aviation Datum", desc: "75.0m maximum verticality cleared by AAI, establishing district skyline height record.", val: "75m" }
-                ].map((item, i) => (
-                   <div key={i} className="p-12 bg-white border border-slate-100 rounded-[3.5rem] hover:border-gold-400 transition-all duration-700 shadow-sm hover:shadow-2xl group">
-                      <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-gold-600 mb-8 border border-slate-100 group-hover:bg-gold-500 group-hover:text-white transition-all">
-                         <item.icon size={28} />
-                      </div>
-                      <h4 className="text-slate-950 font-serif text-3xl italic mb-4 leading-none">{item.title}</h4>
-                      <p className="text-slate-500 text-lg font-light leading-relaxed italic mb-8">{item.desc}</p>
-                      <div className="pt-8 border-t border-slate-50 flex justify-between items-center">
-                         <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Metric Value</span>
-                         <span className="text-slate-950 font-mono text-xl font-black">{item.val}</span>
-                      </div>
-                   </div>
-                ))}
-            </div>
-        </div>
-
-        {/* Immersive Stacking Explorer */}
+        {/* Floor Plan Explorer Component */}
         <div className="mb-40 pt-32 border-t border-slate-200">
            <FloorPlanExplorer />
         </div>
@@ -157,6 +163,14 @@ const AssetPage: React.FC = () => {
            </div>
         </Link>
       </div>
+      <style>{`
+        @keyframes scan {
+          0% { top: 0%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { top: 100%; opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 };

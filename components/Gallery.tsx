@@ -2,78 +2,27 @@ import React, { useState } from 'react';
 import { Expand, Layout, Building2, HardHat, Image as ImageIcon } from 'lucide-react';
 
 const images = [
-  {
-    src: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&q=80",
-    cat: "Elevational Geometry",
-    title: "Structural Glass Glazing",
-    span: "col-span-1 md:col-span-2 row-span-2"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80",
-    cat: "Gastronomy",
-    title: "Revolving Crown Interior",
-    span: "col-span-1 row-span-1"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80",
-    cat: "Private Sanctuary",
-    title: "Executive Suite Master",
-    span: "col-span-1 row-span-2"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
-    cat: "Ritual Events",
-    title: "Imperial Ballroom Volume",
-    span: "col-span-1 row-span-1"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80",
-    cat: "Vedic Wellness",
-    title: "The Spa Sanctuary",
-    span: "col-span-1 row-span-1"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80",
-    cat: "Structural Hub",
-    title: "The Meridian Skybridge",
-    span: "col-span-1 md:col-span-2 row-span-1"
-  }
+  { src: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&q=80", cat: "Architecture", title: "Glass Glazing", span: "col-span-1 md:col-span-2 row-span-2" },
+  { src: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80", cat: "F&B", title: "Orbit Interior", span: "col-span-1 row-span-1" },
+  { src: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80", cat: "Luxury", title: "Exec Suite", span: "col-span-1 row-span-2" },
+  { src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80", cat: "Events", title: "Ballroom Volume", span: "col-span-1 row-span-1" },
+  { src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80", cat: "Wellness", title: "Spa Sanctuary", span: "col-span-1 row-span-1" },
+  { src: "https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80", cat: "Skylink", title: "Meridian Bridge", span: "col-span-1 md:col-span-2 row-span-1" }
 ];
 
 const GalleryItem: React.FC<{ img: typeof images[0] }> = ({ img }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   return (
-    <div className={`relative group overflow-hidden cursor-pointer rounded-[4rem] border border-slate-100 shadow-xl bg-slate-50 transition-all duration-1000 ${img.span}`}>
-      {/* Placeholder State */}
-      <div className={`absolute inset-0 bg-slate-50 flex items-center justify-center transition-opacity duration-700 z-10 ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-         <div className="flex flex-col items-center gap-4 opacity-10">
-            <ImageIcon size={48} className="animate-pulse" />
-         </div>
+    <div className={`relative group overflow-hidden cursor-pointer rounded-[2.5rem] border border-slate-100 shadow-lg bg-slate-50 transition-all duration-700 ${img.span}`}>
+      <img src={img.src} alt={img.title} className="w-full h-full object-cover transition-transform duration-[4s] group-hover:scale-105" />
+      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-90 group-hover:opacity-20 transition-opacity"></div>
+      <div className="absolute inset-0 flex flex-col justify-end p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform">
+          <span className="text-gold-600 text-[7px] uppercase tracking-[0.4em] mb-2 font-black">{img.cat}</span>
+          <h3 className="text-slate-900 font-serif text-xl italic leading-tight">{img.title}</h3>
       </div>
-
-      <img 
-          src={img.src} 
-          alt={img.title}
-          loading="lazy"
-          onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-all duration-[2s] ease-out group-hover:scale-110 brightness-[1.05] contrast-[1.02] ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} 
-      />
-      
-      {/* Content Overlay */}
-      <div className={`absolute inset-0 transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-20 transition-opacity duration-700"></div>
-          
-          <div className="absolute inset-0 flex flex-col justify-end p-12 translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
-              <span className="text-gold-600 text-[9px] uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-opacity font-black">{img.cat}</span>
-              <h3 className="text-slate-900 font-serif text-3xl tracking-tight group-hover:text-gold-600 transition-colors leading-tight italic">{img.title}</h3>
-          </div>
-
-          <div className="absolute top-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity">
-             <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-xl border border-white/40 flex items-center justify-center text-slate-900 shadow-3xl">
-                <Expand size={20} />
-             </div>
-          </div>
+      <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+         <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-slate-900">
+            <Expand size={14} />
+         </div>
       </div>
     </div>
   );
@@ -81,39 +30,34 @@ const GalleryItem: React.FC<{ img: typeof images[0] }> = ({ img }) => {
 
 const Gallery: React.FC = () => {
   return (
-    <section id="gallery" className="py-64 bg-white relative overflow-hidden">
+    <section id="gallery" className="py-12 bg-white relative h-full flex flex-col justify-center overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-end mb-32">
-          <div className="lg:col-span-7">
-            <span className="text-gold-600 tracking-[0.8em] uppercase text-[10px] font-black block mb-10">Visual Evidence: Asset Portfolio</span>
-            <h2 className="font-serif text-6xl md:text-9xl text-slate-950 italic leading-[0.75] tracking-tighter">Project <br/><span className="gold-gradient-text not-italic font-black">Manifesto.</span></h2>
+        <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-8">
+          <div className="max-w-2xl">
+            <span className="text-gold-600 tracking-[0.6em] uppercase text-[9px] font-black block mb-4">Asset Visual Portfolio</span>
+            <h2 className="font-serif text-4xl md:text-7xl text-slate-950 italic leading-[0.8] tracking-tighter">Project <br/><span className="gold-gradient-text not-italic font-black">Manifesto.</span></h2>
           </div>
-          <div className="lg:col-span-5 flex flex-col gap-8 lg:border-l border-slate-100 lg:pl-16 pb-4">
-             <p className="text-slate-500 text-xl font-light leading-relaxed">
-               A high-fidelity audit of the physical asset. Each frame represents a strategic yield center or a structural USP.
-             </p>
-             <div className="flex gap-4">
-                <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-full text-slate-500 text-[8px] font-black uppercase tracking-widest flex items-center gap-3 hover:bg-white transition-all cursor-pointer">
-                  <Building2 size={12} className="text-gold-600" /> 8K Master Renders
-                </div>
-                <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-full text-slate-500 text-[8px] font-black uppercase tracking-widest flex items-center gap-3 hover:bg-white transition-all cursor-pointer">
-                  <HardHat size={12} className="text-gold-600" /> Site Logs
-                </div>
-             </div>
+          <div className="flex gap-4 mb-4">
+              <div className="px-5 py-2 bg-slate-50 border border-slate-200 rounded-full text-slate-500 text-[7px] font-black uppercase tracking-widest flex items-center gap-2">
+                <Building2 size={10} className="text-gold-600" /> 8K Master Renders
+              </div>
+              <div className="px-5 py-2 bg-slate-50 border border-slate-200 rounded-full text-slate-500 text-[7px] font-black uppercase tracking-widest flex items-center gap-2">
+                <HardHat size={10} className="text-gold-600" /> Site Logs
+              </div>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-4 gap-8 h-auto lg:h-[1200px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-[60vh]">
             {images.map((img, idx) => (
                 <GalleryItem key={idx} img={img} />
             ))}
         </div>
         
-        <div className="mt-32 flex flex-col items-center">
-             <button className="group relative flex items-center gap-10 bg-slate-950 text-white px-20 py-8 rounded-full text-[11px] font-black uppercase tracking-[0.6em] transition-all hover:bg-gold-500 shadow-3xl active:scale-95">
-                Authorize Full Visual Vault <Layout size={20} className="text-gold-400 group-hover:text-white transition-colors" />
+        <div className="mt-12 text-center">
+             <button className="group relative inline-flex items-center gap-6 bg-slate-950 text-white px-12 py-5 rounded-full text-[9px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 transition-all shadow-xl active:scale-95">
+                Full Visual Vault <Layout size={16} className="text-gold-400 group-hover:text-white" />
              </button>
-             <p className="mt-8 text-[9px] font-black uppercase tracking-[0.4em] text-slate-300">Confidential Media Log v2.5</p>
+             <p className="mt-6 text-[7px] font-black uppercase tracking-[0.3em] text-slate-300 italic">Confidential Media Log v2.5</p>
         </div>
       </div>
     </section>
