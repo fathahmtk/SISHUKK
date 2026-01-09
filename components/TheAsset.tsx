@@ -5,20 +5,20 @@ import { Link } from 'react-router-dom';
 const SHOWCASE_IMAGES = [
   {
     src: "https://clickpetroleoegas.com.br/wp-content/uploads/2025/12/Torres-gemeas-Katara-custam-600-milhoes-de-dolares-erguem-211-metros-em-Doha-e-abrigam-o-Raffles-Doha-hotel-6-estrelas-so-de-suites-.jpg",
-    label: "Architectural Monopoly",
-    sub: "Visual Dominance",
+    label: "Architectural Scarcity",
+    sub: "Non-Replicable Asset",
     height: "aspect-[4/5]"
   },
   {
     src: "https://us.images.westend61.de/0001233140pw/aerial-view-of-the-luxurious-burj-al-arab-hotel-by-night-in-dubai-bay-uae-AAEF02792.jpg",
-    label: "Destination Economics",
-    sub: "Luxury Benchmark",
+    label: "Diversified Revenue",
+    sub: "Multi-Vertical Yield",
     height: "aspect-square"
   },
   {
     src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-    label: "Premium Yield",
-    sub: "Event & Experience",
+    label: "Institutional Exit",
+    sub: "REIT / Strategic Sale",
     height: "aspect-[3/4]"
   }
 ];
@@ -26,28 +26,27 @@ const SHOWCASE_IMAGES = [
 const TheAsset: React.FC = () => {
   return (
     <section id="asset" className="py-48 bg-onyx-950 border-t border-white/5 relative overflow-hidden">
-      {/* Visual background gradient for architectural depth */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gold-900/5 to-transparent pointer-events-none"></div>
       <div className="absolute -left-24 top-1/2 -translate-y-1/2 w-96 h-96 bg-gold-500/5 blur-[120px] rounded-full pointer-events-none"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-24 items-start">
           <div className="lg:w-2/5 reveal-on-scroll sticky top-32">
-            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-10">Investment Thesis</span>
+            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-10">Strategic Rationale</span>
             <h2 className="text-white font-serif text-6xl md:text-8xl mb-12 leading-[0.8] tracking-tighter italic">
-              Architectural <br/>
-              <span className="gold-gradient-text italic font-black">Monopoly.</span>
+              Investment <br/>
+              <span className="gold-gradient-text italic font-black">Thesis.</span>
             </h2>
             <p className="text-slate-400 text-2xl font-light leading-relaxed mb-12 max-w-xl border-l border-gold-500/30 pl-10">
-              The central arch creates a visual monopoly. This asset cannot be compared to standard hotels or towers. Comparable scarcity drives pricing power and valuation insulation.
+              Sirshukk Grand Towers is positioned as a landmark hospitality destination. The investment thesis rests on architectural scarcity, diversified revenue streams, and high-margin experiential income.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-16">
               {[
-                { icon: Building2, label: "Non-replicable Architecture" },
-                { icon: Anchor, label: "Destination Economics" },
-                { icon: LayoutGrid, label: "Tourism Footfall Driver" },
-                { icon: TrendingUp, label: "High-Margin Event Yield" }
+                { icon: Building2, label: "Architectural Scarcity" },
+                { icon: Anchor, label: "Diversified Revenue Model" },
+                { icon: LayoutGrid, label: "High-Margin Event Income" },
+                { icon: TrendingUp, label: "Institutional Exit Readiness" }
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-5 group cursor-default">
                   <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:border-gold-500/50 transition-all shadow-xl group-hover:bg-onyx-900">
@@ -70,13 +69,12 @@ const TheAsset: React.FC = () => {
                     <h3 className="text-white font-serif text-xl italic">Investor Signal</h3>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed italic">
-                    "Revenue is not dependent on rooms alone. The form factor itself drives media, culture, and event demand."
+                    "This is not inventory. This is a destination where architecture functions as a commercial engine."
                   </p>
                </div>
             </div>
           </div>
 
-          {/* Masonry Image Showcase */}
           <div className="lg:w-3/5 w-full">
             <div className="columns-1 md:columns-2 gap-8 space-y-8">
               {SHOWCASE_IMAGES.map((img, i) => (
@@ -100,9 +98,6 @@ const TheAsset: React.FC = () => {
                       <span className="text-[8px] font-black uppercase tracking-widest">Enlarge View</span>
                     </div>
                   </div>
-
-                  {/* Corner Accent */}
-                  <div className="absolute top-6 right-6 w-12 h-12 border-t border-r border-gold-500/30 rounded-tr-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                 </div>
               ))}
             </div>
@@ -113,8 +108,8 @@ const TheAsset: React.FC = () => {
                   <LayoutGrid size={20} />
                 </div>
                 <div>
-                  <span className="text-white text-sm font-bold uppercase tracking-widest">Premium Event & Experience Yield</span>
-                  <p className="text-slate-600 text-[10px] uppercase font-black tracking-widest mt-1">Scale & Symmetry for Global Events</p>
+                  <span className="text-white text-sm font-bold uppercase tracking-widest">Valuation Insulation</span>
+                  <p className="text-slate-600 text-[10px] uppercase font-black tracking-widest mt-1">Driven by Visual Monopoly & Scarcity</p>
                 </div>
               </div>
               <button className="p-4 rounded-full border border-white/10 text-slate-500 group-hover:text-gold-500 group-hover:border-gold-500 transition-all">

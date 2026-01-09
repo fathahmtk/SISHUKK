@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
@@ -14,10 +14,10 @@ const DEBT_SNOWBALL_DATA = [
 ];
 
 const FORECAST_TABLE = [
-  { yr: "Year 1", occ: "55%", adr: "₹9,500", rev: "68.0", ebitda: "18.6", ncf: "-10.0", div: "0.0" },
-  { yr: "Year 4", occ: "72%", adr: "₹11,500", rev: "118.0", ebitda: "48.0", ncf: "18.5", div: "5.0" },
-  { yr: "Year 7", occ: "78%", adr: "₹13,800", rev: "155.0", ebitda: "72.5", ncf: "45.0", div: "12.5" },
-  { yr: "Year 10", occ: "80%", adr: "₹16,500", rev: "182.0", ebitda: "91.0", ncf: "82.0", div: "22.0" },
+  { yr: "Year 1-3", phase: "Development", rev: "-", ebitda: "-", status: "Construction & Drawdown" },
+  { yr: "Year 4-5", phase: "Operational Ramp", rev: "Ramping", ebitda: "Positive", status: "Events & Exp. Activation" },
+  { yr: "Year 6-7", phase: "Stabilization", rev: "Peak", ebitda: "30-35%", status: "Strong Free Cash Flow" },
+  { yr: "Year 8-10", phase: "Exit Window", rev: "Optimized", ebitda: "Maximized", status: "Valuation Peak" },
 ];
 
 const TenYearForecast: React.FC = () => {
@@ -26,23 +26,23 @@ const TenYearForecast: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between items-end mb-24 gap-12">
           <div className="max-w-4xl">
-            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-8">Stabilization Horizon</span>
-            <h2 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-10 italic">Performance <br/><span className="gold-gradient-text italic font-black">Terminal.</span></h2>
+            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-8">Section 08: Financial Structure</span>
+            <h2 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-10 italic">10-Year <br/><span className="gold-gradient-text italic font-black">Horizon.</span></h2>
             <p className="text-slate-400 text-xl font-light leading-relaxed max-w-2xl border-l border-gold-500/30 pl-10">
-              A 10-year projection modeled on 3 phases: Ramp-up (Y1-3), Stabilization (Y4-7), and Peak Valuation/Exit (Y8-10). Debt is retired aggressively to maximize equity multiple.
+              The model projects a clear lifecycle: Development (Y1-3), Ramp-up (Y4-5), Stabilisation (Y6-7), and Peak Valuation/Exit (Y8-10). Early negative cash flows transition rapidly to strong EBITDA once events and experiences activate.
             </p>
           </div>
           
           <div className="flex gap-6">
              <div className="p-8 bg-onyx-900 border border-white/10 rounded-3xl text-center min-w-[180px]">
-                <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1">Target ADR</div>
-                <div className="text-white font-serif text-3xl">₹12.5k</div>
-                <div className="text-gold-500 text-[8px] font-black uppercase tracking-widest mt-2">Stabilized Base</div>
+                <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1">Target Margin</div>
+                <div className="text-white font-serif text-3xl">30-35%</div>
+                <div className="text-gold-500 text-[8px] font-black uppercase tracking-widest mt-2">Blended EBITDA</div>
              </div>
              <div className="p-8 bg-gold-500 rounded-3xl text-onyx-950 text-center min-w-[180px] shadow-3xl">
-                <div className="text-onyx-950/60 text-[9px] font-black uppercase tracking-widest mb-1">EBITDA Margin</div>
-                <div className="text-onyx-950 font-serif text-4xl font-black">35%</div>
-                <div className="text-onyx-950/60 text-[8px] font-black uppercase tracking-widest mt-2">Blended Target</div>
+                <div className="text-onyx-950/60 text-[9px] font-black uppercase tracking-widest mb-1">Equity MOIC</div>
+                <div className="text-onyx-950 font-serif text-4xl font-black">3.5x</div>
+                <div className="text-onyx-950/60 text-[8px] font-black uppercase tracking-widest mt-2">Target Exit</div>
              </div>
           </div>
         </div>
@@ -53,24 +53,22 @@ const TenYearForecast: React.FC = () => {
             <table className="w-full text-left">
               <thead>
                 <tr className="bg-white/5 border-b border-white/5 text-slate-500 text-[9px] font-black uppercase tracking-[0.4em]">
-                  <th className="px-10 py-8">Operational Year</th>
-                  <th className="px-10 py-8 text-center">Occ %</th>
-                  <th className="px-10 py-8 text-center">ADR (Net)</th>
-                  <th className="px-10 py-8 text-center">Revenue (Cr)</th>
-                  <th className="px-10 py-8 text-center">EBITDA (Cr)</th>
-                  <th className="px-10 py-8 text-right text-gold-500">Free Cash Flow</th>
+                  <th className="px-10 py-8">Timeline</th>
+                  <th className="px-10 py-8">Lifecycle Phase</th>
+                  <th className="px-10 py-8 text-center">Revenue Trajectory</th>
+                  <th className="px-10 py-8 text-center">EBITDA Profile</th>
+                  <th className="px-10 py-8 text-right text-gold-500">Cash Flow Status</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
                 {FORECAST_TABLE.map((row, i) => (
                   <tr key={i} className="group border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors">
                     <td className="px-10 py-8 text-white font-serif text-2xl italic group-hover:text-gold-400 transition-colors">{row.yr}</td>
-                    <td className="px-10 py-8 text-center text-slate-400 font-mono">{row.occ}</td>
-                    <td className="px-10 py-8 text-center text-slate-400 font-mono">{row.adr}</td>
-                    <td className="px-10 py-8 text-center text-white font-bold">₹{row.rev} Cr</td>
-                    <td className="px-10 py-8 text-center text-emerald-500">₹{row.ebitda} Cr</td>
+                    <td className="px-10 py-8 text-slate-300 font-bold uppercase tracking-wider text-xs">{row.phase}</td>
+                    <td className="px-10 py-8 text-center text-slate-400 font-mono">{row.rev}</td>
+                    <td className="px-10 py-8 text-center text-white font-bold">{row.ebitda}</td>
                     <td className="px-10 py-8 text-right">
-                       <span className="text-gold-500 font-serif text-2xl font-black">₹{row.ncf} Cr</span>
+                       <span className="text-gold-500 font-bold uppercase tracking-widest text-[10px]">{row.status}</span>
                     </td>
                   </tr>
                 ))}
@@ -79,7 +77,7 @@ const TenYearForecast: React.FC = () => {
           </div>
           <div className="bg-white/5 p-6 flex items-center justify-center gap-8 border-t border-white/10">
              <span className="text-[8px] text-slate-600 font-black uppercase tracking-[0.5em] flex items-center gap-2">
-                <AlertCircle size={10} /> Model assumes 4.5% annual inflation on ADR and OpEx
+                <AlertCircle size={10} /> Model assumes operational ramp-up allows rapid EBITDA acceleration
              </span>
           </div>
         </div>
@@ -131,17 +129,17 @@ const TenYearForecast: React.FC = () => {
              <div className="p-10 bg-gold-500 rounded-[3.5rem] flex flex-col justify-between h-[250px] shadow-3xl transform transition-transform hover:scale-[1.02]">
                 <div>
                    <Globe size={40} className="opacity-30 mb-6" />
-                   <h4 className="text-onyx-950 text-[10px] font-black uppercase tracking-[0.5em] mb-2">Portfolio Multiple</h4>
+                   <h4 className="text-onyx-950 text-[10px] font-black uppercase tracking-[0.5em] mb-2">Equity Multiplier</h4>
                    <div className="text-onyx-950 font-serif text-7xl font-black tracking-tighter">3.5x</div>
                 </div>
-                <p className="text-onyx-950 text-[9px] font-bold uppercase tracking-widest italic border-t border-onyx-950/10 pt-4">Projected Year 7 Stabilization Exit</p>
+                <p className="text-onyx-950 text-[9px] font-bold uppercase tracking-widest italic border-t border-onyx-950/10 pt-4">Projected Exit at Stabilization</p>
              </div>
 
              <div className="p-10 bg-onyx-900 border border-white/10 rounded-[3.5rem] flex flex-col justify-between h-[250px] shadow-2xl relative overflow-hidden group">
                 <div className="relative z-10">
                    <Activity size={32} className="text-emerald-500 mb-6 group-hover:scale-125 transition-transform duration-700" />
-                   <h4 className="text-slate-500 text-[10px] font-black uppercase tracking-[0.5em] mb-2">Total Wealth Potential</h4>
-                   <div className="text-white font-serif text-5xl">₹1,236 Cr</div>
+                   <h4 className="text-slate-500 text-[10px] font-black uppercase tracking-[0.5em] mb-2">Internal Rate of Return</h4>
+                   <div className="text-white font-serif text-5xl">22-24%</div>
                 </div>
                 <div className="bg-emerald-500/10 border border-emerald-500/20 px-6 py-3 rounded-full flex items-center justify-between group-hover:bg-emerald-500/20 transition-all">
                    <span className="text-emerald-500 text-[9px] font-black uppercase tracking-widest">DSCR Rating</span>

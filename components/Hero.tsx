@@ -23,18 +23,13 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
         const sectionOffset = sectionRef.current.offsetTop;
         const relativeScroll = scrollY - sectionOffset;
         
-        // High-Precision Pronounced Parallax Logic
         if (relativeScroll < window.innerHeight && relativeScroll > -window.innerHeight) {
-          // Increased velocity for more "depth" (0.65)
           const yPos = relativeScroll * 0.5;
-          // Continuous scale factor tied to scroll
           const scrollScale = 1.1 + (Math.max(0, relativeScroll) * 0.0002);
-          
           bgRef.current.style.transform = `translate3d(0, ${yPos}px, 0) scale(${scrollScale})`;
         }
       }
 
-      // Dynamic opacity and lift for content
       if (contentRef.current) {
         const progress = Math.min(1, window.scrollY / (window.innerHeight * 0.6));
         const opacity = 1 - progress;
@@ -51,10 +46,10 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
   }, []);
 
   const facts = [
-    { label: "Architecture", value: "Landmark", sub: "Iconic Status" },
-    { label: "Usage", value: "Mixed-Use", sub: "Hospitality Led" },
-    { label: "Nature", value: "Destination", sub: "Asset Class" },
-    { label: "Strategy", value: "Long-Term", sub: "Yield & Growth" },
+    { label: "Architecture", value: "Landmark", sub: "Visual Monopoly" },
+    { label: "Asset Type", value: "Destination", sub: "Experience-Driven" },
+    { label: "Revenue", value: "Diversified", sub: "Multi-Vertical" },
+    { label: "Exit", value: "Institutional", sub: "Strategic / REIT" },
   ];
 
   return (
@@ -63,7 +58,6 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
       ref={sectionRef}
       className="min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center relative overflow-hidden bg-onyx-950"
     >
-      {/* Cinematic Parallax Background Container */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div 
           ref={bgRef}
@@ -77,29 +71,22 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
           }}
         >
         </div>
-        
-        {/* Deep Gradient Overlays for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-onyx-950/70 via-transparent to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.08)_0%,_transparent_100%)]"></div>
-        
-        {/* Animated Institutional Grid/Scan Lines */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_49.5%,rgba(212,175,55,0.03)_50%,transparent_50.5%)] bg-[length:100%_80px] animate-[scanline_20s_linear_infinite] opacity-30"></div>
       </div>
       
-      {/* Meridian Light Leak Effect */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-gold-500/20 to-transparent pointer-events-none z-10 hidden lg:block"></div>
 
       <div ref={contentRef} className="container mx-auto relative z-20 text-center lg:text-left will-change-transform">
         <div className="max-w-6xl mx-auto">
           
-          {/* Brand Header: Cinematic Entrance */}
           <div className="flex flex-col lg:flex-row items-center lg:items-end gap-10 mb-12">
             <Logo className="w-28 h-28 lg:w-36 lg:h-36 drop-shadow-[0_0_50px_rgba(212,175,55,0.4)] animate-float opacity-0 animate-[fade-in_1s_ease-out_forwards]" />
             <div className="lg:mb-2 text-center lg:text-left overflow-hidden">
               <div className="inline-flex items-center gap-3 px-5 py-2 border border-gold-400/20 bg-gold-400/5 text-gold-300 text-[10px] font-black uppercase tracking-[0.6em] mb-6 backdrop-blur-xl rounded-full mx-auto lg:mx-0 shadow-gold-glow opacity-0 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.2s_forwards]">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
-                Landmark Hospitality Asset
+                Hospitality-Led Landmark Asset
               </div>
               <h1 className="text-white font-display text-6xl md:text-8xl lg:text-[9.5rem] leading-[0.8] tracking-tighter">
                 <span className="block translate-y-full opacity-0 animate-[reveal-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.4s_forwards]">SIRSHUKK</span>
@@ -111,15 +98,13 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
             </div>
           </div>
 
-          {/* Subtext: Elegance & Authority */}
           <h2 className="text-2xl md:text-4xl text-slate-300 font-serif italic mb-12 max-w-4xl opacity-0 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.8s_forwards] leading-tight pr-4">
             A Landmark Hospitality & Experiential Destination. <br/>
             <span className="text-white text-xl md:text-2xl font-sans not-italic font-light mt-4 block text-slate-400">
-              An architecturally iconic twin-tower development anchored by a monumental sky-arch, designed to operate as a global hospitality, events, and destination asset.
+              An architecturally iconic twin-tower development anchored by a monumental sky-arch, designed to operate as a diversified, high-margin institutional asset.
             </span>
           </h2>
 
-          {/* Fact Grid: Interactive Quantitative Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
             {facts.map((fact, i) => (
               <div 
@@ -140,7 +125,6 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
             ))}
           </div>
 
-          {/* CTAs: Direct Action Channels */}
           <div className="flex flex-col sm:flex-row items-center gap-8 opacity-0 animate-[fade-in-up_1s_cubic-bezier(0.16,1,0.3,1)_1.6s_forwards]">
             <button 
               onClick={onInvestorClick}

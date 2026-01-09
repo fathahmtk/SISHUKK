@@ -5,8 +5,8 @@ import { IndianRupee, BarChart, TrendingUp, AlertTriangle, ShieldCheck, FileText
 const data = [
   { name: 'Rooms & Suites', value: 35 },
   { name: 'F&B Destination', value: 25 },
-  { name: 'Weddings & Events', value: 25 },
-  { name: 'Experiential', value: 15 },
+  { name: 'Weddings & Events', value: 20 },
+  { name: 'Experiential', value: 15 }, // Adjusted based on Master Text ranges (mid-points)
 ];
 
 const COLORS = ['#1e40af', '#10b981', '#D4AF37', '#e11d48'];
@@ -23,7 +23,7 @@ const Financials: React.FC = () => {
           <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-8">Financial Intelligence Unit</span>
           <h2 className="font-serif text-6xl md:text-9xl text-white mb-10 tracking-tighter italic leading-[0.8]">Capital <br/><span className="gold-gradient-text italic font-black">Architecture.</span></h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-xl font-light leading-relaxed">
-            10-Year model based on "Landmark Economics," not standard hotel metrics.
+            A 10-Year financial model based on "Landmark Economics," maximizing yield through architectural scarcity and diversified revenue.
           </p>
         </div>
 
@@ -166,8 +166,7 @@ const Financials: React.FC = () => {
                    <div className="space-y-12 relative z-10">
                       {[
                         { item: "Senior Project Debt", val: "₹210 Cr", status: "Term Sheet Executed", p: "60%" },
-                        { item: "Founder Equity", val: "₹70 Cr", status: "Debt-Free Base", p: "20%" },
-                        { item: "Strategic Tranche", val: "₹70 Cr", status: "Active Deployment", p: "20%" }
+                        { item: "Promoter & Investor Equity", val: "₹140 Cr", status: "Active Deployment", p: "40%" },
                       ].map((row, i) => (
                         <div key={i} className="flex justify-between items-center group">
                            <div className="flex items-center gap-10">
@@ -195,10 +194,10 @@ const Financials: React.FC = () => {
           {activeTab === 'risk' && (
              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
                 {[
-                  { risk: "Structural Overrun", mit: "Lump-sum EPC contracts with built-in penalty clauses for timeline variations.", status: "Audited" },
-                  { risk: "Regulatory Variance", mit: "100% of major NOCs secured before Level 1 slab casting phase.", status: "Mitigated" },
-                  { risk: "Yield Volatility", mit: "Convention pre-deposits cover approx 40% of first-year debt servicing.", status: "Resilient" },
-                  { risk: "Liquidity Exit", mit: "Exit modeled on global REIT benchmarks with Big-4 transparency standards.", status: "Strategic" }
+                  { risk: "Execution Risk", mit: "Lump-sum fixed-price EPC contracts with Tier-1 engineering firms.", status: "Guaranteed" },
+                  { risk: "Regulatory Risk", mit: "All major NOCs (Aviation, PCB, Fire) secured prior to construction start.", status: "De-risked" },
+                  { risk: "Yield Volatility", mit: "Convention pre-deposits and non-seasonal ritual demand stabilize cash flow.", status: "Stable" },
+                  { risk: "Structural Moat", mit: "Zero 5-star supply in 10km radius ensures long-term pricing power.", status: "Resilient" }
                 ].map((item, i) => (
                   <div key={i} className="p-16 bg-onyx-900 border border-white/10 rounded-[4rem] hover:bg-white/[0.04] transition-all group relative overflow-hidden institutional-border">
                      <div className="flex justify-between items-start mb-10">
