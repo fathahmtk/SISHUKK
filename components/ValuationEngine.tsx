@@ -1,26 +1,24 @@
-import React from 'react';
-import { Calculator, ShieldCheck, Activity, Landmark, ArrowUpRight, BarChart3, Layers, Target, Scale, Info } from 'lucide-react';
+import React, { useState } from 'react';
+import { Calculator, ShieldCheck, Activity, Landmark, ArrowUpRight, Target, Scale, Info, Zap } from 'lucide-react';
+
+type Scenario = 'stress' | 'base' | 'bull';
 
 const ValuationEngine: React.FC = () => {
-  const benchmarks = [
-    { metric: "Asset Class Logic", sgt: "Landmark Destination", market: "Standard City Hotel", res: "Superior" },
-    { metric: "Target IRR (Equity)", sgt: "24.2%", market: "16 - 18%", res: "High Alpha" },
-    { metric: "Exit Valuation Method", sgt: "EBITDA Multiple", market: "Cost Replacement", res: "Premium" },
-    { metric: "Equity MOIC (7Y)", sgt: "3.5x", market: "2.5x", res: "Outperformer" },
-  ];
+  const [scenario, setScenario] = useState<Scenario>('base');
 
-  const sensitivity = [
-    { adr: "₹10,500", s60: "18.2%", s70: "20.1%", s80: "22.4%" },
-    { adr: "₹12,000", s60: "20.4%", s70: "24.2%", s80: "27.1%" },
-    { adr: "₹13,500", s60: "22.1%", s70: "26.8%", s80: "30.2%" },
-  ];
+  const scenarioData = {
+    stress: { valuation: 980, multiple: '10.5x', irr: '18.4%', yield: 'Conservative', color: 'text-slate-400' },
+    base: { valuation: 1236, multiple: '12.0x', irr: '24.2%', yield: 'Standard Alpha', color: 'text-gold-500' },
+    bull: { valuation: 1580, multiple: '14.5x', irr: '29.8%', yield: 'High Capture', color: 'text-emerald-500' }
+  };
+
+  const active = scenarioData[scenario];
 
   return (
     <section id="valuation" className="py-48 bg-[#FDFBF7] relative overflow-hidden border-b border-slate-200">
-      {/* Background Architectural Grid Overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none flex flex-wrap gap-20 font-mono text-[8px] p-20 leading-none text-slate-900">
         {Array.from({ length: 30 }).map((_, i) => (
-          <div key={i} className="max-w-[150px] overflow-hidden whitespace-nowrap">VALUATION_PROTOCOL_V4.2 // WACC_10.2% // TERMINAL_VAL_12X // IRR_CALC_ENGINE</div>
+          <div key={i} className="max-w-[150px] overflow-hidden whitespace-nowrap">VALUATION_PROTOCOL_V4.2 // WACC_10.2% // SCENARIO_{scenario.toUpperCase()}</div>
         ))}
       </div>
 
@@ -32,89 +30,93 @@ const ValuationEngine: React.FC = () => {
                 <span className="text-gold-600 uppercase text-[10px] font-black tracking-[0.5em]">Valuation Scrutiny v4.2</span>
               </div>
               <h2 className="text-slate-950 font-serif text-6xl md:text-9xl leading-[0.8] tracking-tighter italic">The Asset <br/><span className="gold-gradient-text italic font-black">Audit.</span></h2>
-              <p className="text-slate-500 text-2xl font-light leading-relaxed max-w-2xl border-l-2 border-gold-400 pl-12 mt-12">
-                Value is a product of scarcity. Our model applies a risk-adjusted 10.2% WACC and a 12x exit multiple—conservative benchmarks for a regional visual monopoly.
-              </p>
+              
+              <div className="mt-16 flex gap-4">
+                 {(['stress', 'base', 'bull'] as Scenario[]).map((s) => (
+                    <button 
+                       key={s}
+                       onClick={() => setScenario(s)}
+                       className={`px-8 py-4 rounded-2xl text-[9px] font-black uppercase tracking-widest transition-all border ${
+                          scenario === s 
+                          ? 'bg-slate-950 text-white border-slate-950 shadow-xl scale-105' 
+                          : 'bg-white text-slate-400 border-slate-200 hover:border-gold-400'
+                       }`}
+                    >
+                       {s} Case
+                    </button>
+                 ))}
+              </div>
            </div>
            
-           <div className="p-16 bg-white border border-slate-200 text-slate-950 rounded-[4rem] flex flex-col justify-between h-[480px] w-full lg:w-[500px] shadow-3xl group transition-all hover:border-gold-400">
-              <div className="absolute top-[-5%] right-[-5%] text-slate-50 font-serif text-[25rem] font-black pointer-events-none select-none italic leading-none">V</div>
+           <div className="p-16 bg-white border border-slate-200 text-slate-950 rounded-[4rem] flex flex-col justify-between h-[520px] w-full lg:w-[500px] shadow-3xl group transition-all hover:border-gold-400 relative">
+              <div className="absolute top-0 right-12 px-6 py-2 bg-slate-50 border-x border-b border-slate-100 rounded-b-2xl text-[8px] font-black uppercase tracking-widest text-slate-400">
+                 Projection Case: {scenario.toUpperCase()}
+              </div>
               <div className="relative z-10">
                  <Landmark size={56} className="text-gold-600 mb-12 opacity-80" />
                  <h4 className="text-[11px] font-black uppercase tracking-[0.6em] mb-4 text-slate-400">Exit Value Potential</h4>
-                 <div className="text-7xl font-serif font-black tracking-tighter mb-8 leading-none group-hover:text-gold-600 transition-colors italic">₹1,236 Cr</div>
+                 <div className={`text-7xl font-serif font-black tracking-tighter mb-8 leading-none transition-all duration-700 italic ${active.color}`}>
+                    ₹{active.valuation} Cr
+                 </div>
                  <p className="text-xs font-bold leading-relaxed uppercase tracking-widest text-slate-400">Target Institutional Divestment at Year 7 Stabilization Cycle.</p>
               </div>
               <div className="relative z-10 pt-10 border-t border-slate-100 flex justify-between items-center">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Target Multiple</span>
-                 <span className="text-5xl font-serif font-black italic">12.0x</span>
+                 <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">Target Multiple</span>
+                    <span className="text-4xl font-serif font-black italic">{active.multiple}</span>
+                 </div>
+                 <div className="text-right">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">Projected IRR</span>
+                    <span className="text-4xl font-serif font-black italic text-gold-600">{active.irr}</span>
+                 </div>
               </div>
            </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-32 items-start">
-           {/* Technical Benchmarks Table */}
-           <div className="lg:col-span-7 bg-white border border-slate-100 rounded-[4rem] p-16 shadow-2xl relative overflow-hidden group">
+           <div className="lg:col-span-7 bg-white border border-slate-100 rounded-[4rem] p-16 shadow-2xl relative overflow-hidden group h-full">
               <div className="absolute top-0 right-0 p-24 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform">
                  <Activity size={300} className="text-slate-900" />
               </div>
               <h3 className="text-slate-950 font-serif text-4xl mb-16 italic relative z-10">Performance Arbitrage</h3>
-              <div className="overflow-x-auto relative z-10">
-                 <table className="w-full text-left">
-                    <thead>
-                       <tr className="text-slate-400 text-[10px] font-black uppercase tracking-widest border-b border-slate-50 pb-6">
-                          <th className="pb-8">Institutional Metric</th>
-                          <th className="pb-8">SGT Asset</th>
-                          <th className="pb-8">Market Avg</th>
-                          <th className="pb-8 text-right">Status</th>
-                       </tr>
-                    </thead>
-                    <tbody className="text-sm">
-                       {benchmarks.map((row, i) => (
-                          <tr key={i} className="group/row">
-                             <td className="py-10 text-slate-900 font-serif text-2xl border-b border-slate-50 group-hover/row:text-gold-600 transition-colors italic">{row.metric}</td>
-                             <td className="py-10 text-gold-600 font-mono font-black border-b border-slate-50 text-lg">{row.sgt}</td>
-                             <td className="py-10 text-slate-400 border-b border-slate-50 font-medium italic">{row.market}</td>
-                             <td className="py-10 text-right border-b border-slate-50">
-                                <span className="px-5 py-2 bg-emerald-50 text-emerald-600 text-[9px] font-black uppercase tracking-widest rounded-full border border-emerald-100 shadow-sm">
-                                   {row.res}
-                                </span>
-                             </td>
-                          </tr>
-                       ))}
-                    </tbody>
-                 </table>
-              </div>
-           </div>
-
-           {/* Sensitivity Analysis Terminal */}
-           <div className="lg:col-span-5 bg-white border border-slate-200 rounded-[4rem] p-12 md:p-16 shadow-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-gold-50/20 to-transparent pointer-events-none"></div>
-              <h3 className="text-slate-950 font-serif text-4xl mb-16 italic relative z-10">IRR Sensitivity Matrix</h3>
-              <div className="space-y-8 relative z-10">
-                 <div className="grid grid-cols-4 gap-6 text-center text-slate-400 text-[10px] font-black uppercase tracking-widest mb-4">
-                    <div className="text-left italic">ADR / Occ %</div>
-                    <div className="bg-slate-50 p-4 rounded-t-3xl border-x border-t border-slate-100">60%</div>
-                    <div className="bg-gold-500 text-white p-4 rounded-t-3xl shadow-lg">70%</div>
-                    <div className="bg-slate-50 p-4 rounded-t-3xl border-x border-t border-slate-100">80%</div>
-                 </div>
-                 {sensitivity.map((row, i) => (
-                    <div key={i} className="grid grid-cols-4 gap-6 items-center group/row">
-                       <div className="text-slate-950 font-mono text-xs font-black">{row.adr}</div>
-                       <div className="bg-slate-50 p-8 rounded-[2rem] text-slate-400 text-xs text-center border border-slate-100 group-hover/row:bg-white transition-colors">{row.s60}</div>
-                       <div className="bg-gold-500/5 border-2 border-gold-400 p-8 rounded-[2.5rem] text-gold-600 text-2xl font-black text-center shadow-2xl relative">
-                          {row.s70}
-                          {i === 1 && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-600 text-white text-[7px] px-3 py-1 rounded-full font-black uppercase tracking-widest shadow-xl">Target Case</div>}
+              <div className="space-y-12 relative z-10">
+                 {[
+                    { label: "Equity Yield Type", val: active.yield, status: "Verified" },
+                    { label: "Exit Horizon", val: "84 Months", status: "Stated" },
+                    { label: "WACC Baseline", val: "10.2%", status: "Fixed" }
+                 ].map((row, i) => (
+                    <div key={i} className="flex justify-between items-center border-b border-slate-50 pb-8 last:border-0 group/row transition-all hover:pl-4">
+                       <div>
+                          <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-2">{row.label}</div>
+                          <div className="text-slate-950 font-serif text-3xl italic">{row.val}</div>
                        </div>
-                       <div className="bg-slate-50 p-8 rounded-[2rem] text-slate-400 text-xs text-center border border-slate-100 group-hover/row:bg-white transition-colors">{row.s80}</div>
+                       <div className="px-5 py-2 bg-emerald-50 text-emerald-600 text-[9px] font-black uppercase tracking-widest rounded-full border border-emerald-100">
+                          {row.status}
+                       </div>
                     </div>
                  ))}
               </div>
-              <div className="mt-16 p-10 bg-[#FDFBF7] rounded-[3rem] border border-slate-200 flex items-start gap-6 relative z-10">
-                 <Calculator className="text-gold-600 shrink-0 mt-1" size={24} />
-                 <p className="text-slate-500 text-[11px] leading-relaxed font-bold uppercase tracking-widest italic">
-                    Calculated using XIRR methodology factoring in corporate tax shields and front-loaded CapEx depreciation.
+           </div>
+
+           <div className="lg:col-span-5 bg-slate-950 p-12 md:p-16 rounded-[4rem] text-white shadow-3xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-12 opacity-10">
+                 <Zap size={150} className="text-gold-500" />
+              </div>
+              <h3 className="text-white font-serif text-4xl mb-12 italic relative z-10">Stress Sensitivity</h3>
+              <div className="space-y-10 relative z-10">
+                 <p className="text-slate-400 text-lg font-light leading-relaxed italic border-l border-gold-500/50 pl-6">
+                    "Model is stressed for a 25% drop in F&B yield. Even at stress-case occupancy of 55%, the DSCR remains above 1.4x."
                  </p>
+                 <div className="grid grid-cols-2 gap-6 pt-10 border-t border-white/10">
+                    <div>
+                       <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-2">DSCR Floor</div>
+                       <div className="text-gold-500 font-mono text-2xl font-black">1.42x</div>
+                    </div>
+                    <div>
+                       <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-2">Occ Sensitivity</div>
+                       <div className="text-white font-mono text-2xl font-bold">55.0%</div>
+                    </div>
+                 </div>
               </div>
            </div>
         </div>

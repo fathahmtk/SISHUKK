@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ShieldCheck, Menu, X, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ShieldCheck, Menu, X, ArrowRight, Activity, Database } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from './Logo.tsx';
 
@@ -10,60 +10,100 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   const links = [
-    { path: '/asset', label: 'Asset' },
-    { path: '/market', label: 'Market' },
-    { path: '/hotel', label: 'Hotel' },
-    { path: '/economics', label: 'Economics' },
-    { path: '/risk', label: 'Risk' },
-    { path: '/exit', label: 'Exit' },
+    { path: '/asset', id: 'the-asset', label: 'Asset' },
+    { path: '/market', id: 'market', label: 'Market' },
+    { path: '/hotel', id: 'hotel-summary', label: 'Hotel' },
+    { path: '/economics', id: 'economics', label: 'Economics' },
+    { path: '/risk', id: 'risk', label: 'Risk' },
   ];
 
-  const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
-    window.scrollTo(0, 0);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleLinkClick = (e: React.MouseEvent, path: string, id: string) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsMobileMenuOpen(false);
+      }
+    } else {
+      setIsMobileMenuOpen(false);
+      window.scrollTo(0, 0);
+    }
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white/60 backdrop-blur-3xl border-b border-slate-100">
-      <div className="container mx-auto px-6 h-24 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-5 group" onClick={handleLinkClick}>
-          <Logo className="w-10 h-10 transition-transform duration-700 group-hover:scale-110" />
-          <div className="block border-l border-slate-200 pl-5">
-            <div className="text-slate-950 text-[11px] font-black tracking-[0.4em] uppercase leading-none mb-1">Sirshukk</div>
-            <div className="text-gold-600 text-[8px] font-black tracking-[0.5em] uppercase leading-none">Grand Towers</div>
+    <nav className={`fixed top-0 left-0 w-full z-[200] transition-all duration-700 ${
+      isScrolled 
+        ? 'h-20 bg-white/80 backdrop-blur-2xl border-b border-slate-200' 
+        : 'h-24 bg-transparent border-b border-white/5'
+    }`}>
+      <div className="container mx-auto px-8 h-full flex items-center justify-between">
+        {/* Brand Group */}
+        <Link to="/" className="flex items-center gap-6 group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className="relative">
+            <Logo className={`w-10 h-10 transition-all duration-700 group-hover:scale-110 ${isScrolled ? '' : 'drop-shadow-[0_0_15px_rgba(212,175,55,0.8)]'}`} />
+            {!isScrolled && <div className="absolute -inset-2 bg-gold-500/10 rounded-full animate-pulse-slow"></div>}
+          </div>
+          <div className="block border-l border-white/10 pl-6 group-hover:border-gold-500/30 transition-colors">
+            <div className={`text-[11px] font-black tracking-[0.5em] uppercase leading-none mb-1 transition-colors ${isScrolled ? 'text-slate-950' : 'text-white'}`}>Sirshukk</div>
+            <div className="text-gold-500 text-[8px] font-black tracking-[0.6em] uppercase leading-none">Grand Towers</div>
           </div>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden lg:flex items-center gap-12">
+        {/* Dynamic Desktop Links */}
+        <div className="hidden lg:flex items-center gap-14">
           {links.map((link) => (
             <Link
               key={link.label}
               to={link.path}
-              className={`text-[10px] font-black uppercase tracking-[0.3em] transition-all relative group h-24 flex items-center ${
-                location.pathname === link.path ? 'text-gold-600' : 'text-slate-400 hover:text-slate-950'
+              onClick={(e) => handleLinkClick(e, link.path, link.id)}
+              className={`text-[10px] font-black uppercase tracking-[0.4em] transition-all relative group flex items-center gap-3 ${
+                isScrolled ? 'text-slate-500 hover:text-slate-950' : 'text-white/60 hover:text-white'
               }`}
             >
               {link.label}
-              <span className={`absolute bottom-0 left-0 w-full h-1 bg-gold-500 transition-all duration-500 origin-left ${location.pathname === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'}`}></span>
+              <span className="w-1 h-1 rounded-full bg-gold-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <span className={`absolute -bottom-2 left-0 w-full h-[1.5px] bg-gold-500 transition-all duration-500 origin-left scale-x-0 group-hover:scale-x-100`}></span>
             </Link>
           ))}
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-6">
+        {/* Global Action Terminal */}
+        <div className="flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-6 pr-8 border-r border-white/10">
+             <div className="text-right">
+                <span className={`text-[7px] font-black uppercase tracking-widest block mb-1 ${isScrolled ? 'text-slate-400' : 'text-white/30'}`}>System Status</span>
+                <span className={`text-[9px] font-bold uppercase tracking-wider flex items-center gap-2 ${isScrolled ? 'text-emerald-600' : 'text-emerald-400'}`}>
+                   <Activity size={10} className="animate-pulse" /> Live_BIM_Sync
+                </span>
+             </div>
+          </div>
+
           <button 
             onClick={onInvestorClick}
-            className="hidden sm:flex items-center gap-3 bg-slate-950 text-white px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:bg-gold-500 hover:shadow-[0_15px_30px_rgba(212,175,55,0.3)] group active:scale-95"
+            className={`flex items-center gap-4 px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all active:scale-95 group shadow-2xl ${
+              isScrolled 
+                ? 'bg-slate-950 text-white hover:bg-gold-500' 
+                : 'bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500'
+            }`}
           >
             <ShieldCheck size={14} className="group-hover:rotate-12 transition-transform" />
-            <span>Vault Access</span>
+            <span>Asset Core</span>
           </button>
 
           <button 
-            className="lg:hidden text-slate-950 p-2 hover:bg-slate-50 rounded-full transition-colors border border-slate-100"
+            className={`lg:hidden p-3 rounded-2xl transition-all border ${
+              isScrolled ? 'text-slate-950 border-slate-200 hover:bg-slate-50' : 'text-white border-white/10 hover:bg-white/5'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,31 +111,32 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
         </div>
       </div>
 
-      {/* Mobile Menu - Platinum Light */}
+      {/* Mobile Glass Overlay */}
       {isMobileMenuOpen && (
-        <div className="absolute top-24 left-0 w-full bg-white border-b border-slate-200 p-10 flex flex-col gap-8 animate-fade-in-up lg:hidden shadow-3xl">
-           <div className="grid grid-cols-2 gap-6">
+        <div className="absolute top-0 left-0 w-full h-screen bg-slate-950/95 backdrop-blur-3xl p-10 flex flex-col gap-12 animate-fade-in lg:hidden z-[100]">
+           <div className="flex justify-between items-center mb-10">
+              <Logo className="w-12 h-12" variant="white" />
+              <button onClick={() => setIsMobileMenuOpen(false)} className="text-white p-2">
+                <X size={32} />
+              </button>
+           </div>
+           <div className="grid grid-cols-1 gap-4">
               {links.map((link) => (
                 <Link
                   key={link.label}
                   to={link.path}
-                  onClick={handleLinkClick}
-                  className={`text-xs font-black uppercase tracking-[0.2em] p-6 rounded-3xl border ${
-                    location.pathname === link.path ? 'text-gold-600 bg-gold-50/50 border-gold-200' : 'text-slate-500 bg-slate-50 border-slate-100'
-                  }`}
+                  onClick={(e) => handleLinkClick(e, link.path, link.id)}
+                  className="text-2xl font-serif italic text-white/50 hover:text-gold-500 p-6 border-b border-white/5 transition-all flex justify-between items-center group"
                 >
-                  {link.label}
+                  {link.label} <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                 </Link>
               ))}
            </div>
-          <button 
-            onClick={() => {
-               if (onInvestorClick) onInvestorClick();
-               setIsMobileMenuOpen(false);
-            }}
-            className="flex items-center justify-center gap-4 bg-slate-950 text-white py-6 rounded-3xl text-xs font-black uppercase tracking-[0.4em] shadow-2xl active:scale-95"
+           <button 
+            onClick={() => { if (onInvestorClick) onInvestorClick(); setIsMobileMenuOpen(false); }}
+            className="mt-auto w-full py-8 bg-gold-500 text-onyx-950 rounded-3xl text-xs font-black uppercase tracking-[0.5em] shadow-gold-glow flex items-center justify-center gap-4"
           >
-            <ShieldCheck size={18} /> Authorize Session
+            <Database size={18} /> Inspect Financial Core
           </button>
         </div>
       )}

@@ -6,9 +6,9 @@ const ProjectSpecs: React.FC = () => {
     { label: "Land Base", val: "1.29 Acres", sub: "100% Freehold" },
     { label: "Vertical", val: "G+20 Towers", sub: "Twin Symmetry" },
     { label: "GSF Area", val: "350,000", sub: "Built-up Square Footage" },
-    { label: "Datum Ht", val: "75.0 Meters", sub: "AAI Certified" },
+    { label: "Inventory", val: "440 Keys", sub: "Rooms & Suites" },
     { label: "Vertical Ops", val: "12 Cores", sub: "Mitsubishi High-V" },
-    { label: "Parking", val: "250+ ECS", sub: "Auto Stack" },
+    { label: "Ballroom", val: "15,000", sub: "Pillar-less Core" },
   ];
 
   return (
@@ -20,13 +20,13 @@ const ProjectSpecs: React.FC = () => {
                 <div className="space-y-6">
                    <div className="inline-flex items-center gap-4 px-4 py-2 border border-gold-200 rounded-full bg-white shadow-sm">
                        <FileText size={12} className="text-gold-600" />
-                       <span className="text-gold-600 uppercase text-[9px] font-black tracking-[0.4em]">Physical Audit</span>
+                       <span className="text-gold-600 uppercase text-[9px] font-black tracking-[0.4em]">Physical Audit v2.5</span>
                    </div>
                    <h2 className="font-serif text-4xl md:text-7xl text-slate-950 leading-[0.8] italic tracking-tighter">
                        Engineering <br/><span className="gold-gradient-text italic font-black">Metrics.</span>
                    </h2>
                    <p className="text-slate-500 text-xl font-light leading-relaxed border-l-2 border-gold-400 pl-8 italic max-w-md">
-                       Granular audit of the physical core. Calibrated to support institutional-grade yield and high-volume realization.
+                       Institutional verification of the physical core. Calibrated to support 24.2% IRR and high-volume realization.
                    </p>
                 </div>
                 
@@ -37,10 +37,10 @@ const ProjectSpecs: React.FC = () => {
                       </div>
                       <h4 className="text-slate-950 font-serif text-2xl italic leading-none">Certified Baseline</h4>
                    </div>
-                   <p className="text-slate-500 text-sm leading-relaxed mb-6 font-light">Wind-load and seismic peer-review verified for Year 50 life-cycle.</p>
-                   <button className="flex items-center gap-4 text-slate-950 text-[9px] font-black uppercase tracking-[0.4em] group/btn">
+                   <p className="text-slate-500 text-sm leading-relaxed mb-6 font-light">Seismic Zone IV and high-altitude wind-load verified for 50-year asset lifecycle.</p>
+                   <a href="/#/report" className="flex items-center gap-4 text-slate-950 text-[9px] font-black uppercase tracking-[0.4em] group/btn">
                       Technical Dossier <ArrowRight size={14} className="text-gold-500 group-hover:translate-x-2 transition-transform" />
-                   </button>
+                   </a>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@ const ProjectSpecs: React.FC = () => {
                      {specs.map((item, i) => (
                        <div key={i} className="group/row">
                           <div className="text-slate-400 text-[8px] font-black uppercase tracking-[0.4em] mb-2 group-hover/row:text-gold-600 transition-colors">{item.label}</div>
-                          <div className="text-slate-950 font-serif text-4xl italic group-hover/row:scale-105 transition-transform origin-left">{item.val}</div>
+                          <div className="text-slate-950 font-serif text-4xl italic group-hover/row:scale-105 transition-transform origin-left font-bold">{item.val}</div>
                           <div className="text-gold-600 text-[8px] font-black uppercase tracking-[0.2em] mt-1">{item.sub}</div>
                        </div>
                      ))}
@@ -65,8 +65,8 @@ const ProjectSpecs: React.FC = () => {
                         <ScanLine size={14} className="text-gold-500 animate-pulse" />
                         <span className="text-[9px] font-black uppercase tracking-widest text-slate-300">BIM v3.0 Synced</span>
                      </div>
-                     <button className="bg-slate-50 hover:bg-slate-100 px-6 py-3 rounded-full text-slate-950 text-[8px] font-black uppercase tracking-widest transition-all border border-slate-200">
-                        Download Technical PDF
+                     <button onClick={() => window.print()} className="bg-slate-50 hover:bg-slate-100 px-6 py-3 rounded-full text-slate-950 text-[8px] font-black uppercase tracking-widest transition-all border border-slate-200">
+                        Print Tech Summary
                      </button>
                   </div>
                </div>

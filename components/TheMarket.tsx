@@ -1,82 +1,77 @@
 import React from 'react';
-import { Users, MapPin, ArrowRight, Target, ShieldCheck, Landmark } from 'lucide-react';
+import { Target, ArrowRight, Globe, TrendingUp, Scan, Landmark } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const TheMarket: React.FC = () => {
   return (
-    <section id="market" className="py-20 bg-[#FDFBF7] relative">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          <div className="lg:col-span-5 space-y-12">
-            <div className="space-y-8">
-               <div className="flex items-center gap-5">
-                  <div className="w-12 h-[1px] bg-gold-500"></div>
-                  <span className="text-slate-400 text-[9px] font-black uppercase tracking-[0.6em]">Chapter 02: Market Logic</span>
-               </div>
-               <h2 className="text-slate-950 font-serif text-5xl md:text-7xl leading-[0.8] tracking-tighter italic">
-                 Ritual <br/><span className="gold-gradient-text not-italic font-black">Economy.</span>
-               </h2>
-               <p className="text-slate-500 text-xl font-light leading-relaxed border-l-2 border-gold-400 pl-10 italic">
-                  Demand is faith-driven and non-cyclical, ensuring a stabilized operational floor 365 days a year.
-               </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6 pt-8 border-t border-slate-200">
-               {[
-                 { title: "Supply Void", desc: "Zero comparable 7-star assets within 10KM radius." },
-                 { title: "NRI Capital Hub", desc: "Capturing the top-tier returning diaspora demographic." },
-                 { title: "Market Stability", desc: "Consistent footfall independent of leisure cycles." }
-               ].map((item, i) => (
-                 <div key={i} className="group flex gap-6 items-start">
-                    <div className="text-gold-600 font-serif text-2xl italic opacity-30 group-hover:opacity-100 transition-opacity">0{i+1}</div>
-                    <div>
-                       <h4 className="text-slate-950 font-black uppercase tracking-widest text-[10px] mb-1 group-hover:text-gold-600 transition-colors">{item.title}</h4>
-                       <p className="text-slate-400 text-xs leading-relaxed italic">{item.desc}</p>
-                    </div>
-                 </div>
-               ))}
-            </div>
-
-            <div className="pt-6">
-               <Link to="/market" className="inline-flex items-center gap-8 bg-slate-950 text-white px-10 py-5 rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 transition-all shadow-3xl group">
-                  Market Analysis <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-               </Link>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 grid grid-cols-2 gap-6">
-             {[
-               { icon: MapPin, title: "South Nada", desc: "1.5 KM direct proximity to the main gate." },
-               { icon: Landmark, title: "Visual Anchor", desc: "No competing high-rise density in the zone." },
-               { icon: Users, title: "12M+ Annual", desc: "Massive captive market with HNW segment focus." },
-               { icon: Target, title: "First-Mover", desc: "Institutional grade in a fragmented market." },
-             ].map((item, i) => (
-               <div key={i} className="p-8 bg-white border border-slate-100 rounded-[3rem] group hover:border-gold-400 hover:shadow-2xl transition-all duration-700">
-                 <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 border border-slate-100 group-hover:bg-gold-500 group-hover:text-white transition-colors">
-                   <item.icon size={20} />
-                 </div>
-                 <h3 className="text-slate-950 font-serif text-2xl mb-2 italic leading-none">{item.title}</h3>
-                 <p className="text-slate-500 text-xs font-light leading-relaxed">{item.desc}</p>
-               </div>
-             ))}
-             <div className="col-span-2 p-10 bg-slate-950 rounded-[3.5rem] shadow-xl relative overflow-hidden group">
-                <div className="absolute top-[-20%] right-[-10%] text-white opacity-5 font-serif text-[15rem] font-black italic pointer-events-none">M</div>
-                <div className="relative z-10 text-center space-y-6">
-                   <p className="text-white font-serif text-2xl italic leading-tight max-w-lg mx-auto">
-                     "Architecture is the most durable <span className="gold-gradient-text not-italic font-black">market barrier.</span>"
-                   </p>
-                   <div className="flex items-center justify-center gap-4">
-                      <ShieldCheck size={16} className="text-gold-500" />
-                      <span className="text-[9px] text-white/40 font-black uppercase tracking-widest">Thesis v2.5 Verified</span>
-                   </div>
-                </div>
-             </div>
-          </div>
-
-        </div>
+    <div className="relative w-full h-full flex flex-col justify-center items-center bg-slate-950 overflow-hidden group">
+      
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0">
+         <img 
+            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80" 
+            className="w-full h-full object-cover opacity-20 saturate-[0.2] transition-transform duration-[20s] group-hover:scale-110" 
+            alt="Pilgrimage Market" 
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_110%)]"></div>
       </div>
-    </section>
+
+      {/* Telemetry HUD */}
+      <div className="absolute top-12 right-12 z-10 text-right space-y-2 opacity-50">
+         <div className="flex items-center justify-end gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
+            Market_Void_Index <Target size={12} />
+         </div>
+         <div className="text-white text-[7px] font-mono opacity-40 uppercase tracking-widest">
+            Annual: 12.5M+ Verified
+         </div>
+      </div>
+
+      <div className="absolute bottom-12 left-12 z-10 space-y-2 opacity-50">
+         <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">Demand Recurrence Pattern</div>
+         <div className="flex items-center gap-3 text-white text-[11px] font-black uppercase tracking-widest">
+            <TrendingUp size={14} className="text-emerald-500 animate-pulse" /> Stability: Inelastic_Alpha
+         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-6xl px-8 flex flex-col items-center">
+         <span className="text-gold-500 text-[11px] md:text-[13px] font-black uppercase tracking-[1em] block mb-12 animate-fade-in">
+           Chapter 02 // The Ritual Economy
+         </span>
+         
+         <h2 className="text-white font-serif text-6xl md:text-9xl lg:text-[10rem] leading-[0.8] tracking-tighter italic font-black mb-16">
+           Ritual <br/>
+           <span className="gold-gradient-text not-italic">Engine.</span>
+         </h2>
+
+         <p className="text-slate-200 text-xl md:text-3xl font-light font-editorial italic max-w-4xl leading-relaxed mb-24 opacity-80">
+           Demand is faith-driven and non-cyclical. <br className="hidden lg:block"/>
+           <span className="text-white font-medium border-b border-gold-500/40 pb-2">Guruvayur represents an inelastic capital engine with 100% first-mover status.</span>
+         </p>
+
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full mb-20">
+            {[
+              { l: "Annual Traffic", v: "12 Million", s: "HNW Segment Focus" },
+              { l: "Daily Events", v: "250+", s: "Captive Wedding Base" },
+              { l: "Branded Competition", v: "0.0%", s: "Within 10km Radius" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center group/item border-x border-white/5 px-10">
+                 <div className="text-slate-500 text-[8px] font-black uppercase tracking-widest mb-4 group-hover/item:text-gold-500 transition-colors">{stat.l}</div>
+                 <div className="text-white font-serif text-4xl italic font-black mb-2 leading-none">{stat.v}</div>
+                 <div className="text-gold-600 text-[8px] uppercase tracking-widest font-black opacity-60">{stat.s}</div>
+              </div>
+            ))}
+         </div>
+
+         <Link to="/market" className="group px-14 py-7 bg-white/5 border border-white/20 text-white rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500 transition-all active:scale-95 flex items-center gap-5 backdrop-blur-xl shadow-2xl">
+           Market Analysis <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
+         </Link>
+      </div>
+
+      {/* Technical Scan Frame */}
+      <div className="absolute inset-20 pointer-events-none border border-white/5 opacity-20"></div>
+    </div>
   );
 };
 

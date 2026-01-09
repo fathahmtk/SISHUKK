@@ -1,49 +1,80 @@
 import React from 'react';
-import { ArrowUpRight, ArrowRight, Landmark, Briefcase, Activity } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Landmark, Briefcase, Activity, Rocket, Globe, Scan } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ExitStrategy: React.FC = () => {
   return (
-    <section id="exit" className="py-12 bg-onyx-950 border-t border-white/5 relative h-full flex flex-col justify-center overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center h-[60vh]">
-          <div className="lg:w-1/2 space-y-10">
-             <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] block">Section 10: Exit Strategy</span>
-             <h2 className="text-white font-serif text-4xl md:text-7xl mb-6 leading-tight tracking-tighter italic">
-               Defined <br/>
-               <span className="gold-gradient-text italic font-black">Exit Pathways.</span>
-             </h2>
-             <p className="text-slate-400 text-xl font-light leading-tight border-l-2 border-gold-500/50 pl-8 italic max-w-md">
-               "Valuation driven by EBITDA multiples, enhanced by landmark status and diversified income."
-             </p>
-             <Link to="/exit" className="inline-flex items-center gap-6 bg-white/5 text-white px-10 py-5 text-[9px] font-black uppercase tracking-widest hover:bg-white hover:text-onyx-950 transition-all border border-white/10 rounded-full">
-                Explore Exit Pathways <ArrowRight size={14} />
-             </Link>
-          </div>
-          
-          <div className="lg:w-1/2 w-full flex flex-col gap-3">
-             {[
-               { t: "REIT Divestment", d: "Tier-1 indian/global REIT platforms.", icon: Landmark },
-               { t: "PE Acquisition", d: "Hospitality focused sovereign funds.", icon: Briefcase },
-               { t: "Yield Annuity", d: "Post-debt retention for dividend yield.", icon: Activity },
-             ].map((path, i) => (
-               <div key={i} className="group flex justify-between items-center p-8 bg-onyx-900 border border-white/5 hover:border-gold-500 transition-all cursor-default rounded-3xl shadow-lg">
-                    <div className="flex items-center gap-6">
-                        <div className="w-12 h-12 rounded-xl bg-onyx-950 border border-white/10 flex items-center justify-center text-gold-600 group-hover:bg-gold-500 group-hover:text-onyx-950 transition-all">
-                           <path.icon size={20} />
-                        </div>
-                        <div>
-                            <span className="text-white font-serif text-2xl italic leading-none block mb-1">{path.t}</span>
-                            <span className="text-slate-500 text-xs font-light">{path.d}</span>
-                        </div>
-                    </div>
-                    <ArrowUpRight className="text-slate-600 group-hover:text-gold-500 transition-all" size={20} />
-               </div>
-             ))}
-          </div>
-        </div>
+    <div className="relative w-full h-full flex flex-col justify-center items-center bg-slate-950 overflow-hidden group">
+      
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0">
+         <img 
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" 
+            className="w-full h-full object-cover opacity-20 brightness-[0.4] transition-transform duration-[20s] group-hover:scale-110" 
+            alt="Liquidity Horizon" 
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_110%)]"></div>
       </div>
-    </section>
+
+      {/* Telemetry HUD */}
+      <div className="absolute top-12 left-12 z-10 space-y-2 opacity-50">
+         <div className="flex items-center gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
+            <Rocket size={12} /> Realization_Window_v2.5
+         </div>
+         <div className="text-white text-[7px] font-mono opacity-40 uppercase tracking-widest">
+            Cycle: 7-Year // Status: REIT-Ready
+         </div>
+      </div>
+
+      <div className="absolute bottom-12 right-12 z-10 text-right opacity-50">
+         <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">Liquidity Pathway Mapping</div>
+         <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
+            <Activity size={14} className="text-emerald-500 animate-pulse" /> Target_MOIC: 3.5x_Stabilized
+         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-6xl px-8 flex flex-col items-center">
+         <span className="text-gold-500 text-[11px] md:text-[13px] font-black uppercase tracking-[1em] block mb-12 animate-fade-in">
+           Chapter 10 // Value Realization
+         </span>
+         
+         <h2 className="text-white font-serif text-6xl md:text-9xl lg:text-[10rem] leading-[0.8] tracking-tighter italic font-black mb-16">
+           Liquidity <br/>
+           <span className="gold-gradient-text not-italic">Event.</span>
+         </h2>
+
+         <p className="text-slate-200 text-xl md:text-3xl font-light font-editorial italic max-w-4xl leading-relaxed mb-24 opacity-80">
+           Institutional exit clarity. <br className="hidden lg:block"/>
+           <span className="text-white font-medium border-b border-gold-500/40 pb-2">A technical architecture pre-calibrated for acquisition by Tier-1 Indian or Global REIT platforms.</span>
+         </p>
+
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full mb-20">
+            {[
+              { l: "Exit Horizon", v: "Y7-Y8", s: "Stabilization Cycle" },
+              { l: "Acquisition Target", v: "Tier-1", s: "Institutional REIT" },
+              { l: "EBITDA Multiple", v: "12.5x", s: "Trophy Asset Class" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center group/item border-x border-white/5 px-10">
+                 <div className="text-slate-500 text-[8px] font-black uppercase tracking-widest mb-4 group-hover/item:text-gold-500 transition-colors">{stat.l}</div>
+                 <div className="text-white font-serif text-4xl italic font-black mb-2 leading-none">{stat.v}</div>
+                 <div className="text-gold-600 text-[8px] uppercase tracking-widest font-black opacity-60">{stat.s}</div>
+              </div>
+            ))}
+         </div>
+
+         <Link to="/exit" className="group px-14 py-7 bg-white/5 border border-white/20 text-white rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500 transition-all active:scale-95 flex items-center gap-5 backdrop-blur-xl shadow-2xl">
+           Exit Pathways <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
+         </Link>
+      </div>
+
+      {/* Background Central Crosshair */}
+      <div className="absolute inset-0 z-20 pointer-events-none opacity-10 flex items-center justify-center">
+         <div className="w-[1px] h-40 bg-gold-500"></div>
+         <div className="h-[1px] w-40 bg-gold-500"></div>
+      </div>
+    </div>
   );
 };
 

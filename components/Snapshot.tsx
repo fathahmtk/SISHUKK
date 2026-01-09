@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Target, Activity, Layout, Layers } from 'lucide-react';
+import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Target, Activity, Layout, Layers, Scan } from 'lucide-react';
 
 interface SnapshotProps {
   onProfileClick?: () => void;
@@ -7,81 +7,76 @@ interface SnapshotProps {
 
 const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
   const cards = [
-    { icon: <Building2 size={24} />, title: "Asset Class", val: "Trophy Hub", desc: "Hospitality core serving non-seasonal ritual demand with structural monopoly." },
-    { icon: <Crown size={24} />, title: "Design Moat", val: "Visual Icon", desc: "Twin-tower skyline command creating immediate region-wide brand recall." },
-    { icon: <TrendingUp size={24} />, title: "Yield Curve", val: "High Alpha", desc: "Diversified revenue verticals decoupled from traditional market cycles." },
-    { icon: <MapPin size={24} />, title: "Strategic Pin", val: "Nexus Site", desc: "South Nada corridor positioning with 12M+ annual verified footfall." }
+    { icon: <Building2 size={16} />, title: "Asset Class", val: "Trophy Hub", desc: "Hospitality core serving non-seasonal ritual demand." },
+    { icon: <Crown size={16} />, title: "Design Moat", val: "Visual Icon", desc: "Twin-tower skyline command creating immediate recall." },
+    { icon: <TrendingUp size={16} />, title: "Yield Curve", val: "High Alpha", desc: "Diversified revenue verticals decoupled from market cycles." },
+    { icon: <MapPin size={16} />, title: "Strategic Pin", val: "Nexus Site", desc: "South Nada corridor with 12M+ annual verified footfall." }
   ];
 
   return (
-    <div className="w-full min-h-screen flex flex-col justify-center py-32 bg-[#FDFBF7] relative overflow-hidden">
-      {/* Background Graphic */}
-      <div className="absolute top-[10%] left-[-8%] text-onyx-900/5 font-serif text-[50rem] font-black italic pointer-events-none select-none">S</div>
+    <div className="relative w-full h-full flex flex-col justify-center items-center bg-slate-950 overflow-hidden group">
       
-      <div className="container mx-auto px-10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-end mb-32">
-          <div className="lg:col-span-7 space-y-12">
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-[1.5px] bg-gold-500 shadow-gold-glow"></div>
-              <span className="text-gold-600 uppercase text-[10px] font-black tracking-[0.8em]">Phase 01: Portfolio Intelligence</span>
-            </div>
-            <h2 className="text-slate-950 font-serif text-6xl md:text-[9rem] leading-[0.75] tracking-tighter italic">
-              Physical <br/><span className="gold-gradient-text italic font-black">Evidence.</span>
-            </h2>
-            <p className="text-slate-500 text-3xl font-editorial italic leading-tight max-w-2xl border-l-2 border-gold-400/50 pl-12 py-4">
-              "SIRSHUKK is an engineering prototype designed as a high-yield revenue engine for the next half-century. Every square foot is audited for commercial velocity."
-            </p>
-          </div>
-
-          <div className="lg:col-span-5 flex flex-col items-end">
-            <div 
-              className="w-full p-10 bg-white border border-slate-200 rounded-[3rem] group hover:border-gold-500 transition-all cursor-pointer shadow-3xl relative overflow-hidden" 
-              onClick={onProfileClick}
-            >
-               <div className="absolute inset-0 bg-gold-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-               <div className="flex items-center gap-8 relative z-10">
-                  <div className="w-20 h-20 rounded-2xl bg-onyx-950 flex items-center justify-center text-gold-500 shadow-2xl group-hover:scale-105 transition-transform duration-700">
-                    <ShieldCheck size={36} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-2">Security Hash Verification</div>
-                    <div className="text-slate-950 font-black uppercase tracking-[0.2em] text-sm">Asset Ledger v2.5 Synchronized</div>
-                  </div>
-                  <Activity size={20} className="text-gold-500 animate-pulse" />
-               </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {cards.map((card, i) => (
-            <div 
-              key={i} 
-              className="group p-12 bg-white border border-slate-100 rounded-[4rem] flex flex-col justify-between h-[520px] transition-all duration-700 hover:border-gold-400 hover:shadow-gold-glow relative overflow-hidden hover:-translate-y-4"
-            >
-               <div className="absolute -top-10 -right-10 opacity-[0.03] group-hover:opacity-10 transition-opacity pointer-events-none duration-1000">
-                  <Layers size={300} className="text-onyx-950" />
-               </div>
-               
-               <div>
-                  <div className="w-16 h-16 rounded-3xl bg-[#FDFBF7] border border-slate-100 flex items-center justify-center text-gold-600 mb-12 shadow-sm group-hover:bg-onyx-950 group-hover:text-white transition-all">
-                     {card.icon}
-                  </div>
-                  <span className="text-gold-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block italic">{card.title}</span>
-                  <h3 className="text-slate-950 font-serif text-5xl mb-8 italic font-black leading-none">{card.val}</h3>
-                  <p className="text-slate-500 text-lg font-editorial italic leading-relaxed group-hover:text-slate-900 transition-colors">
-                    {card.desc}
-                  </p>
-               </div>
-               
-               <div className="pt-10 border-t border-slate-50 mt-auto flex items-center justify-between opacity-30 group-hover:opacity-100 transition-all duration-700">
-                  <span className="text-[8px] font-mono font-black uppercase tracking-widest text-slate-400">NODE_VERIFY_SUCCESS</span>
-                  <Target size={18} className="text-gold-600" />
-               </div>
-            </div>
-          ))}
-        </div>
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0">
+         <img 
+            src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
+            className="w-full h-full object-cover opacity-20 grayscale transition-transform duration-[20s] group-hover:scale-110" 
+            alt="Physical Evidence" 
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_110%)]"></div>
       </div>
+
+      {/* Telemetry HUD */}
+      <div className="absolute top-12 left-12 z-10 space-y-2 opacity-40">
+         <div className="flex items-center gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
+            <Scan size={12} /> Evidence_Audit_01
+         </div>
+         <div className="text-white text-[7px] font-mono opacity-60 uppercase tracking-widest">
+            Hash: SGT_PHYS_2025_VERIFIED
+         </div>
+      </div>
+
+      <div className="absolute bottom-12 right-12 z-10 text-right opacity-40">
+         <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">Ledger Synchronization</div>
+         <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
+            <Activity size={14} className="text-emerald-500 animate-pulse" /> Data_Node: Connected
+         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-7xl px-8 flex flex-col items-center">
+         <span className="text-gold-500 text-[11px] md:text-[13px] font-black uppercase tracking-[1em] block mb-12">
+           Chapter 00 // Portfolio Intelligence
+         </span>
+         
+         <h2 className="text-white font-serif text-6xl md:text-9xl lg:text-[10rem] leading-[0.8] tracking-tighter italic font-black mb-16">
+           Physical <br/>
+           <span className="gold-gradient-text not-italic">Evidence.</span>
+         </h2>
+
+         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full mb-20">
+            {cards.map((card, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[3rem] text-center group/item hover:bg-gold-500 hover:text-onyx-950 transition-all duration-500 hover:-translate-y-4 shadow-2xl">
+                 <div className="mb-8 flex justify-center text-gold-500 group-hover/item:text-onyx-950 transition-colors">{card.icon}</div>
+                 <div className="text-[7px] font-black uppercase tracking-widest mb-2 opacity-50">{card.title}</div>
+                 <div className="text-2xl font-serif italic font-black mb-4 leading-none">{card.val}</div>
+                 <p className="text-[10px] leading-relaxed opacity-60 font-light">{card.desc}</p>
+              </div>
+            ))}
+         </div>
+
+         <button 
+           onClick={onProfileClick}
+           className="group px-14 py-7 bg-white text-onyx-950 rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 transition-all active:scale-95 flex items-center gap-5 shadow-gold-glow"
+         >
+           Inspect Asset Ledger <ShieldCheck size={18} className="group-hover:rotate-12 transition-transform" />
+         </button>
+      </div>
+
+      {/* Vertical Axis lines */}
+      <div className="absolute inset-y-0 left-1/4 w-px bg-white/5 hidden lg:block"></div>
+      <div className="absolute inset-y-0 right-1/4 w-px bg-white/5 hidden lg:block"></div>
     </div>
   );
 };

@@ -1,76 +1,80 @@
 import React from 'react';
-import { Compass, Star, ArrowRight, UtensilsCrossed } from 'lucide-react';
+import { Compass, Star, ArrowRight, Activity, Scan, RotateCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Dining: React.FC = () => {
-  const venues = [
-    { name: "The Orbit A", type: "Revolving", yield: "USP Engine", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80" },
-    { name: "The Orbit B", type: "Crown", yield: "Yield Alpha", img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80" },
-    { name: "Vedic Hearth", type: "Ritual", yield: "Brand Core", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80" },
-  ];
-
   return (
-    <section id="dining" className="py-12 bg-white relative h-full flex flex-col justify-center border-t border-slate-100">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-8">
-          <div className="max-w-2xl">
-            <span className="text-gold-600 text-[9px] font-black uppercase tracking-[0.6em] block mb-4">Chapter 06: Gastronomy Portfolio</span>
-            <h2 className="font-serif text-4xl md:text-7xl text-slate-950 leading-[0.8] tracking-tighter italic">
-              Destination <br/><span className="gold-gradient-text italic font-black">Gastronomy.</span>
-            </h2>
-          </div>
-          <div className="hidden lg:flex items-center gap-6 bg-[#FDFBF7] px-8 py-5 rounded-2xl border border-slate-200 shadow-sm">
-             <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-gold-600">
-                <Compass size={18} className="animate-spin-slow" />
-             </div>
-             <div>
-                <span className="text-slate-400 text-[8px] font-black uppercase tracking-widest block mb-1">Concept USP</span>
-                <span className="text-slate-950 text-xs font-bold uppercase tracking-widest">Dual Revolving Crowns</span>
-             </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[55vh]">
-           {venues.map((venue, i) => (
-             <div key={i} className="group relative h-full rounded-[3rem] overflow-hidden border border-slate-100 shadow-xl flex flex-col justify-end p-8 bg-slate-50 transition-all duration-700">
-                <img src={venue.img} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] brightness-[1.1]" alt={venue.name} />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-40 transition-opacity"></div>
-                
-                <div className="relative z-10 space-y-4">
-                   <div className="bg-white/95 backdrop-blur-xl p-6 rounded-[2rem] border border-white shadow-xl">
-                      <div className="flex justify-between items-start mb-4">
-                         <div className="w-10 h-10 rounded-xl bg-gold-500 flex items-center justify-center text-white shadow-lg">
-                            <Star size={18} fill="currentColor" />
-                         </div>
-                         <span className="text-gold-600 text-[8px] font-black uppercase tracking-widest border border-gold-200 px-3 py-1 rounded-full">{venue.yield}</span>
-                      </div>
-                      <h4 className="text-slate-950 font-serif text-2xl mb-1 italic leading-none">{venue.name}</h4>
-                      <p className="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-6">{venue.type}</p>
-                      
-                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                         <span className="text-[7px] font-black uppercase tracking-widest text-slate-300 italic">Technical Sync v2.5</span>
-                         <button className="text-slate-950 text-[8px] font-black uppercase tracking-widest flex items-center gap-2 hover:text-gold-600 transition-colors">
-                            Portfolio <ArrowRight size={12} />
-                         </button>
-                      </div>
-                   </div>
-                </div>
-             </div>
-           ))}
-        </div>
-
-        <div className="mt-12 p-8 bg-[#FDFBF7] border border-slate-200 rounded-[3rem] shadow-lg relative overflow-hidden group text-center">
-            <div className="relative z-10 max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-8">
-               <p className="text-slate-950 font-serif text-xl italic leading-tight flex-1">
-                 "Our culinary strategy targets the 12 million annual visitors, establishing a <span className="gold-gradient-text not-italic font-black">Gastronomy Gateway.</span>"
-               </p>
-               <Link to="/dining" className="inline-flex items-center gap-6 bg-slate-950 text-white px-8 py-4 rounded-full text-[9px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 transition-all shadow-xl">
-                  Inspect F&B Profit Centers <ArrowRight size={14} />
-               </Link>
-            </div>
-        </div>
+    <div className="relative w-full h-full flex flex-col justify-center items-center bg-slate-950 overflow-hidden group">
+      
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0">
+         <img 
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80" 
+            className="w-full h-full object-cover opacity-30 transition-transform duration-[20s] group-hover:scale-110" 
+            alt="Gastronomy" 
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_110%)]"></div>
       </div>
-    </section>
+
+      {/* Telemetry HUD */}
+      <div className="absolute top-12 left-12 z-10 space-y-2 opacity-50">
+         <div className="flex items-center gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
+            <RotateCw size={12} /> Gastronomy_Core_v1.0
+         </div>
+         <div className="text-white text-[7px] font-mono opacity-40 uppercase tracking-widest">
+            Type: Dual_Revolving // Datum: Lvl 20
+         </div>
+      </div>
+
+      <div className="absolute bottom-12 right-12 z-10 text-right opacity-50">
+         <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">High Altitude Capture</div>
+         <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
+            <Activity size={14} className="text-emerald-500 animate-pulse" /> Yield_Alpha: Validated
+         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-6xl px-8 flex flex-col items-center">
+         <span className="text-gold-500 text-[11px] md:text-[13px] font-black uppercase tracking-[1em] block mb-12 animate-fade-in">
+           Chapter 05 // Gastronomy Portfolio
+         </span>
+         
+         <h2 className="text-white font-serif text-6xl md:text-9xl lg:text-[10rem] leading-[0.8] tracking-tighter italic font-black mb-16">
+           Orbit <br/>
+           <span className="gold-gradient-text not-italic">Crowns.</span>
+         </h2>
+
+         <p className="text-slate-200 text-xl md:text-3xl font-light font-editorial italic max-w-4xl leading-relaxed mb-24 opacity-80">
+           Two independent revolving platforms. <br className="hidden lg:block"/>
+           <span className="text-white font-medium border-b border-gold-500/40 pb-2">German-engineered vibration-free dynamics providing 360-degree spiritual and coastal vistas.</span>
+         </p>
+
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full mb-20">
+            {[
+              { l: "Cycle Time", v: "60 Min", s: "360° Perspective" },
+              { l: "Altitude", v: "75.0M", s: "Highest Regional Hub" },
+              { l: "Yield Class", v: "USP Core", s: "Non-Resident Driver" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center group/item border-x border-white/5 px-10">
+                 <div className="text-slate-500 text-[8px] font-black uppercase tracking-widest mb-4 group-hover/item:text-gold-500 transition-colors">{stat.l}</div>
+                 <div className="text-white font-serif text-4xl italic font-black mb-2 leading-none">{stat.v}</div>
+                 <div className="text-gold-600 text-[8px] uppercase tracking-widest font-black opacity-60">{stat.s}</div>
+              </div>
+            ))}
+         </div>
+
+         <Link to="/dining" className="group px-14 py-7 bg-white/5 border border-white/20 text-white rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500 transition-all active:scale-95 flex items-center gap-5 backdrop-blur-xl shadow-2xl">
+           Inspect Concepts <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
+         </Link>
+      </div>
+
+      {/* Vector HUD lines */}
+      <div className="absolute inset-0 z-20 pointer-events-none opacity-10">
+         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white"></div>
+         <div className="absolute top-0 left-1/2 w-[1px] h-full bg-white"></div>
+      </div>
+    </div>
   );
 };
 

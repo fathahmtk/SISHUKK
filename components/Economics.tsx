@@ -1,85 +1,77 @@
 import React from 'react';
-import { IndianRupee, PieChart, ArrowRight, ShieldCheck, Target, TrendingUp } from 'lucide-react';
+import { IndianRupee, PieChart, ArrowRight, ShieldCheck, Target, TrendingUp, Activity, BarChart3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Economics: React.FC = () => {
   return (
-    <section id="economics-summary" className="py-12 bg-slate-50 relative h-full flex flex-col justify-center border-t border-slate-200 overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center h-[70vh]">
-          <div className="space-y-10 flex flex-col justify-center">
-            <div>
-              <span className="text-gold-600 text-[9px] font-black uppercase tracking-[0.6em] block mb-4">Yield Engineering</span>
-              <h2 className="text-slate-950 font-serif text-4xl md:text-7xl leading-[0.8] tracking-tighter italic">Strategic <br/><span className="gold-gradient-text not-italic font-black">Capital.</span></h2>
-            </div>
-            
-            <p className="text-slate-500 text-xl font-light leading-tight max-w-md border-l-2 border-gold-300 pl-8 italic">
-              Financial model structured around four core verticals, justified by architectural scarcity.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                { icon: IndianRupee, label: "Rooms", val: "Anchor Yield" },
-                { icon: Target, label: "Events & F&B", val: "Alpha Driver" }
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 p-6 bg-white border border-slate-100 rounded-2xl group hover:border-gold-400 transition-all shadow-sm">
-                  <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-gold-600">
-                    <item.icon size={20} />
-                  </div>
-                  <div>
-                    <div className="text-slate-950 font-serif text-xl italic">{item.val}</div>
-                    <div className="text-slate-400 text-[8px] uppercase font-black tracking-widest">{item.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <Link to="/economics" className="inline-flex items-center gap-6 bg-slate-900 text-white px-10 py-5 rounded-full text-[9px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 transition-all shadow-xl w-fit">
-                Full Economic Audit <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="relative group flex items-center justify-center">
-             <div className="bg-white border border-slate-200 p-10 md:p-12 rounded-[4rem] shadow-2xl relative z-10 w-full max-w-lg">
-                <div className="flex justify-between items-start mb-12 border-b border-slate-100 pb-6">
-                   <h3 className="text-slate-900 text-[9px] font-black uppercase tracking-[0.4em] flex items-center gap-3">
-                     <PieChart size={14} className="text-gold-600" /> Revenue Architecture
-                   </h3>
-                   <TrendingUp size={20} className="text-slate-200" />
-                </div>
-                
-                <div className="space-y-8">
-                  {[
-                    { label: "Rooms & Suites", p: "35% - 40%", width: "w-[40%]", color: "bg-blue-500" },
-                    { label: "Food & Beverage", p: "20% - 25%", width: "w-[25%]", color: "bg-emerald-500" },
-                    { label: "Weddings & Events", p: "15% - 20%", width: "w-[20%]", color: "bg-gold-500" },
-                    { label: "Landmark Monetisation", p: "10% - 15%", width: "w-[15%]", color: "bg-rose-500" },
-                  ].map((item, i) => (
-                    <div key={i} className="group/bar">
-                      <div className="flex justify-between text-[8px] text-slate-500 mb-2 uppercase tracking-[0.1em] font-black group-hover/bar:text-slate-950 transition-colors">
-                        <span>{item.label}</span>
-                        <span className="text-gold-600 font-mono">{item.p}</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                        <div className={`h-full ${item.width} ${item.color} transition-all duration-[2s]`}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="mt-12 pt-6 border-t border-slate-100 flex items-center gap-4">
-                   <div className="p-2 bg-emerald-50 rounded-lg text-emerald-600">
-                      <ShieldCheck size={16} />
-                   </div>
-                   <p className="text-[8px] uppercase tracking-widest font-black text-slate-500">
-                     Institutional Downside Protection Verified
-                   </p>
-                </div>
-             </div>
-          </div>
-        </div>
+    <div className="relative w-full h-full flex flex-col justify-center items-center bg-slate-950 overflow-hidden group">
+      
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0">
+         <img 
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80" 
+            className="w-full h-full object-cover opacity-20 saturate-0 transition-transform duration-[20s] group-hover:scale-110" 
+            alt="Capital Structure" 
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_110%)]"></div>
       </div>
-    </section>
+
+      {/* Telemetry HUD */}
+      <div className="absolute top-12 left-12 z-10 space-y-2 opacity-50">
+         <div className="flex items-center gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
+            <BarChart3 size={12} /> Fiscal_Model_v4.2
+         </div>
+         <div className="text-white text-[7px] font-mono opacity-40 uppercase tracking-widest">
+            Basis: ₹350 Cr // Hurdle: 10.2%
+         </div>
+      </div>
+
+      <div className="absolute bottom-12 right-12 z-10 text-right opacity-50">
+         <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">Portfolio Capital Sync</div>
+         <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
+            <Activity size={14} className="text-emerald-500 animate-pulse" /> Equity_IRR: 24.2%_Projected
+         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-6xl px-8 flex flex-col items-center">
+         <span className="text-gold-500 text-[11px] md:text-[13px] font-black uppercase tracking-[1em] block mb-12 animate-fade-in">
+           Chapter 08 // Yield Engineering
+         </span>
+         
+         <h2 className="text-white font-serif text-6xl md:text-9xl lg:text-[10rem] leading-[0.8] tracking-tighter italic font-black mb-16">
+           Capital <br/>
+           <span className="gold-gradient-text not-italic">Sovereignty.</span>
+         </h2>
+
+         <p className="text-slate-200 text-xl md:text-3xl font-light font-editorial italic max-w-4xl leading-relaxed mb-24 opacity-80">
+           Institutional-grade deployment. <br className="hidden lg:block"/>
+           <span className="text-white font-medium border-b border-gold-500/40 pb-2">A de-risked capital stack with 100% freehold land equity providing a massive yield hedge.</span>
+         </p>
+
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full mb-20">
+            {[
+              { l: "Target IRR", v: "24.2%", s: "7-Year Cycle" },
+              { l: "Equity Multiplier", v: "3.5x", s: "MOIC Projection" },
+              { l: "EBITDA Margin", v: "45.4%", s: "Stabilized Optima" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center group/item border-x border-white/5 px-10">
+                 <div className="text-slate-500 text-[8px] font-black uppercase tracking-widest mb-4 group-hover/item:text-gold-500 transition-colors">{stat.l}</div>
+                 <div className="text-white font-serif text-4xl italic font-black mb-2 leading-none">{stat.v}</div>
+                 <div className="text-gold-600 text-[8px] uppercase tracking-widest font-black opacity-60">{stat.s}</div>
+              </div>
+            ))}
+         </div>
+
+         <Link to="/economics" className="group px-14 py-7 bg-white/5 border border-white/20 text-white rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500 transition-all active:scale-95 flex items-center gap-5 backdrop-blur-xl shadow-2xl">
+           Economic Audit <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
+         </Link>
+      </div>
+
+      {/* Vector HUD Grid */}
+      <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#D4AF37 1px, transparent 1px), linear-gradient(90deg, #D4AF37 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+    </div>
   );
 };
 

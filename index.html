@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
@@ -116,6 +117,15 @@
       .preserve-3d { transform-style: preserve-3d; }
       .mask-editorial { mask-image: linear-gradient(to bottom, black 80%, transparent 100%); }
     </style>
+    <script>
+      const setVh = () => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      };
+      window.addEventListener('resize', setVh);
+      window.addEventListener('orientationchange', setVh);
+      setVh();
+    </script>
   <script type="importmap">
 {
   "imports": {

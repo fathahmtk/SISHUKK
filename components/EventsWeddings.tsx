@@ -1,75 +1,79 @@
 import React from 'react';
-import { Layers, Users, Music, Utensils, ArrowRight, Star, Camera } from 'lucide-react';
+import { Target, ArrowRight, Layers, Star, Scan, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const EventsWeddings: React.FC = () => {
   return (
-    <section id="events" className="py-20 bg-[#FDFBF7] relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          <div className="lg:col-span-6 grid grid-cols-2 gap-6 h-[600px] order-2 lg:order-1">
-                {[
-                  { icon: Layers, label: "Grand Ballroom", sub: "15k Sq. Ft.", img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80" },
-                  { icon: Users, label: "Banquet Halls", sub: "3k Pax Cap.", img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80" },
-                  { icon: Music, label: "Ceremonial Decks", sub: "Outdoor Vistas", img: "https://images.unsplash.com/photo-1519225421980-715cb0202128?auto=format&fit=crop&q=80" },
-                  { icon: Utensils, label: "High Volume", sub: "Global Core", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80" },
-                ].map((item, i) => (
-                  <div key={i} className="group relative overflow-hidden rounded-[3rem] border border-slate-100 shadow-lg bg-white">
-                    <img src={item.img} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-110" alt={item.label} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80"></div>
-                    <div className="absolute bottom-6 left-6 right-6">
-                       <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-gold-600 mb-2 shadow-xl group-hover:bg-gold-500 group-hover:text-white transition-all">
-                          <item.icon size={16} />
-                       </div>
-                       <span className="text-white text-[9px] font-black uppercase tracking-widest block">{item.label}</span>
-                       <span className="text-white/60 text-[7px] font-black uppercase tracking-widest">{item.sub}</span>
-                    </div>
-                  </div>
-                ))}
-          </div>
-          
-          <div className="lg:col-span-6 space-y-12 order-1 lg:order-2">
-            <div className="space-y-8">
-               <div className="flex items-center gap-5">
-                  <div className="w-12 h-[1px] bg-gold-500"></div>
-                  <span className="text-slate-400 text-[9px] font-black uppercase tracking-[0.6em]">Chapter 04: Revenue Alpha</span>
-               </div>
-               <h2 className="text-slate-950 font-serif text-5xl md:text-7xl leading-[0.8] tracking-tighter italic">
-                 Monumental <br/><span className="gold-gradient-text not-italic font-black">Volumes.</span>
-               </h2>
-               <p className="text-slate-500 text-xl font-light leading-relaxed border-l-2 border-gold-400 pl-10 max-w-xl italic">
-                 Architecture as a market barrier. Our 15,000 sq ft core provides a regional monopoly for mega-scale events.
-               </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-8">
-               {[
-                 { icon: Star, title: "Ritual Engine", desc: "Non-seasonal operational floor independent of leisure cycles." },
-                 { icon: Camera, title: "Vista Logic", desc: "Cinematic frame-points designed for high-end ceremonial media." }
-               ].map((item, i) => (
-                 <div key={i} className="flex gap-8 items-start group">
-                    <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-all shadow-sm">
-                       <item.icon size={20} />
-                    </div>
-                    <div>
-                       <h4 className="text-slate-950 font-serif text-2xl italic mb-1 group-hover:text-gold-600 transition-colors leading-none">{item.title}</h4>
-                       <p className="text-slate-400 text-xs font-light leading-relaxed italic">{item.desc}</p>
-                    </div>
-                 </div>
-               ))}
-            </div>
-            
-            <div className="pt-6">
-              <Link to="/events" className="inline-flex items-center gap-8 bg-slate-950 text-white px-12 py-5 rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 transition-all shadow-3xl group">
-                  Masterplan Audit <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-              </Link>
-            </div>
-          </div>
-
-        </div>
+    <div className="relative w-full h-full flex flex-col justify-center items-center bg-slate-950 overflow-hidden group">
+      
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0">
+         <img 
+            src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80" 
+            className="w-full h-full object-cover opacity-30 brightness-[0.7] transition-transform duration-[20s] group-hover:scale-110" 
+            alt="Ballroom" 
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_110%)]"></div>
       </div>
-    </section>
+
+      {/* Telemetry HUD */}
+      <div className="absolute top-12 right-12 z-10 text-right space-y-2 opacity-50">
+         <div className="flex items-center justify-end gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
+            Banqueting_Alpha <Target size={12} />
+         </div>
+         <div className="text-white text-[7px] font-mono opacity-40 uppercase tracking-widest">
+            Area: 15,000 Sq Ft // Cap: 3,000 Pax
+         </div>
+      </div>
+
+      <div className="absolute bottom-12 left-12 z-10 space-y-2 opacity-50">
+         <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">Revenue Velocity Marker</div>
+         <div className="flex items-center gap-3 text-white text-[11px] font-black uppercase tracking-widest">
+            <Activity size={14} className="text-emerald-500 animate-pulse" /> Operational_Floor: 365_Days
+         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-6xl px-8 flex flex-col items-center">
+         <span className="text-gold-500 text-[11px] md:text-[13px] font-black uppercase tracking-[1em] block mb-12 animate-fade-in">
+           Chapter 04 // Revenue Alpha Driver
+         </span>
+         
+         <h2 className="text-white font-serif text-6xl md:text-9xl lg:text-[10rem] leading-[0.8] tracking-tighter italic font-black mb-16">
+           Monumental <br/>
+           <span className="gold-gradient-text not-italic">Volumes.</span>
+         </h2>
+
+         <p className="text-slate-200 text-xl md:text-3xl font-light font-editorial italic max-w-4xl leading-relaxed mb-24 opacity-80">
+           Architecture as a market barrier. <br className="hidden lg:block"/>
+           <span className="text-white font-medium border-b border-gold-500/40 pb-2">A pillar-less ritual core engineered for South India's largest ceremonial events.</span>
+         </p>
+
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full mb-20">
+            {[
+              { l: "Ballroom GSF", v: "15,000", s: "Pillar-less Core" },
+              { l: "Pax Capacity", v: "3,000", s: "Concurrent Flux" },
+              { l: "Ceiling Datum", v: "8.0 M", s: "AAI Grade Cleared" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center group/item border-x border-white/5 px-10">
+                 <div className="text-slate-500 text-[8px] font-black uppercase tracking-widest mb-4 group-hover/item:text-gold-500 transition-colors">{stat.l}</div>
+                 <div className="text-white font-serif text-4xl italic font-black mb-2 leading-none">{stat.v}</div>
+                 <div className="text-gold-600 text-[8px] uppercase tracking-widest font-black opacity-60">{stat.s}</div>
+              </div>
+            ))}
+         </div>
+
+         <Link to="/events" className="group px-14 py-7 bg-white/5 border border-white/20 text-white rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500 transition-all active:scale-95 flex items-center gap-5 backdrop-blur-xl shadow-2xl">
+           Event Masterplan <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
+         </Link>
+      </div>
+
+      {/* Vector HUD lines */}
+      <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/5"></div>
+      </div>
+    </div>
   );
 };
 

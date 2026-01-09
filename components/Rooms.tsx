@@ -10,7 +10,7 @@ const rooms: Room[] = [
   {
     id: 'deluxe',
     name: 'Metro Deluxe',
-    description: 'Neutral palettes meet high-performance glass. A silent sanctuary above the temple city.',
+    description: 'Neutral palettes meet high-performance glass. A silent sanctuary above the temple city. 220 Units available.',
     price: '',
     size: '450 Sq. Ft.',
     image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80',
@@ -19,7 +19,7 @@ const rooms: Room[] = [
   {
     id: 'premium',
     name: 'Sanctuary Prem',
-    description: 'Highest floors of North Tower. Direct unobstructed vistas of the Guruvayur skyline.',
+    description: 'Highest floors of North Tower. Direct unobstructed vistas of the Guruvayur skyline. 200 Units available.',
     price: '',
     size: '500 Sq. Ft.',
     image: 'https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&q=80',
@@ -28,7 +28,7 @@ const rooms: Room[] = [
   {
     id: 'suite',
     name: 'Sirshukk Suite',
-    description: 'Dual-aspect config with private library and priority access to the Sky Bridge.',
+    description: 'Dual-aspect config with private library and priority access to the Sky Bridge. 20 Exclusive Units.',
     price: '',
     size: '950 Sq. Ft.',
     image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80',
@@ -62,7 +62,7 @@ const Rooms: React.FC<RoomsProps> = ({ onInquiryClick }) => {
                 </h2>
             </div>
             <p className="text-slate-500 text-lg font-light leading-tight max-w-xs border-l-2 border-gold-400 pl-8 italic">
-                Technical breakdown of 420 luxury units, optimized for acoustic silence.
+                Technical breakdown of 440 luxury units, optimized for acoustic silence and 24.2% yield.
             </p>
         </div>
 

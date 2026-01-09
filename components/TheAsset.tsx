@@ -1,83 +1,80 @@
 import React from 'react';
-import { Building2, TrendingUp, ArrowRight, Layers, ShieldCheck, Maximize2 } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Layers, Database, Activity, Scan } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const THESIS_POINTS = [
-  { label: "Architectural Scarcity", d: "Non-replicable twin-tower silhouette creating a regional landmark." },
-  { label: "Revenue Multiplier", d: "Diversified yield capture from rooms and event cores." },
-  { label: "Capital Sovereignty", d: "100% Freehold debt-free land base reducing risk." },
-  { label: "Exit Visibility", d: "REIT-calibrated financial governance for Year 7." }
-];
 
 const TheAsset: React.FC = () => {
   return (
-    <section className="py-20 bg-white relative">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          <div className="lg:col-span-5 space-y-10">
-            <div className="space-y-8">
-               <div className="flex items-center gap-5">
-                  <div className="w-12 h-[1px] bg-gold-500"></div>
-                  <span className="text-slate-400 text-[9px] font-black uppercase tracking-[0.6em]">Chapter 01: Strategic Thesis</span>
-               </div>
-               <h2 className="text-slate-950 font-serif text-5xl md:text-7xl leading-[0.8] tracking-tighter italic">
-                  Value through <br/><span className="gold-gradient-text font-black italic">Scarcity.</span>
-               </h2>
-               <p className="text-slate-500 text-xl font-light leading-relaxed border-l-2 border-gold-400 pl-10 max-w-lg italic">
-                  Architecture functions as a commercial engine. In dense pilgrimage corridors, visual dominance defines market capture.
-               </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6 pt-8 border-t border-slate-100">
-               {THESIS_POINTS.map((item, i) => (
-                 <div key={i} className="group flex gap-6 items-start">
-                    <div className="text-gold-600 font-serif text-2xl italic opacity-30 group-hover:opacity-100 transition-opacity">0{i+1}</div>
-                    <div>
-                       <h4 className="text-slate-950 font-black uppercase tracking-widest text-[10px] mb-1 group-hover:text-gold-600 transition-colors">{item.label}</h4>
-                       <p className="text-slate-400 text-xs leading-relaxed italic">{item.d}</p>
-                    </div>
-                 </div>
-               ))}
-            </div>
-
-            <div className="pt-6">
-               <Link to="/asset" className="inline-flex items-center gap-8 bg-slate-950 text-white px-10 py-5 rounded-full text-[10px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 transition-all shadow-3xl group">
-                  Full Portfolio <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-               </Link>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 grid grid-cols-2 gap-8 h-[600px]">
-             <div className="relative rounded-[3.5rem] overflow-hidden shadow-2xl border border-slate-100 group bg-slate-50 row-span-2">
-                <img 
-                   src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
-                   className="w-full h-full object-cover transition-transform duration-[8s] group-hover:scale-110" 
-                   alt="Main Elevation" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60"></div>
-                <div className="absolute bottom-10 left-10">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gold-500 flex items-center justify-center text-white shadow-2xl">
-                         <Layers size={24} />
-                      </div>
-                      <span className="text-white font-serif text-xl italic">Tower Symmetry</span>
-                    </div>
-                </div>
-             </div>
-             <div className="rounded-[3.5rem] overflow-hidden shadow-xl aspect-square border border-slate-100 group">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Detail" />
-             </div>
-             <div className="p-10 bg-[#FDFBF7] border border-slate-200 rounded-[3.5rem] shadow-lg group hover:border-gold-400 transition-all flex flex-col justify-center">
-                <TrendingUp className="text-gold-500 mb-6" size={28} />
-                <h4 className="text-slate-950 font-serif text-2xl mb-2 italic leading-tight">Yield Insulation.</h4>
-                <p className="text-slate-400 text-xs leading-relaxed">Structural USPs protect ADR from market volatility.</p>
-             </div>
-          </div>
-
-        </div>
+    <div className="relative w-full h-full flex flex-col justify-center items-center bg-slate-950 overflow-hidden group">
+      
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0">
+         <img 
+            src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
+            className="w-full h-full object-cover opacity-30 grayscale-[0.2] transition-transform duration-[20s] group-hover:scale-110" 
+            alt="Asset Elevation" 
+         />
+         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_110%)]"></div>
       </div>
-    </section>
+
+      {/* Telemetry HUD */}
+      <div className="absolute top-12 left-12 z-10 space-y-2 opacity-50">
+         <div className="flex items-center gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
+            <Scan size={12} /> Vector_Scan_01
+         </div>
+         <div className="text-white text-[7px] font-mono opacity-40 uppercase tracking-widest">
+            X: 10.5952 // Y: 76.0375
+         </div>
+      </div>
+
+      <div className="absolute bottom-12 right-12 z-10 text-right opacity-50">
+         <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">BIM Core Synchronization</div>
+         <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
+            <Activity size={14} className="text-emerald-500 animate-pulse" /> Asset_Sovereignty: Verified
+         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center max-w-6xl px-8 flex flex-col items-center">
+         <span className="text-gold-500 text-[11px] md:text-[13px] font-black uppercase tracking-[1em] block mb-12 animate-fade-in">
+           Chapter 01 // The Strategic Thesis
+         </span>
+         
+         <h2 className="text-white font-serif text-6xl md:text-9xl lg:text-[10rem] leading-[0.8] tracking-tighter italic font-black mb-16">
+           Value through <br/>
+           <span className="gold-gradient-text not-italic">Scarcity.</span>
+         </h2>
+
+         <p className="text-slate-200 text-xl md:text-3xl font-light font-editorial italic max-w-4xl leading-relaxed mb-24 opacity-80">
+           Architecture functions as a commercial engine. In dense spiritual corridors, <br className="hidden lg:block"/>
+           <span className="text-white font-medium border-b border-gold-500/40 pb-2">visual dominance defines the ultimate market capture.</span>
+         </p>
+
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full mb-20">
+            {[
+              { l: "Built Area", v: "350,000", s: "Sq. Ft. GSF" },
+              { l: "Capital Outlay", v: "₹350 Cr", s: "Institutional" },
+              { l: "Asset Status", v: "Active", s: "BIM Grade A" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center group/item border-x border-white/5 px-10">
+                 <div className="text-slate-500 text-[8px] font-black uppercase tracking-widest mb-4 group-hover/item:text-gold-500 transition-colors">{stat.l}</div>
+                 <div className="text-white font-serif text-4xl italic font-black mb-2 leading-none">{stat.v}</div>
+                 <div className="text-gold-600 text-[8px] uppercase tracking-widest font-black opacity-60">{stat.s}</div>
+              </div>
+            ))}
+         </div>
+
+         <Link to="/asset" className="group px-14 py-7 bg-white/5 border border-white/20 text-white rounded-full text-[11px] font-black uppercase tracking-[0.4em] hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500 transition-all active:scale-95 flex items-center gap-5 backdrop-blur-xl shadow-2xl">
+           Structural Dossier <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
+         </Link>
+      </div>
+
+      {/* Vertical Scanning HUD */}
+      <div className="absolute inset-0 z-20 pointer-events-none border-x border-white/5 flex items-center justify-between">
+         <div className="h-full w-px bg-white/5"></div>
+         <div className="h-full w-px bg-white/5"></div>
+      </div>
+    </div>
   );
 };
 
