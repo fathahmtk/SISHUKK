@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowUpRight, ArrowRight, Landmark, Briefcase, Activity, Rocket, Globe, Scan, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,7 @@ const ExitStrategy: React.FC = () => {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center bg-[#05070A] overflow-hidden group">
       
-      {/* Background Layer */}
+      {/* Background Layer: Horizon View */}
       <div className="absolute inset-0 z-0">
          <img 
             src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" 
@@ -17,44 +18,44 @@ const ExitStrategy: React.FC = () => {
          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#05070A_110%)]"></div>
       </div>
 
-      {/* Telemetry HUD */}
+      {/* Report HUD Marker */}
       <div className="absolute top-8 left-6 md:top-12 md:left-12 z-10 space-y-3 opacity-40 hidden sm:block">
          <div className="flex items-center gap-4 text-brass-200 font-black text-[9px] uppercase tracking-[0.5em]">
-            <Rocket size={14} /> Completion_Window_v2.5
+            <Rocket size={14} /> Horizon_Node_2027
          </div>
          <div className="text-white text-[7px] font-mono opacity-50 uppercase tracking-widest">
-            Cycle: 2027 // Status: Landmark_Ready
+            Cycle: Coronation // Status: Milestone_Active
          </div>
       </div>
 
       <div className="absolute bottom-8 right-6 md:bottom-12 md:right-12 z-10 text-right opacity-40 hidden sm:block">
-         <div className="text-brass-200 font-black text-[9px] uppercase tracking-[0.5em] mb-3">Legacy Roadmap Mapping</div>
+         <div className="text-brass-200 font-black text-[9px] uppercase tracking-[0.5em] mb-3">Project Record Closure</div>
          <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
-            <Activity size={16} className="text-emerald-500 animate-pulse" /> Milestone: Phase_02_Active
+            <Activity size={16} className="text-emerald-500 animate-pulse" /> Readiness: Verified
          </div>
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 text-center w-full max-w-7xl px-6 md:px-8 flex flex-col items-center">
          <span className="text-brass-400 text-[11px] md:text-[15px] font-black uppercase tracking-[1.2em] block mb-8 md:mb-16 animate-fade-in">
-           Chapter 13 // Project Vision Horizon
+           Section 13 // Project Vision Horizon
          </span>
          
          <h2 className="text-white font-serif text-5xl md:text-8xl lg:text-[10rem] leading-[0.9] md:leading-[0.8] tracking-tighter italic font-black mb-10 md:mb-16">
-           Future <br/>
+           The <br/>
            <span className="gold-gradient-text not-italic">Horizon.</span>
          </h2>
 
          <p className="text-slate-300 text-lg md:text-3xl font-light font-editorial italic max-w-5xl leading-relaxed mb-12 md:mb-28 opacity-90 px-4">
            Project completion clarity. <br className="hidden lg:block"/>
-           <span className="text-white font-medium border-b border-brass-400/40 pb-3 shadow-brass-glow">A technical architecture designed for the 2027 coronation, creating Kerala's definitive luxury landmark.</span>
+           <span className="text-white font-medium border-b border-brass-400/40 pb-3 shadow-brass-glow">Technical roadmap calibrated for the 2027 grand coronation as Kerala's definitive luxury landmark.</span>
          </p>
 
          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-16 w-full mb-12 md:mb-24 max-w-5xl">
             {[
-              { l: "Completion", v: "2027", s: "Final Phase" },
-              { l: "Asset Grade", v: "Trophy", s: "T1 Architecture" },
-              { l: "Legacy Index", v: "Highest", s: "Landmark Class" }
+              { l: "Completion Window", v: "Q4 2027", s: "Grand Opening" },
+              { l: "Asset Grade", v: "Trophy", s: "Global Standard" },
+              { l: "Legacy Metric", v: "Highest", s: "Market Command" }
             ].map((stat, i) => (
               <div key={i} className="text-center group/item border-y sm:border-y-0 sm:border-x border-white/5 py-10 transition-all duration-700 hover:bg-white/5 rounded-[2rem]">
                  <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest mb-4 group-hover/item:text-brass-200 transition-colors">{stat.l}</div>
@@ -65,11 +66,11 @@ const ExitStrategy: React.FC = () => {
          </div>
 
          <Link to="/exit" className="group px-12 md:px-20 py-7 md:py-9 bg-white/5 border border-white/10 text-white rounded-full text-[11px] md:text-[12px] font-black uppercase tracking-[0.5em] hover:bg-brass-400 hover:text-onyx-950 transition-all active:scale-95 flex items-center gap-6 backdrop-blur-xl shadow-premium">
-           Vision Roadmap <ArrowRight size={20} className="group-hover:translate-x-3 transition-transform duration-500" />
+           View Vision Roadmap <ArrowRight size={20} className="group-hover:translate-x-3 transition-transform duration-500" />
          </Link>
       </div>
 
-      {/* Background Central Crosshair */}
+      {/* Perspective Grid Background */}
       <div className="absolute inset-0 z-20 pointer-events-none opacity-5 hidden sm:flex items-center justify-center">
          <div className="w-[1px] h-32 md:h-64 bg-brass-200"></div>
          <div className="h-[1px] w-32 md:h-64 bg-brass-200"></div>

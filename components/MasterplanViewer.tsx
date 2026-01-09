@@ -1,15 +1,14 @@
+
 import React, { useState } from 'react';
 import { ShieldCheck, Layers, Gauge, ScanLine, Activity, Database, Ruler, ArrowRight, Box } from 'lucide-react';
 
 const STACK_DATA = [
-  { floor: "20", label: "Dual Orbit Crowns", zone: "Gastronomy", area: "12,000", detail: "Twin revolving platforms capping Tower A and B. Cinematic 360° spiritual vistas.", metric: "USP Engine" },
-  { floor: "16-19", label: "Imperial Wings", zone: "Ultra-Luxury", area: "45,000", detail: "Presidential Suites and high-value bridal wings above the arch.", metric: "Yield Alpha" },
-  { floor: "15", label: "The Meridian Arch", zone: "Link", area: "8,500", detail: "Steel-truss skybridge housing the Executive Club & Private Lounge.", metric: "Structural Link" },
-  { floor: "04-14", label: "Twin Tower Core", zone: "Inventory", area: "185,000", detail: "420 luxury units optimized for high-yield transit and ritual stays.", metric: "Anchor Rev" },
-  { floor: "04 Terrace", label: "Podium Roof", zone: "Lifestyle", area: "22,000", detail: "Infinity Edge Pool, Open-Air Yoga & Vedic Wellness Core.", metric: "ALOS Booster" },
-  { floor: "01-03", label: "The Grand Podium", zone: "Events", area: "75,000", detail: "15,000 sq ft Ballroom, Retail wing, and Pre-function foyer.", metric: "MICE Core" },
-  { floor: "Ground", label: "Dual Portals", zone: "Arrival", area: "15,000", detail: "Segregated lobbies for resident guests and banquet visitors.", metric: "Flow Matrix" },
-  { floor: "B1-B2", label: "Logistics Core", zone: "Service", area: "80,000", detail: "250-Car Stack Parking, MEP Plant, and Central Staff Atrium.", metric: "OpEx Shield" },
+  { floor: "20", label: "Dual Orbit Crowns", zone: "Gastronomy", area: "12,000", detail: "Twin revolving platforms capping Tower A and B. Cinematic 360° spiritual vistas.", metric: "Record Apex" },
+  { floor: "16-19", label: "Sovereign Wings", zone: "Ultra-Luxury", area: "45,000", detail: "Exclusive presidential and bridal residency tiers located above the Meridian Link.", metric: "Inventory Alpha" },
+  { floor: "15", label: "The Meridian Arch", zone: "Nexus Link", area: "8,500", detail: "Structural link housing the Executive Club and glass spiritual observation deck.", metric: "Structural Node" },
+  { floor: "04-14", label: "Twin Core Stacks", zone: "Inventory", area: "185,000", detail: "420 units optimized for high-velocity ritual and transient spiritual demand.", metric: "Primary Stack" },
+  { floor: "04 Terrace", label: "Lifestyle Deck", zone: "Wellness", area: "22,000", detail: "Infinity Edge Pool and Open-Air Vedic Wellness core serving residents.", metric: "Wellness Core" },
+  { floor: "01-03", label: "The Grand Podium", zone: "Events", area: "75,000", detail: "15,000 sq ft pillar-less Ballroom and high-end ritual retail wing.", metric: "Event Hub" },
 ];
 
 const MasterplanViewer: React.FC = () => {
@@ -23,7 +22,7 @@ const MasterplanViewer: React.FC = () => {
           <div className="max-w-3xl">
             <div className="flex items-center gap-5 mb-8 md:mb-10">
               <div className="w-12 h-[1px] bg-brass-400"></div>
-              <span className="text-brass-400 text-[10px] md:text-[12px] font-black uppercase tracking-[0.8em]">Chapter 06: Stacking Logic</span>
+              <span className="text-brass-400 text-[10px] md:text-[12px] font-black uppercase tracking-[0.8em]">Section 06 // Structural Stacking</span>
             </div>
             <h2 className="text-white font-serif text-5xl md:text-8xl leading-[0.85] tracking-tighter italic font-black">
               Vertical <br/><span className="gold-gradient-text not-italic">Hierarchy.</span>
@@ -31,11 +30,11 @@ const MasterplanViewer: React.FC = () => {
           </div>
           <div className="hidden lg:flex items-center gap-8 bg-white/5 px-10 py-6 rounded-[2.5rem] border border-white/10 shadow-premium backdrop-blur-md">
              <div className="w-14 h-14 rounded-2xl bg-brass-400 flex items-center justify-center text-onyx-950 shadow-premium">
-                <Gauge size={24} className="animate-pulse" />
+                <ScanLine size={24} className="animate-pulse" />
              </div>
              <div>
-                <span className="text-brass-200/40 text-[8px] font-black uppercase tracking-widest block mb-1">BIM_Scan_Audit</span>
-                <span className="text-white text-xs font-bold uppercase tracking-widest">Structural v2.5 Verified</span>
+                <span className="text-brass-200/40 text-[8px] font-black uppercase tracking-widest block mb-1">BIM_Structural_Log</span>
+                <span className="text-white text-xs font-bold uppercase tracking-widest">Master Record v2.5</span>
              </div>
           </div>
         </div>
@@ -58,7 +57,6 @@ const MasterplanViewer: React.FC = () => {
                        <span className={`text-[9px] md:text-[10px] font-mono font-black ${hoveredZone === i ? 'text-onyx-950' : 'text-brass-400/40'}`}>L{item.floor}</span>
                        <span className={`text-[12px] md:text-[13px] font-black uppercase tracking-widest ${hoveredZone === i ? 'text-onyx-950' : 'text-white/60 group-hover:text-white'}`}>{item.label}</span>
                     </div>
-                    {hoveredZone === i && <Activity size={14} className="text-onyx-950 animate-pulse hidden md:block" />}
                  </div>
               </button>
             ))}
@@ -84,12 +82,12 @@ const MasterplanViewer: React.FC = () => {
                      <div className="bg-white/5 backdrop-blur-3xl border border-white/10 p-10 md:p-12 rounded-[3rem] w-full md:w-auto md:min-w-[320px] shadow-premium">
                         <div className="space-y-10">
                            <div>
-                              <div className="text-white/30 text-[9px] font-black uppercase tracking-widest mb-3 flex items-center gap-4"><Ruler size={16} /> Node_GSF</div>
+                              <div className="text-white/30 text-[9px] font-black uppercase tracking-widest mb-3 flex items-center gap-4"><Ruler size={16} /> Node_Area</div>
                               <div className="text-brass-200 font-mono text-4xl md:text-5xl font-black">{STACK_DATA[hoveredZone].area} <span className="text-[12px] uppercase text-white/20">sq.ft</span></div>
                            </div>
                            <div className="h-px bg-white/10"></div>
                            <div>
-                              <div className="text-white/30 text-[9px] font-black uppercase tracking-widest mb-3 flex items-center gap-4"><Database size={16} /> Role</div>
+                              <div className="text-white/30 text-[9px] font-black uppercase tracking-widest mb-3 flex items-center gap-4"><Database size={16} /> Report_Node</div>
                               <div className="text-white font-serif text-3xl italic leading-none font-black">{STACK_DATA[hoveredZone].metric}</div>
                            </div>
                         </div>
@@ -100,15 +98,11 @@ const MasterplanViewer: React.FC = () => {
                      <div className="flex items-center gap-10">
                         <div className="flex items-center gap-4">
                            <ShieldCheck size={20} className="text-emerald-500" />
-                           <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">BIM_Sync</span>
-                        </div>
-                        <div className="flex items-center gap-4">
-                           <ScanLine size={20} className="text-brass-400" />
-                           <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">Node_Verified</span>
+                           <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">BIM_Verified</span>
                         </div>
                      </div>
                      <button className="w-full md:w-auto px-12 py-6 bg-white text-onyx-950 rounded-full text-[11px] font-black uppercase tracking-[0.5em] flex items-center justify-center gap-8 hover:bg-brass-400 transition-all shadow-premium active:scale-95 group">
-                        Audit Vertical Flow <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                        Examine Vertical Logic <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
                      </button>
                   </div>
                </div>
