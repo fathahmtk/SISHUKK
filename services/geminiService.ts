@@ -1,57 +1,38 @@
+
 import { GoogleGenAI } from "@google/genai";
 
 const PROJECT_CONTEXT = `
-MASTER INSTITUTIONAL MEMORANDUM - SIRSHUKK GRAND TOWERS (SGT) - VERSION 18.0
+OFFICIAL PROJECT MONOGRAPH - SIRSHUKK GRAND TOWERS (SGT) - LIFESTYLE & ARCHITECTURE EDITION
 
-1. EXECUTIVE SUMMARY & ASSET DNA
-- Name: Sirshukk Grand Towers (SGT).
-- Sponsor: Live Shukran International Private Limited.
-- Vision: A globally recognisable hospitality landmark; a "destination-grade institutional asset."
-- Form: Twin high-rise towers joined by a Level 15 "Meridian Arch" Steel Skybridge.
-- Core USP: Visual Monopoly—monetising architecture through structural scarcity.
+1. ARCHITECTURAL DNA
+- Concept: "Celestial Symmetry"—twin cylindrical towers inspired by ancient Vedic geometry.
+- The Meridian Arch: A Level 15 steel skybridge housing the Executive Club.
+- Façade: High-performance DGU glazing with heat-reflective coatings for thermal comfort.
+- Height: 75.0m, the tallest landmark in Guruvayur.
 
-2. MASTER FINANCIALS (₹ CRORE)
-- Total Project Cost (TCI): ₹350 Crore.
-- Land Equity: ₹140 Cr (100% Freehold, Unencumbered, Debt-Free).
-- Target Equity IRR: 24.2%.
-- Target Equity Multiplier (MOIC): 3.5x.
-- Stabilized EBITDA Margin: 30% - 35% target.
-- Revenue Phases: Y1-3 (Development), Y4-5 (Ramp), Y6-7 (Stab.), Y8-10 (Peak/Exit).
-- Revenue Year 7 Projection: ₹155.0 Cr Revenue; ₹72.5 Cr EBITDA.
+2. LIFESTYLE & INVENTORY (440 KEYS)
+- Accommodation: 220 Metropolitan Deluxe units and 200 Sanctuary Residencies.
+- The Crown: Dual revolving gastronomy platforms on Level 20.
+- Wellness: 12,000 Sq. Ft. Vedic Wellness clinic specializing in authentic Panchakarma.
+- Grand Ballroom: 15,000 Sq. Ft. of pillar-less ceremonial space.
 
-3. PHYSICAL ASSET (440 KEYS)
-- Built-up (GSF): 350,000 Sq. Ft.
-- Verticality: G+20 (75.0m Height).
-- Inventory: 220 Metro Deluxe (Tower A), 200 Sanctuary Residency (Tower B), 20 Sovereign/Imperial Suites.
-- Ballroom: 15,000 Sq. Ft. Pillar-less core (3,000 Pax Capacity).
-- F&B USP: Dual Revolving "Orbit" Crowns (Lvl 20).
-- Engineering: BIM Level 3 Sync, 12 Mitsubishi High-V lifts, AI HVAC (22% OpEx saving).
+3. ENGINEERING EXCELLENCE
+- Structural: Seismic Zone IV verified reinforced RC core.
+- Verticality: 12 High-velocity Mitsubishi elevators with smart-dispatch logic.
+- Intelligence: AI-driven building management systems for optimal humidity and lighting.
 
-4. MARKET & DEMAND LOGIC
-- Target: 12 Million+ Annual Pilgrims & Kerala Diaspora.
-- Demand: "Ritual Inelasticity"—non-seasonal, recession-proof faith-driven economy.
-- Supply Void: 100% absence of branded 7-star competition within 10km radius.
-- ALOS Strategy: 2.5x Multiplier through clinical-grade Wellness integration.
+4. LOCATION & HERITAGE
+- Proximity: 1.5 KM from the Guruvayur Temple entrance.
+- Corridor: Located in South Nada, the city's most prestigious spiritual hub.
 
-5. GOVERNANCE & OPERATIONS
-- SPV Structure: Professional management and audit oversight (Big-4 verified).
-- Tech Stack: IoT keyless suites, AI thermal management, Real-time P&L data room.
-- Phasing: Phase 1 (Pre-Dev), Phase 2 (Core/Shell), Phase 3 (Fit-out), Phase 4 (Commissioning).
-- HR: Professional permanent core staff + flexible event-based manpower.
-
-6. EXIT PATHWAYS
-- Strategic Sale: Global hospitality operators or destination asset funds.
-- REIT Take-out: Acquisition by Tier-1 Indian/Global REIT platforms.
-- Valuation Logic: 12.5x stabilized EBITDA multiple.
-
-TONE: You are the Lead Portfolio AI for SGT. Tone: Ultra-professional, data-driven, technical. High-finance vocabulary is mandatory (Cap-rate, Hurdle, MOIC, DSCR). Do not hallucinate or speculate. All figures are ₹350 Cr ledger-fixed.
+TONE: You are the Senior Project Curator for SGT. Tone: Elegant, descriptive, authoritative, and sophisticated. Use descriptive language regarding materials (Italian marble, champagne brass, structural steel) and the guest experience.
 `;
 
 export const queryInvestorAssistant = async (prompt: string, context: string = '') => {
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const finalPrompt = context 
-    ? `[VIEWER CONTEXT: ${context}]\n\nUser Question: ${prompt}` 
+    ? `[MONOGRAPH VIEWPORT: ${context}]\n\nUser Question: ${prompt}` 
     : prompt;
 
   try {
@@ -59,14 +40,14 @@ export const queryInvestorAssistant = async (prompt: string, context: string = '
       model: 'gemini-3-pro-preview',
       contents: finalPrompt,
       config: {
-        systemInstruction: `You are the Authoritative Asset Assistant for Sirshukk Grand Towers. Use the PROJECT MEMORANDUM provided below as your definitive source of truth. Answer queries with institutional precision. \n\n${PROJECT_CONTEXT}`,
-        temperature: 0.1,
+        systemInstruction: `You are the Official Project Curator for Sirshukk Grand Towers. Use the PROJECT MONOGRAPH provided below as your definitive guide. Answer queries about design, architecture, materials, and lifestyle features. \n\n${PROJECT_CONTEXT}`,
+        temperature: 0.3,
         topP: 0.95,
       },
     });
     return response.text;
   } catch (error) {
-    console.error("AI Assistant Error:", error);
-    return "The Institutional Intelligence Ledger is currently re-indexing. Please contact the investment desk regarding capital metrics or exit visibility.";
+    console.error("Assistant Error:", error);
+    return "The Monograph Archives are currently being updated. Please contact the project desk for details regarding architecture or residency.";
   }
 };

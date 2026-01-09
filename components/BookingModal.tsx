@@ -84,7 +84,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, initialTyp
                     className={`flex-1 flex flex-col items-center gap-4 py-8 rounded-[3rem] text-[10px] font-black uppercase tracking-widest transition-all border ${type === 'room' ? 'bg-slate-950 text-white border-slate-950 shadow-2xl scale-105 z-10' : 'bg-slate-50 text-slate-400 border-slate-100 hover:border-gold-300 hover:bg-white'}`}
                    >
                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${type === 'room' ? 'bg-gold-500 text-onyx-950' : 'bg-white border border-slate-200'}`}>
-                        <Bed size={24} />
+                        < Bed size={24} />
                      </div>
                      Inventory Hub
                    </button>
@@ -103,11 +103,11 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, initialTyp
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-3">
                        <label className="text-slate-400 text-[9px] font-black uppercase tracking-widest ml-4">Full Legal Name</label>
-                       <input required type="text" placeholder="GUEST_IDENTITY_01" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 py-5 text-slate-950 text-sm focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner" />
+                       <input required type="text" placeholder="GUEST_IDENTITY_01" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 py-5 text-slate-950 text-base focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner" />
                     </div>
                     <div className="space-y-3">
                        <label className="text-slate-400 text-[9px] font-black uppercase tracking-widest ml-4">Authorized Email</label>
-                       <input required type="email" placeholder="ENCRYPTED_ADDRESS" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 py-5 text-slate-950 text-sm focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner" />
+                       <input required type="email" placeholder="ENCRYPTED_ADDRESS" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 py-5 text-slate-950 text-base focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner" />
                     </div>
                   </div>
 
@@ -115,14 +115,14 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, initialTyp
                     <div className="space-y-3">
                        <label className="text-slate-400 text-[9px] font-black uppercase tracking-widest ml-4">Deployment Date</label>
                        <div className="relative group">
-                          <input required type="date" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 pr-16 py-5 text-slate-950 text-sm focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner cursor-pointer" />
+                          <input required type="date" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 pr-16 py-5 text-slate-950 text-base focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner cursor-pointer" />
                           <Calendar className="absolute right-6 top-1/2 -translate-y-1/2 text-gold-600 pointer-events-none group-hover:scale-110 transition-transform" size={20} />
                        </div>
                     </div>
                     <div className="space-y-3">
                        <label className="text-slate-400 text-[9px] font-black uppercase tracking-widest ml-4">Load Count (Pax)</label>
                        <div className="relative group">
-                          <input required type="number" min="1" placeholder="CAPACITY_SPEC" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 pr-16 py-5 text-slate-950 text-sm focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner" />
+                          <input required type="number" min="1" placeholder="CAPACITY_SPEC" className="w-full bg-slate-50 border border-slate-200 rounded-3xl px-8 pr-16 py-5 text-slate-950 text-base focus:outline-none focus:border-gold-500 focus:bg-white transition-all shadow-inner" />
                           <Users className="absolute right-6 top-1/2 -translate-y-1/2 text-gold-600 pointer-events-none group-hover:scale-110 transition-transform" size={20} />
                        </div>
                     </div>

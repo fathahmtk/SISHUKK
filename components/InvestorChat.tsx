@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, Bot, ShieldCheck, Sparkles, AlertCircle, TrendingUp, Landmark, Construction, ChevronRight } from 'lucide-react';
+import { Send, X, Bot, ShieldCheck, Sparkles, AlertCircle, TrendingUp, Landmark, Construction, ChevronRight, Scan, Activity } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { queryInvestorAssistant } from '../services/geminiService';
 
@@ -18,7 +18,7 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
   const quickQueries = [
     { label: "IRR Projection", icon: <TrendingUp size={10} />, query: "Explain the 24.2% IRR projection." },
     { label: "Equity Stack", icon: <Landmark size={10} />, query: "What is the capital allocation?" },
-    { label: "Site Feed", icon: <Construction size={10} />, query: "What is the construction status?" }
+    { label: "BIM Status", icon: <Scan size={10} />, query: "What is the BIM synchronization level?" }
   ];
 
   useEffect(() => {
@@ -52,49 +52,49 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
       {!isOpen && (
         <button 
           onClick={() => setIsOpen(true)}
-          className="bg-white hover:bg-gold-500 text-slate-900 hover:text-white p-7 rounded-[2rem] shadow-2xl transition-all duration-500 active:scale-95 group relative border border-slate-200"
+          className="bg-brass-400 hover:bg-white text-onyx-950 p-7 rounded-[2.5rem] shadow-premium transition-all duration-500 active:scale-95 group relative border border-brass-400/20"
         >
           <Bot size={32} className="group-hover:rotate-12 transition-transform" />
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"></span>
-          <div className="absolute -left-56 top-1/2 -translate-y-1/2 bg-white border border-slate-100 px-6 py-3 rounded-full opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-xl translate-x-4 group-hover:translate-x-0">
-            <p className="text-slate-900 text-[9px] font-black uppercase tracking-[0.2em] whitespace-nowrap">Institutional Intelligence</p>
+          <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-onyx-950 rounded-full animate-pulse"></span>
+          <div className="absolute -left-64 top-1/2 -translate-y-1/2 bg-onyx-950 border border-white/10 px-8 py-4 rounded-full opacity-0 group-hover:opacity-100 transition-all pointer-events-none shadow-premium translate-x-4 group-hover:translate-x-0">
+            <p className="text-brass-200 text-[10px] font-black uppercase tracking-[0.3em] whitespace-nowrap">Authorized Intelligence</p>
           </div>
         </button>
       )}
 
       {isOpen && (
-        <div className="w-[400px] md:w-[520px] bg-white/80 backdrop-blur-[50px] border border-white rounded-[3.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.15)] overflow-hidden animate-fade-in-up flex flex-col">
-          <div className="bg-white/50 border-b border-slate-100 p-8 flex justify-between items-center">
-            <div className="flex items-center gap-5">
-              <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-gold-600 border border-slate-200 shadow-sm">
+        <div className="w-[400px] md:w-[540px] bg-onyx-900 border border-white/10 rounded-[3.5rem] shadow-[0_60px_150px_rgba(0,0,0,0.8)] overflow-hidden animate-fade-in-up flex flex-col backdrop-blur-3xl">
+          <div className="bg-white/5 border-b border-white/10 p-8 flex justify-between items-center">
+            <div className="flex items-center gap-6">
+              <div className="w-14 h-14 bg-brass-400 rounded-2xl flex items-center justify-center text-onyx-950 shadow-premium">
                  <Bot size={28} />
               </div>
               <div>
-                <span className="text-slate-950 text-[11px] font-black uppercase tracking-widest leading-none block mb-1">Portfolio Intelligence</span>
-                <span className="text-gold-600 text-[8px] font-black uppercase tracking-widest flex items-center gap-1">
-                  <ShieldCheck size={10} /> Encrypted Session v2.5
+                <span className="text-white text-[12px] font-black uppercase tracking-widest leading-none block mb-1">Portfolio Core AI</span>
+                <span className="text-brass-400 text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-2">
+                  <ShieldCheck size={12} className="text-emerald-500" /> Encrypted Session v4.2
                 </span>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="w-12 h-12 rounded-full bg-slate-50 hover:bg-slate-100 flex items-center justify-center transition-all border border-slate-200">
-              <X size={20} className="text-slate-400" />
+            <button onClick={() => setIsOpen(false)} className="w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all border border-white/10 text-white active:scale-90">
+              <X size={20} />
             </button>
           </div>
           
-          <div ref={scrollRef} className="h-[450px] overflow-y-auto p-10 space-y-8 custom-scrollbar">
+          <div ref={scrollRef} className="h-[480px] overflow-y-auto p-10 space-y-10 custom-scrollbar bg-[radial-gradient(circle_at_top_right,_rgba(184,138,42,0.05)_0%,_transparent_70%)]">
             <div className="flex justify-start">
-              <div className="bg-slate-50/50 p-8 rounded-[2.5rem] text-slate-600 border border-slate-100 text-[12px] leading-relaxed max-w-[90%] shadow-sm">
-                 <Sparkles className="text-gold-500 mb-4" size={16} />
-                 Greetings. I am authorized to disclose structural data, yield projections, and risk mitigation profiles for the SIRSHUKK asset.
-                 <div className="mt-6 grid grid-cols-1 gap-3">
+              <div className="bg-white/5 p-8 rounded-[2.5rem] text-slate-300 border border-white/10 text-[13px] font-light leading-relaxed max-w-[90%] shadow-premium font-editorial italic">
+                 <Sparkles className="text-brass-400 mb-6" size={20} />
+                 "Greetings. I am the lead technical assistant for the SIRSHUKK asset. My ledger is synchronized with current capex deployment and ritual market demand data. How may I assist your audit?"
+                 <div className="mt-8 grid grid-cols-1 gap-3">
                     {quickQueries.map((q, i) => (
                       <button 
                         key={i} 
                         onClick={() => handleSend(q.query)}
-                        className="flex items-center justify-between px-5 py-4 bg-white hover:bg-gold-50 hover:border-gold-300 border border-slate-200 rounded-2xl text-[10px] font-bold transition-all text-slate-500 hover:text-gold-600 shadow-sm group/btn"
+                        className="flex items-center justify-between px-6 py-4 bg-onyx-950 hover:bg-brass-400 hover:text-onyx-950 border border-white/5 hover:border-brass-400 rounded-2xl text-[10px] font-bold transition-all text-slate-400 shadow-premium group/btn"
                       >
-                        <span className="flex items-center gap-3">{q.icon} {q.label}</span>
-                        <ChevronRight size={12} className="opacity-0 group-hover/btn:opacity-100 group-hover/btn:translate-x-1 transition-all" />
+                        <span className="flex items-center gap-4 uppercase tracking-widest">{q.icon} {q.label}</span>
+                        <ChevronRight size={14} className="opacity-0 group-hover/btn:opacity-100 group-hover/btn:translate-x-1 transition-all" />
                       </button>
                     ))}
                  </div>
@@ -102,59 +102,52 @@ const InvestorChat: React.FC<InvestorChatProps> = ({ isMinimal }) => {
             </div>
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`${m.role === 'user' ? 'bg-gold-500 text-white font-bold' : 'bg-white border border-slate-100 text-slate-600'} p-7 rounded-[2.5rem] text-[12px] leading-relaxed max-w-[85%] shadow-md whitespace-pre-wrap`}>
+                <div className={`${m.role === 'user' ? 'bg-brass-400 text-onyx-950 font-black uppercase tracking-widest text-[11px]' : 'bg-white/5 border border-white/10 text-slate-200 font-light font-editorial italic text-[14px] leading-relaxed'} p-8 rounded-[2.5rem] max-w-[85%] shadow-premium whitespace-pre-wrap`}>
                   {m.text}
                 </div>
               </div>
             ))}
             {isTyping && (
-              <div className="flex items-center gap-4 text-[10px] text-slate-400 tracking-[0.2em] font-black uppercase animate-pulse pl-4">
-                <div className="flex gap-1.5">
-                   <div className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-bounce"></div>
-                   <div className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-                   <div className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+              <div className="flex items-center gap-6 text-[10px] text-brass-400 tracking-[0.4em] font-black uppercase animate-pulse pl-4">
+                <div className="flex gap-2">
+                   <div className="w-2 h-2 bg-brass-400 rounded-full animate-bounce"></div>
+                   <div className="w-2 h-2 bg-brass-400 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                   <div className="w-2 h-2 bg-brass-400 rounded-full animate-bounce [animation-delay:0.4s]"></div>
                 </div>
                 Accessing Ledger...
               </div>
             )}
           </div>
 
-          <div className="p-8 bg-white border-t border-slate-100">
+          <div className="p-8 bg-onyx-950 border-t border-white/5 relative">
             <div className="relative group">
               <input 
                 type="text" 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Query Capex, ADR, or IRR..."
-                className="w-full bg-slate-50 border border-slate-200 rounded-3xl pl-8 pr-16 py-6 text-slate-900 text-[12px] focus:outline-none focus:border-gold-500/50 transition-all placeholder:text-slate-400"
+                placeholder="Audit Capex, ADR, or BIM Sync..."
+                className="w-full bg-white/5 border border-white/10 rounded-3xl pl-10 pr-20 py-7 text-white text-base focus:outline-none focus:border-brass-400 transition-all placeholder:text-slate-500 shadow-inner"
               />
               <button 
                 onClick={() => handleSend()}
                 disabled={!input.trim() || isTyping}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-gold-500 rounded-2xl text-white hover:bg-slate-900 transition-all flex items-center justify-center shadow-lg disabled:opacity-0"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-brass-400 rounded-2xl text-onyx-950 hover:bg-white transition-all flex items-center justify-center shadow-premium disabled:opacity-0 active:scale-90"
               >
-                <Send size={20} />
+                <Send size={24} />
               </button>
             </div>
             <div className="flex justify-between mt-6 px-4">
-               <span className="text-[9px] text-slate-300 uppercase tracking-widest font-black flex items-center gap-2">
-                 <AlertCircle size={10} /> Audited Gemini-3 Data
+               <span className="text-[9px] text-white/20 uppercase tracking-widest font-black flex items-center gap-3">
+                 <AlertCircle size={12} /> Institutional Data Source
                </span>
-               <span className="text-[9px] text-slate-300 uppercase tracking-widest font-black italic">
-                 Context: {location.pathname === '/' ? 'DOSSIER' : location.pathname.slice(1).toUpperCase()}
-               </span>
+               <div className="flex items-center gap-4 text-[9px] text-emerald-500 font-black uppercase tracking-widest italic">
+                 <Activity size={12} className="animate-pulse" /> SGT_SYNC: 100%
+               </div>
             </div>
           </div>
         </div>
       )}
-
-      <style>{`
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.2); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
-      `}</style>
     </div>
   );
 };

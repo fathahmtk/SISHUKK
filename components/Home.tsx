@@ -19,11 +19,11 @@ const Footer = lazy(() => import('./Footer.tsx'));
 
 const SectionLoader = () => (
   <div className="flex flex-col items-center justify-center h-dv w-full bg-slate-950 z-50">
-    <div className="relative w-20 h-20 md:w-32 md:h-32 mb-8 md:mb-12">
+    <div className="relative w-20 h-20 md:w-32 md:h-32 mb-8">
       <div className="absolute inset-0 border-2 border-gold-500/10 rounded-full"></div>
       <div className="absolute inset-0 border-t-2 border-gold-500 rounded-full animate-spin"></div>
     </div>
-    <div className="text-gold-500 text-[8px] md:text-[10px] font-black uppercase tracking-[0.8em] animate-pulse">Initializing Sector...</div>
+    <div className="text-gold-500 text-[9px] font-black uppercase tracking-[0.8em] animate-pulse">Initializing Sector...</div>
   </div>
 );
 
@@ -100,41 +100,44 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
   return (
     <main className="flex flex-col relative w-full h-dv overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar bg-slate-950">
       
-      {/* Chapter Indicator HUD - Desktop only */}
-      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[100] hidden 2xl:flex flex-col gap-6 items-center">
-         <div className="w-px h-24 bg-gradient-to-t from-gold-500/50 to-transparent"></div>
-         <div className="text-gold-500 font-serif italic font-black text-2xl rotate-[-90deg] translate-y-8 select-none">
-            Chapter_{chapters[activeChapter].icon}
+      {/* Dynamic Left HUD: Chapter Identifier - Desktop Only */}
+      <div className="fixed left-6 md:left-12 top-1/2 -translate-y-1/2 z-[100] hidden 2xl:flex flex-col gap-6 items-center pointer-events-none">
+         <div className="w-px h-32 bg-gradient-to-t from-gold-500/40 to-transparent"></div>
+         <div className="flex flex-col items-center">
+            <span className="text-gold-500/40 text-[7px] font-black uppercase tracking-[0.5em] mb-4">Node_Origin</span>
+            <div className="text-gold-500 font-serif italic font-black text-3xl rotate-[-90deg] translate-y-10 select-none whitespace-nowrap">
+               SGT_{chapters[activeChapter].icon}
+            </div>
          </div>
-         <div className="w-px h-24 bg-gradient-to-b from-gold-500/50 to-transparent mt-12"></div>
+         <div className="w-px h-32 bg-gradient-to-b from-gold-500/40 to-transparent mt-20"></div>
       </div>
 
-      {/* Global Navigation HUD (Rail) */}
+      {/* Dynamic Right HUD: Progress Rail - Desktop Only */}
       <div className="fixed right-6 md:right-12 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-8 items-end hidden 2xl:flex pointer-events-none">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
            {chapters.map((chapter, i) => (
              <button 
                key={chapter.id}
                onClick={() => jumpTo(chapter.id)}
                className="flex items-center gap-6 group pointer-events-auto transition-all duration-700"
              >
-               <div className="flex flex-col items-end opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
+               <div className={`flex flex-col items-end opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 ${activeChapter === i ? 'opacity-40' : ''}`}>
                   <span className={`text-[6px] font-black uppercase tracking-[0.4em] mb-1 ${activeChapter === i ? 'text-gold-500' : 'text-white/20'}`}>
                     Section {chapter.icon}
                   </span>
-                  <span className={`text-[8px] font-black uppercase tracking-[0.4em] ${activeChapter === i ? 'text-white underline underline-offset-4 decoration-gold-500/30' : 'text-white/40'}`}>
+                  <span className={`text-[8px] font-black uppercase tracking-[0.4em] ${activeChapter === i ? 'text-white' : 'text-white/40'}`}>
                     {chapter.label}
                   </span>
                </div>
-               <div className={`relative w-2 h-2 rounded-full transition-all duration-500 ${activeChapter === i ? 'bg-gold-500 scale-[2.2] shadow-[0_0_20px_#D4AF37]' : 'bg-white/10 group-hover:bg-gold-500/50 group-hover:scale-150'}`}>
-                 {activeChapter === i && <div className="absolute inset-0 bg-gold-500 rounded-full animate-ping opacity-40"></div>}
+               <div className={`relative w-2.5 h-2.5 rounded-full border transition-all duration-500 ${activeChapter === i ? 'bg-gold-500 scale-[2.2] shadow-[0_0_25px_#D4AF37] border-gold-400' : 'bg-white/5 border-white/10 group-hover:bg-gold-500/50 group-hover:scale-150'}`}>
+                 {activeChapter === i && <div className="absolute inset-[-6px] bg-gold-500 rounded-full animate-ping opacity-20"></div>}
                </div>
              </button>
            ))}
         </div>
       </div>
 
-      {/* Main Container Sections */}
+      {/* Main Narrative Container */}
       <section id="hero" className="snap-start h-dv w-full shrink-0 relative z-10">
          <Hero onInvestorClick={onInvestorClick} onProfileClick={onProfileClick} />
       </section>
@@ -155,7 +158,7 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
         <CinematicChapter id="exit"><ExitStrategy /></CinematicChapter>
       </Suspense>
       
-      <footer className="snap-start w-full bg-white shrink-0">
+      <footer className="snap-start w-full bg-white shrink-0 relative z-20">
          <Footer />
       </footer>
 
@@ -163,6 +166,7 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .h-dv { height: 100vh; height: 100dvh; }
+        body { overflow-x: hidden; width: 100vw; }
       `}</style>
     </main>
   );

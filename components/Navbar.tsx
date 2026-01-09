@@ -43,19 +43,19 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-[200] transition-all duration-700 ${
       isScrolled 
-        ? 'h-20 bg-white/80 backdrop-blur-2xl border-b border-slate-200' 
+        ? 'h-20 bg-onyx-950 border-b border-white/5 shadow-premium' 
         : 'h-24 bg-transparent border-b border-white/5'
     }`}>
       <div className="container mx-auto px-8 h-full flex items-center justify-between">
         {/* Brand Group */}
         <Link to="/" className="flex items-center gap-6 group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className="relative">
-            <Logo className={`w-10 h-10 transition-all duration-700 group-hover:scale-110 ${isScrolled ? '' : 'drop-shadow-[0_0_15px_rgba(212,175,55,0.8)]'}`} />
-            {!isScrolled && <div className="absolute -inset-2 bg-gold-500/10 rounded-full animate-pulse-slow"></div>}
+            <Logo className={`w-10 h-10 transition-all duration-700 group-hover:scale-110 ${isScrolled ? '' : 'drop-shadow-[0_0_20px_rgba(184,138,42,0.6)]'}`} />
+            {!isScrolled && <div className="absolute -inset-2 bg-brass-400/10 rounded-full animate-pulse-slow"></div>}
           </div>
-          <div className="block border-l border-white/10 pl-6 group-hover:border-gold-500/30 transition-colors">
-            <div className={`text-[11px] font-black tracking-[0.5em] uppercase leading-none mb-1 transition-colors ${isScrolled ? 'text-slate-950' : 'text-white'}`}>Sirshukk</div>
-            <div className="text-gold-500 text-[8px] font-black tracking-[0.6em] uppercase leading-none">Grand Towers</div>
+          <div className="block border-l border-white/10 pl-6 group-hover:border-brass-400/30 transition-colors">
+            <div className={`text-[11px] font-black tracking-[0.5em] uppercase leading-none mb-1 transition-colors ${isScrolled ? 'text-white' : 'text-white'}`}>Sirshukk</div>
+            <div className="text-brass-400 text-[8px] font-black tracking-[0.6em] uppercase leading-none">Grand Towers</div>
           </div>
         </Link>
 
@@ -67,12 +67,12 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
               to={link.path}
               onClick={(e) => handleLinkClick(e, link.path, link.id)}
               className={`text-[10px] font-black uppercase tracking-[0.4em] transition-all relative group flex items-center gap-3 ${
-                isScrolled ? 'text-slate-500 hover:text-slate-950' : 'text-white/60 hover:text-white'
+                isScrolled ? 'text-white/60 hover:text-white' : 'text-white/60 hover:text-white'
               }`}
             >
               {link.label}
-              <span className="w-1 h-1 rounded-full bg-gold-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-              <span className={`absolute -bottom-2 left-0 w-full h-[1.5px] bg-gold-500 transition-all duration-500 origin-left scale-x-0 group-hover:scale-x-100`}></span>
+              <span className="w-1 h-1 rounded-full bg-brass-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <span className={`absolute -bottom-2 left-0 w-full h-[1.5px] bg-brass-400 transition-all duration-500 origin-left scale-x-0 group-hover:scale-x-100`}></span>
             </Link>
           ))}
         </div>
@@ -81,8 +81,8 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
         <div className="flex items-center gap-8">
           <div className="hidden xl:flex items-center gap-6 pr-8 border-r border-white/10">
              <div className="text-right">
-                <span className={`text-[7px] font-black uppercase tracking-widest block mb-1 ${isScrolled ? 'text-slate-400' : 'text-white/30'}`}>System Status</span>
-                <span className={`text-[9px] font-bold uppercase tracking-wider flex items-center gap-2 ${isScrolled ? 'text-emerald-600' : 'text-emerald-400'}`}>
+                <span className={`text-[7px] font-black uppercase tracking-widest block mb-1 text-white/30`}>System Status</span>
+                <span className={`text-[9px] font-bold uppercase tracking-wider flex items-center gap-2 text-emerald-400`}>
                    <Activity size={10} className="animate-pulse" /> Live_BIM_Sync
                 </span>
              </div>
@@ -90,10 +90,10 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
 
           <button 
             onClick={onInvestorClick}
-            className={`flex items-center gap-4 px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all active:scale-95 group shadow-2xl ${
+            className={`flex items-center gap-4 px-8 py-3.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] transition-all active:scale-95 group shadow-premium ${
               isScrolled 
-                ? 'bg-slate-950 text-white hover:bg-gold-500' 
-                : 'bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-gold-500 hover:text-onyx-950 hover:border-gold-500'
+                ? 'bg-brass-400 text-onyx-950 hover:bg-white' 
+                : 'bg-white/10 text-white backdrop-blur-md border border-white/20 hover:bg-brass-400 hover:text-onyx-950 hover:border-brass-400'
             }`}
           >
             <ShieldCheck size={14} className="group-hover:rotate-12 transition-transform" />
@@ -102,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
 
           <button 
             className={`lg:hidden p-3 rounded-2xl transition-all border ${
-              isScrolled ? 'text-slate-950 border-slate-200 hover:bg-slate-50' : 'text-white border-white/10 hover:bg-white/5'
+              isScrolled ? 'text-white border-white/10 hover:bg-white/5' : 'text-white border-white/10 hover:bg-white/5'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -113,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
 
       {/* Mobile Glass Overlay */}
       {isMobileMenuOpen && (
-        <div className="absolute top-0 left-0 w-full h-screen bg-slate-950/95 backdrop-blur-3xl p-10 flex flex-col gap-12 animate-fade-in lg:hidden z-[100]">
+        <div className="absolute top-0 left-0 w-full h-screen bg-onyx-950/95 backdrop-blur-3xl p-10 flex flex-col gap-12 animate-fade-in lg:hidden z-[100]">
            <div className="flex justify-between items-center mb-10">
               <Logo className="w-12 h-12" variant="white" />
               <button onClick={() => setIsMobileMenuOpen(false)} className="text-white p-2">
@@ -126,15 +126,15 @@ const Navbar: React.FC<NavbarProps> = ({ onInvestorClick }) => {
                   key={link.label}
                   to={link.path}
                   onClick={(e) => handleLinkClick(e, link.path, link.id)}
-                  className="text-2xl font-serif italic text-white/50 hover:text-gold-500 p-6 border-b border-white/5 transition-all flex justify-between items-center group"
+                  className="text-3xl font-serif italic text-white/50 hover:text-brass-400 p-6 border-b border-white/5 transition-all flex justify-between items-center group"
                 >
-                  {link.label} <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                  {link.label} <ArrowRight size={24} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                 </Link>
               ))}
            </div>
            <button 
             onClick={() => { if (onInvestorClick) onInvestorClick(); setIsMobileMenuOpen(false); }}
-            className="mt-auto w-full py-8 bg-gold-500 text-onyx-950 rounded-3xl text-xs font-black uppercase tracking-[0.5em] shadow-gold-glow flex items-center justify-center gap-4"
+            className="mt-auto w-full py-8 bg-brass-400 text-onyx-950 rounded-3xl text-xs font-black uppercase tracking-[0.5em] shadow-premium flex items-center justify-center gap-4"
           >
             <Database size={18} /> Inspect Financial Core
           </button>
