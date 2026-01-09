@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Activity, Scan, BookOpen } from 'lucide-react';
 
@@ -17,58 +16,54 @@ const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center bg-[#05070A] overflow-hidden group">
       
+      {/* Background Rendering Inclusion */}
       <div className="absolute inset-0 z-0">
          <img 
             src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
-            className="w-full h-full object-cover opacity-20 saturate-0 transition-transform duration-[20s] group-hover:scale-110" 
-            alt="Physical Evidence" 
+            className="w-full h-full object-cover opacity-30 saturate-0 transition-transform duration-[20s] group-hover:scale-105" 
+            alt="Tower Evidence" 
          />
-         <div className="absolute inset-0 bg-gradient-to-b from-onyx-950 via-transparent to-onyx-950"></div>
+         <div className="absolute inset-0 bg-gradient-to-b from-onyx-950 via-onyx-950/20 to-onyx-950"></div>
          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#05070A_110%)]"></div>
       </div>
 
-      <div className="absolute top-8 left-6 md:top-12 md:left-12 z-30 space-y-3 opacity-40 hidden md:block">
-         <div className="flex items-center gap-4 text-brass-200 font-black text-[9px] uppercase tracking-[0.5em]">
-            <Scan size={14} /> Evidence_Log_v2.5
+      {/* Technical HUD Marker */}
+      <div className="absolute top-10 left-8 md:top-14 md:left-14 z-30 opacity-40">
+         <div className="flex items-center gap-5 text-brass-200 font-black text-[10px] uppercase tracking-[0.5em]">
+            <Scan size={18} className="animate-pulse" /> Physical_Evidence_Scan
          </div>
-         <div className="text-white text-[7px] font-mono opacity-50 uppercase tracking-widest">
-            Identity: SGT_RECORD_2025_VERIFIED
-         </div>
-      </div>
-
-      <div className="absolute bottom-8 right-6 md:bottom-12 md:right-12 z-30 text-right opacity-40 hidden md:block">
-         <div className="text-brass-200 font-black text-[9px] uppercase tracking-[0.5em] mb-3">Project Record Sync</div>
-         <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
-            <Activity size={16} className="text-emerald-500 animate-pulse" /> Status: Linked_Live
+         <div className="text-white text-[8px] font-mono opacity-50 uppercase tracking-widest mt-2">
+            Asset_Ref: SGT_RECORD_2025_VERIFIED
          </div>
       </div>
 
-      <div className="relative z-10 text-center w-full max-w-7xl px-6 md:px-12 flex flex-col items-center py-12 md:py-0">
-         <span className="text-brass-400 text-[11px] md:text-[14px] font-black uppercase tracking-[1.2em] block mb-8 md:mb-16">
+      <div className="relative z-10 text-center w-full max-w-7xl px-8 flex flex-col items-center">
+         <span className="text-brass-400 text-[11px] md:text-[14px] font-black uppercase tracking-[1.4em] block mb-10 md:mb-16">
            Section 01 // Physical Evidence
          </span>
          
-         <h2 className="text-white font-serif text-5xl md:text-8xl lg:text-[10rem] leading-[0.9] md:leading-[0.8] tracking-tighter italic font-black mb-12 md:mb-20">
+         <h2 className="text-white font-serif text-5xl md:text-8xl lg:text-[10rem] leading-[0.85] md:leading-[0.8] tracking-tighter italic font-black mb-14 md:mb-24">
            Architectural <br/>
            <span className="gold-gradient-text not-italic">Monograph.</span>
          </h2>
 
-         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full mb-12 md:mb-24 max-w-6xl">
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full mb-16 md:mb-28 max-w-6xl">
             {cards.map((card, i) => (
-              <div key={i} className="bg-white/5 backdrop-blur-2xl border border-white/10 p-10 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] text-center group/item hover:bg-brass-400 hover:text-onyx-950 transition-all duration-700 hover:-translate-y-4 shadow-premium">
+              <div key={i} className="bg-white/5 backdrop-blur-3xl border border-white/10 p-12 rounded-[3.5rem] text-center group/item hover:bg-brass-400 hover:text-onyx-950 transition-all duration-700 hover:-translate-y-4 shadow-premium relative overflow-hidden">
                  <div className="mb-10 flex justify-center text-brass-400 group-hover/item:text-onyx-950 transition-colors duration-500">{card.icon}</div>
-                 <div className="text-[7px] md:text-[8px] font-black uppercase tracking-[0.5em] mb-4 opacity-50 group-hover/item:opacity-100 transition-opacity">{card.title}</div>
+                 <div className="text-[8px] font-black uppercase tracking-[0.5em] mb-4 opacity-40 group-hover/item:opacity-100 transition-opacity">{card.title}</div>
                  <div className="text-2xl md:text-3xl font-serif italic font-black mb-4 leading-none">{card.val}</div>
-                 <p className="text-[11px] md:text-[12px] leading-relaxed opacity-60 font-light font-editorial group-hover/item:opacity-100 transition-opacity italic">"{card.desc}"</p>
+                 <p className="text-[12px] leading-relaxed opacity-50 font-light font-editorial group-hover/item:opacity-100 transition-opacity italic">"{card.desc}"</p>
+                 <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-brass-400/20 group-hover:border-onyx-950/40 transition-colors"></div>
               </div>
             ))}
          </div>
 
          <button 
            onClick={onProfileClick}
-           className="group px-12 md:px-20 py-7 md:py-9 bg-white text-onyx-950 rounded-full text-[11px] md:text-[12px] font-black uppercase tracking-[0.5em] hover:bg-brass-400 transition-all active:scale-95 flex items-center justify-center gap-6 shadow-premium"
+           className="group px-14 py-8 bg-white text-onyx-950 rounded-full text-[11px] font-black uppercase tracking-[0.5em] hover:bg-brass-400 transition-all active:scale-95 flex items-center justify-center gap-8 shadow-premium"
          >
-           Examine Project Ledger <BookOpen size={20} className="group-hover:translate-x-2 transition-transform" />
+           Examine Project Ledger <BookOpen size={20} className="group-hover:scale-110 transition-transform" />
          </button>
       </div>
     </div>
