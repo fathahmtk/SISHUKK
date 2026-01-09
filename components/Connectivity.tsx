@@ -16,12 +16,12 @@ const Connectivity: React.FC = () => {
          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#D4AF37 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }}></div>
          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
          {/* Pulsing Signal Circles */}
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vh] h-[80vh] border border-gold-500/10 rounded-full animate-pulse-slow"></div>
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vh] h-[50vh] border border-gold-500/5 rounded-full animate-pulse"></div>
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vh] h-[60vh] md:w-[80vh] md:h-[80vh] border border-gold-500/10 rounded-full animate-pulse-slow"></div>
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35vh] h-[35vh] md:w-[50vh] md:h-[50vh] border border-gold-500/5 rounded-full animate-pulse"></div>
       </div>
 
-      {/* Telemetry HUD - Hidden on small screens */}
-      <div className="absolute top-12 left-12 z-10 space-y-2 opacity-50 hidden md:block">
+      {/* Telemetry HUD */}
+      <div className="absolute top-8 left-6 md:top-12 md:left-12 z-10 space-y-2 opacity-50 hidden sm:block">
          <div className="flex items-center gap-3 text-gold-500 font-black text-[9px] uppercase tracking-[0.4em]">
             <Globe size={12} /> Logistical_Nexus_v2.5
          </div>
@@ -30,7 +30,7 @@ const Connectivity: React.FC = () => {
          </div>
       </div>
 
-      <div className="absolute bottom-12 right-12 z-10 text-right opacity-50 hidden md:block">
+      <div className="absolute bottom-8 right-6 md:bottom-12 md:right-12 z-10 text-right opacity-50 hidden sm:block">
          <div className="text-gold-500 font-black text-[9px] uppercase tracking-[0.4em] mb-2">Transit Capture Index</div>
          <div className="flex items-center justify-end gap-3 text-white text-[11px] font-black uppercase tracking-widest">
             <Activity size={14} className="text-emerald-500 animate-pulse" /> Connectivity: Optimized
@@ -38,19 +38,19 @@ const Connectivity: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center max-w-7xl px-6 md:px-8 flex flex-col items-center w-full">
-         <span className="text-gold-500 text-[9px] md:text-[13px] font-black uppercase tracking-[0.8em] md:tracking-[1em] block mb-6 md:mb-12">
+      <div className="relative z-10 text-center max-w-7xl px-6 md:px-8 flex flex-col items-center w-full overflow-y-auto no-scrollbar py-12 md:py-0">
+         <span className="text-gold-500 text-[10px] md:text-[13px] font-black uppercase tracking-[0.8em] md:tracking-[1em] block mb-6 md:mb-12 shrink-0">
            Chapter 05 // Global Accessibility
          </span>
          
-         <h2 className="text-white font-serif text-5xl md:text-9xl lg:text-[10rem] leading-[0.9] md:leading-[0.8] tracking-tighter italic font-black mb-10 md:mb-16">
+         <h2 className="text-white font-serif text-4xl md:text-8xl lg:text-[10rem] leading-[0.9] md:leading-[0.8] tracking-tighter italic font-black mb-8 md:mb-16 shrink-0">
            Global <br/>
            <span className="gold-gradient-text not-italic">Nexus.</span>
          </h2>
 
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 w-full mb-12 md:mb-20 max-w-5xl md:max-w-none overflow-y-auto max-h-[40vh] md:max-h-none no-scrollbar">
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 w-full mb-10 md:mb-20 max-w-5xl md:max-w-none shrink-0">
             {LOGISTICS.map((item, i) => (
-              <div key={i} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] text-left group/item hover:border-gold-500 transition-all duration-500 hover:md:-translate-y-4">
+              <div key={i} className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-[2.5rem] md:rounded-[3rem] text-left group/item hover:border-gold-500 transition-all duration-500 sm:hover:md:-translate-y-4">
                  <div className="flex justify-between items-start mb-6 md:mb-8">
                     <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-onyx-950 flex items-center justify-center text-gold-500 shadow-2xl group-hover/item:bg-gold-500 group-hover/item:text-onyx-950 transition-all">
                        {item.type === 'Air' ? <Plane size={20} className="md:size-6" /> : <Train size={20} className="md:size-6" />}
@@ -67,11 +67,11 @@ const Connectivity: React.FC = () => {
             ))}
          </div>
 
-         <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8 p-4 md:p-1 md:px-8 bg-white/5 border border-white/10 rounded-3xl md:rounded-full backdrop-blur-md">
-            <span className="text-gold-500 text-[7px] md:text-[8px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em]">Logistical Flux Rating:</span>
-            <div className="flex gap-1 md:gap-1.5 py-1 md:py-4">
+         <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8 p-4 md:p-1 md:px-8 bg-white/5 border border-white/10 rounded-3xl md:rounded-full backdrop-blur-md shrink-0">
+            <span className="text-gold-500 text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] md:tracking-[0.5em]">Logistical Flux Rating:</span>
+            <div className="flex gap-1.5 md:gap-2 py-1 md:py-4">
                {[1,2,3,4,5,6,7,8,9,10].map(dot => (
-                  <div key={dot} className={`w-1 h-2 md:h-3 rounded-full ${dot <= 9 ? 'bg-gold-500' : 'bg-white/10'}`}></div>
+                  <div key={dot} className={`w-1 h-3 md:h-4 rounded-full ${dot <= 9 ? 'bg-gold-500' : 'bg-white/10'}`}></div>
                ))}
             </div>
             <span className="text-white text-[8px] md:text-[9px] font-black uppercase tracking-widest">High Precision Linkage</span>
@@ -79,7 +79,7 @@ const Connectivity: React.FC = () => {
       </div>
 
       {/* Decorative Scanner HUD */}
-      <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-gold-500/20 to-transparent"></div>
+      <div className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-gold-500/20 to-transparent pointer-events-none"></div>
     </div>
   );
 };
