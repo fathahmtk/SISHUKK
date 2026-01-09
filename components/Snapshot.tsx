@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Search } from 'lucide-react';
+import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Search, ArrowRight, Layout } from 'lucide-react';
 
 interface SnapshotProps {
   onProfileClick?: () => void;
@@ -8,85 +8,88 @@ interface SnapshotProps {
 const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
   const cards = [
     {
-      icon: <Building2 className="w-8 h-8 text-gold-300" />,
-      title: "Asset Type",
-      description: "Iconic Twin-Tower Hospitality Destination. A structural landmark defining the regional skyline.",
-      metric: "Landmark Grade"
+      icon: <Building2 size={24} />,
+      title: "Asset Class",
+      val: "Landmark Hub",
+      desc: "Iconic hospitality core serving high-frequency ritual demand."
     },
     {
-      icon: <Crown className="w-8 h-8 text-gold-300" />,
-      title: "Architectural Signature",
-      description: "Monumental Central Arch creating a visual monopoly. Non-replicable design value.",
-      metric: "Iconic Status"
+      icon: <Crown size={24} />,
+      title: "Design Value",
+      val: "Visual Icon",
+      desc: "Twin-tower symmetry creating unassailable skyline command."
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-gold-300" />,
-      title: "Core Use",
-      description: "Luxury Hospitality, Global Events, and Destination Experiences. Driven by multi-vertical demand.",
-      metric: "Mixed-Use"
+      icon: <TrendingUp size={24} />,
+      title: "Yield Vector",
+      val: "High Alpha",
+      desc: "Diversified revenue decoupled from simple occupancy cycles."
     },
     {
-      icon: <MapPin className="w-8 h-8 text-gold-300" />,
-      title: "Revenue Model",
-      description: "Multi-Vertical, Non-Seasonal. High-margin yield from accommodation, dining, and grand ceremonial events.",
-      metric: "Diversified"
+      icon: <MapPin size={24} />,
+      title: "Strategic Pin",
+      val: "Nexus Site",
+      desc: "Prime South Nada positioning in the 12M+ pilgrim corridor."
     }
   ];
 
   return (
-    <section id="snapshot" className="py-40 bg-onyx-950 relative overflow-hidden">
-      {/* Decorative BG */}
-      <div className="absolute -top-[10%] -left-[10%] text-white/[0.03] font-serif text-[40rem] font-black leading-none italic pointer-events-none select-none">DNA</div>
-
+    <section className="py-48 bg-white relative overflow-hidden">
+      {/* Decorative Branding */}
+      <div className="absolute top-[10%] left-[-5%] text-slate-100 font-serif text-[45rem] font-black italic leading-none select-none pointer-events-none opacity-40">01</div>
+      
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-12 items-end mb-32 reveal-on-scroll">
-          <div className="max-w-4xl">
-            <span className="text-gold-400 text-[11px] font-black uppercase tracking-[0.8em] block mb-8">Executive Snapshot</span>
-            <h2 className="font-serif text-5xl md:text-8xl text-white mb-10 leading-[0.9] tracking-tighter italic">
-              The <span className="gold-gradient-text">Signal.</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start mb-32">
+          
+          <div className="lg:col-span-6 space-y-12">
+            <div className="inline-flex items-center gap-4 px-6 py-2 border border-gold-200 bg-gold-50/50 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+              <span className="text-gold-600 uppercase text-[10px] font-black tracking-[0.5em]">Phase 1: Institutional Snapshot</span>
+            </div>
+            <h2 className="text-slate-950 font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.8] tracking-tighter italic">
+              Physical <br/><span className="gold-gradient-text italic font-black">Evidence.</span>
             </h2>
-            <p className="text-slate-400 text-xl md:text-3xl font-light leading-relaxed border-l-2 border-gold-500/40 pl-10 max-w-2xl">
-              "This is not inventory. This is a destination."
+          </div>
+
+          <div className="lg:col-span-5 lg:col-start-8">
+            <p className="text-slate-500 text-2xl font-light leading-relaxed mb-12 border-l-2 border-gold-400 pl-10">
+              SIRSHUKK is not a standard hospitality asset. It is an engineering marvel designed to function as a <strong>revenue-generating landmark</strong> for the next 50 years.
             </p>
+            <div className="flex items-center gap-6 p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 group hover:border-gold-300 transition-all cursor-pointer shadow-sm" onClick={onProfileClick}>
+               <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-gold-600 shadow-sm group-hover:bg-gold-500 group-hover:text-white transition-all">
+                  <ShieldCheck size={28} />
+               </div>
+               <div>
+                  <div className="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Audit Verification</div>
+                  <div className="text-slate-950 font-bold uppercase tracking-widest text-sm">Institutional Grade Asset v2.5</div>
+               </div>
+            </div>
           </div>
-          <div className="hidden lg:flex items-center gap-4 text-slate-500 text-[10px] font-black uppercase tracking-widest bg-white/5 border border-white/10 px-8 py-5 rounded-full mb-4 backdrop-blur-sm cursor-pointer hover:bg-gold-500/10 transition-colors group" onClick={onProfileClick}>
-             <span>Verified Institutional Asset</span>
-             <ShieldCheck size={16} className="text-gold-400 group-hover:scale-125 transition-transform" />
-          </div>
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {cards.map((card, idx) => (
-            <div 
-              key={idx} 
-              onClick={onProfileClick}
-              className="group glass-panel p-12 rounded-[2.5rem] hover:bg-gold-500/10 transition-all duration-700 flex flex-col justify-between h-[520px] border border-white/5 relative overflow-hidden reveal-on-scroll cursor-pointer active:scale-95"
-              style={{ transitionDelay: `${idx * 0.1}s` }}
-            >
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-gold-500/5 blur-[100px] group-hover:bg-gold-500/20 transition-colors"></div>
-              
-              {/* Scan effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-500/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          {cards.map((card, i) => (
+            <div key={i} className="group p-12 bg-[#FDFBF7] border border-slate-200 rounded-[3.5rem] flex flex-col justify-between h-[520px] transition-all duration-700 hover:bg-white hover:border-gold-400 hover:shadow-3xl relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:opacity-10 transition-opacity">
+                  <Layout size={150} className="text-slate-950" />
+               </div>
+               
+               <div>
+                  <div className="w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-gold-600 mb-12 shadow-sm group-hover:bg-gold-500 group-hover:text-white group-hover:scale-110 transition-all duration-500">
+                     {card.icon}
+                  </div>
+                  <span className="text-gold-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">{card.title}</span>
+                  <h3 className="text-slate-950 font-serif text-4xl mb-6 italic leading-none">{card.val}</h3>
+                  <p className="text-slate-400 text-base font-light leading-relaxed group-hover:text-slate-600 transition-colors">
+                    {card.desc}
+                  </p>
+               </div>
 
-              <div>
-                <div className="mb-12 bg-onyx-900 w-20 h-20 flex items-center justify-center rounded-2xl border border-white/10 group-hover:border-gold-400/50 shadow-2xl transition-all duration-500">
-                  {card.icon}
-                </div>
-                <h3 className="font-serif text-3xl text-white mb-6 group-hover:text-gold-300 transition-colors">{card.title}</h3>
-                <p className="text-slate-400 text-base leading-relaxed group-hover:text-slate-300 transition-colors duration-500">
-                  {card.description}
-                </p>
-              </div>
-
-              <div className="pt-10 mt-auto border-t border-white/10 flex items-center justify-between">
-                 <div>
-                    <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-1 block">Yield Driver</span>
-                    <span className="text-white font-mono text-xl">{card.metric}</span>
-                 </div>
-                 <div className="p-4 bg-white/5 rounded-xl text-slate-400 group-hover:text-gold-400 group-hover:bg-gold-500/10 transition-all">
-                    <Search size={20} />
-                 </div>
-              </div>
+               <div className="pt-8 border-t border-slate-100 mt-auto flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all">
+                  <span className="text-[8px] font-black uppercase tracking-[0.5em] text-slate-400">Technical Audit</span>
+                  <Search size={16} className="text-gold-600 group-hover:translate-x-1 transition-transform" />
+               </div>
             </div>
           ))}
         </div>

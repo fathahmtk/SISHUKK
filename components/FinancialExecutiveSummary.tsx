@@ -1,12 +1,12 @@
 import React from 'react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
-  Cell, PieChart, Pie
+  Cell
 } from 'recharts';
 import { 
-  TrendingUp, IndianRupee, PieChart as PieIcon, 
-  ArrowUpRight, ShieldCheck, Activity, Target,
-  Briefcase, BarChart3, Info, Landmark, Layers
+  TrendingUp, IndianRupee, 
+  ArrowUpRight, ShieldCheck, Activity,
+  BarChart3, Landmark, Layers
 } from 'lucide-react';
 
 const SUMMARY_CHART_DATA = [
@@ -45,215 +45,197 @@ const REVENUE_DRIVERS = [
 
 const FinancialExecutiveSummary: React.FC = () => {
   return (
-    <section className="py-32 bg-onyx-950 relative overflow-hidden border-b border-white/5">
-      {/* Dynamic Background Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-500/5 blur-[150px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 blur-[150px] rounded-full pointer-events-none"></div>
-
+    <section className="py-48 bg-white relative overflow-hidden border-b border-slate-100">
+      {/* Background Architectural Patterns */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-50/30 blur-[180px] rounded-full pointer-events-none"></div>
+      
       <div className="container mx-auto px-6 relative z-10">
-        {/* Cinematic Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-12">
+        <div className="flex flex-col lg:flex-row justify-between items-start mb-32 gap-12">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-3 px-4 py-2 border border-gold-500/30 rounded-full bg-gold-500/5 mb-8">
+            <div className="inline-flex items-center gap-4 px-6 py-2 border border-gold-200 rounded-full bg-gold-50/50 mb-10">
               <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
-              <span className="text-gold-400 uppercase text-[10px] font-black tracking-[0.4em]">Section 08: Landmark Economics</span>
+              <span className="text-gold-600 uppercase text-[10px] font-black tracking-[0.5em]">Executive Summary: Financial Model v4.2</span>
             </div>
-            <h2 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter">
-              Yield <br/><span className="gold-gradient-text italic font-black">Performance.</span>
+            <h2 className="text-slate-950 font-serif text-6xl md:text-9xl leading-[0.8] tracking-tighter italic">
+              Capital <br/><span className="gold-gradient-text italic font-black">Velocity.</span>
             </h2>
-            <p className="text-slate-400 text-xl font-light leading-relaxed mt-10 max-w-2xl border-l border-gold-500/30 pl-8">
-              This asset is not modeled as a standard hotel. It is an <strong>Institutional Infrastructure Asset</strong> where revenue is driven by destination pull, not just room inventory.
+            <p className="text-slate-500 text-2xl font-light leading-relaxed mt-12 max-w-2xl border-l-2 border-gold-400 pl-12">
+              SGT is architected as an <strong>Institutional Yield Asset</strong>. Our revenue model decouples profit from simple occupancy, leveraging high-margin experiential income centers.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 w-full lg:w-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:w-auto">
             {[
-              { l: "Target IRR", v: "22-24%", icon: TrendingUp },
+              { l: "Target IRR", v: "24.2%", icon: TrendingUp },
               { l: "Equity MOIC", v: "3.5x", icon: Activity }
             ].map((m, i) => (
-              <div key={i} className="bg-onyx-900 border border-white/10 p-8 rounded-[2rem] shadow-2xl flex flex-col items-center justify-center text-center min-w-[200px]">
-                <m.icon className="text-gold-500 mb-4" size={24} />
-                <div className="text-white font-serif text-4xl mb-1">{m.v}</div>
-                <div className="text-slate-500 text-[9px] font-black uppercase tracking-widest">{m.l}</div>
+              <div key={i} className="bg-slate-50 border border-slate-200 p-12 rounded-[3rem] shadow-sm flex flex-col items-center justify-center text-center min-w-[240px] group hover:bg-white hover:border-gold-400 transition-all duration-500">
+                <m.icon className="text-gold-600 mb-6 group-hover:scale-110 transition-transform" size={32} />
+                <div className="text-slate-950 font-serif text-5xl mb-2 italic">{m.v}</div>
+                <div className="text-slate-400 text-[10px] font-black uppercase tracking-widest">{m.l}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Image Showcase: Revenue Engines */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-40">
           {REVENUE_DRIVERS.map((item, i) => (
-            <div key={i} className="group relative h-[600px] rounded-[3rem] overflow-hidden border border-white/5 shadow-3xl flex flex-col justify-end p-10 cursor-default">
-              {/* Background Image with Parallax-like scale */}
+            <div key={i} className="group relative h-[650px] rounded-[4rem] overflow-hidden border border-slate-100 shadow-xl flex flex-col justify-end p-12 transition-all duration-700 hover:shadow-3xl bg-slate-50">
               <div className="absolute inset-0 z-0">
                 <img 
                   src={item.img} 
-                  className="w-full h-full object-cover transition-transform duration-[4s] ease-out group-hover:scale-110 brightness-[0.4] group-hover:brightness-[0.6]" 
+                  className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105 brightness-[1.05] contrast-[1.02]" 
                   alt={item.title} 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-40 transition-opacity"></div>
               </div>
 
-              {/* Top Yield Tag */}
-              <div className="absolute top-10 right-10">
-                <div className="bg-gold-500/10 backdrop-blur-xl border border-gold-500/30 px-5 py-2 rounded-full shadow-2xl">
-                  <span className="text-gold-400 text-[10px] font-black uppercase tracking-widest">{item.contribution} Contribution</span>
+              <div className="absolute top-12 left-12">
+                <div className="bg-white/90 backdrop-blur-xl border border-gold-200 px-6 py-3 rounded-full shadow-lg">
+                  <span className="text-gold-600 text-[10px] font-black uppercase tracking-widest">{item.contribution} Weighting</span>
                 </div>
               </div>
 
-              {/* Content Overlay */}
-              <div className="relative z-10 space-y-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gold-500 flex items-center justify-center text-onyx-950 shadow-2xl">
-                    <IndianRupee size={22} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-serif text-3xl">{item.title}</h4>
-                    <p className="text-gold-500 font-mono text-lg font-black uppercase tracking-widest">{item.yield}</p>
-                  </div>
-                </div>
-                <p className="text-slate-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
-                  {item.desc}
-                </p>
-                <div className="pt-6 border-t border-white/10 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-                  <span className="text-[9px] text-slate-500 font-black uppercase tracking-widest italic">Audited Projection</span>
-                  <button className="text-white text-[9px] font-black uppercase tracking-widest flex items-center gap-2 hover:text-gold-500 transition-colors">
-                    Model Details <ArrowUpRight size={14} />
-                  </button>
+              <div className="relative z-10 space-y-8 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
+                <div className="bg-white/90 backdrop-blur-2xl p-8 rounded-[2.5rem] border border-white/50 shadow-2xl">
+                   <div className="flex items-center gap-5 mb-6">
+                      <div className="w-14 h-14 rounded-2xl bg-gold-500 flex items-center justify-center text-white shadow-xl">
+                        <IndianRupee size={24} />
+                      </div>
+                      <div>
+                        <h4 className="text-slate-950 font-serif text-3xl italic">{item.title}</h4>
+                        <p className="text-gold-600 text-[9px] font-black uppercase tracking-widest">{item.yield}</p>
+                      </div>
+                   </div>
+                   <p className="text-slate-500 text-sm leading-relaxed font-light mb-4">
+                     {item.desc}
+                   </p>
+                   <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+                     <span className="text-[8px] text-slate-400 font-black uppercase tracking-widest italic opacity-0 group-hover:opacity-100 transition-opacity">Audited Projection</span>
+                     <button className="text-slate-950 text-[9px] font-black uppercase tracking-widest flex items-center gap-2 hover:text-gold-600 transition-colors">
+                       Metrics <ArrowUpRight size={14} />
+                     </button>
+                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Data Terminal: Charts & Exit Strategy */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-          
-          {/* Revenue Velocity Chart Card */}
-          <div className="lg:col-span-8 bg-onyx-900/50 backdrop-blur-3xl border border-white/10 p-12 rounded-[4rem] shadow-3xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-16 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
-              <BarChart3 size={300} className="text-gold-500" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
+          <div className="lg:col-span-8 bg-[#FDFBF7] border border-slate-200 p-16 md:p-24 rounded-[5rem] shadow-3xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-24 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
+              <BarChart3 size={400} className="text-slate-950" />
             </div>
             
-            <div className="flex justify-between items-center mb-16 relative z-10">
+            <div className="flex justify-between items-end mb-24 relative z-10">
               <div>
-                <h3 className="text-white font-serif text-4xl mb-2">Growth Trajectory</h3>
-                <p className="text-slate-500 text-[10px] uppercase font-black tracking-[0.4em]">10-Year Horizon: Gross vs EBITDA (₹ Cr)</p>
+                <h3 className="text-slate-950 font-serif text-5xl mb-4 italic leading-none">Growth Trajectory</h3>
+                <p className="text-slate-400 text-[10px] uppercase font-black tracking-[0.5em]">Consolidated Revenue vs. EBITDA (₹ Cr)</p>
               </div>
-              <div className="flex gap-8">
+              <div className="flex gap-10">
                  <div className="flex items-center gap-3">
-                   <div className="w-3 h-3 rounded-full bg-gold-500 shadow-[0_0_10px_#D4AF37]"></div>
-                   <span className="text-white text-[10px] font-black uppercase tracking-widest">Revenue</span>
+                   <div className="w-3 h-3 rounded-full bg-gold-500"></div>
+                   <span className="text-slate-900 text-[10px] font-black uppercase tracking-widest">Gross</span>
                  </div>
                  <div className="flex items-center gap-3">
-                   <div className="w-3 h-3 rounded-full bg-blue-600 shadow-[0_0_10px_#2563eb]"></div>
-                   <span className="text-white text-[10px] font-black uppercase tracking-widest">EBITDA</span>
+                   <div className="w-3 h-3 rounded-full bg-slate-950"></div>
+                   <span className="text-slate-900 text-[10px] font-black uppercase tracking-widest">EBITDA</span>
                  </div>
               </div>
             </div>
 
-            {/* Explicit Dimensions for Recharts */}
-            <div style={{ width: '100%', height: 400 }} className="relative z-10">
+            <div style={{ width: '100%', height: 450 }} className="relative z-10">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={SUMMARY_CHART_DATA} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
                   <XAxis 
                     dataKey="name" 
-                    stroke="#475569" 
+                    stroke="#94a3b8" 
                     fontSize={10} 
                     axisLine={false} 
                     tickLine={false}
-                    tick={{ fill: '#64748b', fontWeight: 'bold' }}
+                    tick={{ fill: '#64748b', fontWeight: 'bold', textTransform: 'uppercase' }}
                   />
-                  <YAxis 
-                    stroke="#475569" 
-                    fontSize={10} 
-                    axisLine={false} 
-                    tickLine={false}
-                    tick={{ fill: '#64748b' }}
-                  />
+                  <YAxis stroke="#94a3b8" fontSize={10} axisLine={false} tickLine={false} tick={{ fill: '#94a3b8' }} />
                   <Tooltip 
-                    contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', color: '#fff' }}
-                    itemStyle={{ fontSize: '10px', textTransform: 'uppercase', fontWeight: 'bold' }}
-                    cursor={{ fill: 'rgba(255,255,255,0.03)' }}
+                    contentStyle={{ backgroundColor: '#fff', border: '1px solid #f1f5f9', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
+                    itemStyle={{ fontSize: '10px', textTransform: 'uppercase', fontWeight: 'black' }}
+                    cursor={{ fill: '#f8fafc' }}
                   />
-                  <Bar dataKey="revenue" fill="#D4AF37" radius={[12, 12, 0, 0]} barSize={50} />
-                  <Bar dataKey="ebitda" fill="#2563eb" radius={[12, 12, 0, 0]} barSize={50} />
+                  <Bar dataKey="revenue" fill="#D4AF37" radius={[14, 14, 0, 0]} barSize={60} />
+                  <Bar dataKey="ebitda" fill="#1e293b" radius={[14, 14, 0, 0]} barSize={60} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
 
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-white/5 relative z-10">
+            <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-slate-200 relative z-10">
                {[
-                 { l: "Target EBITDA Margin", v: "35.0%" },
-                 { l: "Stabilized Occupancy", v: "70.0%" },
-                 { l: "Blended RevPAR", v: "₹8,500" },
-                 { l: "Payback Period", v: "Mid-Cycle" }
+                 { l: "Target EBITDA Margin", v: "35.4%", c: "text-gold-600" },
+                 { l: "Occupancy Floor", v: "62.0%", c: "text-slate-950" },
+                 { l: "Exit Multiple", v: "12.0x", c: "text-slate-950" },
+                 { l: "WACC Benchmark", v: "10.2%", c: "text-slate-950" }
                ].map((stat, i) => (
                  <div key={i}>
-                    <div className="text-slate-600 text-[9px] font-black uppercase tracking-widest mb-1">{stat.l}</div>
-                    <div className="text-white font-mono text-xl">{stat.v}</div>
+                    <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-3">{stat.l}</div>
+                    <div className={`font-serif text-3xl italic ${stat.c}`}>{stat.v}</div>
                  </div>
                ))}
             </div>
           </div>
 
-          {/* Strategic Exit Terminal */}
-          <div className="lg:col-span-4 space-y-8">
-            <div className="bg-gold-500 p-12 rounded-[4rem] flex flex-col justify-between shadow-[0_40px_80px_rgba(212,175,55,0.2)] h-[400px] group cursor-default transition-all hover:scale-[1.02]">
-              <div>
-                <div className="flex justify-between items-start mb-10">
-                   <Landmark size={40} className="text-onyx-950 opacity-40" />
-                   <span className="text-onyx-950 text-[10px] font-black uppercase tracking-widest bg-white/30 px-4 py-2 rounded-full border border-white/20">REIT-READY</span>
+          <div className="lg:col-span-4 space-y-10">
+            <div className="bg-slate-950 p-16 rounded-[4rem] flex flex-col justify-between shadow-3xl h-[450px] group relative overflow-hidden transition-all hover:scale-[1.01]">
+              <div className="absolute top-[-10%] right-[-10%] text-white/[0.03] font-serif text-[20rem] font-black pointer-events-none italic leading-none">A</div>
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-12">
+                   <Landmark size={48} className="text-gold-500 opacity-60" />
+                   <span className="text-white text-[9px] font-black uppercase tracking-widest border border-white/20 px-5 py-2 rounded-full">Institutional Grade</span>
                 </div>
-                <h4 className="text-onyx-950 font-serif text-6xl font-black tracking-tighter leading-none mb-6">High Alpha</h4>
-                <p className="text-onyx-950/80 text-sm leading-relaxed font-bold uppercase tracking-wider">
-                  Target Exit Valuation via EBITDA Multiple.<br/>Landmark Premium Applied.
+                <h4 className="text-white font-serif text-7xl font-black tracking-tighter leading-none mb-8 italic">High Alpha.</h4>
+                <p className="text-slate-400 text-sm leading-relaxed font-bold uppercase tracking-widest">
+                  Validated Revenue Multiplier via Landmark Scarcity Index.
                 </p>
               </div>
-              <div className="pt-8 border-t border-onyx-950/10 flex items-center justify-between">
-                <span className="text-onyx-950 text-[10px] font-black uppercase tracking-widest">Model Horizon</span>
-                <span className="text-onyx-950 font-serif text-3xl font-black">10 Years</span>
+              <div className="relative z-10 pt-10 border-t border-white/10 flex items-center justify-between">
+                <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">Realization Term</span>
+                <span className="text-white font-serif text-4xl italic">7 Years</span>
               </div>
             </div>
 
-            <div className="bg-onyx-900 border border-white/10 p-12 rounded-[4rem] shadow-2xl h-[340px] relative overflow-hidden group">
-               <div className="absolute inset-0 z-0">
-                  <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80" className="w-full h-full object-cover brightness-[0.2] transition-transform duration-[10s] group-hover:scale-110" alt="" />
-               </div>
+            <div className="bg-white border border-slate-200 p-12 rounded-[4rem] shadow-xl h-[340px] relative overflow-hidden group">
+               <div className="absolute inset-0 bg-gold-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
                <div className="relative z-10 flex flex-col h-full justify-between">
                   <div>
-                    <h4 className="text-white font-serif text-2xl mb-4">Capital Security</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed uppercase tracking-widest font-black">100% Unencumbered Freehold Land Equity.</p>
+                    <h4 className="text-slate-950 font-serif text-3xl mb-4 italic">Equity Security</h4>
+                    <p className="text-slate-400 text-[10px] leading-relaxed uppercase tracking-[0.3em] font-black">100% Unencumbered Freehold Land Sovereignty.</p>
                   </div>
-                  <div className="p-6 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-md">
-                     <div className="flex items-center gap-4 text-emerald-500">
-                        <ShieldCheck size={24} />
+                  <div className="p-8 bg-slate-50 rounded-3xl border border-slate-100 group-hover:bg-white group-hover:border-gold-300 transition-all duration-500">
+                     <div className="flex items-center gap-5 text-emerald-600">
+                        <ShieldCheck size={32} />
                         <div>
-                           <div className="text-[10px] font-black uppercase tracking-widest">Asset Status</div>
-                           <div className="text-white font-bold">100% Debt-Free Base</div>
+                           <div className="text-[9px] font-black uppercase tracking-widest text-slate-400">Capital Status</div>
+                           <div className="text-slate-950 font-bold text-lg">Zero-Debt Base</div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
           </div>
-
         </div>
 
-        {/* Global Action Strip */}
-        <div className="mt-24 flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/5">
-          <div className="flex items-center gap-6">
-            <div className="w-16 h-16 rounded-full bg-onyx-900 border border-white/10 flex items-center justify-center text-gold-500 shadow-2xl">
-              <Layers size={28} />
+        <div className="mt-32 flex flex-col md:flex-row items-center justify-between gap-12 pt-16 border-t border-slate-100">
+          <div className="flex items-center gap-8">
+            <div className="w-20 h-20 rounded-3xl bg-slate-50 border border-slate-100 flex items-center justify-center text-gold-600 shadow-sm group hover:border-gold-400 transition-all">
+              <Layers size={32} className="group-hover:scale-110 transition-transform" />
             </div>
             <div>
-              <p className="text-white text-xl font-serif">Dynamic Stress Testing</p>
-              <p className="text-slate-600 text-[10px] font-black uppercase tracking-widest">Institutional Partners can model custom ADR/Occ scenarios below</p>
+              <p className="text-slate-950 text-2xl font-serif italic">Operational Stress Testing</p>
+              <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Access dynamic modeling terminal for sensitivity analysis</p>
             </div>
           </div>
-          <button className="group px-12 py-7 bg-gold-500 hover:bg-white text-onyx-950 rounded-full text-[11px] font-black uppercase tracking-[0.4em] transition-all shadow-3xl flex items-center gap-6">
-            Request Data Room Access <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          <button className="group px-16 py-8 bg-slate-950 hover:bg-gold-500 text-white rounded-full text-[11px] font-black uppercase tracking-[0.5em] transition-all shadow-2xl flex items-center gap-6 active:scale-95">
+            Authorize Data Room Access <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
       </div>

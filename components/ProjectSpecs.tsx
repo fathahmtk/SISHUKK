@@ -1,112 +1,86 @@
 import React from 'react';
-import { Ruler, Scale, Building, HardHat, FileText, CheckCircle2, ScanLine } from 'lucide-react';
+/* Added missing ArrowRight import */
+import { Ruler, Scale, Building, HardHat, FileText, CheckCircle2, ScanLine, Maximize2, ShieldCheck, Database, ArrowRight } from 'lucide-react';
 
 const ProjectSpecs: React.FC = () => {
   const specs = [
-    { label: "Plot Area", val: "1.29 Acres (Freehold)" },
-    { label: "Building Structure", val: "2B + G + 20 Floors" },
-    { label: "Gross Built-up", val: "~350,000 Sq. Ft." },
-    { label: "Structural Height", val: "75 Meters AGL" },
-    { label: "Construction Type", val: "RCC Core + Steel Periphery" },
-    { label: "Facade System", val: "Unitized DGU Glazing" },
-    { label: "Vertical Transport", val: "12 High-Speed Elevators" },
-    { label: "Parking Capacity", val: "250+ ECS (Automated)" },
-    { label: "Zoning Class", val: "Commercial / Hospitality" }
+    { label: "Asset Land Base", val: "1.29 Acres", sub: "100% Freehold Sovereignty" },
+    { label: "Vertical Density", val: "Lvl 20 Terminal", sub: "Twin Tower Symmetrical" },
+    { label: "Gross Footprint", val: "350,000", sub: "Built-up Square Footage" },
+    { label: "Aviation Height", val: "75.0 Meters", sub: "Certified Skyline Datum" },
+    { label: "Vertical Logistics", val: "12 Cores", sub: "High-Velocity MITSUBISHI" },
+    { label: "Capillary Parking", val: "250+ ECS", sub: "Multi-Level Auto Stack" },
   ];
 
   return (
-    <section id="specs" className="py-40 bg-onyx-950 border-t border-white/5 relative overflow-hidden">
-      {/* Decorative Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
-
+    <section id="specs" className="py-64 bg-[#FDFBF7] relative overflow-hidden border-t border-slate-200">
+      <div className="absolute top-[10%] left-[-2%] text-slate-50 font-serif text-[40rem] font-black italic opacity-40 pointer-events-none select-none">T</div>
+      
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
             
-            {/* Left Column: Data Terminal */}
-            <div className="lg:w-1/2">
-                <div className="mb-12">
-                    <div className="inline-flex items-center gap-3 px-4 py-2 border border-gold-500/30 rounded-full bg-gold-500/5 mb-8">
-                        <FileText size={14} className="text-gold-500" />
-                        <span className="text-gold-400 uppercase text-[10px] font-black tracking-[0.4em]">Technical Datasheet</span>
-                    </div>
-                    <h2 className="font-serif text-5xl md:text-7xl text-white mb-6 italic leading-none">
-                        Project <br/><span className="gold-gradient-text not-italic font-black tracking-tighter">Specifications.</span>
-                    </h2>
-                    <p className="text-slate-400 text-lg leading-relaxed max-w-xl">
-                        A granular audit of the physical asset. Engineered for maximum floor-plate efficiency and long-term structural resilience.
-                    </p>
+            <div className="lg:col-span-5 space-y-16">
+                <div className="space-y-10">
+                   <div className="inline-flex items-center gap-4 px-6 py-2 border border-gold-200 rounded-full bg-white shadow-sm">
+                       <FileText size={14} className="text-gold-600" />
+                       <span className="text-gold-600 uppercase text-[10px] font-black tracking-[0.6em]">Chapter 04: Physical Audit</span>
+                   </div>
+                   <h2 className="font-serif text-6xl md:text-8xl text-slate-950 leading-[0.8] italic tracking-tighter">
+                       Engineering <br/><span className="gold-gradient-text italic font-black">Metrics.</span>
+                   </h2>
+                   <p className="text-slate-500 text-2xl font-light leading-relaxed border-l-2 border-gold-400 pl-12 max-w-lg">
+                       A granular audit of the physical asset core. Each metric is calibrated to support institutional-grade ADR and high-volume banquet realization.
+                   </p>
                 </div>
-
-                <div className="bg-onyx-900/80 backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden shadow-2xl">
-                    <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
-                            <thead>
-                                <tr className="bg-white/5 border-b border-white/5">
-                                    <th className="p-6 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Parameter</th>
-                                    <th className="p-6 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] text-right">Specification</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-white/5">
-                                {specs.map((row, i) => (
-                                    <tr key={i} className="hover:bg-white/[0.02] transition-colors group">
-                                        <td className="p-6 text-xs font-bold text-slate-300 uppercase tracking-wide group-hover:text-gold-400 transition-colors flex items-center gap-3">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-slate-700 group-hover:bg-gold-500 transition-colors"></div>
-                                            {row.label}
-                                        </td>
-                                        <td className="p-6 text-sm font-mono text-white text-right">{row.val}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            {/* Right Column: Visual & Highlights */}
-            <div className="lg:w-1/2 space-y-10 sticky top-32">
-                <div className="relative rounded-[3rem] overflow-hidden aspect-[4/3] group shadow-3xl border border-white/10">
-                    <img 
-                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" 
-                        alt="Structural Detail" 
-                        className="w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110 brightness-[0.4] group-hover:brightness-[0.6]" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-transparent to-transparent opacity-80"></div>
-                    
-                    {/* Overlay Tech Stats */}
-                    <div className="absolute bottom-10 left-10 right-10">
-                        <div className="flex justify-between items-end border-b border-white/20 pb-6 mb-6">
-                            <div>
-                                <span className="text-gold-500 text-[9px] font-black uppercase tracking-widest mb-1 block">Facade Tech</span>
-                                <span className="text-white font-serif text-3xl italic">Double Glazed Unit</span>
-                            </div>
-                            <ScanLine size={32} className="text-white/20 group-hover:text-gold-500 transition-colors" />
-                        </div>
-                        <div className="grid grid-cols-2 gap-4 text-[10px] text-slate-300 font-bold uppercase tracking-widest">
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 size={12} className="text-emerald-500" /> Acoustic Rated
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 size={12} className="text-emerald-500" /> Thermal Break
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {[
-                      { icon: Ruler, title: "Grand Volume", desc: "4.2m lobby height; 3.4m clear in suites." },
-                      { icon: Scale, title: "Efficiency", desc: "85% floor-plate efficiency ratio." },
-                      { icon: Building, title: "Sky Link", desc: "Level 15 steel truss bridge." },
-                      { icon: HardHat, title: "IGBC Gold", desc: "Sustainable green building design." }
-                    ].map((item, i) => (
-                      <div key={i} className="bg-white/[0.03] p-8 rounded-[2rem] border border-white/5 hover:border-gold-500/30 transition-all group hover:-translate-y-1">
-                        <item.icon className="text-gold-500 mb-4 group-hover:scale-110 transition-transform" size={24} />
-                        <h3 className="text-white font-serif text-lg mb-2 italic">{item.title}</h3>
-                        <p className="text-slate-500 text-xs leading-relaxed font-medium">{item.desc}</p>
+                
+                <div className="p-12 bg-white border border-slate-200 rounded-[4rem] shadow-2xl relative overflow-hidden group">
+                   <div className="absolute inset-0 bg-gold-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                   <div className="relative z-10">
+                      <div className="flex items-center gap-6 mb-8">
+                         <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-gold-600 group-hover:bg-gold-500 group-hover:text-white transition-all shadow-sm">
+                            <ShieldCheck size={28} />
+                         </div>
+                         <h4 className="text-slate-950 font-serif text-3xl italic">Certified Baseline</h4>
                       </div>
-                    ))}
+                      <p className="text-slate-500 text-base font-light leading-relaxed mb-10">Structural peer-review completed by International Grade-A consultants. All seismic and wind-load calculations verified for Year 50 life-cycle.</p>
+                      <button className="flex items-center gap-6 text-slate-950 text-[10px] font-black uppercase tracking-[0.5em] group/btn">
+                         Full Structural Dossier <ArrowRight size={16} className="text-gold-500 group-hover:translate-x-3 transition-transform" />
+                      </button>
+                   </div>
                 </div>
             </div>
+
+            <div className="lg:col-span-7">
+               <div className="bg-white border border-slate-100 rounded-[5rem] p-16 md:p-24 shadow-3xl relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 p-24 opacity-[0.02] pointer-events-none group-hover:scale-110 transition-transform duration-[10s]">
+                    <Database size={400} className="text-slate-950" />
+                  </div>
+                  
+                  <div className="space-y-16 relative z-10">
+                     {specs.map((item, i) => (
+                       <div key={i} className="group/row">
+                          <div className="flex justify-between items-baseline mb-4">
+                             <div className="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em] group-hover/row:text-gold-600 transition-colors">{item.label}</div>
+                             <div className="flex-1 border-b border-dotted border-slate-200 mx-8"></div>
+                             <div className="text-slate-950 font-serif text-5xl italic group-hover/row:scale-105 transition-transform origin-right">{item.val}</div>
+                          </div>
+                          <div className="text-gold-600 text-[9px] font-black uppercase tracking-[0.3em] pl-1">{item.sub}</div>
+                       </div>
+                     ))}
+                  </div>
+
+                  <div className="mt-24 pt-12 border-t border-slate-100 flex items-center justify-between">
+                     <div className="flex items-center gap-4">
+                        <ScanLine size={16} className="text-gold-500 animate-pulse" />
+                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-300">BIM v3.0 Synced</span>
+                     </div>
+                     <button className="bg-slate-50 hover:bg-slate-100 px-10 py-5 rounded-full text-slate-950 text-[9px] font-black uppercase tracking-widest transition-all border border-slate-200 shadow-sm">
+                        Download Technical PDF
+                     </button>
+                  </div>
+               </div>
+            </div>
+
         </div>
       </div>
     </section>

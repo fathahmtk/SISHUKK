@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -17,7 +17,6 @@
               serif: ['"Playfair Display"', 'serif'],
               sans: ['"Inter"', 'sans-serif'],
               mono: ['"Space Grotesk"', 'monospace'],
-              display: ['"Cinzel"', 'serif'],
             },
             colors: {
               gold: {
@@ -26,24 +25,19 @@
                 200: '#fae6a3',
                 300: '#f6d16a',
                 400: '#f1b837',
-                500: '#D4AF37', // Brand Gold
+                500: '#D4AF37', 
                 600: '#b88a2a',
                 700: '#8c651f',
                 800: '#634719',
                 900: '#3d2b14'
-              },
-              onyx: {
-                800: '#0c153d',
-                900: '#070e2b',
-                950: '#020617' // Midnight Onyx
               }
             },
             boxShadow: {
-              '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.6)',
-              'gold-glow': '0 0 40px rgba(212, 175, 55, 0.2)',
+              '3xl': '0 40px 100px -15px rgba(0, 0, 0, 0.1)',
+              'gold-glow': '0 0 40px rgba(212, 175, 55, 0.1)',
             },
             animation: {
-              'fade-in-up': 'fade-in-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'fade-in-up': 'fade-in-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
               'fade-in': 'fade-in 1.8s ease-out forwards',
               'pulse-slow': 'pulse 8s ease-in-out infinite',
               'float': 'float 6s ease-in-out infinite',
@@ -51,11 +45,11 @@
             },
             keyframes: {
               'fade-in-up': {
-                '0%': { opacity: '0', transform: 'translateY(40px)' },
+                '0%': { opacity: '0', transform: 'translateY(60px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' }
               },
               'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-              'float': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
+              'float': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-30px)' } },
             }
           }
         }
@@ -63,38 +57,35 @@
     </script>
     <style>
       body {
-        background-color: #020617;
-        color: #f8fafc;
+        background-color: #FDFBF7;
+        color: #1e293b;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
       }
       .gold-gradient-text {
-        background: linear-gradient(135deg, #fceeb5 0%, #D4AF37 50%, #b88a2a 100%);
+        background: linear-gradient(135deg, #b88a2a 0%, #D4AF37 50%, #fceeb5 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .glass-panel { 
-        background: rgba(255, 255, 255, 0.02); 
-        backdrop-filter: blur(40px); 
-        border: 1px solid rgba(255, 255, 255, 0.05); 
-      }
-      .institutional-border {
-        border: 1px solid rgba(212, 175, 55, 0.15);
-      }
-      ::selection { background: #D4AF37; color: #020617; }
-      ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: #020617; }
-      ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+      ::selection { background: #D4AF37; color: #ffffff; }
       
       .noise-overlay {
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        opacity: 0.02;
+        opacity: 0.04;
         pointer-events: none;
         z-index: 9999;
       }
+
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.1); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
     </style>
   <script type="importmap">
 {

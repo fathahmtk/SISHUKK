@@ -1,39 +1,30 @@
-
 import React, { useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Maximize2, Layers } from 'lucide-react';
 
 const INCLUSIVES = [
   {
     id: 'revolving',
     title: 'Dual Revolving Crowns',
-    subtitle: 'Culinary Levitation',
-    desc: 'Two independent revolving gastronomy modules at 75m, offering 360-degree panoramas of the temple district and the distant coastline.',
+    subtitle: 'High-Altitude Gastronomy',
+    desc: 'Two independent revolving modules at Level 20, providing 360-degree panoramas of the temple district. A structural landmark generating massive non-resident revenue.',
     img: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80',
-    tags: ['Rooftop', 'Fine Dining', 'Iconic']
+    tags: ['USP Engine', 'Fine Dining', 'Institutional']
   },
   {
     id: 'ballroom',
-    title: 'Imperial Ballroom',
-    subtitle: 'Ceremonial Majesty',
-    desc: '15,000 Sq. Ft. of pillar-less volume. Designed for South India\'s most prestigious destination weddings and global summits.',
+    title: 'Grand Imperial Ballroom',
+    subtitle: 'Ritual Event Core',
+    desc: '15,000 Sq. Ft. of monumental volume. Engineered for South India\'s most prestigious ceremonial events, creating a non-seasonal operational floor.',
     img: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80',
-    tags: ['MICE', '1500 Pax', 'Grandeur']
+    tags: ['Mega-Scale', '1200 Banquet', 'Alpha Driver']
   },
   {
     id: 'skybridge',
-    title: 'Connecting Gateway',
-    subtitle: 'The Meridian Arch',
-    desc: 'A structural masterpiece at Level 15. Housing the Executive Club, library, and private observation sanctuary.',
+    title: 'The Meridian Arch',
+    subtitle: 'Executive Gateway',
+    desc: 'A structural masterpiece at Level 15 connecting the twin cores. Housing the executive club, observation sanctuary, and private capital lounge.',
     img: 'https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80',
-    tags: ['Club Lounge', 'Horizon View', 'Private']
-  },
-  {
-    id: 'wellness',
-    title: 'Vedic Sanctuary',
-    subtitle: 'Wellness Alchemy',
-    desc: 'A 12,000 Sq. Ft. ecosystem blending traditional Kerala Ayurveda with modern bio-hacking and holistic recovery.',
-    img: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80',
-    tags: ['Ayurveda', 'Bio-Spa', 'Detox']
+    tags: ['Structural Icon', 'Private Club', 'Secure']
   }
 ];
 
@@ -44,84 +35,110 @@ const InclusiveShowcase: React.FC = () => {
   const prev = () => setActive((curr) => (curr - 1 + INCLUSIVES.length) % INCLUSIVES.length);
 
   return (
-    <section id="experience" className="bg-onyx-950 py-32 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-500/20 to-transparent"></div>
-      
+    <section id="experience" className="bg-white py-48 relative overflow-hidden border-t border-slate-100">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20 reveal-on-scroll">
-          <span className="text-gold-400 text-[10px] font-black uppercase tracking-[0.6em] block mb-4">Institutional Portfolio</span>
-          <h2 className="text-white font-serif text-4xl md:text-7xl tracking-tighter mb-8 leading-[0.9]">Architectural <br/><span className="gold-gradient-text italic">Inclusives.</span></h2>
-          <p className="text-slate-500 max-w-xl mx-auto text-lg font-light tracking-wide">
-            An institutional breakdown of high-yield revenue centers and unique experiential drivers.
-          </p>
+        <div className="flex flex-col lg:flex-row justify-between items-end mb-32 gap-12">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-4 px-6 py-2 border border-gold-200 rounded-full bg-gold-50/50 mb-10 shadow-sm">
+              <Layers size={16} className="text-gold-600" />
+              <span className="text-gold-600 uppercase text-[10px] font-black tracking-[0.5em]">Asset Anatomy Chapter 05</span>
+            </div>
+            <h2 className="text-slate-950 font-serif text-6xl md:text-9xl leading-[0.8] tracking-tighter italic">Structural <br/><span className="gold-gradient-text italic font-black">Inclusives.</span></h2>
+            <p className="text-slate-500 text-2xl font-light leading-relaxed max-w-2xl border-l-2 border-gold-400 pl-12 mt-12">
+              High-yield revenue centers that operate independently of room occupancy. These architectural "anchors" define the asset's destination appeal.
+            </p>
+          </div>
+          <div className="flex gap-6 z-20">
+            <button 
+              onClick={prev}
+              className="w-20 h-20 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-all active:scale-90 shadow-sm"
+            >
+              <ChevronLeft size={32} />
+            </button>
+            <button 
+              onClick={next}
+              className="w-20 h-20 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-950 hover:text-white hover:border-slate-950 transition-all active:scale-90 shadow-sm"
+            >
+              <ChevronRight size={32} />
+            </button>
+          </div>
         </div>
 
-        <div className="relative h-auto lg:h-[750px] w-full group">
+        <div className="relative w-full h-[850px] group">
           {INCLUSIVES.map((item, idx) => (
             <div 
               key={item.id}
-              className={`lg:absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.16, 1, 0.3, 1)] flex flex-col lg:flex-row rounded-[3rem] overflow-hidden glass-panel border border-white/10 ${
-                idx === active ? 'opacity-100 translate-x-0 relative z-10 scale-100 shadow-[0_40px_100px_rgba(0,0,0,0.6)]' : 'opacity-0 translate-x-40 pointer-events-none absolute h-0 w-0 scale-95'
+              className={`absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col lg:flex-row rounded-[5rem] overflow-hidden bg-white border border-slate-200 shadow-3xl ${
+                idx === active ? 'opacity-100 translate-x-0 z-10 scale-100' : 'opacity-0 translate-x-40 pointer-events-none scale-95'
               }`}
             >
-              <div className="w-full lg:w-3/5 h-64 md:h-96 lg:h-full relative overflow-hidden group/img">
+              {/* Image Side */}
+              <div className="w-full lg:w-3/5 h-full relative overflow-hidden group/img">
                 <img 
                   src={item.img} 
                   alt={item.title} 
-                  className={`w-full h-full object-cover transition-transform duration-[8s] ease-linear ${idx === active ? 'scale-110' : 'scale-100'}`}
+                  className={`w-full h-full object-cover transition-transform duration-[8s] ease-linear brightness-[1.05] contrast-[1.02] ${idx === active ? 'scale-110' : 'scale-100'}`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-onyx-950/90 via-transparent to-transparent lg:hidden"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-onyx-950/80 via-transparent to-transparent hidden lg:block"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-80 lg:hidden"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent hidden lg:block opacity-60"></div>
                 
-                <div className="absolute top-8 left-8 flex flex-wrap gap-2">
+                <div className="absolute top-12 left-12 flex flex-wrap gap-3">
                   {item.tags.map(tag => (
-                    <span key={tag} className="bg-onyx-950/80 backdrop-blur-md border border-white/10 text-white text-[8px] uppercase tracking-widest font-black px-4 py-2 rounded-full shadow-2xl">
+                    <span key={tag} className="bg-slate-950/90 backdrop-blur-xl border border-white/20 text-white text-[9px] uppercase tracking-widest font-black px-6 py-2.5 rounded-full shadow-2xl">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity">
-                   <div className="w-20 h-20 rounded-full bg-gold-500/10 backdrop-blur-md border border-gold-500/40 flex items-center justify-center text-gold-400">
-                      <Maximize2 size={32} />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity duration-700">
+                   <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-xl border border-white/40 flex items-center justify-center text-slate-950 shadow-3xl">
+                      <Maximize2 size={36} />
                    </div>
                 </div>
               </div>
 
-              <div className="w-full lg:w-2/5 p-12 md:p-16 flex flex-col justify-center border-l border-white/5 bg-onyx-900/40">
-                <div className="mb-10">
-                  <span className="text-gold-400 text-[10px] font-black uppercase tracking-[0.4em] block mb-3">{item.subtitle}</span>
-                  <h3 className="text-white font-serif text-4xl md:text-5xl leading-tight mb-6">{item.title}</h3>
-                  <div className="h-px w-24 bg-gold-500/40"></div>
+              {/* Content Side */}
+              <div className="w-full lg:w-2/5 p-16 md:p-24 flex flex-col justify-center bg-[#FDFBF7] border-l border-slate-100">
+                <div className="mb-12">
+                  <span className="text-gold-600 text-[11px] font-black uppercase tracking-[0.5em] block mb-4">{item.subtitle}</span>
+                  <h3 className="text-slate-950 font-serif text-5xl md:text-7xl leading-none italic mb-10">{item.title}</h3>
+                  <div className="h-px w-32 bg-gold-400"></div>
                 </div>
 
-                <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed mb-12">
+                <p className="text-slate-500 text-2xl font-light leading-relaxed mb-16 italic">
                   {item.desc}
                 </p>
 
-                <button className="flex items-center gap-4 text-white text-[10px] font-black uppercase tracking-[0.3em] group w-fit hover:text-gold-300 transition-colors">
-                  Technical Specifications 
-                  <ArrowRight size={16} className="text-gold-400 group-hover:translate-x-2 transition-transform" />
-                </button>
+                <div className="space-y-12">
+                   <button className="inline-flex items-center gap-6 text-slate-950 text-[11px] font-black uppercase tracking-[0.4em] group w-fit hover:text-gold-600 transition-colors">
+                      Technical Portfolio
+                      <ArrowRight size={20} className="text-gold-500 group-hover:translate-x-3 transition-transform" />
+                   </button>
+                   
+                   <div className="grid grid-cols-2 gap-10 pt-16 border-t border-slate-200">
+                      <div>
+                        <div className="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-2">Yield Weighting</div>
+                        <div className="text-slate-950 font-serif text-3xl italic">High-Alpha</div>
+                      </div>
+                      <div>
+                        <div className="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-2">Market Moat</div>
+                        <div className="text-emerald-600 font-serif text-3xl italic">Secured</div>
+                      </div>
+                   </div>
+                </div>
               </div>
             </div>
           ))}
 
-          <div className="absolute bottom-8 right-8 flex gap-4 z-20">
-            <button 
-              onClick={prev}
-              className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-gold-500 hover:text-onyx-950 transition-all active:scale-95 bg-onyx-950/80 backdrop-blur-md shadow-2xl"
-              aria-label="Previous"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button 
-              onClick={next}
-              className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-gold-500 hover:text-onyx-950 transition-all active:scale-95 bg-onyx-950/80 backdrop-blur-md shadow-2xl"
-              aria-label="Next"
-            >
-              <ChevronRight size={24} />
-            </button>
+          {/* Indicator Dots */}
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+            {INCLUSIVES.map((_, i) => (
+              <button 
+                key={i} 
+                onClick={() => setActive(i)}
+                className={`h-1.5 transition-all duration-700 rounded-full ${active === i ? 'w-16 bg-gold-500' : 'w-4 bg-slate-200 hover:bg-slate-300'}`}
+              ></button>
+            ))}
           </div>
         </div>
       </div>

@@ -1,118 +1,123 @@
-
 import React, { useState } from 'react';
-import { Building2, Info, ArrowUpRight, ShieldCheck, Map, Layers } from 'lucide-react';
+import { Building2, Info, ArrowUpRight, ShieldCheck, Map, Layers, Target, ScanLine } from 'lucide-react';
 
 const STACK_DATA = [
   { floor: "20", label: "Revolving Crown", zone: "Gastronomy", detail: "Tower A & B high-velocity dining platforms.", color: "bg-gold-500" },
-  { floor: "16-19", label: "Sovereign Suites", zone: "Ultra-Luxury", detail: "Duplex configurations & Presidential wings.", color: "bg-white/20" },
+  { floor: "16-19", label: "Sovereign Suites", zone: "Ultra-Luxury", detail: "Duplex configurations & Presidential wings.", color: "bg-slate-200" },
   { floor: "15", label: "Meridian Arch", zone: "The Bridge", detail: "Executive Club, Library & Glass Observation.", color: "bg-gold-400" },
-  { floor: "04-14", label: "Asset Inventory", zone: "Rooms", detail: "420 Strategic Keys (Tower A & B).", color: "bg-white/10" },
-  { floor: "01-03", label: "Grand Ballroom", zone: "Events", detail: "15,000 sq ft pillar-less ceremonial volume.", color: "bg-white/20" },
-  { floor: "Ground", label: "The Portal", zone: "Grand Lobby", detail: "Bespoke check-in & Concierge Command.", color: "bg-white/30" },
-  { floor: "Basements", label: "Operational Core", zone: "Logistics", detail: "MEP, Parking & Service Distribution.", color: "bg-white/5" },
+  { floor: "04-14", label: "Asset Inventory", zone: "Rooms", detail: "420 Strategic Keys (Tower A & B).", color: "bg-slate-100" },
+  { floor: "01-03", label: "Grand Ballroom", zone: "Events", detail: "15,000 sq ft pillar-less ceremonial volume.", color: "bg-slate-200" },
+  { floor: "Ground", label: "The Portal", zone: "Grand Lobby", detail: "Bespoke check-in & Concierge Command.", color: "bg-slate-300" },
+  { floor: "Basements", label: "Operational Core", zone: "Logistics", detail: "MEP, Parking & Service Distribution.", color: "bg-slate-50" },
 ];
 
 const MasterplanViewer: React.FC = () => {
   const [hoveredZone, setHoveredZone] = useState<number | null>(null);
 
   return (
-    <section className="py-32 bg-onyx-950 relative overflow-hidden border-t border-white/5">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-24">
-          <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-6">Facility Stacking Plan</span>
-          <h2 className="font-serif text-5xl md:text-8xl text-white mb-10 tracking-tighter">Structural <br/><span className="gold-gradient-text italic">Hierarchy.</span></h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            A vertical breakdown of the ₹350 Crore facility architecture, optimized for maximum revenue-per-square-foot.
-          </p>
+    <section className="py-64 bg-[#FDFBF7] relative overflow-hidden border-t border-slate-200">
+      <div className="absolute top-[20%] left-[-2%] text-slate-100 font-serif text-[40rem] font-black italic pointer-events-none select-none leading-none opacity-40">S</div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-end mb-32">
+          <div className="lg:col-span-7">
+            <span className="text-gold-600 text-[10px] font-black uppercase tracking-[0.8em] block mb-10">Chapter 04: Facility Stacking</span>
+            <h2 className="font-serif text-6xl md:text-9xl text-slate-950 leading-[0.75] tracking-tighter italic">Structural <br/><span className="gold-gradient-text not-italic font-black">Hierarchy.</span></h2>
+          </div>
+          <div className="lg:col-span-5 border-l border-slate-200 pl-16 pb-4">
+             <p className="text-slate-500 text-2xl font-light leading-relaxed italic mb-8">
+               "A vertical breakdown of the ₹350 Crore facility architecture, optimized for maximum revenue-per-square-foot."
+             </p>
+             <div className="flex gap-4">
+                <div className="px-6 py-3 bg-white border border-slate-200 rounded-full text-gold-600 text-[9px] font-black uppercase tracking-widest shadow-sm">
+                   BIM Grade L300
+                </div>
+             </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Vertical Stack Visualization */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="w-full max-w-[300px] flex flex-col gap-2 relative">
-              <div className="absolute -left-12 top-0 bottom-0 w-px bg-gradient-to-b from-gold-500/50 via-white/10 to-transparent"></div>
+            <div className="w-full max-w-[400px] flex flex-col gap-3 relative p-12 bg-white border border-slate-200 rounded-[4rem] shadow-2xl">
+              <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-px h-3/4 bg-gold-400/30"></div>
               
               {STACK_DATA.map((item, i) => (
                 <div 
                   key={i}
                   onMouseEnter={() => setHoveredZone(i)}
                   onMouseLeave={() => setHoveredZone(null)}
-                  className={`relative h-16 flex items-center justify-center border transition-all duration-500 cursor-pointer group rounded-xl ${
+                  className={`relative h-20 flex items-center justify-center border transition-all duration-700 cursor-pointer group rounded-2xl ${
                     hoveredZone === i 
-                    ? 'border-gold-500 bg-gold-500/10 shadow-[0_0_30px_rgba(212,175,55,0.2)] scale-105 z-10' 
-                    : 'border-white/5 bg-white/[0.02] hover:border-white/20'
+                    ? 'border-gold-500 bg-gold-50 shadow-3xl scale-105 z-10' 
+                    : 'border-slate-100 bg-slate-50 hover:bg-white hover:border-gold-200'
                   }`}
                 >
-                   <span className="absolute -left-10 text-[8px] font-black text-slate-600 uppercase group-hover:text-gold-500 transition-colors">Lvl {item.floor}</span>
-                   <span className={`text-[9px] font-black uppercase tracking-widest ${hoveredZone === i ? 'text-gold-500' : 'text-slate-400'}`}>
+                   <span className={`absolute -left-12 text-[9px] font-black uppercase tracking-widest transition-colors ${hoveredZone === i ? 'text-gold-600' : 'text-slate-300'}`}>Lvl {item.floor}</span>
+                   <span className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors ${hoveredZone === i ? 'text-slate-950' : 'text-slate-400'}`}>
                      {item.label}
                    </span>
-                   {hoveredZone === i && (
-                     <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-gold-500 rotate-45 animate-pulse"></div>
-                   )}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Contextual Detail Card */}
           <div className="lg:col-span-7">
-            <div className="bg-onyx-900 border border-white/10 rounded-[3rem] p-12 md:p-20 shadow-3xl relative overflow-hidden min-h-[450px] flex flex-col justify-center">
-              <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
-                <Layers size={300} className="text-white" />
+            <div className="bg-white border border-slate-200 rounded-[5rem] p-16 md:p-24 shadow-3xl relative overflow-hidden min-h-[550px] flex flex-col justify-center group/card">
+              <div className="absolute top-0 right-0 p-24 opacity-[0.03] pointer-events-none group-hover/card:scale-110 transition-transform duration-[10s]">
+                <Layers size={400} className="text-slate-950" />
               </div>
 
               {hoveredZone !== null ? (
-                <div className="animate-fade-in space-y-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gold-500 rounded-2xl flex items-center justify-center text-onyx-950 shadow-2xl">
-                      <Layers size={32} />
+                <div className="animate-fade-in space-y-12">
+                  <div className="flex items-center gap-8">
+                    <div className="w-20 h-20 bg-gold-500 rounded-3xl flex items-center justify-center text-white shadow-2xl group-hover/card:rotate-12 transition-transform">
+                      <Layers size={36} />
                     </div>
                     <div>
-                      <span className="text-gold-500 text-[10px] font-black uppercase tracking-widest block mb-1">Zone: {STACK_DATA[hoveredZone].zone}</span>
-                      <h3 className="text-white font-serif text-4xl">{STACK_DATA[hoveredZone].label}</h3>
+                      <span className="text-gold-600 text-[10px] font-black uppercase tracking-[0.4em] block mb-2">Zone: {STACK_DATA[hoveredZone].zone}</span>
+                      <h3 className="text-slate-950 font-serif text-5xl md:text-6xl italic leading-none">{STACK_DATA[hoveredZone].label}</h3>
                     </div>
                   </div>
-                  <p className="text-slate-400 text-xl font-light leading-relaxed max-w-xl">
+                  <p className="text-slate-500 text-2xl font-light leading-relaxed max-w-xl italic border-l-2 border-gold-400 pl-12">
                     {STACK_DATA[hoveredZone].detail}
                   </p>
-                  <div className="flex gap-4">
-                    <button className="px-8 py-4 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white hover:bg-gold-500 hover:text-onyx-950 transition-all flex items-center gap-3">
-                      Technical Specs <Info size={14} />
+                  <div className="flex gap-6 pt-6">
+                    <button className="px-10 py-5 bg-slate-950 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-gold-500 transition-all shadow-xl flex items-center gap-4">
+                      Technical Specs <Info size={16} />
                     </button>
-                    <button className="px-8 py-4 bg-gold-500/10 border border-gold-500/30 rounded-full text-[10px] font-black uppercase tracking-widest text-gold-500 hover:bg-gold-500 hover:text-onyx-950 transition-all flex items-center gap-3">
-                      Revenue Forecast <ArrowUpRight size={14} />
+                    <button className="px-10 py-5 bg-white border border-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest text-slate-500 hover:border-gold-400 hover:text-gold-600 transition-all flex items-center gap-4">
+                      Yield Logic <ArrowUpRight size={16} />
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="text-center space-y-6">
-                  <Building2 size={64} className="text-slate-700 mx-auto mb-8 animate-pulse" />
-                  <h3 className="text-slate-500 font-serif text-3xl">Select a level to audit <br/><span className="text-slate-700 italic">Structural USPs</span></h3>
-                  <div className="flex items-center justify-center gap-2 text-[9px] font-black uppercase tracking-[0.4em] text-slate-800">
-                    <ShieldCheck size={12} /> Hover Vertical Stack to Inspect
+                <div className="text-center space-y-10">
+                  <Building2 size={80} className="text-gold-200 mx-auto mb-8 animate-pulse" />
+                  <h3 className="text-slate-400 font-serif text-4xl italic leading-tight">Select a level to audit <br/><span className="text-slate-200 not-italic">Structural Logic</span></h3>
+                  <div className="flex items-center justify-center gap-4 text-[9px] font-black uppercase tracking-[0.5em] text-slate-300">
+                    <ScanLine size={16} className="text-gold-400 animate-pulse" /> Hover Stack to Inspect
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-               <div className="p-8 bg-onyx-950 border border-white/5 rounded-3xl flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500">
-                    <Map size={24} />
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+               <div className="p-12 bg-white border border-slate-100 rounded-[3.5rem] flex items-center gap-8 shadow-sm hover:shadow-xl transition-all">
+                  <div className="w-14 h-14 rounded-2xl bg-gold-50 flex items-center justify-center text-gold-600 border border-gold-100 shadow-sm">
+                    <Map size={28} />
                   </div>
                   <div>
-                    <span className="text-white text-xs font-bold uppercase tracking-widest block mb-1">Cylindrical Symmetry</span>
-                    <p className="text-slate-600 text-[10px]">Optimized for wind-load and 360-degree vistas.</p>
+                    <span className="text-slate-950 text-sm font-black uppercase tracking-widest block mb-1">Cylindrical Symmetry</span>
+                    <p className="text-slate-400 text-[10px] uppercase font-bold tracking-widest">Optimized Wind-Load Rating</p>
                   </div>
                </div>
-               <div className="p-8 bg-onyx-950 border border-white/5 rounded-3xl flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-xl bg-gold-500/10 flex items-center justify-center text-gold-500">
-                    <Layers size={24} />
+               <div className="p-12 bg-white border border-slate-100 rounded-[3.5rem] flex items-center gap-8 shadow-sm hover:shadow-xl transition-all">
+                  <div className="w-14 h-14 rounded-2xl bg-gold-50 flex items-center justify-center text-gold-600 border border-gold-100 shadow-sm">
+                    <Layers size={28} />
                   </div>
                   <div>
-                    <span className="text-white text-xs font-bold uppercase tracking-widest block mb-1">Dual-Core Logistics</span>
-                    <p className="text-slate-600 text-[10px]">Independent service cores for Tower A & B.</p>
+                    <span className="text-slate-950 text-sm font-black uppercase tracking-widest block mb-1">Dual-Core Logistics</span>
+                    <p className="text-slate-400 text-[10px] uppercase font-bold tracking-widest">Parallel Service Redundancy</p>
                   </div>
                </div>
             </div>

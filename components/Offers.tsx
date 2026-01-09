@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ArrowRight, Gift, Percent, Heart, Sparkles } from 'lucide-react';
+import { ArrowRight, Gift, Percent, Heart, Sparkles, ChevronRight, Target, ShieldCheck } from 'lucide-react';
 
 interface OffersProps {
   onActionClick?: (type: 'room' | 'wedding') => void;
@@ -8,76 +7,85 @@ interface OffersProps {
 
 const Offers: React.FC<OffersProps> = ({ onActionClick }) => {
   return (
-    <section id="offers" className="py-24 bg-onyx-950 border-y border-white/5 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-900/5 via-onyx-950 to-onyx-950 opacity-80"></div>
+    <section id="offers" className="py-64 bg-[#FDFBF7] relative overflow-hidden border-y border-slate-200">
+      <div className="absolute top-[10%] right-[-5%] text-slate-100 font-serif text-[45rem] font-black italic leading-none select-none pointer-events-none opacity-60">O</div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-           <span className="text-gold-400 tracking-[0.6em] uppercase text-[10px] font-black flex items-center justify-center gap-3">
-              <span className="w-8 h-px bg-gold-500/50"></span>
-              Privileges
-              <span className="w-8 h-px bg-gold-500/50"></span>
+        <div className="text-center mb-40">
+           <span className="text-gold-600 tracking-[1em] uppercase text-[11px] font-black flex items-center justify-center gap-10 mb-12">
+              <span className="w-16 h-px bg-gold-400/30"></span>
+              Strategic Privileges
+              <span className="w-16 h-px bg-gold-400/30"></span>
            </span>
-           <h2 className="font-serif text-5xl md:text-7xl text-white mt-6 leading-tight tracking-tighter">Exclusive <br/><span className="gold-gradient-text italic">Incentives.</span></h2>
+           <h2 className="font-serif text-6xl md:text-9xl text-slate-950 leading-[0.75] tracking-tighter italic">Exclusive <br/><span className="gold-gradient-text not-italic font-black">Incentives.</span></h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
             
-            {/* Offer 1 - Gold Theme */}
-            <div className="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-12 rounded-[2.5rem] overflow-hidden hover:bg-white/[0.07] transition-all duration-700 hover:-translate-y-2 shadow-2xl">
-                <div className="flex flex-col lg:flex-row gap-10 items-center relative z-10">
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-gold-500 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 flex items-center justify-center shadow-3xl relative z-10 border border-white/20">
-                            <span className="font-serif text-3xl text-onyx-950 font-black">20%</span>
-                        </div>
+            <div className="group relative bg-white border border-slate-200 p-16 md:p-24 rounded-[5rem] overflow-hidden hover:border-gold-400 transition-all duration-1000 shadow-2xl hover:shadow-3xl">
+                <div className="absolute top-0 right-0 p-24 opacity-[0.02] group-hover:opacity-10 transition-opacity">
+                   <Target size={350} className="text-slate-950" />
+                </div>
+                
+                <div className="flex flex-col gap-16 relative z-10">
+                    <div className="flex justify-between items-start">
+                       <div className="w-32 h-32 rounded-[2.5rem] bg-gold-500 flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform duration-700">
+                          <span className="font-serif text-5xl text-white font-black italic leading-none">20%</span>
+                       </div>
+                       <span className="bg-slate-50 border border-slate-200 px-6 py-2 rounded-full text-gold-600 text-[9px] font-black uppercase tracking-widest">Early Bird Equity</span>
                     </div>
                     
-                    <div className="text-center lg:text-left flex-1">
-                        <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
-                             <Sparkles size={14} className="text-gold-400 animate-pulse" />
-                             <span className="text-[10px] uppercase tracking-widest text-gold-400 font-black">Limited Allocation</span>
+                    <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                           <ShieldCheck size={18} className="text-gold-500" />
+                           <span className="text-[10px] uppercase tracking-[0.4em] text-slate-400 font-black">Limited Institutional Allocation</span>
                         </div>
-                        <h3 className="text-white font-serif text-4xl mb-4 group-hover:text-gold-300 transition-colors">Early Bird Equity</h3>
-                        <p className="text-slate-400 text-base mb-10 leading-relaxed font-light">
-                            Secure your sanctuary 30 days in advance. Includes complimentary artisan breakfast and high-altitude tea service.
+                        <h3 className="text-slate-950 font-serif text-5xl italic leading-tight">Founder <br/>Sanctuary.</h3>
+                        <p className="text-slate-500 text-xl font-light leading-relaxed italic border-l-2 border-gold-400 pl-10">
+                            "Secure your residency 30 days in advance. Includes priority high-altitude tea service at The Orbit and artisan ritual breakfast."
                         </p>
-                        <button 
-                          onClick={() => onActionClick?.('room')}
-                          className="group/btn inline-flex items-center gap-4 text-white text-[10px] uppercase tracking-[0.4em] font-black border-b-2 border-gold-500 pb-3 hover:text-gold-400 transition-all"
-                        >
-                            Claim Privilege <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
-                        </button>
+                        <div className="pt-10">
+                           <button 
+                             onClick={() => onActionClick?.('room')}
+                             className="group/btn flex items-center gap-10 bg-slate-950 text-white px-12 py-7 rounded-full text-[11px] uppercase tracking-[0.5em] font-black hover:bg-gold-500 transition-all shadow-3xl active:scale-95"
+                           >
+                               Claim Privilege <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
+                           </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Offer 2 - Rose Theme */}
-            <div className="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 md:p-12 rounded-[2.5rem] overflow-hidden hover:bg-white/[0.07] transition-all duration-700 hover:-translate-y-2 shadow-2xl">
-                <div className="flex flex-col lg:flex-row gap-10 items-center relative z-10">
-                    <div className="relative">
-                         <div className="absolute inset-0 bg-rose-500 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-rose-300 to-rose-600 flex items-center justify-center shadow-3xl relative z-10 border border-white/20">
-                            <Gift size={36} className="text-white" />
-                        </div>
+            <div className="group relative bg-white border border-slate-200 p-16 md:p-24 rounded-[5rem] overflow-hidden hover:border-gold-400 transition-all duration-1000 shadow-2xl hover:shadow-3xl lg:translate-y-24">
+                <div className="absolute top-0 right-0 p-24 opacity-[0.02] group-hover:opacity-10 transition-opacity">
+                   <Gift size={350} className="text-slate-950" />
+                </div>
+                
+                <div className="flex flex-col gap-16 relative z-10">
+                    <div className="flex justify-between items-start">
+                       <div className="w-32 h-32 rounded-[2.5rem] bg-slate-950 flex items-center justify-center shadow-2xl group-hover:-rotate-6 transition-transform duration-700">
+                          <Gift size={48} className="text-gold-500" />
+                       </div>
+                       <span className="bg-slate-50 border border-slate-200 px-6 py-2 rounded-full text-slate-400 text-[9px] font-black uppercase tracking-widest">Legacy Pack</span>
                     </div>
 
-                     <div className="text-center lg:text-left flex-1">
-                        <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
-                             <Heart size={14} className="text-rose-400" />
-                             <span className="text-[10px] uppercase tracking-widest text-rose-400 font-black">Legacy Celebrations</span>
+                    <div className="space-y-8">
+                        <div className="flex items-center gap-4">
+                           <Heart size={18} className="text-gold-500" />
+                           <span className="text-[10px] uppercase tracking-[0.4em] text-slate-400 font-black">Ceremonial Priority Tier</span>
                         </div>
-                        <h3 className="text-white font-serif text-4xl mb-4 group-hover:text-rose-300 transition-colors">Honeymoon Bliss</h3>
-                        <p className="text-slate-400 text-base mb-10 leading-relaxed font-light">
-                            Signature candlelight dinner on the Meridian Peak, dual spa therapy, and private airport transfers.
+                        <h3 className="text-slate-950 font-serif text-5xl italic leading-tight">Imperial <br/>Bridal Wings.</h3>
+                        <p className="text-slate-500 text-xl font-light leading-relaxed italic border-l-2 border-gold-400 pl-10">
+                            "Signature preparation suites on the Meridian Peak, dual-specialist spa therapy, and private ritual transfers for the bridal core."
                         </p>
-                        <button 
-                          onClick={() => onActionClick?.('wedding')}
-                          className="group/btn inline-flex items-center gap-4 text-white text-[10px] uppercase tracking-[0.4em] font-black border-b-2 border-rose-500 pb-3 hover:text-rose-300 transition-all"
-                        >
-                            View Dossier <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
-                        </button>
+                        <div className="pt-10">
+                           <button 
+                             onClick={() => onActionClick?.('wedding')}
+                             className="group/btn flex items-center gap-10 bg-white border border-slate-200 text-slate-950 px-12 py-7 rounded-full text-[11px] uppercase tracking-[0.5em] font-black hover:bg-slate-950 hover:text-white transition-all shadow-xl active:scale-95"
+                           >
+                               Request Dossier <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
+                           </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,87 +1,85 @@
-
 import React from 'react';
-import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Navigation } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Navigation, ChevronRight, Globe, Compass } from 'lucide-react';
 
 const Location: React.FC = () => {
   return (
-    <section id="location" className="bg-black text-white relative">
-      <div className="flex flex-col lg:flex-row min-h-[600px]">
+    <section id="location" className="bg-white text-slate-950 relative border-t border-slate-100 overflow-hidden">
+      <div className="flex flex-col lg:flex-row min-h-[950px]">
         
-        {/* Map Placeholder */}
-        <div className="lg:w-1/2 min-h-[400px] lg:h-auto bg-slate-900 relative grayscale hover:grayscale-0 transition-all duration-700 border-r border-white/5">
+        {/* Map Side */}
+        <div className="lg:w-1/2 min-h-[600px] lg:h-auto bg-[#FDFBF7] relative grayscale transition-all duration-1000 border-r border-slate-100 group">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.377626966838!2d76.0375!3d10.5952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDM1JzQyLjciTiA3NsKwMDInMTUuMCJF!5e0!3m2!1sen!2sin!4v1625634567890!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
-                style={{border:0, filter: 'invert(90%) hue-rotate(180deg) brightness(0.8)'}} 
+                style={{border:0, filter: 'contrast(1.1) brightness(1.05) saturate(0.2)'}} 
                 allowFullScreen={true} 
                 loading="lazy"
                 title="Map"
-                className="absolute inset-0 opacity-70 hover:opacity-100 transition-opacity"
+                className="absolute inset-0 opacity-40 group-hover:opacity-100 group-hover:saturate-100 transition-all duration-[2s]"
             ></iframe>
             
-            {/* Overlay Gradient on Map */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent pointer-events-none lg:block hidden"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none lg:hidden block"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent pointer-events-none lg:block hidden"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent lg:hidden block"></div>
 
-            {/* Distance Badge */}
-            <div className="absolute bottom-12 left-12 bg-gold-500 p-6 rounded-2xl text-onyx-950 flex items-center gap-6 shadow-2xl animate-float">
-               <Navigation size={32} />
+            <div className="absolute bottom-16 left-16 bg-white/90 backdrop-blur-3xl p-12 rounded-[4rem] text-slate-950 flex items-center gap-10 shadow-[0_50px_100px_rgba(0,0,0,0.1)] border border-white/50 animate-float">
+               <div className="w-24 h-24 bg-gold-500 rounded-[2.5rem] flex items-center justify-center text-white shadow-2xl group-hover:rotate-12 transition-transform">
+                  <Navigation size={48} />
+               </div>
                <div>
-                  <div className="text-4xl font-serif font-black">1.5 KM</div>
-                  <div className="text-[10px] font-black uppercase tracking-widest opacity-60">From Guruvayur Temple</div>
+                  <div className="text-6xl font-serif font-black tracking-tighter leading-none mb-3 italic">1.5 KM</div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.5em] text-gold-600">Temple Proximity Index</div>
+               </div>
+            </div>
+
+            <div className="absolute top-16 right-16">
+               <div className="bg-slate-950 text-white px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.5em] shadow-2xl flex items-center gap-4">
+                  <Compass size={18} className="text-gold-500 animate-spin-slow" /> Strategic South Nada
                </div>
             </div>
         </div>
 
-        {/* Contact Info */}
-        <div className="lg:w-1/2 p-12 lg:p-24 bg-black flex flex-col justify-center relative overflow-hidden">
-             {/* Background Textures */}
-            <div className="absolute top-0 right-0 p-20 opacity-5 pointer-events-none">
-                <MapPin size={300} className="text-white" />
+        {/* Info Side */}
+        <div className="lg:w-1/2 p-16 lg:p-32 bg-white flex flex-col justify-center relative">
+            <div className="absolute top-0 right-0 p-32 opacity-[0.02] pointer-events-none group-hover:scale-110 transition-transform duration-[10s]">
+                <Globe size={800} className="text-slate-950" />
             </div>
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-[80px]"></div>
 
-            <div className="relative z-10">
-                <span className="text-gold-500 tracking-[0.2em] uppercase text-xs font-bold mb-6 block">Get in Touch</span>
-                <h2 className="font-serif text-5xl mb-12 text-white">Visit Us</h2>
+            <div className="relative z-10 max-w-2xl">
+                <span className="text-gold-600 tracking-[1em] uppercase text-[10px] font-black mb-12 block">Chapter 11: Site Context</span>
+                <h2 className="font-serif text-6xl md:text-[8rem] mb-20 text-slate-950 leading-[0.8] tracking-tighter italic">The <br/><span className="gold-gradient-text not-italic font-black">Nexus.</span></h2>
                 
-                <div className="space-y-8 mb-16">
-                    <div className="flex gap-6 items-start group p-6 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300">
-                        <div className="bg-white/5 p-4 rounded-full border border-white/10 group-hover:border-gold-500/50 transition-colors group-hover:scale-110">
-                            <MapPin className="text-gold-500" size={20} />
+                <div className="space-y-12 mb-32">
+                    <div className="flex gap-12 items-start group p-12 rounded-[4rem] border border-slate-50 hover:border-gold-300 hover:bg-[#FDFBF7] transition-all duration-700 shadow-sm hover:shadow-2xl">
+                        <div className="bg-white p-6 rounded-3xl border border-slate-100 group-hover:bg-gold-500 group-hover:text-white transition-all shadow-sm">
+                            <MapPin size={28} />
                         </div>
                         <div>
-                            <p className="text-xl font-serif text-white mb-2 group-hover:text-gold-400 transition-colors">Shirshukk Grand Towers</p>
-                            <p className="text-slate-400 font-light text-sm leading-relaxed">Temple Road, South Nada<br/>Guruvayur, Kerala 680101</p>
+                            <p className="text-4xl font-serif text-slate-950 mb-4 group-hover:text-gold-600 transition-colors italic leading-none">Shirshukk Towers</p>
+                            <p className="text-slate-500 font-light text-lg leading-relaxed border-l border-gold-400 pl-8">Temple Road, South Nada<br/>Guruvayur, Kerala 680101</p>
                         </div>
                     </div>
 
-                    <div className="flex gap-6 items-start group p-6 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300">
-                        <div className="bg-white/5 p-4 rounded-full border border-white/10 group-hover:border-gold-500/50 transition-colors group-hover:scale-110">
-                             <Phone className="text-gold-500" size={20} />
+                    <div className="flex gap-12 items-start group p-12 rounded-[4rem] border border-slate-50 hover:border-gold-300 hover:bg-[#FDFBF7] transition-all duration-700 shadow-sm hover:shadow-2xl">
+                        <div className="bg-white p-6 rounded-3xl border border-slate-100 group-hover:bg-gold-500 group-hover:text-white transition-all shadow-sm">
+                             <Phone size={28} />
                         </div>
                         <div>
-                            <p className="text-xl font-serif text-white mb-2 group-hover:text-gold-400 transition-colors">Reservations</p>
-                            <p className="text-slate-400 font-light text-sm leading-relaxed">+91 487 255 xxxx<br/><span className="text-xs text-slate-500 uppercase tracking-widest mt-1 block">Mon - Sun, 24 Hours</span></p>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-6 items-start group p-6 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all duration-300">
-                         <div className="bg-white/5 p-4 rounded-full border border-white/10 group-hover:border-gold-500/50 transition-colors group-hover:scale-110">
-                             <Mail className="text-gold-500" size={20} />
-                        </div>
-                        <div>
-                            <p className="text-xl font-serif text-white mb-2 group-hover:text-gold-400 transition-colors">Email</p>
-                            <p className="text-slate-400 font-light text-sm">reservations@shirshukk.com</p>
+                            <p className="text-4xl font-serif text-slate-950 mb-4 group-hover:text-gold-600 transition-colors italic leading-none">Investor Desk</p>
+                            <p className="text-slate-500 font-light text-lg leading-relaxed border-l border-gold-400 pl-8">+91 97443 23232<br/><span className="text-[10px] text-gold-600 uppercase tracking-[0.5em] mt-3 block font-black">Authorized Institutional Hours</span></p>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex gap-8 text-slate-500 border-t border-white/10 pt-8 pl-6">
-                    <Instagram className="hover:text-gold-500 cursor-pointer transition-colors hover:scale-110 transform duration-300" size={20} />
-                    <Facebook className="hover:text-gold-500 cursor-pointer transition-colors hover:scale-110 transform duration-300" size={20} />
-                    <Twitter className="hover:text-gold-500 cursor-pointer transition-colors hover:scale-110 transform duration-300" size={20} />
+                <div className="flex flex-col sm:flex-row items-center justify-between border-t border-slate-100 pt-16 gap-10">
+                    <div className="flex gap-10 text-slate-300">
+                        <Instagram className="hover:text-gold-600 cursor-pointer transition-all hover:scale-125" size={24} />
+                        <Facebook className="hover:text-gold-600 cursor-pointer transition-all hover:scale-125" size={24} />
+                        <Twitter className="hover:text-gold-600 cursor-pointer transition-all hover:scale-125" size={24} />
+                    </div>
+                    <button className="flex items-center gap-10 bg-slate-950 text-white px-12 py-6 rounded-full text-[11px] font-black uppercase tracking-[0.5em] transition-all hover:bg-gold-500 shadow-3xl group active:scale-95">
+                       Launch Concierge <ChevronRight size={20} className="group-hover:translate-x-3 transition-transform" />
+                    </button>
                 </div>
             </div>
         </div>

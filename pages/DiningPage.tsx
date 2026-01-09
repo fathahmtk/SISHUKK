@@ -1,5 +1,7 @@
+
 import React from 'react';
-import { ArrowLeft, Compass, UtensilsCrossed, Wine, Coffee, RotateCw, ArrowRight, Star, Hexagon, Zap, Utensils } from 'lucide-react';
+/* Added missing ShieldCheck import */
+import { ArrowLeft, Compass, UtensilsCrossed, Wine, Coffee, RotateCw, ArrowRight, Star, Hexagon, Zap, Utensils, Globe, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const DiningPage: React.FC = () => {
@@ -21,118 +23,137 @@ const DiningPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-onyx-950 min-h-screen pt-24 animate-fade-in pb-20">
-      <div className="container mx-auto px-6 mb-20">
-        <Link to="/" className="inline-flex items-center gap-3 text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-12 hover:text-white transition-all group">
+    <div className="bg-white min-h-screen pt-32 pb-40 animate-fade-in overflow-hidden">
+      {/* Background Decor */}
+      <div className="fixed top-0 right-0 w-1/3 h-screen bg-[#FDFBF7] -z-10 pointer-events-none border-l border-slate-100"></div>
+      <div className="fixed top-[20%] left-[5%] text-slate-50 font-serif text-[40rem] font-black -z-20 pointer-events-none select-none italic leading-none opacity-60">D</div>
+
+      <div className="container mx-auto px-6">
+        <Link to="/" className="inline-flex items-center gap-4 text-gold-600 text-[10px] font-black uppercase tracking-[0.5em] mb-16 hover:text-slate-950 transition-all group">
             <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform" /> Return to Summary
         </Link>
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-12">
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-3 text-slate-500 text-[10px] font-black uppercase tracking-[0.6em] mb-6">
-              <Utensils size={14} /> Dossier Chapter 05: Gastronomy Portfolio
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start mb-40">
+          <div className="lg:col-span-7 space-y-12">
+            <div className="flex items-center gap-5">
+              <div className="w-12 h-[1px] bg-gold-400"></div>
+              <span className="text-slate-400 text-[10px] font-black uppercase tracking-[0.6em]">Chapter 05: Gastronomy Portfolio</span>
             </div>
-            <h1 className="text-white font-serif text-6xl md:text-9xl leading-[0.8] tracking-tighter mb-10 italic">
+            <h1 className="text-slate-950 font-serif text-6xl md:text-[8rem] leading-[0.8] tracking-tighter italic">
               Destination <br/><span className="gold-gradient-text italic font-black">Gastronomy.</span>
             </h1>
-            <p className="text-slate-400 text-2xl font-light leading-relaxed max-w-2xl border-l-2 border-gold-500/30 pl-10">
-                Positioned as independent revenue centers, our F&B assets are designed to attract non-resident demand from the wider region, ensuring yield stability independent of room occupancy.
+            <p className="text-slate-500 text-2xl font-light leading-relaxed border-l-2 border-gold-400 pl-12 max-w-2xl italic">
+                "F&B assets are positioned as independent revenue centers, engineered to capture demand from the wider region, ensuring yield stability."
             </p>
           </div>
-          <div className="bg-onyx-900 border border-white/10 p-8 rounded-[2.5rem] hidden lg:block shadow-3xl">
-            <div className="flex items-center gap-4 text-gold-500 text-[10px] font-black uppercase tracking-widest mb-3">
-              <RotateCw size={18} /> Unique Selling Point
-            </div>
-            <p className="text-slate-400 text-xs font-mono">Structural USP: <br/><span className="text-white">DUAL REVOLVING CROWNS</span></p>
-          </div>
-        </div>
-      </div>
-
-      {/* Cinematic Showcase */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-1 px-1 mb-40">
-         {concepts.map((item, i) => (
-             <div key={i} className="relative group h-[750px] overflow-hidden">
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110 brightness-[0.35] group-hover:brightness-90" />
-                <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-transparent to-transparent opacity-90"></div>
-                
-                <div className="absolute top-12 left-12">
-                   <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-white/50 group-hover:bg-gold-500 group-hover:text-onyx-950 group-hover:border-gold-500 transition-all duration-700">
-                      <Star size={24} className="group-hover:rotate-180 transition-transform duration-1000" />
-                   </div>
+          
+          <div className="lg:col-span-5 pt-20">
+             <div className="bg-white border border-slate-200 p-12 rounded-[4rem] shadow-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none group-hover:scale-110 transition-transform duration-[10s]">
+                   <RotateCw size={300} className="text-slate-950" />
                 </div>
-
-                <div className="absolute bottom-16 left-12 right-12 space-y-6">
-                   <div>
-                      <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block border-b border-gold-500/30 pb-4 w-fit">{item.sub}</span>
-                      <h3 className="text-white font-serif text-5xl md:text-6xl">{item.title}</h3>
+                <div className="relative z-10">
+                   <div className="flex items-center gap-5 mb-10">
+                      <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-gold-600 shadow-xl group-hover:bg-gold-500 group-hover:text-white transition-all">
+                         <Compass size={28} className="animate-spin-slow" />
+                      </div>
+                      <h4 className="text-slate-950 font-serif text-3xl italic">Structural USP</h4>
                    </div>
-                   <p className="text-slate-300 text-lg font-light leading-relaxed max-w-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 translate-y-4 group-hover:translate-y-0">
-                      {item.desc}
-                   </p>
-                   <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-150">
-                      <Zap className="text-gold-500" size={16} />
-                      <span className="text-[10px] text-white font-black uppercase tracking-widest">{item.yield}</span>
+                   <div className="text-slate-950 font-serif text-5xl font-black mb-4 italic leading-tight">Dual Revolving <br/>Crowns.</div>
+                   <div className="pt-8 border-t border-slate-100 flex items-center justify-between opacity-40">
+                      <span className="text-[10px] font-black uppercase tracking-widest">Engineering Marvel</span>
+                      <ShieldCheck size={20} className="text-gold-500" />
                    </div>
                 </div>
              </div>
-         ))}
-      </div>
+          </div>
+        </div>
 
-      <div className="container mx-auto px-6">
-         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 mb-40">
+        {/* Concept Showcase Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-40">
+           {concepts.map((item, i) => (
+               <div key={i} className={`group relative h-[750px] rounded-[5rem] overflow-hidden border border-slate-100 shadow-2xl bg-slate-50 transition-all duration-1000 hover:shadow-3xl ${i % 2 === 1 ? 'lg:translate-y-24' : ''}`}>
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-105 brightness-[1.05] contrast-[1.02]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-40 transition-opacity"></div>
+                  
+                  <div className="absolute inset-0 flex flex-col justify-end p-16 translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
+                     <div className="bg-white/90 backdrop-blur-2xl p-12 rounded-[4rem] border border-white/50 shadow-3xl">
+                        <div className="flex justify-between items-start mb-10">
+                           <div className="w-14 h-14 rounded-2xl bg-gold-500 flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform">
+                              <Star size={24} fill="currentColor" />
+                           </div>
+                           <span className="text-gold-600 text-[10px] font-black uppercase tracking-widest border border-gold-200 px-6 py-2.5 rounded-full">{item.yield}</span>
+                        </div>
+                        <span className="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">{item.sub}</span>
+                        <h3 className="text-slate-950 font-serif text-5xl mb-8 italic leading-none">{item.title}</h3>
+                        <p className="text-slate-500 text-lg font-light leading-relaxed italic border-l-2 border-gold-400 pl-8 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-100">
+                           {item.desc}
+                        </p>
+                        <div className="mt-10 pt-10 border-t border-slate-100 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-200">
+                           <span className="text-[10px] font-black uppercase tracking-widest text-slate-300">Monetization Active</span>
+                           <ArrowRight size={24} className="text-gold-600 group-hover:translate-x-2 transition-transform" />
+                        </div>
+                     </div>
+                  </div>
+               </div>
+           ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 mb-40 items-center pt-24 border-t border-slate-100">
             <div className="lg:col-span-8 space-y-16">
-               <h3 className="text-white font-serif text-5xl italic leading-tight">Monetization <br/>Logic.</h3>
+               <h3 className="text-slate-950 font-serif text-5xl md:text-[6rem] italic leading-[0.9] tracking-tighter">Monetization <br/><span className="gold-gradient-text not-italic font-black">Logic.</span></h3>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   {[
-                    { title: "Day-Part Optimization", icon: Hexagon, desc: "Breakfast for pilgrims, premium revolving lunches for business, and destination dinner rituals for weddings." },
-                    { title: "Non-Resident Capture", icon: Wine, desc: "Direct elevator access from the Portal Lobby ensures F&B guests do not interfere with room-guest privacy." }
+                    { title: "Day-Part Optimization", icon: Hexagon, desc: "Breakfast for pilgrims, revolving lunches for business, and ritual dinner rituals." },
+                    { title: "Non-Resident Capture", icon: Wine, desc: "Direct elevator access ensures F&B guests do not interfere with room-guest privacy." }
                   ].map((item, i) => (
-                    <div key={i} className="p-12 bg-white/5 border border-white/10 rounded-[3.5rem] group hover:bg-white/[0.08] transition-all relative overflow-hidden">
-                       <div className="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:opacity-10 transition-opacity group-hover:scale-110 duration-700">
-                          <item.icon size={120} />
+                    <div key={i} className="p-12 rounded-[4rem] bg-[#FDFBF7] border border-slate-200 hover:border-gold-400 hover:bg-white transition-all duration-700 shadow-sm group">
+                       <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-gold-600 mb-8 shadow-xl group-hover:bg-gold-500 group-hover:text-white transition-all">
+                          <item.icon size={28} />
                        </div>
-                       <item.icon className="text-gold-500 mb-8" size={36} />
-                       <h4 className="text-white font-serif text-3xl mb-4 italic">{item.title}</h4>
-                       <p className="text-slate-400 text-base font-light leading-relaxed">{item.desc}</p>
+                       <h4 className="text-slate-950 font-serif text-3xl mb-4 italic leading-none">{item.title}</h4>
+                       <p className="text-slate-500 text-base font-light leading-relaxed">{item.desc}</p>
                     </div>
                   ))}
                </div>
             </div>
+            
             <div className="lg:col-span-4">
-               <div className="bg-onyx-900 border border-white/10 p-12 rounded-[4rem] shadow-3xl h-full flex flex-col justify-between">
-                  <div>
-                     <h3 className="text-white font-serif text-3xl mb-12 flex items-center gap-4 italic">
-                        <RotateCw className="text-gold-500" size={28} /> The Orbit
-                     </h3>
-                     <div className="space-y-10">
-                        <div className="group">
-                           <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2 group-hover:text-gold-500 transition-colors">Rotation Speed</div>
-                           <div className="text-white font-serif text-4xl">60 Min</div>
-                           <div className="text-slate-600 text-[9px] uppercase tracking-widest mt-1">Per Full Cycle</div>
-                        </div>
-                        <div className="h-px bg-white/5"></div>
-                        <div className="group">
-                           <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2 group-hover:text-gold-500 transition-colors">Capacity</div>
-                           <div className="text-white font-serif text-4xl">120 Seats</div>
-                           <div className="text-slate-600 text-[9px] uppercase tracking-widest mt-1">Per Tower Core</div>
-                        </div>
-                     </div>
+               <div className="bg-white border border-slate-200 p-12 lg:p-16 rounded-[4rem] shadow-3xl relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform duration-[10s]">
+                     <RotateCw size={300} className="text-slate-950" />
                   </div>
-                  <div className="mt-12 p-6 bg-gold-500/10 rounded-3xl border border-gold-500/20 text-center">
-                     <p className="text-gold-500 text-[9px] font-black uppercase tracking-[0.2em] leading-relaxed">Technical Annexure: German Drive-Train Vibration Analysis Logged.</p>
+                  <h3 className="text-slate-950 font-serif text-4xl mb-12 italic relative z-10 leading-none">The Orbit.</h3>
+                  <div className="space-y-10 relative z-10">
+                     {[
+                        { l: "Rotation Speed", v: "60 Min Cycle" },
+                        { l: "Capacity", v: "120 Seats" },
+                        { l: "Drive System", v: "Vibration-Free" },
+                        { l: "Access Path", v: "VIP Express" }
+                     ].map((item, i) => (
+                        <div key={i} className="flex justify-between items-baseline group/row">
+                           <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest group-hover/row:text-gold-600 transition-colors">{item.l}</span>
+                           <div className="flex-1 border-b border-dotted border-slate-200 mx-6"></div>
+                           <span className="text-slate-950 font-serif text-2xl italic whitespace-nowrap">{item.v}</span>
+                        </div>
+                     ))}
+                  </div>
+                  <div className="mt-16 p-8 bg-slate-50 rounded-3xl border border-slate-100 text-center">
+                     <p className="text-gold-600 text-[9px] font-black uppercase tracking-[0.2em] leading-relaxed">Technical Annexure: Drive-Train Vibration Analysis Logged v2.5</p>
                   </div>
                </div>
             </div>
          </div>
 
-         {/* Next Chapter Anchor */}
-         <Link to="/wellness" className="group relative block w-full h-[600px] rounded-[5rem] overflow-hidden border border-white/10 shadow-3xl">
-            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80" className="w-full h-full object-cover brightness-[0.25] transition-transform duration-[6s] group-hover:scale-105" alt="Next Section" />
-            <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
+         {/* Next Link */}
+         <Link to="/wellness" className="group relative block w-full h-[650px] rounded-[6rem] overflow-hidden border border-slate-200 shadow-3xl bg-slate-50">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80" className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-105 brightness-[1.05] contrast-[1.02]" alt="Next" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-20 transition-opacity"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12">
-               <span className="text-gold-500 text-[11px] font-black uppercase tracking-[1em] mb-10 animate-pulse">Chapter 06</span>
-               <h3 className="text-white font-serif text-7xl md:text-9xl italic mb-16">Vedic <br/><span className="gold-gradient-text font-black tracking-tighter">Wellness.</span></h3>
-               <div className="w-24 h-24 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-onyx-950 transition-all duration-1000 shadow-[0_0_60px_rgba(212,175,55,0.4)]">
-                  <ArrowRight size={48} className="group-hover:translate-x-2 transition-transform" />
+               <span className="text-gold-600 text-[11px] font-black uppercase tracking-[1em] mb-12 block animate-float">Chapter 06</span>
+               <h3 className="text-slate-950 font-serif text-7xl md:text-9xl italic mb-20">Vedic <br/><span className="gold-gradient-text not-italic font-black tracking-tighter">Wellness.</span></h3>
+               <div className="w-32 h-32 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-slate-950 group-hover:text-white group-hover:border-slate-950 transition-all duration-1000 shadow-3xl">
+                  <ArrowRight size={56} className="group-hover:translate-x-4 transition-transform" />
                </div>
             </div>
          </Link>

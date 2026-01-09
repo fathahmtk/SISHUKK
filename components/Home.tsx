@@ -7,6 +7,7 @@ import { Loader2 } from 'lucide-react';
 const TheAsset = lazy(() => import('./TheAsset.tsx'));
 const VisualMonopoly = lazy(() => import('./VisualMonopoly.tsx'));
 const Configuration = lazy(() => import('./Configuration.tsx'));
+const ProjectHighlights = lazy(() => import('./ProjectHighlights.tsx'));
 const MasterplanViewer = lazy(() => import('./MasterplanViewer.tsx'));
 const TheMarket = lazy(() => import('./TheMarket.tsx'));
 const InclusiveShowcase = lazy(() => import('./InclusiveShowcase.tsx'));
@@ -65,6 +66,7 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
         <TheAsset />
         <VisualMonopoly />
         <Configuration />
+        <ProjectHighlights />
         <MasterplanViewer />
         <TheMarket />
         <InclusiveShowcase />
