@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Activity, ScrollText, Scan } from 'lucide-react';
 import Logo from './Logo.tsx';
@@ -73,9 +72,10 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
         className="relative z-20 text-center w-full max-w-7xl px-6 md:px-16 flex flex-col items-center justify-center min-h-screen"
         style={{ opacity: contentFade }}
       >
-        <div className={`mb-10 transition-all duration-[2.5s] ease-[cubic-bezier(0.16,1,0.3,1)] transform ${animateText ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-16 scale-95'}`}>
+        <div className={`mb-6 sm:mb-10 transition-all duration-[2.5s] ease-[cubic-bezier(0.16,1,0.3,1)] transform ${animateText ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-16 scale-95'}`}>
            <div className="relative inline-block group" onClick={onProfileClick}>
-              <Logo className="w-24 h-24 md:w-32 lg:w-40 mb-8 drop-shadow-[0_0_40px_rgba(184,138,42,0.3)] transition-transform group-hover:scale-105" />
+              {/* Logo hidden on mobile per user requirements */}
+              <Logo className="w-24 h-24 md:w-32 lg:w-40 mb-8 drop-shadow-[0_0_40px_rgba(184,138,42,0.3)] transition-transform group-hover:scale-105 hidden sm:block" />
            </div>
         </div>
         
