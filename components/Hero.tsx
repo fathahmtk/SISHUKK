@@ -26,8 +26,8 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
         // High-Precision Pronounced Parallax Logic
         if (relativeScroll < window.innerHeight && relativeScroll > -window.innerHeight) {
           // Increased velocity for more "depth" (0.65)
-          const yPos = relativeScroll * 0.65;
-          // Continuous scale factor tied to scroll - creates a "falling into" effect
+          const yPos = relativeScroll * 0.5;
+          // Continuous scale factor tied to scroll
           const scrollScale = 1.1 + (Math.max(0, relativeScroll) * 0.0002);
           
           bgRef.current.style.transform = `translate3d(0, ${yPos}px, 0) scale(${scrollScale})`;
@@ -72,27 +72,19 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
             transform: 'translate3d(0, 0, 0) scale(1.1)',
             backgroundImage: 'url("https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg")',
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            filter: 'brightness(0.65) saturate(0.8)' // Adjusted filter for photo readability
           }}
         >
-          {/* Layered over the background image for subtle motion */}
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
-            className="w-full h-full object-cover opacity-[0.25] brightness-[0.4] saturate-[0.6] mix-blend-overlay"
-          >
-            <source src="https://player.vimeo.com/external/494252666.sd.mp4?s=72ad57a582cf6102ca309256159ca57146617201&profile_id=164" type="video/mp4" />
-          </video>
         </div>
         
-        {/* Deep Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.12)_0%,_transparent_100%)]"></div>
+        {/* Deep Gradient Overlays for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-onyx-950/80 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.08)_0%,_transparent_100%)]"></div>
         
         {/* Animated Institutional Grid/Scan Lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_49.5%,rgba(212,175,55,0.03)_50%,transparent_50.5%)] bg-[length:100%_80px] animate-[scanline_20s_linear_infinite] opacity-40"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_49.5%,rgba(212,175,55,0.03)_50%,transparent_50.5%)] bg-[length:100%_80px] animate-[scanline_20s_linear_infinite] opacity-30"></div>
       </div>
       
       {/* Meridian Light Leak Effect */}
@@ -137,7 +129,6 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
                    <div className="text-gold-500 text-[9px] uppercase font-black tracking-[0.5em] opacity-70 group-hover:opacity-100 transition-opacity">{fact.label}</div>
                    <Info size={10} className="text-gold-500 opacity-0 group-hover:opacity-100 transition-all transform scale-0 group-hover:scale-100" />
                 </div>
-                {/* Fix: Completed facts map and fixed truncated drop-shadow string */}
                 <div className="text-white font-serif text-3xl md:text-5xl mb-2 group-hover:text-gold-300 transition-colors drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                    {fact.value}
                 </div>
@@ -169,5 +160,4 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
   );
 };
 
-// Fix: Added missing default export to prevent module resolution errors
 export default Hero;
