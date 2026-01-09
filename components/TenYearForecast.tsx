@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
@@ -6,19 +5,19 @@ import {
 import { ShieldCheck, Activity, ArrowUpRight, Coins, AlertCircle, BarChart3, Database, Globe } from 'lucide-react';
 
 const DEBT_SNOWBALL_DATA = [
-  { year: 'Launch', debt: 210, equity: 140 },
-  { year: 'Year 2', debt: 195, equity: 180 },
-  { year: 'Year 4', debt: 150, equity: 320 },
-  { year: 'Year 6', debt: 80, equity: 580 },
-  { year: 'Year 8', debt: 0, equity: 850 },
-  { year: 'Year 10', debt: 0, equity: 1020 },
+  { year: 'Year 1', debt: 210, equity: 140 },
+  { year: 'Year 3', debt: 180, equity: 220 },
+  { year: 'Year 5', debt: 120, equity: 450 },
+  { year: 'Year 7', debt: 50, equity: 780 },
+  { year: 'Year 9', debt: 0, equity: 1100 },
+  { year: 'Year 10', debt: 0, equity: 1250 },
 ];
 
 const FORECAST_TABLE = [
-  { yr: "Year 1", occ: "55%", adr: "₹9,500", rev: "68.0", ebitda: "30.6", ncf: "12.6", div: "2.5" },
-  { yr: "Year 3", occ: "72%", adr: "₹11,500", rev: "92.0", ebitda: "46.0", ncf: "30.5", div: "6.1" },
-  { yr: "Year 5", occ: "78%", adr: "₹13,800", rev: "118.0", ebitda: "64.9", ncf: "52.9", div: "10.5" },
-  { yr: "Year 7", occ: "80%", adr: "₹16,500", rev: "145.0", ebitda: "79.8", ncf: "73.8", div: "14.7" },
+  { yr: "Year 1", occ: "55%", adr: "₹9,500", rev: "68.0", ebitda: "18.6", ncf: "-10.0", div: "0.0" },
+  { yr: "Year 4", occ: "72%", adr: "₹11,500", rev: "118.0", ebitda: "48.0", ncf: "18.5", div: "5.0" },
+  { yr: "Year 7", occ: "78%", adr: "₹13,800", rev: "155.0", ebitda: "72.5", ncf: "45.0", div: "12.5" },
+  { yr: "Year 10", occ: "80%", adr: "₹16,500", rev: "182.0", ebitda: "91.0", ncf: "82.0", div: "22.0" },
 ];
 
 const TenYearForecast: React.FC = () => {
@@ -30,7 +29,7 @@ const TenYearForecast: React.FC = () => {
             <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-8">Stabilization Horizon</span>
             <h2 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter mb-10 italic">Performance <br/><span className="gold-gradient-text italic font-black">Terminal.</span></h2>
             <p className="text-slate-400 text-xl font-light leading-relaxed max-w-2xl border-l border-gold-500/30 pl-10">
-              A 10-year projection modeled on a 45% stabilized operating margin. SGT is engineered for consistent free-cash-flow generation post-debt retirement in Year 8.
+              A 10-year projection modeled on 3 phases: Ramp-up (Y1-3), Stabilization (Y4-7), and Peak Valuation/Exit (Y8-10). Debt is retired aggressively to maximize equity multiple.
             </p>
           </div>
           
@@ -42,8 +41,8 @@ const TenYearForecast: React.FC = () => {
              </div>
              <div className="p-8 bg-gold-500 rounded-3xl text-onyx-950 text-center min-w-[180px] shadow-3xl">
                 <div className="text-onyx-950/60 text-[9px] font-black uppercase tracking-widest mb-1">EBITDA Margin</div>
-                <div className="text-onyx-950 font-serif text-4xl font-black">45%</div>
-                <div className="text-onyx-950/60 text-[8px] font-black uppercase tracking-widest mt-2">Fixed-Cost Control</div>
+                <div className="text-onyx-950 font-serif text-4xl font-black">35%</div>
+                <div className="text-onyx-950/60 text-[8px] font-black uppercase tracking-widest mt-2">Blended Target</div>
              </div>
           </div>
         </div>
@@ -59,7 +58,7 @@ const TenYearForecast: React.FC = () => {
                   <th className="px-10 py-8 text-center">ADR (Net)</th>
                   <th className="px-10 py-8 text-center">Revenue (Cr)</th>
                   <th className="px-10 py-8 text-center">EBITDA (Cr)</th>
-                  <th className="px-10 py-8 text-right text-gold-500">Dividend Potential</th>
+                  <th className="px-10 py-8 text-right text-gold-500">Free Cash Flow</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
@@ -71,7 +70,7 @@ const TenYearForecast: React.FC = () => {
                     <td className="px-10 py-8 text-center text-white font-bold">₹{row.rev} Cr</td>
                     <td className="px-10 py-8 text-center text-emerald-500">₹{row.ebitda} Cr</td>
                     <td className="px-10 py-8 text-right">
-                       <span className="text-gold-500 font-serif text-2xl font-black">₹{row.div} Cr</span>
+                       <span className="text-gold-500 font-serif text-2xl font-black">₹{row.ncf} Cr</span>
                     </td>
                   </tr>
                 ))}
@@ -104,7 +103,8 @@ const TenYearForecast: React.FC = () => {
                </div>
             </div>
 
-            <div className="h-[350px] w-full relative z-10">
+            {/* Explicit Dimensions for Recharts */}
+            <div style={{ width: '100%', height: 350 }} className="relative z-10">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={DEBT_SNOWBALL_DATA}>
                   <defs>

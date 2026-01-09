@@ -21,9 +21,9 @@ const InvestorAccess: React.FC<InvestorAccessProps> = ({ onOpenDeck }) => {
            <Lock size={24} />
         </div>
         
-        <h2 className="text-white font-serif text-4xl md:text-5xl mb-6">Investor Access</h2>
+        <h2 className="text-white font-serif text-4xl md:text-5xl mb-6">Request Investor Access</h2>
         <p className="text-slate-400 text-lg leading-relaxed mb-12">
-          SIRSHUKK GRAND TOWERS is available for confidential investor discussions. Detailed financial models, technical annexures, and approval roadmaps are shared upon execution of NDA.
+          Detailed financials, legal documentation, and projections available under NDA.
         </p>
 
         {status === 'idle' ? (

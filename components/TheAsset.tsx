@@ -4,34 +4,22 @@ import { Link } from 'react-router-dom';
 
 const SHOWCASE_IMAGES = [
   {
-    src: "https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg",
-    label: "Monumental Perspective",
-    sub: "Twin 20-Floor Elevation",
+    src: "https://clickpetroleoegas.com.br/wp-content/uploads/2025/12/Torres-gemeas-Katara-custam-600-milhoes-de-dolares-erguem-211-metros-em-Doha-e-abrigam-o-Raffles-Doha-hotel-6-estrelas-so-de-suites-.jpg",
+    label: "Architectural Monopoly",
+    sub: "Visual Dominance",
     height: "aspect-[4/5]"
   },
   {
-    src: "https://images.unsplash.com/photo-1740626359516-728864703901?q=80&w=3540&auto=format&fit=crop",
-    label: "The Meridian Arch",
-    sub: "Structural Gateway",
+    src: "https://us.images.westend61.de/0001233140pw/aerial-view-of-the-luxurious-burj-al-arab-hotel-by-night-in-dubai-bay-uae-AAEF02792.jpg",
+    label: "Destination Economics",
+    sub: "Luxury Benchmark",
     height: "aspect-square"
   },
   {
     src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-    label: "Crystalline Facade",
-    sub: "High-Performance DGU",
+    label: "Premium Yield",
+    sub: "Event & Experience",
     height: "aspect-[3/4]"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80",
-    label: "Retail Podium",
-    sub: "Gastronomy Hub",
-    height: "aspect-video"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80",
-    label: "Lobby Volume",
-    sub: "7-Star Entrance",
-    height: "aspect-[4/3]"
   }
 ];
 
@@ -45,21 +33,21 @@ const TheAsset: React.FC = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row gap-24 items-start">
           <div className="lg:w-2/5 reveal-on-scroll sticky top-32">
-            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-10">Dossier: Asset Chapter 01</span>
+            <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-10">Investment Thesis</span>
             <h2 className="text-white font-serif text-6xl md:text-8xl mb-12 leading-[0.8] tracking-tighter italic">
-              This Is Not <br/>a Hotel. <br/>
-              <span className="gold-gradient-text italic font-black">This Is an Asset.</span>
+              Architectural <br/>
+              <span className="gold-gradient-text italic font-black">Monopoly.</span>
             </h2>
             <p className="text-slate-400 text-2xl font-light leading-relaxed mb-12 max-w-xl border-l border-gold-500/30 pl-10">
-              SIRSHUKK GRAND TOWERS is engineered first as a value-retaining capital asset, and only then as a hospitality operation. This is structural alpha.
+              The central arch creates a visual monopoly. This asset cannot be compared to standard hotels or towers. Comparable scarcity drives pricing power and valuation insulation.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-16">
               {[
-                { icon: Building2, label: "Non-replicable architecture" },
-                { icon: Anchor, label: "Vertical luxury footprint" },
-                { icon: LayoutGrid, label: "Institutional Recall" },
-                { icon: TrendingUp, label: "High-Margin Infrastructure" }
+                { icon: Building2, label: "Non-replicable Architecture" },
+                { icon: Anchor, label: "Destination Economics" },
+                { icon: LayoutGrid, label: "Tourism Footfall Driver" },
+                { icon: TrendingUp, label: "High-Margin Event Yield" }
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-5 group cursor-default">
                   <div className="p-3 bg-white/5 rounded-xl border border-white/5 group-hover:border-gold-500/50 transition-all shadow-xl group-hover:bg-onyx-900">
@@ -79,10 +67,10 @@ const TheAsset: React.FC = () => {
                <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-6">
                     <ShieldCheck className="text-gold-500" size={20} />
-                    <h3 className="text-white font-serif text-xl italic">Investment Thesis</h3>
+                    <h3 className="text-white font-serif text-xl italic">Investor Signal</h3>
                   </div>
                   <p className="text-slate-500 text-sm leading-relaxed italic">
-                    "Asset resilience is derived from the structural supply void in the 1.5KM temple radius."
+                    "Revenue is not dependent on rooms alone. The form factor itself drives media, culture, and event demand."
                   </p>
                </div>
             </div>
@@ -109,7 +97,7 @@ const TheAsset: React.FC = () => {
                     <h3 className="text-white font-serif text-3xl group-hover:text-gold-300 transition-colors leading-tight">{img.label}</h3>
                     <div className="mt-4 flex items-center gap-3 text-white/40 group-hover:text-white transition-colors opacity-0 group-hover:opacity-100 duration-500">
                       <Maximize2 size={16} />
-                      <span className="text-[8px] font-black uppercase tracking-widest">Enlarge Asset View</span>
+                      <span className="text-[8px] font-black uppercase tracking-widest">Enlarge View</span>
                     </div>
                   </div>
 
@@ -125,8 +113,8 @@ const TheAsset: React.FC = () => {
                   <LayoutGrid size={20} />
                 </div>
                 <div>
-                  <span className="text-white text-sm font-bold uppercase tracking-widest">Master Image Library</span>
-                  <p className="text-slate-600 text-[10px] uppercase font-black tracking-widest mt-1">48 High-Resolution Renders Logged</p>
+                  <span className="text-white text-sm font-bold uppercase tracking-widest">Premium Event & Experience Yield</span>
+                  <p className="text-slate-600 text-[10px] uppercase font-black tracking-widest mt-1">Scale & Symmetry for Global Events</p>
                 </div>
               </div>
               <button className="p-4 rounded-full border border-white/10 text-slate-500 group-hover:text-gold-500 group-hover:border-gold-500 transition-all">

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { Coins, Briefcase, Landmark, ShieldCheck, CheckCircle2, ArrowUpRight, BarChart3, Target } from 'lucide-react';
@@ -48,7 +47,9 @@ const InvestmentFramework: React.FC = () => {
                 <BarChart3 size={250} className="text-gold-500" />
              </div>
              <h3 className="text-white font-serif text-3xl mb-12 italic">The Capital Stack</h3>
-             <div className="h-[320px] w-full relative">
+             
+             {/* Explicit Dimensions for Recharts */}
+             <div style={{ width: '100%', height: 320 }} className="relative">
                 <ResponsiveContainer width="100%" height="100%">
                    <PieChart>
                       <Pie data={CAPITAL_STACK} innerRadius="65%" outerRadius="90%" paddingAngle={8} dataKey="value">
@@ -62,6 +63,7 @@ const InvestmentFramework: React.FC = () => {
                    <span className="text-slate-500 text-[9px] font-black uppercase tracking-widest">Debt/Equity Ratio</span>
                 </div>
              </div>
+             
              <div className="grid grid-cols-3 gap-6 mt-12 border-t border-white/5 pt-8">
                 {CAPITAL_STACK.map((item, i) => (
                    <div key={i} className="text-center">

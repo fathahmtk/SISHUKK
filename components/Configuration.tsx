@@ -1,15 +1,14 @@
-
 import React from 'react';
 import { CheckCircle2, Maximize2, ShieldCheck, Activity } from 'lucide-react';
 
 const Configuration: React.FC = () => {
   const specs = [
-    { label: "Vertical Structure", value: "Twin Glass Cylinders" },
-    { label: "Connecting Element", value: "Meridian Void Arch" },
-    { label: "Skyline Presence", value: "Iconic illuminated Crowns" },
-    { label: "Rooftop Strategy", value: "Dual Revolving Platforms" },
-    { label: "Facade Quality", value: "Curved DGU Crystal Glass" },
-    { label: "Site Equity", value: "1.29 Acres (Debt-Free)" },
+    { label: "Vertical Structure", value: "Symmetrical Twin Towers" },
+    { label: "Signature Element", value: "Monumental Central Arch" },
+    { label: "Sky Experiences", value: "Viewing Decks & Installations" },
+    { label: "Arrival Sequence", value: "Grand Podium & Water Body" },
+    { label: "Landscape", value: "Event-Ready Grounds" },
+    { label: "Positioning", value: "Luxury Visual Reinforcement" },
   ];
 
   return (
@@ -22,11 +21,11 @@ const Configuration: React.FC = () => {
         <div className="lg:w-1/2 space-y-10 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-gold-500/30 rounded-full bg-gold-500/5 mb-2">
             <Maximize2 size={12} className="text-gold-500" />
-            <span className="text-gold-400 uppercase text-[9px] font-bold tracking-[0.2em]">Structural Configuration</span>
+            <span className="text-gold-400 uppercase text-[9px] font-bold tracking-[0.2em]">Asset Configuration</span>
           </div>
-          <h2 className="font-serif text-5xl md:text-7xl text-white leading-none tracking-tighter italic">Architectural <br/><span className="gold-gradient-text">Geometry.</span></h2>
+          <h2 className="font-serif text-5xl md:text-7xl text-white leading-none tracking-tighter italic">Designed as <br/><span className="gold-gradient-text">A Place.</span></h2>
           <p className="text-slate-400 text-xl font-light leading-relaxed border-l border-gold-500/30 pl-10 max-w-xl">
-            Designed as a high-visibility lighthouse for Guruvayur. The circular geometry minimizes wind resistance while maximizing the 360° spiritual panorama of the sacred city.
+            Twin symmetrical high-rise towers with upper-level crown features, anchored by an architectural signature arch designed for brand activations and sky experiences.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-12">
@@ -50,38 +49,38 @@ const Configuration: React.FC = () => {
               {/* Contextual Hotspots matching the actual photo features */}
               <div className="absolute top-[8%] left-[26%] flex flex-col items-center">
                  <div className="w-4 h-4 rounded-full bg-gold-500/40 border border-gold-500 animate-pulse"></div>
-                 <div className="mt-3 bg-onyx-950/90 backdrop-blur-xl px-4 py-2 border border-gold-500/30 rounded-lg text-[9px] text-gold-500 font-black uppercase tracking-widest whitespace-nowrap shadow-2xl">Halo-Lit Crown (Tower A)</div>
+                 <div className="mt-3 bg-onyx-950/90 backdrop-blur-xl px-4 py-2 border border-gold-500/30 rounded-lg text-[9px] text-gold-500 font-black uppercase tracking-widest whitespace-nowrap shadow-2xl">Twin Tower A</div>
               </div>
               <div className="absolute top-[8%] left-[74%] flex flex-col items-center">
                  <div className="w-4 h-4 rounded-full bg-gold-500/40 border border-gold-500 animate-pulse [animation-delay:2s]"></div>
-                 <div className="mt-3 bg-onyx-950/90 backdrop-blur-xl px-4 py-2 border border-gold-500/30 rounded-lg text-[9px] text-gold-500 font-black uppercase tracking-widest whitespace-nowrap shadow-2xl">Halo-Lit Crown (Tower B)</div>
+                 <div className="mt-3 bg-onyx-950/90 backdrop-blur-xl px-4 py-2 border border-gold-500/30 rounded-lg text-[9px] text-gold-500 font-black uppercase tracking-widest whitespace-nowrap shadow-2xl">Twin Tower B</div>
               </div>
               <div className="absolute top-[45%] left-[50%] -translate-x-1/2 flex flex-col items-center">
                  <div className="w-6 h-6 rounded-full bg-gold-500/20 border border-gold-500 animate-pulse [animation-delay:1s]"></div>
-                 <div className="mt-3 bg-onyx-950/90 backdrop-blur-xl px-4 py-2 border border-gold-500/30 rounded-lg text-[9px] text-gold-500 font-black uppercase tracking-widest whitespace-nowrap shadow-2xl tracking-[0.4em]">The Meridian Void Arch</div>
+                 <div className="mt-3 bg-onyx-950/90 backdrop-blur-xl px-4 py-2 border border-gold-500/30 rounded-lg text-[9px] text-gold-500 font-black uppercase tracking-widest whitespace-nowrap shadow-2xl tracking-[0.4em]">Monumental Sky Arch</div>
               </div>
            </div>
 
            <img 
-            src="https://images.unsplash.com/photo-1740626359516-728864703901?q=80&w=3540&auto=format&fit=crop" 
-            alt="Sirshukk Twin Towers Structural Engineering" 
+            src="https://clickpetroleoegas.com.br/wp-content/uploads/2025/12/Torres-gemeas-Katara-custam-600-milhoes-de-dolares-erguem-211-metros-em-Doha-e-abrigam-o-Raffles-Doha-hotel-6-estrelas-so-de-suites-.jpg" 
+            alt="Sirshukk Twin Towers Configuration" 
             className="w-full h-full object-cover transition-all duration-[4s] ease-in-out group-hover:scale-105 brightness-[0.55] group-hover:brightness-[0.7]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-transparent to-transparent opacity-80"></div>
           
           <div className="absolute top-12 right-12">
              <div className="flex items-center gap-3 bg-onyx-950/60 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] shadow-3xl">
-                <Activity size={14} className="text-gold-500 animate-pulse" /> Structural Audit: Institutional Grade
+                <Activity size={14} className="text-gold-500 animate-pulse" /> Asset Class: Destination
              </div>
           </div>
 
           <div className="absolute bottom-12 left-12 right-12">
             <div className="flex items-center gap-4 mb-4">
                <ShieldCheck size={24} className="text-gold-500" />
-               <span className="text-white text-[11px] font-black uppercase tracking-[0.5em] opacity-60">Verified Asset Layout</span>
+               <span className="text-white text-[11px] font-black uppercase tracking-[0.5em] opacity-60">Verified Configuration</span>
             </div>
-            <p className="text-gold-400 font-serif italic text-4xl mb-4 leading-none">"The Sovereign Gateway"</p>
-            <p className="text-slate-500 text-[10px] uppercase tracking-[0.5em] font-black">Optimized for Long-Term Capital Retention & Recognition</p>
+            <p className="text-gold-400 font-serif italic text-4xl mb-4 leading-none">"Not Just a Building"</p>
+            <p className="text-slate-500 text-[10px] uppercase tracking-[0.5em] font-black">Designed as a place for global engagement.</p>
           </div>
         </div>
       </div>

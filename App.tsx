@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar.tsx';
-import Home from './components/Home.tsx';
-import AssetPage from './pages/AssetPage.tsx';
-import MarketPage from './pages/MarketPage.tsx';
-import HotelPage from './pages/HotelPage.tsx';
-import EventsPage from './pages/EventsPage.tsx';
-import DiningPage from './pages/DiningPage.tsx';
-import WellnessPage from './pages/WellnessPage.tsx';
-import OperationsPage from './pages/OperationsPage.tsx';
-import EconomicsPage from './pages/EconomicsPage.tsx';
-import RiskPage from './pages/RiskPage.tsx';
-import ExitPage from './pages/ExitPage.tsx';
-import InvestorChat from './components/InvestorChat.tsx';
 import DossierNav from './components/DossierNav.tsx';
-import { InvestorView } from './components/InvestorView.tsx';
-import PresenterMode from './components/PresenterMode.tsx';
-import AssetProfileModal from './components/AssetProfileModal.tsx';
-import { X, ShieldCheck, Activity, Cpu, Zap, Scale, Info } from 'lucide-react';
+import { X, Activity, Cpu, Zap, Scale, Loader2 } from 'lucide-react';
+import Logo from './components/Logo.tsx';
+
+// Lazy Load Pages for Chunk Optimization
+const Home = lazy(() => import('./components/Home.tsx'));
+const AssetPage = lazy(() => import('./pages/AssetPage.tsx'));
+const MarketPage = lazy(() => import('./pages/MarketPage.tsx'));
+const HotelPage = lazy(() => import('./pages/HotelPage.tsx'));
+const EventsPage = lazy(() => import('./pages/EventsPage.tsx'));
+const DiningPage = lazy(() => import('./pages/DiningPage.tsx'));
+const WellnessPage = lazy(() => import('./pages/WellnessPage.tsx'));
+const OperationsPage = lazy(() => import('./pages/OperationsPage.tsx'));
+const EconomicsPage = lazy(() => import('./pages/EconomicsPage.tsx'));
+const RiskPage = lazy(() => import('./pages/RiskPage.tsx'));
+const ExitPage = lazy(() => import('./pages/ExitPage.tsx'));
+
+// Lazy Load Heavy Interactive Components
+// Note: InvestorView is a named export
+const InvestorView = lazy(() => import('./components/InvestorView.tsx').then(module => ({ default: module.InvestorView })));
+const InvestorChat = lazy(() => import('./components/InvestorChat.tsx'));
+const PresenterMode = lazy(() => import('./components/PresenterMode.tsx'));
+const AssetProfileModal = lazy(() => import('./components/AssetProfileModal.tsx'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -26,6 +32,17 @@ const ScrollToTop = () => {
   }, [pathname]);
   return null;
 };
+
+const LoadingScreen = () => (
+  <div className="min-h-screen bg-onyx-950 flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.05)_0%,_transparent_50%)]"></div>
+    <Logo className="w-16 h-16 animate-pulse mb-8" />
+    <div className="flex items-center gap-3 text-gold-500 text-[10px] font-black uppercase tracking-[0.4em]">
+      <Loader2 size={12} className="animate-spin" />
+      Loading Institutional Assets
+    </div>
+  </div>
+);
 
 const InstitutionalTicker = ({ onProfileClick }: { onProfileClick: () => void }) => (
   <div className="h-10 bg-onyx-950 border-b border-white/5 flex items-center overflow-hidden whitespace-nowrap z-[100] relative">
@@ -81,20 +98,22 @@ const AppContent: React.FC = () => {
           </div>
           <DossierNav />
           <main className="relative">
-            <Routes>
-              <Route path="/" element={<Home onInvestorClick={() => setShowInvestorDeck(true)} onProfileClick={() => setShowProfileModal(true)} />} />
-              <Route path="/asset" element={<AssetPage />} />
-              <Route path="/market" element={<MarketPage />} />
-              <Route path="/hotel" element={<HotelPage />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/dining" element={<DiningPage />} />
-              <Route path="/wellness" element={<WellnessPage />} />
-              <Route path="/operations" element={<OperationsPage />} />
-              <Route path="/economics" element={<EconomicsPage />} />
-              <Route path="/risk" element={<RiskPage />} />
-              <Route path="/exit" element={<ExitPage />} />
-              <Route path="*" element={<Home onInvestorClick={() => setShowInvestorDeck(true)} onProfileClick={() => setShowProfileModal(true)} />} />
-            </Routes>
+            <Suspense fallback={<LoadingScreen />}>
+              <Routes>
+                <Route path="/" element={<Home onInvestorClick={() => setShowInvestorDeck(true)} onProfileClick={() => setShowProfileModal(true)} />} />
+                <Route path="/asset" element={<AssetPage />} />
+                <Route path="/market" element={<MarketPage />} />
+                <Route path="/hotel" element={<HotelPage />} />
+                <Route path="/events" element={<EventsPage />} />
+                <Route path="/dining" element={<DiningPage />} />
+                <Route path="/wellness" element={<WellnessPage />} />
+                <Route path="/operations" element={<OperationsPage />} />
+                <Route path="/economics" element={<EconomicsPage />} />
+                <Route path="/risk" element={<RiskPage />} />
+                <Route path="/exit" element={<ExitPage />} />
+                <Route path="*" element={<Home onInvestorClick={() => setShowInvestorDeck(true)} onProfileClick={() => setShowProfileModal(true)} />} />
+              </Routes>
+            </Suspense>
           </main>
         </>
       )}
@@ -107,17 +126,25 @@ const AppContent: React.FC = () => {
           >
             <X size={36} className="group-hover:rotate-90 transition-transform duration-500" />
           </button>
-          <InvestorView />
-          <PresenterMode />
+          <Suspense fallback={<LoadingScreen />}>
+            <InvestorView />
+            <PresenterMode />
+          </Suspense>
         </div>
       )}
 
-      <AssetProfileModal 
-        isOpen={showProfileModal} 
-        onClose={() => setShowProfileModal(false)} 
-      />
+      <Suspense fallback={null}>
+        {showProfileModal && (
+          <AssetProfileModal 
+            isOpen={showProfileModal} 
+            onClose={() => setShowProfileModal(false)} 
+          />
+        )}
+      </Suspense>
 
-      <InvestorChat isMinimal={showInvestorDeck} />
+      <Suspense fallback={null}>
+        <InvestorChat isMinimal={showInvestorDeck} />
+      </Suspense>
     </div>
   );
 };

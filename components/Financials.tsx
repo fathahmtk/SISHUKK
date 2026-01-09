@@ -1,16 +1,15 @@
-
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { IndianRupee, BarChart, TrendingUp, AlertTriangle, ShieldCheck, FileText, Download, Eye, Landmark, ArrowUpRight } from 'lucide-react';
 
 const data = [
-  { name: 'MICE & Weddings', value: 55 },
-  { name: 'Room Inventory', value: 30 },
-  { name: 'F&B Operations', value: 10 },
-  { name: 'Wellness & Retail', value: 5 },
+  { name: 'Rooms & Suites', value: 35 },
+  { name: 'F&B Destination', value: 25 },
+  { name: 'Weddings & Events', value: 25 },
+  { name: 'Experiential', value: 15 },
 ];
 
-const COLORS = ['#D4AF37', '#1e40af', '#0f172a', '#1e293b'];
+const COLORS = ['#1e40af', '#10b981', '#D4AF37', '#e11d48'];
 
 const Financials: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'revenue' | 'capital' | 'risk' | 'reports'>('revenue');
@@ -24,7 +23,7 @@ const Financials: React.FC = () => {
           <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-8">Financial Intelligence Unit</span>
           <h2 className="font-serif text-6xl md:text-9xl text-white mb-10 tracking-tighter italic leading-[0.8]">Capital <br/><span className="gold-gradient-text italic font-black">Architecture.</span></h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-xl font-light leading-relaxed">
-            Auditable 10-year growth trajectories modeled on the South Indian ritual economy.
+            10-Year model based on "Landmark Economics," not standard hotel metrics.
           </p>
         </div>
 
@@ -60,7 +59,9 @@ const Financials: React.FC = () => {
                    <BarChart size={250} className="text-gold-500" />
                 </div>
                 <h3 className="text-white text-3xl font-serif mb-12 italic">Revenue Capture Mix</h3>
-                <div className="h-[400px]">
+                
+                {/* Fixed height container for PieChart */}
+                <div style={{ width: '100%', height: 400 }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
@@ -89,9 +90,9 @@ const Financials: React.FC = () => {
 
               <div className="space-y-10">
                 {[
-                  { title: "MICE Alpha", icon: BarChart, desc: "Banqueting volume provides a structural demand floor independent of pilgrimage cycles." },
-                  { title: "ADR Arbitrage", icon: TrendingUp, desc: "Targeting a 30% premium over local inventory by fulfilling the luxury supply void." },
-                  { title: "Divestment Moat", icon: ShieldCheck, desc: "Asset engineered for REIT divestment with 100% flow-through transparency." }
+                  { title: "Non-Linear Demand", icon: BarChart, desc: "Revenue is driven by destination pull (weddings, tourism) rather than room count alone." },
+                  { title: "Landmark Premium", icon: TrendingUp, desc: "Iconic architecture justifies premium pricing across F&B and experiential verticals." },
+                  { title: "Stabilized Yield", icon: ShieldCheck, desc: "Rooms act as anchor revenue (downside protection) while Events provide the upside alpha." }
                 ].map((item, i) => (
                   <div key={i} className="p-12 bg-white/[0.02] border border-white/5 rounded-[3.5rem] hover:bg-white/[0.04] hover:border-gold-500/30 transition-all duration-500 group">
                      <div className="flex gap-8 items-start">

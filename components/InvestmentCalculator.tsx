@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { IndianRupee, TrendingUp, BarChart3, RefreshCw, ArrowUpRight } from 'lucide-react';
 
@@ -10,12 +9,12 @@ const InvestmentCalculator: React.FC = () => {
     const keys = 420; // Tower A: 200 + Tower B: 220
     const projectCost = 3500000000; // ₹350 Cr
     
-    // Revenue logic: Room revenue + Fixed Banquet/F&B yield
+    // Revenue logic: Room revenue + Fixed Banquet/F&B yield (Landmark Premium)
     const roomRevAnnual = keys * adr * (occupancy / 100) * 365;
-    const auxiliaryYieldAnnual = 150000000; // ₹15 Cr auxiliary revenue (Events/Retail)
+    const auxiliaryYieldAnnual = 250000000; // ₹25 Cr (Weddings + F&B + Experiences)
     const totalRev = roomRevAnnual + auxiliaryYieldAnnual;
     
-    // 45% EBITDA Margin target
+    // 40-45% EBITDA Margin target depending on scale
     const ebitda = totalRev * 0.45;
     
     // Simple Yield-to-IRR mapping for UI visualization
@@ -35,8 +34,8 @@ const InvestmentCalculator: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.6em] block mb-4">Financial Simulation</span>
-          <h2 className="text-white font-serif text-5xl md:text-7xl tracking-tighter">ROI <span className="gold-gradient-text">Engine</span></h2>
-          <p className="text-slate-500 mt-6 text-sm uppercase tracking-widest font-black opacity-60">Based on Institutional 420-Key Inventory</p>
+          <h2 className="text-white font-serif text-5xl md:text-7xl tracking-tighter">Landmark ROI <span className="gold-gradient-text">Engine</span></h2>
+          <p className="text-slate-500 mt-6 text-sm uppercase tracking-widest font-black opacity-60">Includes Room Inventory + Event & Destination Yields</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -86,7 +85,7 @@ const InvestmentCalculator: React.FC = () => {
               </div>
               <div>
                 <div className="text-6xl font-serif font-black mb-2">₹{stats.totalRev}Cr</div>
-                <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Room + Event Blend</p>
+                <p className="text-[10px] font-black uppercase tracking-widest opacity-60">Includes ₹25Cr Event/F&B Yield</p>
               </div>
             </div>
 

@@ -1,31 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Hero from './Hero.tsx';
 import Snapshot from './Snapshot.tsx';
-import TheAsset from './TheAsset.tsx';
-import Configuration from './Configuration.tsx';
-import MasterplanViewer from './MasterplanViewer.tsx';
-import TheMarket from './TheMarket.tsx';
-import InclusiveShowcase from './InclusiveShowcase.tsx';
-import TheHotel from './TheHotel.tsx';
-import Rooms from './Rooms.tsx';
-import EventsWeddings from './EventsWeddings.tsx';
-import WeddingFocus from './WeddingFocus.tsx';
-import Dining from './Dining.tsx';
-import WellnessExperience from './WellnessExperience.tsx';
-import Amenities from './Amenities.tsx';
-import OperationalControl from './OperationalControl.tsx';
-import ProjectSpecs from './ProjectSpecs.tsx';
-import Economics from './Economics.tsx';
-import Financials from './Financials.tsx';
-import RiskControl from './RiskControl.tsx';
-import ExitStrategy from './ExitStrategy.tsx';
-import Gallery from './Gallery.tsx';
-import Experiences from './Experiences.tsx';
-import Offers from './Offers.tsx';
-import Location from './Location.tsx';
-import InvestorAccess from './InvestorAccess.tsx';
-import BookingModal from './BookingModal.tsx';
-import Footer from './Footer.tsx';
+import { Loader2 } from 'lucide-react';
+
+// Lazy Load Sections to split chunks
+const TheAsset = lazy(() => import('./TheAsset.tsx'));
+const Configuration = lazy(() => import('./Configuration.tsx'));
+const MasterplanViewer = lazy(() => import('./MasterplanViewer.tsx'));
+const TheMarket = lazy(() => import('./TheMarket.tsx'));
+const InclusiveShowcase = lazy(() => import('./InclusiveShowcase.tsx'));
+const ProjectSpecs = lazy(() => import('./ProjectSpecs.tsx'));
+const TheHotel = lazy(() => import('./TheHotel.tsx'));
+const Rooms = lazy(() => import('./Rooms.tsx'));
+const EventsWeddings = lazy(() => import('./EventsWeddings.tsx'));
+const WeddingFocus = lazy(() => import('./WeddingFocus.tsx'));
+const Dining = lazy(() => import('./Dining.tsx'));
+const WellnessExperience = lazy(() => import('./WellnessExperience.tsx'));
+const Amenities = lazy(() => import('./Amenities.tsx'));
+const OperationalControl = lazy(() => import('./OperationalControl.tsx'));
+const Economics = lazy(() => import('./Economics.tsx'));
+const Financials = lazy(() => import('./Financials.tsx'));
+const RiskControl = lazy(() => import('./RiskControl.tsx'));
+const ExitStrategy = lazy(() => import('./ExitStrategy.tsx'));
+const Gallery = lazy(() => import('./Gallery.tsx'));
+const Experiences = lazy(() => import('./Experiences.tsx'));
+const Offers = lazy(() => import('./Offers.tsx'));
+const Location = lazy(() => import('./Location.tsx'));
+const InvestorAccess = lazy(() => import('./InvestorAccess.tsx'));
+const BookingModal = lazy(() => import('./BookingModal.tsx'));
+const Footer = lazy(() => import('./Footer.tsx'));
+
+// Visual Placeholder for sections loading
+const SectionLoader = () => (
+  <div className="py-32 flex items-center justify-center w-full bg-onyx-950 border-t border-white/5">
+    <div className="flex items-center gap-3 text-gold-500 text-[10px] font-black uppercase tracking-[0.4em]">
+      <Loader2 size={16} className="animate-spin" /> Loading Asset Data
+    </div>
+  </div>
+);
 
 interface HomeProps {
   onInvestorClick?: () => void;
@@ -43,38 +55,43 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
 
   return (
     <main className="flex flex-col relative w-full overflow-x-hidden">
+      {/* Critical Path Components (Static Import) */}
       <Hero onInvestorClick={onInvestorClick} onProfileClick={onProfileClick} />
       <Snapshot onProfileClick={onProfileClick} />
-      <TheAsset />
-      <Configuration />
-      <MasterplanViewer />
-      <TheMarket />
-      <InclusiveShowcase />
-      <ProjectSpecs />
-      <TheHotel />
-      <Rooms onInquiryClick={() => handleOpenBooking('room')} />
-      <EventsWeddings />
-      <WeddingFocus onRSVPClick={() => handleOpenBooking('wedding')} />
-      <Dining />
-      <WellnessExperience />
-      <Amenities />
-      <OperationalControl />
-      <Economics />
-      <Financials />
-      <RiskControl />
-      <ExitStrategy />
-      <Gallery />
-      <Experiences />
-      <Offers onActionClick={handleOpenBooking} />
-      <Location />
-      <InvestorAccess onOpenDeck={onInvestorClick} />
-      <Footer />
-
-      <BookingModal 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)} 
-        initialType={bookingType}
-      />
+      
+      {/* Deferred Components (Lazy Import) */}
+      <Suspense fallback={<SectionLoader />}>
+        <TheAsset />
+        <Configuration />
+        <MasterplanViewer />
+        <TheMarket />
+        <InclusiveShowcase />
+        <ProjectSpecs />
+        <TheHotel />
+        <Rooms onInquiryClick={() => handleOpenBooking('room')} />
+        <EventsWeddings />
+        <WeddingFocus onRSVPClick={() => handleOpenBooking('wedding')} />
+        <Dining />
+        <WellnessExperience />
+        <Amenities />
+        <OperationalControl />
+        <Economics />
+        <Financials />
+        <RiskControl />
+        <ExitStrategy />
+        <Gallery />
+        <Experiences />
+        <Offers onActionClick={handleOpenBooking} />
+        <Location />
+        <InvestorAccess onOpenDeck={onInvestorClick} />
+        <Footer />
+        
+        <BookingModal 
+          isOpen={isBookingOpen} 
+          onClose={() => setIsBookingOpen(false)} 
+          initialType={bookingType}
+        />
+      </Suspense>
     </main>
   );
 };

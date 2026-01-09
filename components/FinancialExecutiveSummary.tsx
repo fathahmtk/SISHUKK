@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
@@ -11,34 +10,34 @@ import {
 } from 'lucide-react';
 
 const SUMMARY_CHART_DATA = [
-  { name: 'Year 1', revenue: 68.0, ebitda: 30.6 },
-  { name: 'Year 3', revenue: 92.0, ebitda: 46.0 },
-  { name: 'Year 5', revenue: 118.0, ebitda: 64.9 },
-  { name: 'Year 7', revenue: 145.0, ebitda: 79.8 },
+  { name: 'Year 1', revenue: 68.0, ebitda: 18.6 },
+  { name: 'Year 4', revenue: 118.0, ebitda: 48.0 },
+  { name: 'Year 7', revenue: 155.0, ebitda: 72.5 },
+  { name: 'Year 10', revenue: 182.0, ebitda: 91.0 },
 ];
 
 const REVENUE_DRIVERS = [
   {
-    title: "Events & Weddings",
-    yield: "₹2.5Cr / Mo",
-    contribution: "55%",
-    desc: "15,000 sq ft pillar-less engine. Recession-proof spiritual ritual demand.",
-    img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
-    color: "gold"
-  },
-  {
-    title: "Room Inventory",
-    yield: "₹12,000 ADR",
-    contribution: "30%",
-    desc: "420 luxury keys (Dual Tower). High-velocity pilgrim and NRI occupancy.",
+    title: "Rooms & Suites",
+    yield: "Anchor Revenue",
+    contribution: "35%",
+    desc: "Conservative occupancy baseline. Provides downside protection and covers fixed costs.",
     img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80",
     color: "blue"
   },
   {
-    title: "Gastronomy",
-    yield: "₹1.2Cr / Mo",
-    contribution: "10%",
-    desc: "Dual revolving rooftop restaurants. Destination dining for the entire region.",
+    title: "Weddings & Events",
+    yield: "High Margin Engine",
+    contribution: "25%",
+    desc: "Architecture pays back here. Twin towers & podium drive disproportionate EBITDA impact.",
+    img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80",
+    color: "gold"
+  },
+  {
+    title: "F&B + Experiential",
+    yield: "Destination Pull",
+    contribution: "40%",
+    desc: "Non-resident footfall driven by sky-decks, revolving crowns, and brand installations.",
     img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80",
     color: "emerald"
   }
@@ -57,20 +56,20 @@ const FinancialExecutiveSummary: React.FC = () => {
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-3 px-4 py-2 border border-gold-500/30 rounded-full bg-gold-500/5 mb-8">
               <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
-              <span className="text-gold-400 uppercase text-[10px] font-black tracking-[0.4em]">Section 08: Financial Architecture</span>
+              <span className="text-gold-400 uppercase text-[10px] font-black tracking-[0.4em]">Section 08: Landmark Economics</span>
             </div>
             <h2 className="text-white font-serif text-6xl md:text-8xl leading-[0.85] tracking-tighter">
               Yield <br/><span className="gold-gradient-text italic font-black">Performance.</span>
             </h2>
             <p className="text-slate-400 text-xl font-light leading-relaxed mt-10 max-w-2xl border-l border-gold-500/30 pl-8">
-              An institutional-grade analysis of the ₹350 Crore capital deployment. SGT is engineered for consistent alpha through a 7-year stabilization cycle.
+              This asset is not modeled as a standard hotel. It is an <strong>Institutional Infrastructure Asset</strong> where revenue is driven by destination pull, not just room inventory.
             </p>
           </div>
           
           <div className="grid grid-cols-2 gap-4 w-full lg:w-auto">
             {[
-              { l: "Target IRR", v: "24.2%", icon: TrendingUp },
-              { l: "Equity Multiple", v: "3.5x", icon: Activity }
+              { l: "Target IRR", v: "22-24%", icon: TrendingUp },
+              { l: "Equity MOIC", v: "3.5x", icon: Activity }
             ].map((m, i) => (
               <div key={i} className="bg-onyx-900 border border-white/10 p-8 rounded-[2rem] shadow-2xl flex flex-col items-center justify-center text-center min-w-[200px]">
                 <m.icon className="text-gold-500 mb-4" size={24} />
@@ -110,7 +109,7 @@ const FinancialExecutiveSummary: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-serif text-3xl">{item.title}</h4>
-                    <p className="text-gold-500 font-mono text-lg font-black">{item.yield}</p>
+                    <p className="text-gold-500 font-mono text-lg font-black uppercase tracking-widest">{item.yield}</p>
                   </div>
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed font-light opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
@@ -139,7 +138,7 @@ const FinancialExecutiveSummary: React.FC = () => {
             <div className="flex justify-between items-center mb-16 relative z-10">
               <div>
                 <h3 className="text-white font-serif text-4xl mb-2">Growth Trajectory</h3>
-                <p className="text-slate-500 text-[10px] uppercase font-black tracking-[0.4em]">Annual Gross vs Operating EBITDA (₹ Cr)</p>
+                <p className="text-slate-500 text-[10px] uppercase font-black tracking-[0.4em]">10-Year Horizon: Gross vs EBITDA (₹ Cr)</p>
               </div>
               <div className="flex gap-8">
                  <div className="flex items-center gap-3">
@@ -153,7 +152,8 @@ const FinancialExecutiveSummary: React.FC = () => {
               </div>
             </div>
 
-            <div className="h-[400px] w-full relative z-10">
+            {/* Explicit Dimensions for Recharts */}
+            <div style={{ width: '100%', height: 400 }} className="relative z-10">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={SUMMARY_CHART_DATA} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
@@ -185,10 +185,10 @@ const FinancialExecutiveSummary: React.FC = () => {
 
             <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-white/5 relative z-10">
                {[
-                 { l: "EBITDA Margin", v: "45.0%" },
-                 { l: "Stabilized Occupancy", v: "72.0%" },
-                 { l: "Blended RevPAR", v: "₹8,280" },
-                 { l: "Debt Coverage", v: "2.1x DSCR" }
+                 { l: "Target EBITDA Margin", v: "35.0%" },
+                 { l: "Stabilized Occupancy", v: "70.0%" },
+                 { l: "Blended RevPAR", v: "₹8,500" },
+                 { l: "Payback Period", v: "Mid-Cycle" }
                ].map((stat, i) => (
                  <div key={i}>
                     <div className="text-slate-600 text-[9px] font-black uppercase tracking-widest mb-1">{stat.l}</div>
@@ -206,14 +206,14 @@ const FinancialExecutiveSummary: React.FC = () => {
                    <Landmark size={40} className="text-onyx-950 opacity-40" />
                    <span className="text-onyx-950 text-[10px] font-black uppercase tracking-widest bg-white/30 px-4 py-2 rounded-full border border-white/20">REIT-READY</span>
                 </div>
-                <h4 className="text-onyx-950 font-serif text-6xl font-black tracking-tighter leading-none mb-6">₹1,236 Cr</h4>
+                <h4 className="text-onyx-950 font-serif text-6xl font-black tracking-tighter leading-none mb-6">High Alpha</h4>
                 <p className="text-onyx-950/80 text-sm leading-relaxed font-bold uppercase tracking-wider">
-                  Target Enterprise Value <br/>Institutional Exit Year 7
+                  Target Exit Valuation via EBITDA Multiple.<br/>Landmark Premium Applied.
                 </p>
               </div>
               <div className="pt-8 border-t border-onyx-950/10 flex items-center justify-between">
-                <span className="text-onyx-950 text-[10px] font-black uppercase tracking-widest">Multiple</span>
-                <span className="text-onyx-950 font-serif text-3xl font-black">12.0x</span>
+                <span className="text-onyx-950 text-[10px] font-black uppercase tracking-widest">Model Horizon</span>
+                <span className="text-onyx-950 font-serif text-3xl font-black">10 Years</span>
               </div>
             </div>
 
@@ -248,7 +248,7 @@ const FinancialExecutiveSummary: React.FC = () => {
               <Layers size={28} />
             </div>
             <div>
-              <p className="text-white text-xl font-serif">Dynamic Sensitivity Analysis</p>
+              <p className="text-white text-xl font-serif">Dynamic Stress Testing</p>
               <p className="text-slate-600 text-[10px] font-black uppercase tracking-widest">Institutional Partners can model custom ADR/Occ scenarios below</p>
             </div>
           </div>

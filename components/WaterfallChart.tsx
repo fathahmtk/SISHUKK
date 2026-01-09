@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   ComposedChart, 
@@ -38,7 +37,8 @@ const WaterfallChart: React.FC = () => {
                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">Units: ₹ Cr</span>
               </div>
 
-              <div className="h-[350px] w-full relative z-10">
+              {/* Explicit Dimensions for Recharts */}
+              <div style={{ width: '100%', height: 350 }} className="relative z-10">
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={WATERFALL_DATA} margin={{ top: 40, right: 30, left: 0, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />

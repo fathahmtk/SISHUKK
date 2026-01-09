@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, Crown, TrendingUp, MapPin, ArrowUpRight, ShieldCheck, Search } from 'lucide-react';
+import { Building2, Crown, TrendingUp, MapPin, ShieldCheck, Search } from 'lucide-react';
 
 interface SnapshotProps {
   onProfileClick?: () => void;
@@ -9,27 +9,27 @@ const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
   const cards = [
     {
       icon: <Building2 className="w-8 h-8 text-gold-300" />,
-      title: "Landmark Presence",
-      description: "Twin-tower symmetry connected by a monumental sky-arch. A beacon of modern architectural sovereignty in Guruvayur.",
-      metric: "75m Height"
+      title: "Asset Type",
+      description: "Iconic Twin-Tower Hospitality Destination. A structural landmark defining the regional skyline.",
+      metric: "Landmark Grade"
     },
     {
       icon: <Crown className="w-8 h-8 text-gold-300" />,
-      title: "Sovereign Luxury",
-      description: "A 5-star experiential standard. Pure vegetarian service honoring sacred traditions. Two distinct towers for hospitality and events.",
-      metric: "420 Keys"
+      title: "Architectural Signature",
+      description: "Monumental Central Arch creating a visual monopoly. Non-replicable design value.",
+      metric: "Iconic Status"
     },
     {
       icon: <TrendingUp className="w-8 h-8 text-gold-300" />,
-      title: "Yield Velocity",
-      description: "Structural demand driven by India's spiritual economy and the region's 250 daily weddings.",
-      metric: "24.2% IRR"
+      title: "Core Use",
+      description: "Luxury Hospitality, Global Events, and Destination Experiences. Driven by multi-vertical demand.",
+      metric: "Mixed-Use"
     },
     {
       icon: <MapPin className="w-8 h-8 text-gold-300" />,
-      title: "Strategic Moat",
-      description: "No existing five-star hotels in the vicinity. Sirshukk fulfills a significant market gap for local and NRI clientele.",
-      metric: "1.5km to Nada"
+      title: "Revenue Model",
+      description: "Multi-Vertical, Non-Seasonal. High-margin yield from accommodation, dining, and grand ceremonial events.",
+      metric: "Diversified"
     }
   ];
 
@@ -43,10 +43,10 @@ const Snapshot: React.FC<SnapshotProps> = ({ onProfileClick }) => {
           <div className="max-w-4xl">
             <span className="text-gold-400 text-[11px] font-black uppercase tracking-[0.8em] block mb-8">Executive Snapshot</span>
             <h2 className="font-serif text-5xl md:text-8xl text-white mb-10 leading-[0.9] tracking-tighter italic">
-              The <span className="gold-gradient-text">Thesis.</span>
+              The <span className="gold-gradient-text">Signal.</span>
             </h2>
             <p className="text-slate-400 text-xl md:text-3xl font-light leading-relaxed border-l-2 border-gold-500/40 pl-10 max-w-2xl">
-              SIRSHUKK is a world-class hospitality project blending spirituality with luxury, honoring the traditions of Guruvayur while delivering high-velocity yield.
+              "This is not inventory. This is a destination."
             </p>
           </div>
           <div className="hidden lg:flex items-center gap-4 text-slate-500 text-[10px] font-black uppercase tracking-widest bg-white/5 border border-white/10 px-8 py-5 rounded-full mb-4 backdrop-blur-sm cursor-pointer hover:bg-gold-500/10 transition-colors group" onClick={onProfileClick}>

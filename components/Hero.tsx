@@ -51,10 +51,10 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
   }, []);
 
   const facts = [
-    { label: "Asset Valuation", value: "₹350 Cr", sub: "Capex Targeted" },
-    { label: "Room Inventory", value: "420 Keys", sub: "Tower A & B" },
-    { label: "Annual Inflow", value: "12M+", sub: "Strategic Pilgrims" },
-    { label: "Yield Target", value: "24.2%", sub: "Projected IRR" },
+    { label: "Architecture", value: "Landmark", sub: "Iconic Status" },
+    { label: "Usage", value: "Mixed-Use", sub: "Hospitality Led" },
+    { label: "Nature", value: "Destination", sub: "Asset Class" },
+    { label: "Strategy", value: "Long-Term", sub: "Yield & Growth" },
   ];
 
   return (
@@ -70,17 +70,17 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
           className={`absolute inset-0 w-full h-[150%] -top-[25%] will-change-transform transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
             transform: 'translate3d(0, 0, 0) scale(1.1)',
-            backgroundImage: 'url("https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg")',
+            backgroundImage: 'url("https://clickpetroleoegas.com.br/wp-content/uploads/2025/12/Torres-gemeas-Katara-custam-600-milhoes-de-dolares-erguem-211-metros-em-Doha-e-abrigam-o-Raffles-Doha-hotel-6-estrelas-so-de-suites-.jpg")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'brightness(0.65) saturate(0.8)' // Adjusted filter for photo readability
+            filter: 'brightness(0.65) saturate(0.9)'
           }}
         >
         </div>
         
         {/* Deep Gradient Overlays for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/40 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-onyx-950/80 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-onyx-950 via-onyx-950/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-onyx-950/70 via-transparent to-transparent"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.08)_0%,_transparent_100%)]"></div>
         
         {/* Animated Institutional Grid/Scan Lines */}
@@ -94,12 +94,12 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
         <div className="max-w-6xl mx-auto">
           
           {/* Brand Header: Cinematic Entrance */}
-          <div className="flex flex-col lg:flex-row items-center lg:items-end gap-10 mb-16">
+          <div className="flex flex-col lg:flex-row items-center lg:items-end gap-10 mb-12">
             <Logo className="w-28 h-28 lg:w-36 lg:h-36 drop-shadow-[0_0_50px_rgba(212,175,55,0.4)] animate-float opacity-0 animate-[fade-in_1s_ease-out_forwards]" />
             <div className="lg:mb-2 text-center lg:text-left overflow-hidden">
               <div className="inline-flex items-center gap-3 px-5 py-2 border border-gold-400/20 bg-gold-400/5 text-gold-300 text-[10px] font-black uppercase tracking-[0.6em] mb-6 backdrop-blur-xl rounded-full mx-auto lg:mx-0 shadow-gold-glow opacity-0 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.2s_forwards]">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
-                Institutional Offering 2025
+                Landmark Hospitality Asset
               </div>
               <h1 className="text-white font-display text-6xl md:text-8xl lg:text-[9.5rem] leading-[0.8] tracking-tighter">
                 <span className="block translate-y-full opacity-0 animate-[reveal-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.4s_forwards]">SIRSHUKK</span>
@@ -112,8 +112,11 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
           </div>
 
           {/* Subtext: Elegance & Authority */}
-          <h2 className="text-2xl md:text-4xl text-slate-300 font-serif italic mb-16 max-w-4xl opacity-0 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.8s_forwards] leading-tight pr-4">
-            Guruvayur's definitive vertical landmark. A high-yield institutional asset unified by the monumental <span className="text-white border-b border-gold-500/30">Meridian Arch</span>.
+          <h2 className="text-2xl md:text-4xl text-slate-300 font-serif italic mb-12 max-w-4xl opacity-0 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.8s_forwards] leading-tight pr-4">
+            A Landmark Hospitality & Experiential Destination. <br/>
+            <span className="text-white text-xl md:text-2xl font-sans not-italic font-light mt-4 block text-slate-400">
+              An architecturally iconic twin-tower development anchored by a monumental sky-arch, designed to operate as a global hospitality, events, and destination asset.
+            </span>
           </h2>
 
           {/* Fact Grid: Interactive Quantitative Metrics */}
@@ -129,7 +132,7 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
                    <div className="text-gold-500 text-[9px] uppercase font-black tracking-[0.5em] opacity-70 group-hover:opacity-100 transition-opacity">{fact.label}</div>
                    <Info size={10} className="text-gold-500 opacity-0 group-hover:opacity-100 transition-all transform scale-0 group-hover:scale-100" />
                 </div>
-                <div className="text-white font-serif text-3xl md:text-5xl mb-2 group-hover:text-gold-300 transition-colors drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                <div className="text-white font-serif text-2xl md:text-3xl lg:text-4xl mb-2 group-hover:text-gold-300 transition-colors drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                    {fact.value}
                 </div>
                 <div className="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">{fact.sub}</div>
@@ -143,11 +146,11 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
               onClick={onInvestorClick}
               className="group relative px-12 py-6 bg-gold-500 text-onyx-950 rounded-full font-black uppercase tracking-[0.4em] text-[11px] shadow-[0_20px_50px_rgba(212,175,55,0.3)] hover:bg-white transition-all duration-500 active:scale-95 flex items-center gap-4"
             >
-              <span>Authorize Asset Audit</span>
+              <span>Request Investor Access</span>
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </button>
             <button className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors uppercase text-[10px] font-black tracking-[0.4em] border-b border-white/10 pb-2 hover:border-gold-500">
-              <FileText size={16} /> Download Dossier (v2.5)
+              <FileText size={16} /> Download Dossier (NDA)
             </button>
           </div>
         </div>

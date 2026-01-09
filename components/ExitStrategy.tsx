@@ -8,26 +8,25 @@ const ExitStrategy: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2">
-             <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-6">Section 10</span>
+             <span className="text-gold-500 text-[10px] font-black uppercase tracking-[0.4em] block mb-6">Exit Logic</span>
              <h2 className="text-white font-serif text-4xl md:text-5xl mb-8 leading-tight">
-               Clear Exit Visibility <br/>
-               <span className="italic text-slate-500">for Institutional Capital.</span>
+               Multiple Exits <br/>
+               <span className="italic text-slate-500">Supported by Iconic Status.</span>
              </h2>
              <p className="text-slate-400 text-lg mb-8">
-               The asset is designed to be re-tradeable, not promoter-dependent.
+               The asset is designed for strategic liquidity events, leveraging its landmark positioning.
              </p>
              <Link to="/exit" className="inline-flex items-center gap-4 bg-white/5 text-white px-8 py-4 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-onyx-950 transition-all border border-white/10">
-                Explore Liquidity Events <ArrowRight size={14} />
+                Explore Exit Pathways <ArrowRight size={14} />
              </Link>
           </div>
           
           <div className="lg:w-1/2 w-full">
              <div className="space-y-4">
                {[
-                 "Sale to hospitality PE funds",
-                 "Sale to REIT / yield platforms",
-                 "Strategic brand acquisition",
-                 "Partial equity exit post stabilisation"
+                 "Strategic sale as a landmark hospitality asset",
+                 "Institutional take-out / REIT inclusion",
+                 "Long-term yield + refinance strategy",
                ].map((path, i) => (
                  <div key={i} className="group flex justify-between items-center p-6 bg-onyx-950 border border-white/10 hover:border-gold-500 transition-colors cursor-default">
                     <span className="text-white font-bold uppercase tracking-widest text-sm">{path}</span>

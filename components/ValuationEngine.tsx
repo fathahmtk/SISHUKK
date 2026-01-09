@@ -1,13 +1,12 @@
-
 import React from 'react';
 import { Calculator, ShieldCheck, Activity, Landmark, ArrowUpRight, BarChart3, Layers, Target, Scale } from 'lucide-react';
 
 const ValuationEngine: React.FC = () => {
   const benchmarks = [
-    { metric: "WACC (Cost of Capital)", sgt: "10.2%", market: "11.5%", res: "Efficient" },
-    { metric: "Target Project IRR", sgt: "24.2%", market: "18.5%", res: "High Alpha" },
-    { metric: "Stabilized EBITDA", sgt: "45.0%", market: "32.0%", res: "Optimal" },
-    { metric: "Equity Multiplier", sgt: "3.5x", market: "2.8x", res: "Superior" },
+    { metric: "Asset Class Logic", sgt: "Landmark Destination", market: "Standard City Hotel", res: "Superior" },
+    { metric: "Target IRR (Equity)", sgt: "22 - 24%", market: "16 - 18%", res: "High Alpha" },
+    { metric: "Exit Valuation Method", sgt: "EBITDA Multiple", market: "Cost Replacement", res: "Premium" },
+    { metric: "Equity MOIC (7Y)", sgt: "3.5x", market: "2.5x", res: "Outperformer" },
   ];
 
   const sensitivity = [
