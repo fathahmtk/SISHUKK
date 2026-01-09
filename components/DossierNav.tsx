@@ -19,36 +19,34 @@ const SECTIONS = [
 const DossierNav: React.FC = () => {
   const location = useLocation();
 
+  // Hide on home page
+  if (location.pathname === '/') return null;
+
   return (
-    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[100] hidden xl:flex flex-col gap-6">
-      <div className="bg-white/60 backdrop-blur-3xl border border-slate-200 p-4 rounded-full flex flex-col gap-3 shadow-[0_30px_60px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)]">
-        {SECTIONS.map((s) => {
-          const isActive = location.pathname === s.path;
-          return (
-            <Link
-              key={s.path}
-              to={s.path}
-              className={`w-14 h-14 rounded-full flex items-center justify-center transition-all group relative border ${
-                isActive 
-                ? 'bg-gold-500 text-white scale-110 shadow-[0_0_25px_rgba(212,175,55,0.4)] border-gold-400' 
-                : 'text-slate-400 border-transparent hover:bg-slate-50 hover:text-slate-900'
-              }`}
-            >
-              <s.icon size={20} />
-              <div className="absolute left-20 bg-white border border-slate-200 px-6 py-3 rounded-xl opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0 pointer-events-none whitespace-nowrap shadow-xl">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-900">{s.label}</span>
-              </div>
-              {isActive && (
-                <div className="absolute -left-2 w-1 h-6 bg-gold-500 rounded-full top-1/2 -translate-y-1/2"></div>
-              )}
-            </Link>
-          );
-        })}
-      </div>
-      <div className="text-center opacity-40 hover:opacity-100 transition-opacity cursor-default">
-        <div className="w-px h-16 bg-gradient-to-b from-gold-500 to-transparent mx-auto"></div>
-        <span className="text-[8px] font-black text-slate-400 uppercase tracking-[0.5em] [writing-mode:vertical-lr] mt-6">Dossier Index</span>
-      </div>
+    <div className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
+      {SECTIONS.map((section) => {
+        const isActive = location.pathname === section.path;
+        return (
+          <Link
+            key={section.path}
+            to={section.path}
+            className={`group relative flex items-center justify-center w-12 h-12 rounded-2xl transition-all duration-300 shadow-lg border ${
+              isActive 
+                ? 'bg-slate-950 text-white border-slate-950 scale-110' 
+                : 'bg-white text-slate-400 border-slate-200 hover:border-gold-400 hover:text-gold-600'
+            }`}
+          >
+            <section.icon size={18} />
+            
+            {/* Tooltip Label */}
+            <div className={`absolute left-14 bg-slate-950 text-white px-4 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest whitespace-nowrap shadow-xl transition-all duration-300 pointer-events-none ${
+              isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'
+            }`}>
+              {section.label}
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, TrendingUp, Anchor, LayoutGrid, ArrowRight, ShieldCheck, Maximize2, Layers } from 'lucide-react';
+import { Building2, TrendingUp, ArrowRight, Layers, ShieldCheck, Maximize2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const THESIS_POINTS = [
@@ -11,26 +11,25 @@ const THESIS_POINTS = [
 
 const TheAsset: React.FC = () => {
   return (
-    <section className="py-48 bg-[#FDFBF7] relative overflow-hidden border-t border-slate-100">
+    <section className="py-48 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           
-          {/* Column 1: Contextual Narrative */}
           <div className="lg:col-span-5 sticky top-32 space-y-16">
             <div className="space-y-12">
-               <div className="inline-flex items-center gap-4 px-6 py-2 border border-gold-200 bg-white rounded-full shadow-sm">
-                  <Layers size={14} className="text-gold-600" />
-                  <span className="text-gold-600 uppercase text-[10px] font-black tracking-[0.6em]">Chapter 02: Strategic Thesis</span>
+               <div className="flex items-center gap-5">
+                  <div className="w-12 h-[1px] bg-gold-500"></div>
+                  <span className="text-slate-400 text-[10px] font-black uppercase tracking-[0.6em]">Chapter 01: Strategic Thesis</span>
                </div>
                <h2 className="text-slate-950 font-serif text-6xl md:text-8xl leading-[0.8] tracking-tighter italic">
                   Value through <br/><span className="gold-gradient-text font-black italic">Scarcity.</span>
                </h2>
-               <p className="text-slate-500 text-2xl font-light leading-relaxed border-l-2 border-gold-400 pl-12 max-w-xl">
-                  SGT is engineered as a <strong>Visual Monopoly</strong>. In dense pilgrimage corridors, architecture functions as a massive commercial engine, driving disproportionate RevPAR and banqueting yields.
+               <p className="text-slate-500 text-2xl font-light leading-relaxed border-l-2 border-gold-400 pl-12 max-w-xl italic">
+                  SGT is engineered as a <strong>Visual Monopoly</strong>. In dense pilgrimage corridors, architecture functions as a commercial engine.
                </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-12 pt-12 border-t border-slate-200">
+            <div className="grid grid-cols-1 gap-12 pt-12 border-t border-slate-100">
                {THESIS_POINTS.map((item, i) => (
                  <div key={i} className="group flex gap-8 items-start">
                     <div className="text-gold-600 font-serif text-3xl italic opacity-30 group-hover:opacity-100 transition-opacity">0{i+1}</div>
@@ -49,24 +48,23 @@ const TheAsset: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2: Cinematic Imagery cluster */}
           <div className="lg:col-span-7 space-y-24">
-             <div className="relative rounded-[5rem] overflow-hidden shadow-3xl aspect-[4/5] border border-slate-100 group bg-slate-50">
+             <div className="relative rounded-[4rem] overflow-hidden shadow-3xl aspect-[4/5] border border-slate-100 group bg-slate-50">
                 <img 
                    src="https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg" 
                    className="w-full h-full object-cover transition-transform duration-[8s] group-hover:scale-110" 
-                   alt="Main Elevational Logic" 
+                   alt="Main Elevation" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60"></div>
                 
                 <div className="absolute bottom-16 left-16 right-16">
                    <div className="flex items-center gap-6 mb-8">
                       <div className="w-16 h-16 rounded-2xl bg-gold-500 flex items-center justify-center text-white shadow-2xl">
-                         <Building2 size={32} />
+                         <Layers size={32} />
                       </div>
                       <div>
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Blueprint Audit</span>
-                        <h4 className="text-slate-950 font-serif text-3xl italic">Tower Symmetrical v2.5</h4>
+                        <span className="text-[10px] font-black text-white/60 uppercase tracking-widest block mb-1">Blueprint Audit</span>
+                        <h4 className="text-white font-serif text-3xl italic">Tower Symmetrical v2.5</h4>
                       </div>
                    </div>
                 </div>
@@ -74,14 +72,14 @@ const TheAsset: React.FC = () => {
 
              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
                 <div className="rounded-[4rem] overflow-hidden shadow-2xl aspect-square border border-slate-200 group">
-                   <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Detail 1" />
+                   <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Structural Link" />
                 </div>
-                <div className="p-12 bg-white border border-slate-100 rounded-[4rem] shadow-xl group hover:border-gold-300 transition-all">
+                <div className="p-12 bg-[#FDFBF7] border border-slate-200 rounded-[4rem] shadow-xl group hover:border-gold-400 transition-all">
                    <TrendingUp className="text-gold-500 mb-8" size={32} />
-                   <h4 className="text-slate-950 font-serif text-3xl mb-4 italic">Yield Insulation.</h4>
+                   <h4 className="text-slate-950 font-serif text-3xl mb-4 italic leading-tight">Yield <br/>Insulation.</h4>
                    <p className="text-slate-400 text-sm leading-relaxed">Structural USPs protect ADR from market volatility, creating a durable capital moat.</p>
                    <button className="mt-8 text-gold-600 text-[9px] font-black uppercase tracking-widest flex items-center gap-3">
-                      Audit Yield Data <Maximize2 size={12} />
+                      Audit Yield Data <ArrowRight size={12} />
                    </button>
                 </div>
              </div>

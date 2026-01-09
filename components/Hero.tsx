@@ -49,12 +49,12 @@ const Hero: React.FC<HeroProps> = ({ onInvestorClick, onProfileClick }) => {
           style={{ 
             backgroundImage: 'url("https://renderatelier.com/wp-content/uploads/2023/05/1-7-1-1-scaled.jpg")',
             backgroundSize: 'cover',
-            backgroundPosition: 'center 20%',
+            backgroundPosition: 'center 40%',
             filter: 'brightness(1.05) saturate(1.1) contrast(1.02)'
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-transparent to-transparent"></div>
       </div>
 
       {/* Editorial Content Overlay */}

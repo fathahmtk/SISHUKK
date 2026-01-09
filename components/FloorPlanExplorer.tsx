@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Maximize2, Map, ShieldCheck, Zap, UserCheck, Coffee, Wind, Eye, Ruler, Users, Grid, ArrowRight, Gauge, Activity, Database } from 'lucide-react';
+import { Layers, Maximize2, Map, ShieldCheck, Zap, UserCheck, Coffee, Wind, Eye, Ruler, Users, Grid, ArrowRight, Gauge, Activity, Database, Target, Info, IndianRupee, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const FLOORS = [
   {
@@ -10,13 +10,20 @@ const FLOORS = [
     description: 'A high-precision engineering marvel featuring two independent revolving platforms. Designed for vibration-free 360-degree destination dining.',
     amenities: ['German Drive Train Tech', 'Panoramic DGU Glass', 'Independent Service Core', 'Ambient Scenography'],
     capacity: '120 Pax per Tower',
+    revenue: '₹28.5 Cr / Yr',
+    yield: 'High-Alpha F&B',
     metrics: {
       area: '8,500 Sq. Ft.',
       efficiency: '94%',
       height: '75.0m Terminal',
       configuration: '360° Circular Core'
     },
-    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80'
+    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80',
+    hotspots: [
+        { x: 50, y: 50, label: 'Kinetic Axis', detail: 'Silent Drive Train Core' },
+        { x: 80, y: 30, label: 'Vista Glazing', detail: 'Triple-Glazed Acoustic Barrier' },
+        { x: 20, y: 70, label: 'Service Path', detail: 'Segregated Staff Logistics' }
+    ]
   },
   {
     id: 'bridge',
@@ -26,13 +33,19 @@ const FLOORS = [
     description: 'A structural nexus link connecting Towers A and B. Houses the Executive Club lounge and a glass-bottomed spiritual observation deck.',
     amenities: ['Private Concierge', 'Executive Library', 'Observation Deck', 'Secure Digital Vault'],
     capacity: '45 Pax Peak',
+    revenue: '₹12.0 Cr / Yr',
+    yield: 'Membership Yield',
     metrics: {
       area: '4,200 Sq. Ft.',
       efficiency: '88%',
       height: '55.0m Span',
       configuration: 'Steel Truss Link'
     },
-    image: 'https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80'
+    image: 'https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80',
+    hotspots: [
+        { x: 50, y: 40, label: 'Steel Truss', detail: 'Primary Load Bearing Arch' },
+        { x: 30, y: 65, label: 'Glass Deck', detail: 'Vertical Viewport (55m)' }
+    ]
   },
   {
     id: 'guest',
@@ -41,14 +54,21 @@ const FLOORS = [
     type: 'Luxury Residencies',
     description: 'Typical floor plate featuring a mix of Metropolitan Deluxe and Sanctuary units. Optimized for maximum thermal and acoustic comfort.',
     amenities: ['IoT Suite Control', 'Acoustic Barrier Glazing', '24/7 Butler Pantry', 'Wellness Air Systems'],
-    capacity: '20 Keys per Level',
+    capacity: '42 Keys per Floor',
+    revenue: '₹52.0 Cr / Yr',
+    yield: 'Stabilized ADR',
     metrics: {
       area: '12,500 Sq. Ft.',
       efficiency: '86%',
       height: '3.4m Clear',
       configuration: 'Cylindrical Core Flow'
     },
-    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80'
+    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80',
+    hotspots: [
+        { x: 40, y: 30, label: 'Vertical Core', detail: 'High-Velocity Lift Bank' },
+        { x: 75, y: 50, label: 'Suite Bay', detail: 'Temple Orientation' },
+        { x: 50, y: 85, label: 'Service Hub', detail: 'Back-of-House Access' }
+    ]
   },
   {
     id: 'ballroom',
@@ -58,18 +78,28 @@ const FLOORS = [
     description: 'Monumental 15,000 sq ft pillar-less volume. Triple-height ceiling clearance for grand ceremonial scale and cinematic production.',
     amenities: ['Digital Acoustics', 'Mega-Kitchen Core', 'VIP Ceremonial Entry', 'Bespoke Lighting Rig'],
     capacity: '3,000 Pax Capacity',
+    revenue: '₹45.0 Cr / Yr',
+    yield: 'Event Arbitrage',
     metrics: {
       area: '22,000 Sq. Ft.',
       efficiency: '96%',
       height: '8.0m Clearance',
       configuration: 'Pillar-less Void'
     },
-    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80'
+    image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80',
+    hotspots: [
+        { x: 50, y: 60, label: 'Performance Zone', detail: 'Proscenium Stage' },
+        { x: 15, y: 80, label: 'Grand Foyer', detail: 'Ceremonial Arrival' },
+        { x: 85, y: 20, label: 'Banquet Kitchen', detail: 'Direct Service Link' }
+    ]
   },
 ];
 
 const FloorPlanExplorer: React.FC = () => {
   const [activeFloor, setActiveFloor] = useState(0);
+
+  const nextFloor = () => setActiveFloor((prev) => (prev + 1) % FLOORS.length);
+  const prevFloor = () => setActiveFloor((prev) => (prev - 1 + FLOORS.length) % FLOORS.length);
 
   return (
     <div className="w-full py-40 bg-white border-t border-slate-100 overflow-hidden">
@@ -133,7 +163,7 @@ const FloorPlanExplorer: React.FC = () => {
                   </div>
                   <h4 className="text-slate-950 font-serif text-xl italic leading-none">Global <br/>Matrix</h4>
                </div>
-               <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
+               <p className="text-slate-500 text-10px font-black uppercase tracking-widest leading-relaxed">
                   Analyze vertical logistics and revenue-generating area efficiency across the twin cores.
                </p>
             </div>
@@ -154,16 +184,6 @@ const FloorPlanExplorer: React.FC = () => {
               {/* Technical HUD Overlay */}
               <div className="absolute inset-0 z-10 p-12">
                  <div className="w-full h-full border border-slate-200/50 rounded-[3rem] relative backdrop-blur-[1px] animate-fade-in" key={activeFloor}>
-                    {/* Hotspots - Blueprint Style */}
-                    <div className="absolute top-[30%] left-[40%] group/hs">
-                       <div className="w-5 h-5 rounded-full bg-white border-2 border-gold-500 shadow-xl animate-pulse cursor-crosshair flex items-center justify-center">
-                          <div className="w-1.5 h-1.5 bg-gold-500 rounded-full"></div>
-                       </div>
-                       <div className="absolute top-12 left-0 bg-white/95 backdrop-blur-xl border border-gold-200 px-6 py-4 rounded-2xl opacity-0 group-hover/hs:opacity-100 transition-all translate-y-4 group-hover/hs:translate-y-0 whitespace-nowrap z-20 shadow-2xl">
-                          <span className="text-gold-600 text-[10px] font-black uppercase tracking-widest block mb-1">Structural Node A-1</span>
-                          <span className="text-slate-500 text-[9px] font-bold uppercase tracking-tight">Main Vertical Core Axis</span>
-                       </div>
-                    </div>
                     
                     {/* Architectural Grid Lines */}
                     <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -175,14 +195,49 @@ const FloorPlanExplorer: React.FC = () => {
                        </svg>
                     </div>
 
+                    {/* Dynamic Hotspots */}
+                    {FLOORS[activeFloor].hotspots?.map((hs, i) => (
+                      <div 
+                        key={i} 
+                        className="absolute group/hs" 
+                        style={{ top: `${hs.y}%`, left: `${hs.x}%`, transform: 'translate(-50%, -50%)' }}
+                      >
+                         <div className="w-6 h-6 rounded-full bg-white border-2 border-gold-500 shadow-xl animate-pulse cursor-pointer flex items-center justify-center hover:scale-125 transition-transform">
+                            <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                         </div>
+                         <div className="absolute top-8 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-gold-200 px-6 py-4 rounded-2xl opacity-0 group-hover/hs:opacity-100 transition-all translate-y-4 group-hover/hs:translate-y-0 whitespace-nowrap z-20 shadow-2xl pointer-events-none">
+                            <span className="text-gold-600 text-[10px] font-black uppercase tracking-widest block mb-1">{hs.label}</span>
+                            <span className="text-slate-500 text-[9px] font-bold uppercase tracking-tight">{hs.detail}</span>
+                         </div>
+                      </div>
+                    ))}
+
                     <div className="absolute bottom-12 left-12 flex items-center gap-6">
-                       <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-gold-600 shadow-xl hover:bg-gold-500 hover:text-white transition-all cursor-pointer">
-                          <Maximize2 size={24} />
+                       <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-gold-600 shadow-xl hover:bg-gold-500 hover:text-white transition-all cursor-pointer group/scan">
+                          <Maximize2 size={24} className="group-hover/scan:scale-110 transition-transform" />
                        </div>
                        <div className="flex flex-col">
                           <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-900">Blueprint Archive</span>
                           <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">4K Technical Cross-Section</span>
                        </div>
+                    </div>
+
+                    {/* New Navigation Controls */}
+                    <div className="absolute bottom-12 right-12 flex gap-4 z-20">
+                       <button 
+                         onClick={(e) => { e.stopPropagation(); prevFloor(); }} 
+                         className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-gold-600 hover:border-gold-500 transition-all shadow-lg active:scale-95 group/btn"
+                         aria-label="Previous Floor"
+                       >
+                          <ChevronLeft size={24} className="group-hover/btn:-translate-x-0.5 transition-transform" />
+                       </button>
+                       <button 
+                         onClick={(e) => { e.stopPropagation(); nextFloor(); }} 
+                         className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-gold-600 hover:border-gold-500 transition-all shadow-lg active:scale-95 group/btn"
+                         aria-label="Next Floor"
+                       >
+                          <ChevronRight size={24} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                       </button>
                     </div>
                  </div>
               </div>
@@ -195,12 +250,29 @@ const FloorPlanExplorer: React.FC = () => {
                </div>
 
                <div className="relative z-10">
-                  <div className="mb-16">
+                  <div className="mb-12">
                      <div className="inline-flex items-center gap-3 px-5 py-2 border border-gold-200 bg-white rounded-full text-gold-600 text-[10px] font-black uppercase tracking-widest mb-8 shadow-sm">
                         <Activity size={14} /> {FLOORS[activeFloor].type}
                      </div>
                      <h3 className="text-slate-950 font-serif text-5xl mb-8 italic leading-none">{FLOORS[activeFloor].name}</h3>
                      <p className="text-slate-500 text-lg font-light leading-relaxed border-l-2 border-gold-400 pl-8">{FLOORS[activeFloor].description}</p>
+                  </div>
+
+                  {/* Financial Projection Highlight */}
+                  <div className="mb-12 p-8 bg-white border border-gold-200 rounded-[2.5rem] shadow-lg flex items-center gap-6 relative overflow-hidden">
+                     <div className="absolute right-0 top-0 p-6 opacity-5 pointer-events-none">
+                        <TrendingUp size={100} className="text-gold-500" />
+                     </div>
+                     <div className="w-14 h-14 rounded-2xl bg-gold-500 flex items-center justify-center text-white shadow-xl shrink-0">
+                        <IndianRupee size={24} />
+                     </div>
+                     <div>
+                        <div className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-1">Projected Annual Yield</div>
+                        <div className="flex items-baseline gap-3">
+                           <span className="text-slate-950 font-serif text-3xl font-black italic">{FLOORS[activeFloor].revenue}</span>
+                           <span className="text-[9px] font-bold text-gold-600 uppercase tracking-wider bg-gold-50 px-2 py-1 rounded-md">{FLOORS[activeFloor].yield}</span>
+                        </div>
+                     </div>
                   </div>
 
                   {/* Metrics Grid */}

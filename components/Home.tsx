@@ -34,11 +34,18 @@ const Footer = lazy(() => import('./Footer.tsx'));
 
 // Visual Placeholder for sections loading
 const SectionLoader = () => (
-  <div className="py-32 flex items-center justify-center w-full bg-onyx-950 border-t border-white/5">
+  <div className="h-screen w-full flex items-center justify-center bg-onyx-950 border-t border-white/5 snap-start">
     <div className="flex items-center gap-3 text-gold-500 text-[10px] font-black uppercase tracking-[0.4em]">
       <Loader2 size={16} className="animate-spin" /> Loading Asset Data
     </div>
   </div>
+);
+
+// Wrapper for snapping sections
+const SnapSection = ({ children, className = "" }: { children?: React.ReactNode; className?: string }) => (
+  <section className={`snap-start min-h-screen w-full flex flex-col justify-center ${className}`}>
+    {children}
+  </section>
 );
 
 interface HomeProps {
@@ -57,38 +64,95 @@ const Home: React.FC<HomeProps> = ({ onInvestorClick, onProfileClick }) => {
 
   return (
     <main className="flex flex-col relative w-full overflow-x-hidden">
-      {/* Critical Path Components (Static Import) */}
-      <Hero onInvestorClick={onInvestorClick} onProfileClick={onProfileClick} />
-      <Snapshot onProfileClick={onProfileClick} />
+      {/* Critical Path Components */}
+      <section className="snap-start min-h-screen w-full">
+        <Hero onInvestorClick={onInvestorClick} onProfileClick={onProfileClick} />
+      </section>
       
-      {/* Deferred Components (Lazy Import) */}
+      <SnapSection>
+        <Snapshot onProfileClick={onProfileClick} />
+      </SnapSection>
+      
+      {/* Deferred Components */}
       <Suspense fallback={<SectionLoader />}>
-        <TheAsset />
-        <VisualMonopoly />
-        <Configuration />
-        <ProjectHighlights />
-        <MasterplanViewer />
-        <TheMarket />
-        <InclusiveShowcase />
-        <ProjectSpecs />
-        <TheHotel />
-        <Rooms onInquiryClick={() => handleOpenBooking('room')} />
-        <EventsWeddings />
-        <WeddingFocus onRSVPClick={() => handleOpenBooking('wedding')} />
-        <Dining />
-        <WellnessExperience />
-        <Amenities />
-        <OperationalControl />
-        <Economics />
-        <Financials />
-        <RiskControl />
-        <ExitStrategy />
-        <Gallery />
-        <Experiences />
-        <Offers onActionClick={handleOpenBooking} />
-        <Location />
-        <InvestorAccess onOpenDeck={onInvestorClick} />
-        <Footer />
+        <SnapSection>
+          <TheAsset />
+        </SnapSection>
+        <SnapSection>
+          <VisualMonopoly />
+        </SnapSection>
+        <SnapSection>
+          <Configuration />
+        </SnapSection>
+        <SnapSection>
+          <ProjectHighlights />
+        </SnapSection>
+        <SnapSection>
+          <MasterplanViewer />
+        </SnapSection>
+        <SnapSection>
+          <TheMarket />
+        </SnapSection>
+        <SnapSection>
+          <InclusiveShowcase />
+        </SnapSection>
+        <SnapSection>
+          <ProjectSpecs />
+        </SnapSection>
+        <SnapSection>
+          <TheHotel />
+        </SnapSection>
+        <SnapSection>
+          <Rooms onInquiryClick={() => handleOpenBooking('room')} />
+        </SnapSection>
+        <SnapSection>
+          <EventsWeddings />
+        </SnapSection>
+        <SnapSection>
+          <WeddingFocus onRSVPClick={() => handleOpenBooking('wedding')} />
+        </SnapSection>
+        <SnapSection>
+          <Dining />
+        </SnapSection>
+        <SnapSection>
+          <WellnessExperience />
+        </SnapSection>
+        <SnapSection>
+          <Amenities />
+        </SnapSection>
+        <SnapSection>
+          <OperationalControl />
+        </SnapSection>
+        <SnapSection>
+          <Economics />
+        </SnapSection>
+        <SnapSection>
+          <Financials />
+        </SnapSection>
+        <SnapSection>
+          <RiskControl />
+        </SnapSection>
+        <SnapSection>
+          <ExitStrategy />
+        </SnapSection>
+        <SnapSection>
+          <Gallery />
+        </SnapSection>
+        <SnapSection>
+          <Experiences />
+        </SnapSection>
+        <SnapSection>
+          <Offers onActionClick={handleOpenBooking} />
+        </SnapSection>
+        <SnapSection>
+          <Location />
+        </SnapSection>
+        <SnapSection>
+          <InvestorAccess onOpenDeck={onInvestorClick} />
+        </SnapSection>
+        <section className="snap-start w-full">
+          <Footer />
+        </section>
         
         <BookingModal 
           isOpen={isBookingOpen} 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth snap-y snap-mandatory">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,14 +8,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Manrope:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              serif: ['"Playfair Display"', 'serif'],
-              sans: ['"Inter"', 'sans-serif'],
+              serif: ['"Cinzel"', 'serif'],
+              sans: ['"Manrope"', 'sans-serif'],
               mono: ['"Space Grotesk"', 'monospace'],
             },
             colors: {
@@ -33,8 +33,8 @@
               }
             },
             boxShadow: {
-              '3xl': '0 40px 100px -15px rgba(0, 0, 0, 0.1)',
-              'gold-glow': '0 0 40px rgba(212, 175, 55, 0.1)',
+              '3xl': '0 40px 100px -15px rgba(0, 0, 0, 0.5)',
+              'gold-glow': '0 0 40px rgba(212, 175, 55, 0.3)',
             },
             animation: {
               'fade-in-up': 'fade-in-up 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -57,8 +57,8 @@
     </script>
     <style>
       body {
-        background-color: #FDFBF7;
-        color: #1e293b;
+        background-color: #0f172a;
+        color: #f8fafc;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
       }
@@ -73,18 +73,18 @@
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        opacity: 0.04;
+        opacity: 0.03;
         pointer-events: none;
         z-index: 9999;
       }
 
       ::-webkit-scrollbar { width: 4px; }
       ::-webkit-scrollbar-track { background: transparent; }
-      ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.1); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 10px; }
       ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
 
       .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-      .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
       .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
     </style>
   <script type="importmap">

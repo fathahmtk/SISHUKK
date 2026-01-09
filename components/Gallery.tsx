@@ -1,12 +1,12 @@
-import React from 'react';
-import { Expand, Layout, Building2, HardHat, Image as ImageIcon, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Expand, Layout, Building2, HardHat, Image as ImageIcon } from 'lucide-react';
 
 const images = [
   {
     src: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&q=80",
     cat: "Elevational Geometry",
     title: "Structural Glass Glazing",
-    span: "col-span-2 row-span-2"
+    span: "col-span-1 md:col-span-2 row-span-2"
   },
   {
     src: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80",
@@ -36,9 +36,48 @@ const images = [
     src: "https://images.unsplash.com/photo-1571167431263-6d60156d108d?auto=format&fit=crop&q=80",
     cat: "Structural Hub",
     title: "The Meridian Skybridge",
-    span: "col-span-2 row-span-1"
+    span: "col-span-1 md:col-span-2 row-span-1"
   }
 ];
+
+const GalleryItem: React.FC<{ img: typeof images[0] }> = ({ img }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className={`relative group overflow-hidden cursor-pointer rounded-[4rem] border border-slate-100 shadow-xl bg-slate-50 transition-all duration-1000 ${img.span}`}>
+      {/* Placeholder State */}
+      <div className={`absolute inset-0 bg-slate-50 flex items-center justify-center transition-opacity duration-700 z-10 ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+         <div className="flex flex-col items-center gap-4 opacity-10">
+            <ImageIcon size={48} className="animate-pulse" />
+         </div>
+      </div>
+
+      <img 
+          src={img.src} 
+          alt={img.title}
+          loading="lazy"
+          onLoad={() => setIsLoaded(true)}
+          className={`w-full h-full object-cover transition-all duration-[2s] ease-out group-hover:scale-110 brightness-[1.05] contrast-[1.02] ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} 
+      />
+      
+      {/* Content Overlay */}
+      <div className={`absolute inset-0 transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-20 transition-opacity duration-700"></div>
+          
+          <div className="absolute inset-0 flex flex-col justify-end p-12 translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
+              <span className="text-gold-600 text-[9px] uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-opacity font-black">{img.cat}</span>
+              <h3 className="text-slate-900 font-serif text-3xl tracking-tight group-hover:text-gold-600 transition-colors leading-tight italic">{img.title}</h3>
+          </div>
+
+          <div className="absolute top-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity">
+             <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-xl border border-white/40 flex items-center justify-center text-slate-900 shadow-3xl">
+                <Expand size={20} />
+             </div>
+          </div>
+      </div>
+    </div>
+  );
+};
 
 const Gallery: React.FC = () => {
   return (
@@ -66,25 +105,7 @@ const Gallery: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-rows-4 gap-8 h-auto lg:h-[1200px]">
             {images.map((img, idx) => (
-                <div key={idx} className={`relative group overflow-hidden cursor-pointer rounded-[4rem] border border-slate-100 shadow-xl bg-slate-50 transition-all duration-1000 ${img.span}`}>
-                    <img 
-                        src={img.src} 
-                        alt={img.title}
-                        className="w-full h-full object-cover transition-transform duration-[3s] ease-in-out group-hover:scale-110 brightness-[1.05] contrast-[1.02]" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent opacity-90 group-hover:opacity-20 transition-opacity duration-700"></div>
-                    
-                    <div className="absolute inset-0 flex flex-col justify-end p-12 translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
-                        <span className="text-gold-600 text-[9px] uppercase tracking-[0.4em] mb-4 opacity-0 group-hover:opacity-100 transition-opacity font-black">{img.cat}</span>
-                        <h3 className="text-slate-900 font-serif text-3xl tracking-tight group-hover:text-gold-600 transition-colors leading-tight italic">{img.title}</h3>
-                    </div>
-
-                    <div className="absolute top-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                       <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-xl border border-white/40 flex items-center justify-center text-slate-900 shadow-3xl">
-                          <Expand size={20} />
-                       </div>
-                    </div>
-                </div>
+                <GalleryItem key={idx} img={img} />
             ))}
         </div>
         
